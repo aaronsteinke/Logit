@@ -26,16 +26,15 @@ class Application_Model_UserMapper
         return $this->_dbTable;
     }
   
-    public function create($userName, $firstName = false, $lastName = false, $password){
+    public function create($userName, $eMail, $password, $obBirthday){
     	/*
     	if ( $this->getOneByUserName($userName) != false){
     		return false;
     	}
     	*/
     	
-    	$pathToPic = 'da solls hin';
-    	$email = 'testmail';
-    	$hits = 2;
+    	$pathToPic = 'nicht vorhanden!';
+    	$hits = 0;
     	
     	
     	$data = array(
@@ -52,11 +51,30 @@ class Application_Model_UserMapper
     	);
     	
     	$strWhereClause = $this->getDbTable()
-    						   ->insert($data);
+    						   ->insert($data);			   
+
     	return true;
 		//return $this->getOneByUserName($userName);
     }
-    /*
+    
+    public function getOneByUsername($username){
+    	echo $username;
+    	$db = $this->getDbTable()->getAdapter();
+    	
+    	$sql = ('	SELECT 	*
+					FROM 	user 
+					WHERE 	username = :username	');
+    	
+    	
+    	$stmt = new Zend_Db_Statement_Pdo($db, $sql);
+    	$stmt->bindParam(':username', $username);
+    	$stmt->execute();
+    	
+    	$resultSet = $stmt->fetchAll();
+    	$arrUsers = $this->createObjektArr($resultSet);
+    	return $arrUsers;
+    }
+    
     
    	private function createObjekt($result){
 	    	if ($result == null){
@@ -66,17 +84,27 @@ class Application_Model_UserMapper
 		    	$obUser = new Application_Model_User(
 		            $result->id, 
 		            $result->username, 
-		            $result->date_created,
+		            $result->lastname,
 		            $result->firstname,
-		            $result->lastname
+		            $result->sex,
+		            $result->profilepic, 
+		            $result->email, 
+		            $result->reg_time,
+		            $result->last_login,
+		            $result->hits
 				);
 	    	} else {
 	    		$obUser = new Application_Model_User(
 		            $result['id'], 
 		            $result['username'], 
-		            $result['date_created'],
+		            $result['lastname'],
 		            $result['firstname'],
-		            $result['lastname']
+		            $result['sex'],
+		            $result['profilepic'], 
+		            $result['email'], 
+		            $result['reg_time'],
+		            $result['last_login'],
+		            $result['hits']
 				);
 	    	}
 			return $obUser;
@@ -89,5 +117,5 @@ class Application_Model_UserMapper
 	        }
 	        return $arrUsers;
 	    }
-    */
+    
 }

@@ -5,6 +5,7 @@ class Application_Form_CreateUser extends Zend_Form
 
 	public function init(){
 		
+		$this-> setAction($_SERVER['PHP_SELF']);
 		
 		$firstName = new Zend_Form_Element_Text('inputFirstName');
 		$firstName ->setName('inputFirstName')
@@ -30,7 +31,7 @@ class Application_Form_CreateUser extends Zend_Form
 				  ->addErrorMessage('Du musst einen Username angeben!')
 				  ->setAttrib('onclick', "this.value=''; this.onclick=null;");
 				  
-		$password = new Zend_Form_Element_Text('inputPassword');		   
+		$password = new Zend_Form_Element_Password('inputPassword');		   
 		$password ->setName('inputPassword')
 				  ->setValue('Einen Username eintragen')
 				  ->setAttrib('class', 'typeText')
@@ -51,9 +52,9 @@ class Application_Form_CreateUser extends Zend_Form
 			)
 		);
 
-		$this->setElementDecorators(array(	'ViewHelper',
+		/*$this->setElementDecorators(array(	'ViewHelper',
 											'Errors'));
-	
+	*/
 	}
 
 

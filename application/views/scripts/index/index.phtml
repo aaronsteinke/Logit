@@ -1,43 +1,78 @@
-<style>
-    a:link,
-    a:visited
-    {
-        color: #0398CA;
-    }
+<script type="text/javascript">
 
-    span#zf-name
-    {
-        color: #91BE3F;
-    }
+<!--
 
-    div#welcome
-    {
-        color: #FFFFFF;
-        background-image: url(http://framework.zend.com/images/bkg_header.jpg);
-        width:  600px;
-        height: 400px;
-        border: 2px solid #444444;
-        overflow: hidden;
-        text-align: center;
-    }
+$(document).ready(function() { 
+    $('#loginForm').ajaxForm({
+		target: '#outputLoginForm'
+    });
 
-    div#more-information
-    {
-        background-image: url(http://framework.zend.com/images/bkg_body-bottom.gif);
-        height: 100%;
-    }
-</style>
-<div id="welcome">
-    <h1>Welcome to the <span id="zf-name">Zend Framework!</span></h1>
+    $('#createNewUserForm').load('/ajax/create-user-form');
+});
 
-    <h3>This is your project's main page</h3>
+//-->
+</script>
 
-    <div id="more-information">
-        <p><img src="http://framework.zend.com/images/PoweredBy_ZF_4LightBG.png" /></p>
-        <p>
-            Helpful Links: <br />
-            <a href="http://framework.zend.com/">Zend Framework Website</a> |
-            <a href="http://framework.zend.com/manual/en/">Zend Framework Manual</a>
-        </p>
-    </div>
-</div>
+<div id="header">
+	<div class="page">
+    	<div class="logo"><img src="/images/logo.png" width="216" height="60" alt="logo" /></div><!--logo-->
+        <div class="headlogin">
+	        <form id="loginForm" action="/Ajax/login-form" method="post">
+	          	<table width="400" border="0">
+		            <tr>
+		              <td><p>E-Mail:</p></td>
+		              <td><p>Passwort:</p></td>
+		              <td>&nbsp;</td>
+		            </tr>
+		            <tr>
+		              <td><input class="inputfeld" name="inputUsername" size=20></td>
+		              <td><input class="inputfeld" name="inputPassword" size=20></td>
+		              <td><input type=submit class="login" value=""></td>
+		            </tr>
+		            <tr>
+		              <td><img src="/images/facebookbutton.jpg" width="100" height="14" alt="facebooklogin" /></td>
+		              <td><p class="vergessen">Passwort vergessen?</p></td>
+		              <td>&nbsp;</td>
+		            </tr>
+	          	</table>
+          	</form>
+        </div><!--login-->
+    </div><!--page header-->
+</div><!--header-->
+<div class="main start">
+	<div id="startlogin">
+    	<div id="loginform">
+        	<div id="contactheader">
+            	<h2>Jetzt Anmelden</h2>
+                <p>&nbsp;</p>
+                <h3>Einfach das Formular ausfüllen und Ihre Lebensgeschichte beginnt</h3>
+                <p>&nbsp;</p>
+            </div><!--überschrift kontaktformular-->
+        	<div id="createNewUserForm"></div>
+        </div><!--loginform-->
+        <div id="startbild"><img src="images/startbild.jpg" width="635" height="349" alt="intro" /></div><!--startbild-->
+    </div><!--start login-->
+</div><!--main-->
+<div id="footer">
+	<div class="page">
+    	<div class="footercolumn">
+        	<h2>FEATURES</h2>
+            <p>Bildaufnahme mit Ihrem Smartphone</p>
+            <p>Intelligenter Such-Algorithmus</p>
+            <p>Gezielte Suche</p>
+            <p>weitere Features von logIt.net</p>
+			
+        </div><!--footercolumn faq-->
+    	<div class="footercolumn">
+        	<h2>FAQ</h2>
+            <p>Hier finden Sie Antworten auf Ihre Fragen  zu der Funktionsweise
+			von LogIt.net und nützliche Tipps, die Ihnen den Einstieg erleichtern.</p>
+			<p>FAQ`s aufrufen</p>
+        </div><!--footercolumn-->
+    	<div class="footercolumn">
+        	<h2>ABOUT</h2>
+            <p>LogIt.net ist ein Projekt der Fachhochschule Furtwangen, das sich mit dem Thema Lifelogging auseinandersetzt.
+            Erfahren Sie mehr über logIt.net</p>
+        </div><!--footercolumn-->
+    </div><!--page footer-->
+</div><!--footer-->

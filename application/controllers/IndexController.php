@@ -10,8 +10,22 @@ class IndexController extends Zend_Controller_Action
 
     public function indexAction()
     {
-        // action body
+    	$auth = Zend_Auth::getInstance();
+		
+		echo '<pre>' . print_r($auth->getIdentity(),1) . '</php>';
     }
+    
+    private function createUser(){
+    	
+    }
+    
+    private function login(){
+    	
+		//$test = new Application_Model_UserMapper();
+		//echo '<pre>' . print_r($test->getOneByUsername('test'),1) . '</php>';
+		
+		
+	} //ende login
 	
 	public function testAction()
 	{

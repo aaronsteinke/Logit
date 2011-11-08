@@ -36,10 +36,6 @@ class GuestbookController extends Zend_Controller_Action
     	$this->view->test = "test";
     }
 
-    private function convertPictures(){
-    	
-    	
-    }
 
 }
 
