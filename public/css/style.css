@@ -1,0 +1,140 @@
+* { margin:0; padding:0; }
+body{
+	margin:0;
+	padding:0;
+	width:100%;
+	overflow-x:hidden;
+	background:#e1e6fa;
+    font-size:100.01%;
+	text-align:left;
+	font-family:Helvetica, Arial, sans-serif;
+	}
+  /* (de) Vermeidung sichtbarer Outline-Rahmen in Webkit-Browsern */
+  div { outline:0 none; }
+  
+  /* (en) HTML 5 - Anpassung des visuellen Formatmodells auf Blockelemente */
+  article,aside,canvas,details,figcaption,figure,
+  footer,header,hgroup,menu,nav,section,summary { 
+  	display:block;
+  }
+  /* (de) Rahmen für <fieldset> und <img> Elemente löschen */
+  fieldset, img { border:0 solid; }
+  
+#header {
+   	color: #fff;
+	background:url(../images/bgheader.png);
+	height:177px;
+	width:100%;
+  }
+  
+.logo{
+	float:left;
+	padding-top:15px;
+	}
+.headlogin{
+	float:right;
+	}
+.vergessen{
+	font-size:12px;
+	}
+input.login {
+width:144px;
+height:40px;
+background:url(../images/loginbutton.jpg) no-repeat;
+color:#fff;
+border:none;
+cursor:pointer;
+}
+ 
+input.login:hover {
+background:url(../images/loginbuttonhover.jpg) no-repeat;
+}
+
+ .page {
+  position:relative;
+  padding: 15px 0px 0px 100px;
+  overflow:hidden; 
+  width: 1000px; 
+  }
+ .main{
+	min-width:720px;
+	background:#e1e6fa;
+	color:#183152;
+	}
+.start{
+	padding:75px 0 75px 100px;
+	}
+#startlogin{
+	width:1000px;
+	}
+h2{
+	font-size:18px;
+	}
+h3{
+	font-size:14px;
+	font-weight:normal;
+	}
+p{
+	font-size:14px;
+	}
+#loginform{
+	float:left;
+	}
+#loginform p{
+	font-size:12px;
+	}
+.inputfeld{
+	height:25px;
+	margin-right:10px;
+	}
+input.button {
+width:144px;
+height:40px;
+background:url(../images/sendenbutton.jpg) no-repeat;
+color:#fff;
+border:none;
+margin-top:15px;
+cursor:pointer;
+}
+ 
+input.button:hover {
+	background:url(../images/sendenbuttonhover.jpg) no-repeat;
+}
+
+#startbild{
+	margin-left:450px;
+}
+
+#footer{
+	clear:both;
+	background:url(../images/bgfooter.jpg) repeat-x #1a1a1a;
+	width:100%;
+	color:#fff;
+}
+
+.footercolumn{
+	width:300px;
+	float:left;
+	margin:20px 33px 25px 0;
+}
+
+.footercolumn h2{
+	padding-bottom:5px;
+	width:100%;
+	border-bottom:#30393c thin solid;
+	color:#abc8e2;
+	margin-bottom:5px;
+	font-size:16px;
+}
+
+.footercolumn p{
+	line-height:30px;
+}
+	
+p.red {
+	color:#FF0000;
+}
+	
+	
+	
+	
