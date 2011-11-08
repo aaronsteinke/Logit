@@ -26,64 +26,31 @@ class ViewController extends Zend_Controller_Action
 		if($this->getRequest()->getParam('inputSubmit') == 'inputSubmit'){
 			
 			$obUsers = new Application_Model_UserMapper();
+
 			
 			$obUsers->create(	$this->getRequest()->getParam('inputUserName'),
 								$this->getRequest()->getParam('inputFirstName'),
 								$this->getRequest()->getParam('inputLastName'), 
-								$this->getRequest()->getParam('inputPassword'));
+								md5($this->getRequest()->getParam('inputPassword')));
 		}
 		
 		echo '<pre>' . print_r($this->getRequest()->getParams(),1) . '</php>';
 		
 	}
 	
-	public function loginAction(){
 		
-		$loginForm = new Application_Form_Login($_POST);
+	
+	public function upload(){
 		
-		if ($loginForm->isValid($_POST)){
-			$db = $this->getDatabase();
-			
-			$adapter = new Zend_Auth_Adapter_DbTable(
-				$db,
-				'user',
-				'username',
-				'password'
-			);
-			
-			$adapter->setIdentity($loginForm->getValue('username'));
-			$adapter->setCredential($loginForm->getValue('password'));
-			
-			$auth = Zend_Auth::getInstance();
-			$result = $auth->authenticate($adapter);
-			
-			if($result->isValid()){
-				
-				echo 'test';
-				return;
-				
-			}
-			
+	}
+	
+	
+	public function testerAction() {
+		$form = new Application_Form_CreateUser();
+		echo $form;
+		if ($this->getRequest()->getParam('inputSubmit') == 'inputSubmit') {
+			echo '<pre>' . print_r($this->getRequest()->getParams(),1) . '</php>';
 		}
-		
-		$this->view->loginForm = $loginForm;
-	}
-	
-	public function uploadAction(){
-		
-		//echo '<pre>' . print_r($this->getFrontController()->getParams(),1) . '</php>';
-	}
-	
-	private function getDatabase(){
-		$config = new Zend_Config_Ini(APPLICATION_PATH. '/configs/application.ini', 'production');
-		$db = new Zend_Db_Adapter_Pdo_Mysql(array(
-			'adapter'=>$config->resources->db->adapter,
-			'host'=>$config->resources->db->params->host,
-			'username'=>$config->resources->db->params->username,
-			'password'=>$config->resources->db->params->password,
-			'dbname'=> $config->resources->db->params->dbname
-		));
-		return $db;
 	}
 	
 }
