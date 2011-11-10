@@ -1,0 +1,68 @@
+/*===================================
+FORMULAR
+===================================*/
+#contactform {
+	margin-top:20px;
+}
+
+fieldset { 
+	padding: none; border: none; 
+}
+
+#contactform div {
+	margin-bottom:10px;
+}
+
+input.login {
+width:144px;
+height:40px;
+background:url(../images/loginbutton.jpg) no-repeat;
+color:#fff;
+border:none;
+cursor:pointer;
+}
+ 
+input.login:hover {
+background:url(../images/loginbuttonhover.jpg) no-repeat;
+}
+
+input.button:hover {
+background:url(../images/sendenbuttonhover.jpg) no-repeat;
+}
+
+.inputfeld{
+	height:25px;
+	margin-right:10px;
+}
+
+.inputfeldLogin{
+	height:20px;
+	margin-right:10px;
+}
+
+input.button {
+width:144px;
+height:40px;
+background:url(../images/sendenbutton.jpg) no-repeat;
+color:#fff;
+border:none;
+margin-top:15px;
+cursor:pointer;
+font-weight:bold;
+font-size:90%;
+}
+
+select {
+	margin:3px 10px 0 0;
+	height:30px;
+	padding:5px;
+}
+
+
+/*===================================
+stephan89@gmx.net	Formular Errors
+===================================*/
+
+p.red {
+	color:#ff0000;
+}
