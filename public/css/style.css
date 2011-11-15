@@ -1,14 +1,36 @@
 * { margin:0; padding:0; }
-body{
-	margin:0;
-	padding:0;
+
+/*Opera Fix*/
+body:before {
+	content:"";
+	height:100%;
+	float:left;
+	width:0;
+	margin-top:-32767px;/
+}	
+
+html {
+	font-size:100.01%;
+	height:100%;
+}
+
+
+body {
+	height:100%;
 	width:100%;
 	overflow-x:hidden;
 	background:#e1e6fa;
-    font-size:100.01%;
+    font-size:75%;
 	text-align:left;
-	font-family:Helvetica, Arial, sans-serif;
+	font-family:Arial, Helvetica, sans-serif;
+}
+	
+#wrap {
+	min-height: 100%;
+	width:100%;
 	}
+	
+
   /* (de) Vermeidung sichtbarer Outline-Rahmen in Webkit-Browsern */
   div { outline:0 none; }
   
@@ -17,13 +39,38 @@ body{
   footer,header,hgroup,menu,nav,section,summary { 
   	display:block;
   }
-  /* (de) Rahmen fÃ¼r <fieldset> und <img> Elemente lÃ¶schen */
+  /* (de) Rahmen für <fieldset> und <img> Elemente löschen */
+  
   fieldset, img { border:0 solid; }
   
+
+/*===================================
+ÜBERSCHRIFTEN UND ABSÄTZE
+===================================*/
+  
+h1{
+	font-size:130%;
+	margin-bottom:5px;
+}
+
+h2{
+	font-size:120%;
+	font-weight:normal;
+}
+
+.clear {
+	clear:both;
+}
+
+
+/*===================================
+HEADER (includes Logo, Login, 
+===================================*/
+
 #header {
    	color: #fff;
 	background:url(../images/bgheader.png);
-	height:177px;
+	height:173px;
 	width:100%;
   }
   
@@ -31,110 +78,106 @@ body{
 	float:left;
 	padding-top:15px;
 	}
+	
 .headlogin{
 	float:right;
 	}
-.vergessen{
-	font-size:12px;
+	
+.forgotPass {
+	color:#acacac;
+}
+
+#naviButtons {
+	margin-top:20px;
+}
+
+.profil {
+	margin-top:20px;
+	float:right;
+}
+
+.uploadLogs {
+	float:right;
+}
+
+	
+/*===================================
+CONTENT
+===================================*/
+
+#main{
+	overflow:auto;
+	padding-bottom:180px;
+	background:#e1e6fa;
 	}
-input.login {
-width:144px;
-height:40px;
-background:url(../images/loginbutton.jpg) no-repeat;
-color:#fff;
-border:none;
-cursor:pointer;
+	
+#content {
+	min-width:720px;
+	color:#183152;
+	padding:40px 0 50px 100px;
+	}
+	
+.startBild {
+	margin-left:450px;
 }
- 
-input.login:hover {
-background:url(../images/loginbuttonhover.jpg) no-repeat;
-}
+		
+/*===================================
+REGISTRIERUNG
+===================================*/	
+
+#newUserFormHeader {
+	float:left;
+	width:440px;
+	}
+
+
+
+/*===================================
+ELEMENTE POSITIONIEREN UND ZENTRIEREN
+===================================*/
 
  .page {
   position:relative;
-  padding: 15px 0px 0px 100px;
+  padding: 20px 0px 0px 100px;
   overflow:hidden; 
-  width: 1000px; 
+  width: 1050px; 
   }
- .main{
-	min-width:720px;
-	background:#e1e6fa;
-	color:#183152;
-	}
-.start{
-	padding:75px 0 75px 100px;
-	}
-#startlogin{
-	width:1000px;
-	}
-h2{
-	font-size:18px;
-	}
-h3{
-	font-size:14px;
-	font-weight:normal;
-	}
-p{
-	font-size:14px;
-	}
-#loginform{
-	float:left;
-	}
-#loginform p{
-	font-size:12px;
-	}
-.inputfeld{
-	height:25px;
-	margin-right:10px;
-	}
-input.button {
-width:144px;
-height:40px;
-background:url(../images/sendenbutton.jpg) no-repeat;
-color:#fff;
-border:none;
-margin-top:15px;
-cursor:pointer;
-}
- 
-input.button:hover {
-	background:url(../images/sendenbuttonhover.jpg) no-repeat;
-}
 
-#startbild{
-	margin-left:450px;
-}
+
+
+
+/*===================================
+FOOTER
+===================================*/
+	
 
 #footer{
+	position:relative;
+	margin-top:-180px;
+	height:180px;
 	clear:both;
 	background:url(../images/bgfooter.jpg) repeat-x #1a1a1a;
 	width:100%;
 	color:#fff;
-}
-
+	}
+	
 .footercolumn{
 	width:300px;
 	float:left;
-	margin:20px 33px 25px 0;
-}
-
-.footercolumn h2{
+	margin-right:15px;
+	}
+	
+.footercolumn h1{
 	padding-bottom:5px;
 	width:100%;
 	border-bottom:#30393c thin solid;
 	color:#abc8e2;
 	margin-bottom:5px;
-	font-size:16px;
-}
-
+	font-size:130%;
+	}
 .footercolumn p{
-	line-height:30px;
-}
-	
-p.red {
-	color:#FF0000;
-}
-	
-	
-	
-	
+	line-height:25px;
+	font-size:12px;
+	}
+
+
