@@ -26,7 +26,7 @@ class Application_Model_UserMapper
         return $this->_dbTable;
     }
   
-    public function create($userName, $eMail, $password, $obBirthday){
+    public function create($userName, $eMail, $password, $birthday){
     	/*
     	if ( $this->getOneByUserName($userName) != false){
     		return false;
@@ -35,6 +35,8 @@ class Application_Model_UserMapper
     	
     	$pathToPic = 'nicht vorhanden!';
     	$hits = 0;
+    	$lastName = 'test';
+    	$firstName = 'test';
     	
     	
     	$data = array(
@@ -44,10 +46,11 @@ class Application_Model_UserMapper
     		'sex' => 1,
     		'profilepic' => $pathToPic,
     		'password' => $password,
-    		'email' => $email,
+    		'email' => $eMail,
     		'reg_time' => date('Y-m-d H:i:s'),
     		'last_login' => date('Y-m-d H:i:s'),
-    		'hits' => $hits
+    		'hits' => $hits,
+    		'birthday' => $birthday
     	);
     	
     	$strWhereClause = $this->getDbTable()
@@ -58,7 +61,6 @@ class Application_Model_UserMapper
     }
     
     public function getOneByUsername($username){
-    	echo $username;
     	$db = $this->getDbTable()->getAdapter();
     	
     	$sql = ('	SELECT 	*
@@ -72,9 +74,36 @@ class Application_Model_UserMapper
     	
     	$resultSet = $stmt->fetchAll();
     	$arrUsers = $this->createObjektArr($resultSet);
-    	return $arrUsers;
+
+    	if (empty($arrUsers)) {
+    		return 0;
+    	} else {
+    		return $arrUsers[0];
+    	}
+    	
     }
     
+	public function getOneByEMail($EMail){
+    	$db = $this->getDbTable()->getAdapter();
+    	
+    	$sql = ('	SELECT 	*
+					FROM 	user 
+					WHERE 	email = :email	');
+    	
+    	
+    	$stmt = new Zend_Db_Statement_Pdo($db, $sql);
+    	$stmt->bindParam(':email', $EMail);
+    	$stmt->execute();
+    	
+    	$resultSet = $stmt->fetchAll();
+    	$arrUsers = $this->createObjektArr($resultSet);
+    	
+		if (empty($arrUsers)) {
+    		return 0;
+    	} else {
+    		return $arrUsers[0];
+    	}
+    }
     
    	private function createObjekt($result){
 	    	if ($result == null){
@@ -91,7 +120,8 @@ class Application_Model_UserMapper
 		            $result->email, 
 		            $result->reg_time,
 		            $result->last_login,
-		            $result->hits
+		            $result->hits,
+		            $result->birthday
 				);
 	    	} else {
 	    		$obUser = new Application_Model_User(
@@ -104,7 +134,8 @@ class Application_Model_UserMapper
 		            $result['email'], 
 		            $result['reg_time'],
 		            $result['last_login'],
-		            $result['hits']
+		            $result['hits'],
+		            $result['birthday']
 				);
 	    	}
 			return $obUser;

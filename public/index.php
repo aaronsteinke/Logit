@@ -1,5 +1,5 @@
 <?php
-// Define path to application directory
+// Define path to application directory test
 defined('APPLICATION_PATH')
     || define('APPLICATION_PATH', realpath(dirname(__FILE__) . '/../application'));
 
