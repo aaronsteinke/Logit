@@ -1,0 +1,49 @@
+<script type="text/javascript">
+<!--
+$(document).ready(function() { 
+    $('#loginForm').ajaxForm({
+		target: '#loginFormWrapper'
+    });
+});
+//-->
+</script>
+<?php if ($this->redirekt) {
+	?>
+<script type="text/javascript">
+	<!--	
+		$(document).ready(function() { 
+			$("html").load("/map");
+		});
+	//-->
+	</script>
+	<?php
+}?>
+
+
+<form id="loginForm" action="/Ajax/login-form" method="post">
+	<div class="headlogin">
+		<table width="400" border="0">
+			<tr>
+				<td><p <?php if ($this->error){ ?> class="red" <?php }?>>Benutzername:</p>
+				</td>
+				<td><p <?php if ($this->error){ ?> class="red" <?php }?>>Passwort:</p>
+				</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td><input class="inputfeldLogin" name="inputUsername" size="20" type="text"/>
+				</td>
+				<td><input class="inputfeldLogin" name="inputPassword" size="20" type="password"/>
+				</td>
+				<td><input type="submit" class="login" value="" name="inputSubmit" />
+				</td>
+			</tr>
+
+			<tr>
+				<td></td>
+				<td><span class="forgotPass">Passwort vergessen?</span>
+				</td>
+			</tr>
+		</table>
+	</div>
+</form>
