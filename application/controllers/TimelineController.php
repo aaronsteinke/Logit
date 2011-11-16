@@ -1,9 +1,7 @@
 <?php
-
-class MapController extends Zend_Controller_Action
-{
-
-    public function init()
+class Timelinecontroller extends Zend_Controller_Action {
+	
+	public function init()
     {
        
     }
@@ -14,11 +12,5 @@ class MapController extends Zend_Controller_Action
 		$this->_helper->viewRenderer->setNoRender(true);
 		echo '<a href="/ajax/logout">logout</a>';
 	}
-	
-	public function bilderAction(){
-		echo 'hier steht php code';
-	}
-	
-	
 	
 }
