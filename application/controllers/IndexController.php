@@ -3,21 +3,6 @@
 class IndexController extends Zend_Controller_Action
 {
 
-<<<<<<< HEAD
-    public function init()
-    {
-    	
-    }
-    
-    
-    public function indexAction()
-    {
-    	$auth = Zend_Auth::getInstance();
-        if ($auth->hasIdentity()){
-        	$this->_redirect(map);
-        }
-    }
-=======
 	public function init()
 	{
 		 
@@ -77,7 +62,6 @@ class IndexController extends Zend_Controller_Action
 		$this->_redirect(index);
 	}
 
->>>>>>> master
 
 	public function createUserFormAction(){
 		$this->_helper->layout()->disableLayout();
