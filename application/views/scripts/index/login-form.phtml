@@ -7,17 +7,15 @@ $(document).ready(function() {
 });
 //-->
 </script>
-<?php if ($this->redirekt) {
-	?>
-<script type="text/javascript">
+<?php if ($this->redirekt) {?>
+	<script type="text/javascript">
 	<!--	
 		$(document).ready(function() { 
-			$("html").load("/map");
+			location.reload();
 		});
 	//-->
 	</script>
-	<?php
-}?>
+<?php }?>
 
 
 <form id="loginForm" action="/index/login-form" method="post">

@@ -1,16 +1,15 @@
 <?php
-class Timelinecontroller extends Zend_Controller_Action {
+class TimelineController extends Zend_Controller_Action {
 	
 	public function init()
     {
        
     }
+    
+    public function index(){
+    	
+    }
 
    
-	public function indexAction()
-	{
-		$this->_helper->viewRenderer->setNoRender(true);
-		echo '<a href="/ajax/logout">logout</a>';
-	}
 	
 }
