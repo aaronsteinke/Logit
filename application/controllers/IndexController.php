@@ -8,7 +8,6 @@ class IndexController extends Zend_Controller_Action
 		 
 	}
 
-
 	public function indexAction()
 	{
 		$auth = Zend_Auth::getInstance();
@@ -21,7 +20,7 @@ class IndexController extends Zend_Controller_Action
 	{
 		$this->_helper->layout()->disableLayout();
 		$arrRequest = $this->getRequest()->getParams();
-
+		
 
 		if (isset($arrRequest['inputSubmit'])){
 			$auth = Zend_Auth::getInstance();

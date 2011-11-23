@@ -1,0 +1,9 @@
+var data = {
+
+ "ID": [{"latitude": 48.051000, "longitude": 8.197001, "image": "daten/testBild1.jpg"},
+		{"latitude": 48.049915, "longitude": 8.205328, "image": "daten/testBild2.jpg"},
+		{"latitude": 48.051000, "longitude": 8.209328, "image": "daten/testBild3.jpg"},
+		{"latitude": 48.048915, "longitude": 8.197901, "image": "daten/testBild4.jpg"},
+		{"latitude": 48.047915, "longitude": 8.210001, "image": "daten/testBild5.jpg"}
+]}
+

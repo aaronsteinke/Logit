@@ -1,0 +1,192 @@
+*{
+	padding:0;
+	margin:0;	
+}
+
+body{
+	background:#e1e6fa;
+	text-align:left;
+	font-family:Helvetica, Arial, sans-serif;
+	}
+
+#timeline{
+	background:url(../images/timelineBg.gif) repeat-x #CCC; 
+	width: 100%;
+	height: 200px;	
+	position:absolute;
+	z-index:999;
+	bottom:180px;
+}
+
+#navi{
+	background-color: #CCC;
+	height: 42px;
+	width: auto;
+	border:solid;
+	border-color: #999;
+	border-width: 1px;
+}
+
+#content1{
+	background-color:#CCC;
+	width: auto;
+	height:60px;
+	border:solid;
+	border-color: #999;
+	border-width: 1px;
+	margin: 12px 12px 0 12px;	
+}
+
+#profilImage{
+	float:left;
+	width:55px;
+}
+
+#profilInfo{
+	background-color:#FFF;
+	width: 128px;
+	height: 60px;
+	float: left;	
+}
+
+#images{
+	width: auto;
+	height: 60px;
+	border: solid;
+	border-color:#999;
+	border-width:0 0 1px 1px;
+	background-color:#FFF;
+	margin-left:183px;
+	padding-left:11px;
+	padding-right:11px;
+	overflow:hidden;
+}
+
+#timeLineImage{
+	padding: 5px 3px 0 0;	
+	float: left;
+	
+}
+
+#timeSettings{
+	margin: 9px 0 0 160px;
+	background-color:#FFF;
+	height:23px;
+	width:500px;
+	border:	solid;
+	border-width: 1px;
+	border-color:#999;	
+}
+
+#zeitraumEinstellen{
+	width: 119px;
+	height: 16px;
+	font-size:13px;
+	font-weight:600;
+	padding: 4px;
+	float:left;
+	border:	solid;
+	border-width:0 1px 0 0;		
+	border-color:#999;		
+}
+
+#zeitraumPlus{
+	float:left;
+	width:20px;
+	height:20px;
+	padding: 3px 0 0 5px;
+	border:	solid;
+	border-width:0 1px 0 0;		
+	border-color:#999;		
+}
+
+#zeitraumMinus{
+	float:left;
+	width:20px;
+	height:20px;
+	padding: 3px 0 0 5px;
+	border:	solid;
+	border-width:0 1px 0 0;		
+	border-color:#999;
+}
+
+#zeitraumStart{
+	float:left;
+	width:36px;
+	height:20px;
+	font-size:13px;
+	font-weight:600;
+	padding: 4px 0 0 5px;
+	border:	solid;
+	border-width:0 1px 0 0;		
+	border-color:#999;	
+}
+
+#zeitraumStartEingabe{
+	float:left;
+	width:90px;
+	height:23px;
+	font-size:13px;
+	font-weight:600;
+	border:	solid;
+	border-width:0 1px 0 0;		
+	border-color:#999;
+}
+
+.startTextfield{
+	height:23px;
+	width:71px;
+	border:none;
+}
+
+#zeitraumEnde{
+	float:left;
+	width:36px;
+	height:20px;
+	font-size:13px;
+	font-weight:600;
+	padding: 4px 0 0 5px;
+	border:	solid;
+	border-width:0 1px 0 0;		
+	border-color:#999;
+}
+
+#zeitraumEndeEingabe{
+	float:left;
+	width:90px;
+	height:23px;
+	font-size:13px;
+	font-weight:600;
+	border:	solid;
+	border-width:0 1px 0 0;		
+	border-color:#999;
+}
+
+.endeTextfield{
+	height:23px;
+	width:71px;
+	border:none;
+}
+
+#scrollButtons{
+	width:51px;
+	float:left;
+}
+
+#zeitraumScrollMinus{
+	float:left;
+	padding: 3px 0 0 5px;
+	width:20px;
+	height:20px;
+	border:	solid;
+	border-width:0 1px 0 0;		
+	border-color:#999;
+}
+
+
+#zeitraumScrollPlus{
+	float:left;
+	padding: 3px 0 0 5px;
+	width:20px;
+	height:20px;
+}
