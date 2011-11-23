@@ -42,7 +42,6 @@ class UploadController extends Zend_Controller_Action
 		
 		// Clean the fileName for security reasons
 		$fileName = preg_replace('/[^\w\._]+/', '', $fileName);
-		echo $fileName;
 		$ext = strrpos($fileName, '.');
 		$fileName_a = substr($fileName, 0, $ext);
 		$fileName_b = substr($fileName, $ext);
@@ -87,10 +86,11 @@ class UploadController extends Zend_Controller_Action
 		$contentType = $_SERVER["CONTENT_TYPE"];
 		
 		// Handle non multipart uploads older WebKit versions didn't support multipart in HTML5
+		$pic_ident = $fileName_a . '_' . md5_file($_FILES['file']['tmp_name']) . $fileName_b;
 		if (strpos($contentType, "multipart") !== false) {
 			if (isset($_FILES['file']['tmp_name']) && is_uploaded_file($_FILES['file']['tmp_name'])) {
 				// Open temp file
-				$out = fopen($targetDir . '/' . $fileName_a . '_' . md5_file($_FILES['file']['tmp_name']) . $fileName_b, $chunk == 0 ? "wb" : "ab"); 						//TODO: '/' verwenden
+				$out = fopen($targetDir . '/' . $pic_ident, $chunk == 0 ? "wb" : "ab"); 						//TODO: '/' verwenden
 				if ($out) {
 					// Read binary input stream and append it to temp file
 					$in = fopen($_FILES['file']['tmp_name'], "rb");
@@ -109,7 +109,7 @@ class UploadController extends Zend_Controller_Action
 			die('{"jsonrpc" : "2.0", "error" : {"code": 103, "message": "Failed to move uploaded file."}, "id" : "id"}');
 		} else {
 			// Open temp file
-			$out = fopen($targetDir . '/' . $fileName_a . '_' . md5_file($_FILES['file']['tmp_name']) . $fileName_b, $chunk == 0 ? "wb" : "ab"); 
+			$out = fopen($targetDir . '/' . $pic_ident, $chunk == 0 ? "wb" : "ab"); 
 			if ($out) {
 				// Read binary input stream and append it to temp file
 				$in = fopen("php://input", "rb");
@@ -125,6 +125,24 @@ class UploadController extends Zend_Controller_Action
 			} else
 			die('{"jsonrpc" : "2.0", "error" : {"code": 102, "message": "Failed to open output stream."}, "id" : "id"}');
 		}
+		
+		
+		// Exif Daten Sammeln
+		$exifArray = exif_read_data($targetDir . '/' . $pic_ident);
+		$dateShot = $exifArray['DateTimeOriginal'];
+		$gpsLatNS = $exifArray['GPSLatitudeRef']; // N oder S ?
+		$gpsLatKoord = Application_Model_gpsTools::toFloat($exifArray['GPSLatitude']);
+		
+		$gpsLongEW =$exifArray['GPSLongitudeRef']; // E oder W?
+		$gpsLongKoord = Application_Model_gpsTools::toFloat($exifArray['GPSLongitude']);	
+
+		
+		// eintrag in die datenbank
+		$obPictures = new Application_Model_PictureMapper();		
+		$obPictures ->create($pic_ident, $gpsLatKoord, $gpsLongKoord, date('Y-m-d H:i:s'), $dateShot);
+		// formular ausblenden
+		$this->view->success = true;
+		
 		
 		// Return JSON-RPC response
 		die('{"jsonrpc" : "2.0", "result" : null, "id" : "id"}');
