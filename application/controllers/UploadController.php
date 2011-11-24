@@ -126,23 +126,24 @@ class UploadController extends Zend_Controller_Action
 			die('{"jsonrpc" : "2.0", "error" : {"code": 102, "message": "Failed to open output stream."}, "id" : "id"}');
 		}
 		
+		$user = Application_Model_AuthUser::getAuthUser();
+		$user_id = $user->getId();
 		
 		// Exif Daten Sammeln
 		$exifArray = exif_read_data($targetDir . '/' . $pic_ident);
 		$dateShot = $exifArray['DateTimeOriginal'];
+		$gpsheight = (int)$exifArray['GPSAltitude'];
 		$gpsLatNS = $exifArray['GPSLatitudeRef']; // N oder S ?
+		print_r($exifArray);
 		$gpsLatKoord = Application_Model_gpsTools::toFloat($exifArray['GPSLatitude']);
-		
+				
 		$gpsLongEW =$exifArray['GPSLongitudeRef']; // E oder W?
 		$gpsLongKoord = Application_Model_gpsTools::toFloat($exifArray['GPSLongitude']);	
 
 		
 		// eintrag in die datenbank
 		$obPictures = new Application_Model_PictureMapper();		
-		$obPictures ->create($pic_ident, $gpsLatKoord, $gpsLongKoord, date('Y-m-d H:i:s'), $dateShot);
-		// formular ausblenden
-		$this->view->success = true;
-		
+		$obPictures ->create($pic_ident, $user_id, $gpsLatNS, $gpsLatKoord, $gpsLongEW, $gpsLongKoord, $gpsheight, date('Y-m-d H:i:s'), $dateShot);
 		
 		// Return JSON-RPC response
 		die('{"jsonrpc" : "2.0", "result" : null, "id" : "id"}');

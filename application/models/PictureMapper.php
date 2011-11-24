@@ -26,12 +26,16 @@ class Application_Model_PictureMapper
         return $this->_dbTable;
     }
   
-    public function create($pic_ident, $lat, $long, $date_uploaded, $date_shot){
+    public function create($pic_ident, $user_id, $lat_ns, $lat, $long_ns, $long, $height, $date_uploaded, $date_shot){
     	   	
     	$data = array(
     		'pic_ident'=> $pic_ident,
+    		'user_id' => $user_id,
+    		'lat_ns' => $lat_ns,
     		'lat' => $lat,
+    		'long_ns' => $long_ns,
     		'long' => $long,
+    		'height' => $height,
     		'date_uploaded' => $date_uploaded,
     		'date_shot' => $date_shot,
     	);
@@ -49,18 +53,26 @@ class Application_Model_PictureMapper
 	    	if (is_object($result)){
 		    	$obPicture = new Application_Model_Picture(
 		            $result->id, 
-		            $result->pic_ident, 
+		            $result->pic_ident,
+		            $result->user_id, 
+		            $result->lat_ns,
 		            $result->lat,
+		            $result->long_ns,
 		            $result->long,
+		            $result->height, 
 		            $result->date_uploaded,
 		            $result->date_shot 
 				);
 	    	} else {
 	    		$obPicture = new Application_Model_Picture(
 		            $result['id'], 
-		            $result['pic_ident'], 
+		            $result['pic_ident'],
+		            $result['user_id'],
+		            $result['lat_ns'], 
 		            $result['lat'],
+		            $result['long_ns'],
 		            $result['long'],
+		            $result['height'],
 		            $result['date_uploaded'],
 		            $result['date_shot'] 
 				);
