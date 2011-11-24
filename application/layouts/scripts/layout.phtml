@@ -6,6 +6,8 @@
 <link href="/css/map.css" rel="stylesheet" type="text/css">
 <link href="/css/style.css" rel="stylesheet" type="text/css" />
 <link href="/css/form.css" rel="stylesheet" type="text/css" />
+<link href="css/mapTimeline.css" rel="stylesheet" type="text/css" />
+<link href="/css/vader/jquery-ui-1.8.16.custom.css" rel="stylesheet" type="text/css" />
 <?php
 $controller = Zend_Controller_Front::getInstance()->getRequest()->getParam('controller');
 // Kontextabhängiges Einladen von JavaScript dateien...
@@ -69,14 +71,7 @@ if($auth->hasIdentity()){?>
 			</div>
 		</div>
 		<div id="main">
-		
-		
 		<?php echo $this->layout()->content;  ?>
-		
-		
-			<!--  <div id="content"> -->
-				<?php //echo $this->layout()->content;  ?>
-			<!-- </div> -->
 		</div>
 	</div>
 	<div id="footer">
