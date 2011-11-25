@@ -46,6 +46,22 @@ class Application_Model_PictureMapper
     	return true;
     }
     
+	public function getLogsForUser($idUser){
+    	$db = $this->getDbTable()->getAdapter();
+    	$sql = ('	SELECT 	*
+					FROM 	pic 
+					WHERE 	user_id = :idUser	');
+    	
+    	
+    	$stmt = new Zend_Db_Statement_Pdo($db, $sql);
+    	$stmt->bindParam(':idUser', $idUser);
+    	$stmt->execute();
+    	
+    	$resultSet = $stmt->fetchAll();
+    	return $this->createObjektArr($resultSet);
+
+	}
+	
    	private function createObjekt($result){
 	    	if ($result == null){
 	    		return false;

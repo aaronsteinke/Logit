@@ -3,48 +3,68 @@
 class Application_Model_Picture {
 
 	protected $_id;
-	protected $_pic_ident;
+	protected $_picIdent;
+	protected $_userId;
+	protected $_latNs;
 	protected $_lat;
+	protected $_longNs;
 	protected $_long;
-	protected $_date_uploaded;
-	protected $_date_shot;
+	protected $_height;
+	protected $_dateUploaded;
+	protected $_dateShot;
 
-
-
-	public function __construct( 	$id, $picIdent, $lat, $long, $dateUploaded, $dateShot ) {
-		$this->_id = $id;
-		$this->_pic_ident = $picIdent;
-		$this->_lat = $lat;
-		$this->_long = $long;
-		$this->_date_uploaded = $dateUploaded;
-		$this->_date_shot = $dateShot;
+	public function __construct($id, $picIdent, $userId, $latNs, $lat, $longNs, $long, $height, $dateUploaded, $dateShot) {
+		$this -> _id = $id;
+		$this -> _picIent = $picIdent;
+		$this -> _userId = $userId;
+		$this -> _latNs = $latNs;
+		$this -> _lat = $lat;
+		$this -> _longNs = $longNs;
+		$this -> _long = $long;
+		$this -> _height = $height;
+		$this -> _dateUploaded = $dateUploaded;
+		$this -> _dateShot = $dateShot;
 	}
 
 	public function getId() {
-		return $this->_id;
+		return $this -> _id;
 	}
 
 	public function getPicIdent() {
-		return $this->_userName;
+		return $this -> _userName;
 	}
 
-	public function getLat(){
-		return $this->_lat;
+	public function getUser() {
+		$userMapper = new Application_Model_UserMapper();
+		return $userMapper -> getOneById($this -> _userId);
 	}
 
-	public function getLong(){
-		return $this->_long;
+	public function getLatNs() {
+		return $this -> _latNs;
 	}
 
-	public function getDateUploaded(){
-		return $this->_date_uploaded;
+	public function getLat() {
+		return $this -> _lat;
 	}
 
-	public function getDateShot(){
-		return $this->_date_shot;
+	public function getLongNs() {
+		return $this -> _longNs;
 	}
 
-	public function getEmail() {
-		return $this->_eMail;
+	public function getLong() {
+		return $this -> _long;
 	}
+
+	public function getHeight() {
+		return $this -> _height;
+	}
+
+	public function getDateUploaded() {
+		return $this -> _dateUploaded;
+	}
+
+	public function getDateShot() {
+		return $this -> _dateShot;
+	}
+
 }
