@@ -15,7 +15,7 @@ class Application_Model_Picture {
 
 	public function __construct($id, $picIdent, $userId, $latNs, $lat, $longNs, $long, $height, $dateUploaded, $dateShot) {
 		$this -> _id = $id;
-		$this -> _picIent = $picIdent;
+		$this -> _picIdent = $picIdent;
 		$this -> _userId = $userId;
 		$this -> _latNs = $latNs;
 		$this -> _lat = $lat;
@@ -31,7 +31,7 @@ class Application_Model_Picture {
 	}
 
 	public function getPicIdent() {
-		return $this -> _userName;
+		return $this -> _picIdent;
 	}
 
 	public function getUser() {
