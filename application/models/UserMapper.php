@@ -82,6 +82,29 @@ class Application_Model_UserMapper
     	}
     	
     }
+	
+	public function getOneById($id){
+    	$db = $this->getDbTable()->getAdapter();
+    	
+    	$sql = ('	SELECT 	*
+					FROM 	user 
+					WHERE 	id = :id	');
+    	
+    	
+    	$stmt = new Zend_Db_Statement_Pdo($db, $sql);
+    	$stmt->bindParam(':id', $id);
+    	$stmt->execute();
+    	
+    	$resultSet = $stmt->fetchAll();
+    	$arrUsers = $this->createObjektArr($resultSet);
+
+    	if (empty($arrUsers)) {
+    		return 0;
+    	} else {
+    		return $arrUsers[0];
+    	}
+    	
+    }
     
 	public function getOneByEMail($EMail){
     	$db = $this->getDbTable()->getAdapter();
