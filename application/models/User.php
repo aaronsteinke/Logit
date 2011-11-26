@@ -70,10 +70,6 @@ class Application_Model_User {
 		return $this->_birthday;
 	}
 
-	public function getLogs(){
-		$logs = new Application_Model_PictureMapper();
-		return $logs->getLogsForUser($this->_id);
-	}
 	/*
 	 public function getDateCreated()
 	 {

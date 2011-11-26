@@ -1,25 +1,26 @@
+/*var firstDate = new Date ();
+var secondDate = new Date(); 
+
+firstDay = firstDate.getDate();
+firstMonth = firstDate.getMonth();
+firstYear = firstDate.getFullYear();*/
+
 var windowWidth;
 var imageWidthAll;
 var numberOfImages;
 
 var firstDate = Date.today();
-var firstDateString = firstDate.toString('d.M.yyyy');
-var secondDate = Date.today().add(1).days();
-var secondDateString = secondDate.toString('d.M.yyyy');
-var minimalDate = Date.parse("01.01.1900");
-var maximalDate = (Date.today().add((Date.today() - minimalDate) / (1000*60*60*24)).days());
+var secondDate = Date.today().add(10).days();
 var dateDifference = (secondDate - firstDate) / (1000*60*60*24);
-
-var buttonPlusActiv = 1;
-var buttonMinusActiv = 1;
 
 $(window).resize(function() {
 	howMuchImages();
 });
 
-$(document).ready(function() {	
+$(document).ready(function() {	 
+	
 	howMuchImages();
- 						
+				
 	var dates = $( "#zeitraumStartEingabefeldId, #zeitraumEndeEingabefeldId" ).datepicker({
 		showOn: "button",	
 		buttonImage: "images/calendar.gif",
@@ -30,102 +31,65 @@ $(document).ready(function() {
 					
 		onSelect: function( selectedDate ) {
 			var option = this.id == "zeitraumStartEingabefeldId" ? "minDate" : "maxDate",
-				instance = $( this ).data( "datepicker" ), 
-				date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, 
-				selectedDate, 
-				instance.settings);
+				instance = $( this ).data( "datepicker" ),
+				date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, selectedDate, instance.settings);
 				dates.not( this ).datepicker( "option", option, date );
 				parseDate();	
-				setDateDifference();
-				sendImageRequest();
-			}				
+				}		
 	});	
-	setDatePicker();
-	sendImageRequest();
-
 	
-	$('#zeitraumPlus').click(function zoomIn() {
-		if(buttonPlusActiv == 1){
-			buttonMinusActiv = 1;
-			firstDate = firstDate.addDays(dateDifference/4);
-			secondDate = secondDate.addDays(-dateDifference/4);
-			checkDateArea();
-			setDateDifference();
-			setDatePicker();
-			sendImageRequest();
-		}
+	
+	
+	$("#zeitraumStartEingabefeldId").datepicker('setDate', firstDate);
+	$("#zeitraumEndeEingabefeldId").datepicker('setDate', secondDate);
+	
+	$('#zeitraumPlus').click(function() {
+		$('#images').load('getImage.php/' + 'id/' + 'plus/' + '/start/' + $(zeitraumStartEingabefeldId).val() + '/ende/' +$(zeitraumEndeEingabefeldId).val());
 	});
 	
-	$('#zeitraumMinus').click(function zoomOut() {	
-		if(buttonMinusActiv == 1){
-			buttonPlusActiv = 1;
-			firstDate = firstDate.addDays(-dateDifference/2);
-			secondDate = secondDate.addDays(dateDifference/2);
-			checkDateArea();
-			setDateDifference();
-			setDatePicker();
-			sendImageRequest();
-		}
+	$('#zeitraumMinus').click(function() {
+		$('#images').load('getImage.php/' + 'id/' + 'minus/' + '/start/' + $(zeitraumStartEingabefeldId).val() + '/ende/' +$(zeitraumEndeEingabefeldId).val());
 	});
 	
-	$('#zeitraumScrollMinus').click(function ScrollLeft() {
+	$('#zeitraumScrollMinus').click(function() {
 		firstDate = firstDate.addDays(-dateDifference);
-		secondDate = secondDate.addDays(-dateDifference);
-		setDatePicker();
-		sendImageRequest();
+		secondDate = secondDate.addDays(-dateDifference);		
+		$("#zeitraumStartEingabefeldId").datepicker('setDate', firstDate);
+		$("#zeitraumEndeEingabefeldId").datepicker('setDate', secondDate);
 	});
 	
-	$('#zeitraumScrollPlus').click(function ScrollRight () {
+	$('#zeitraumScrollPlus').click(function() {
+		
 		firstDate = firstDate.addDays(dateDifference);
-		secondDate = secondDate.addDays(dateDifference);
-		setDatePicker();
-		sendImageRequest();
-	});	
+		secondDate = secondDate.addDays(dateDifference);	
+		$("#zeitraumStartEingabefeldId").datepicker('setDate', firstDate);
+		$("#zeitraumEndeEingabefeldId").datepicker('setDate', secondDate);
+	});
+	
 	
 	$("input[type='text']").change( function() {
 		parseDate();
-		setDateDifference();
-		sendImageRequest();
 	});
+
 });
 
 function howMuchImages(){
 	windowWidth =$(document).width(); 
 	imageWidthAll = windowWidth - 24 - $("#profilImage").width() - $("#profilInfo").width() - 11  
-	numberOfImages = Math.round(imageWidthAll / (48 + 3));
+	numberOfImages = (imageWidthAll / (48 + 3));
+	console.log(imageWidthAll);
+	console.log(numberOfImages);
+	console.log(Math.round(numberOfImages));
 }
 
 function parseDate(){
 	firstDate =	Date.parse($(zeitraumStartEingabefeldId).val());
-	secondDate = Date.parse($(zeitraumEndeEingabefeldId).val());	
-}
-
-function setDateDifference(){
-	dateDifference = Math.round((secondDate - firstDate) / (1000*60*60*24));
-	if (dateDifference >= 36500){
-		dateDifference = 36500;
-	} else if(dateDifference <= 0){
-		buttonPlusActiv = 0;
-		dateDifference = 2;
-	} 	
+	secondDate = Date.parse($(zeitraumEndeEingabefeldId).val());
+	dateDifference = (secondDate - firstDate) / (1000*60*60*24);
+	console.log(dateDifference);		
+	$('#images').load('getImage.php/' + 'id/' + $(this).attr('id') + '/start/' + $(zeitraumStartEingabefeldId).val() + '/ende/' +$(zeitraumEndeEingabefeldId).val());		
 } 
 
-function checkDateArea(){	
-	if (firstDate.compareTo(minimalDate) <= 0){
-		firstDate = new Date(minimalDate);
-		secondDate = new Date(maximalDate);
-		buttonMinusActiv = 0;
-	}
-}
 
-function setDatePicker(){
-	$("#zeitraumStartEingabefeldId").datepicker('setDate', firstDate);
-	$("#zeitraumEndeEingabefeldId").datepicker('setDate', secondDate);
-	$("#zeitraumEndeEingabefeldId").datepicker("option", "minDate", firstDate.toString('d.M.yyyy'));
-	$("#zeitraumStartEingabefeldId").datepicker("option", "maxDate", secondDate.toString('d.M.yyyy'));
-}
 
-function sendImageRequest(){
-	$('#images').load('map/get-images-for-timeline/number-of-images/' + numberOfImages);
-	//$('#images').load('map/get-images-for-timeline/' + 'id/' + 'minus/' + '/start/' + $(zeitraumStartEingabefeldId).val() + '/ende/' +$(zeitraumEndeEingabefeldId).val());
-}
+

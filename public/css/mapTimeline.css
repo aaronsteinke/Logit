@@ -1,3 +1,13 @@
+*{
+	padding:0;
+	margin:0;	
+}
+
+body{
+	background:#e1e6fa;
+	text-align:left;
+	font-family:Helvetica, Arial, sans-serif;
+	}
 
 #timeline{
 	background:url(../images/timelineBg.gif) repeat-x #CCC; 
@@ -8,13 +18,23 @@
 	bottom:180px;
 }
 
+#navi{
+	background-color: #CCC;
+	height: 42px;
+	width: auto;
+	border:solid;
+	border-color: #999;
+	border-width: 1px;
+}
+
 #content1{
-	background-color:#FFF;
+	background-color:#CCC;
 	width: auto;
 	height:60px;
-	border:1px solid #999;
-	margin: 12px 0px 0 12px;
-	white-space:nowrap;
+	border:solid;
+	border-color: #999;
+	border-width: 1px;
+	margin: 12px 12px 0 12px;	
 }
 
 #profilImage{
@@ -23,117 +43,150 @@
 }
 
 #profilInfo{
-	border-right:1px solid #d3d3d3;
-	padding:7px 5px 0px 10px;
+	background-color:#FFF;
 	width: 128px;
-	height: 53px;
+	height: 60px;
 	float: left;	
 }
 
-.profilName {
-	color:#183152;
-	font-weight:bold;
-}
-
-.profilLogs {
-	color:#999999;
-}
-
-
 #images{
+	width: auto;
 	height: 60px;
+	border: solid;
+	border-color:#999;
+	border-width:0 0 1px 1px;
+	background-color:#FFF;
 	margin-left:183px;
-	padding:5px 11px 0px 20px;
+	padding-left:11px;
+	padding-right:11px;
+	overflow:hidden;
 }
 
 #timeLineImage{
-	padding: 5px 3px 0px 0px;	
+	padding: 5px 3px 0 0;	
 	float: left;
+	
 }
 
-
-/*===================================
-TIMELINE NAVIGATION
-===================================*/
-
-#navi{
-	width:502px; /
-	height: 42px;
-	padding:9px 0px 8px 11px;
-	font-weight:bold;
-}
-
-#zeitraum {
-	border:1px solid #999;
+#timeSettings{
+	margin: 9px 0 0 160px;
 	background-color:#FFF;
 	height:23px;
+	width:500px;
+	border:	solid;
+	border-width: 1px;
+	border-color:#999;	
 }
 
 #zeitraumEinstellen{
+	width: 119px;
 	height: 16px;
+	font-size:13px;
+	font-weight:600;
+	padding: 4px;
 	float:left;
-	padding:5px;
-		
+	border:	solid;
+	border-width:0 1px 0 0;		
+	border-color:#999;		
 }
 
 #zeitraumPlus{
-	float:left;		
+	float:left;
+	width:20px;
+	height:20px;
+	padding: 3px 0 0 5px;
+	border:	solid;
+	border-width:0 1px 0 0;		
+	border-color:#999;		
 }
 
 #zeitraumMinus{
 	float:left;
+	width:20px;
+	height:20px;
+	padding: 3px 0 0 5px;
+	border:	solid;
+	border-width:0 1px 0 0;		
+	border-color:#999;
 }
 
 #zeitraumStart{
 	float:left;
-	padding:5px;
-}
-
-#zeitraumEnde{
-	float:left;
-	padding:5px;
+	width:36px;
+	height:20px;
+	font-size:13px;
+	font-weight:600;
+	padding: 4px 0 0 5px;
+	border:	solid;
+	border-width:0 1px 0 0;		
+	border-color:#999;	
 }
 
 #zeitraumStartEingabe{
 	float:left;
-	padding:0 5px 0px 5px;
-	
-}
-
-
-#zeitraumEndeEingabe{
-	float:left;
-	padding:0 5px 0px 5px;
-	
+	width:90px;
+	height:23px;
+	font-size:13px;
+	font-weight:600;
+	border:	solid;
+	border-width:0 1px 0 0;		
+	border-color:#999;
 }
 
 .startTextfield{
-	width:60px;
+	height:23px;
+	width:71px;
 	border:none;
-	font-size:80%;
-	color:#999999;
+}
+
+#zeitraumEnde{
+	float:left;
+	width:36px;
+	height:20px;
+	font-size:13px;
+	font-weight:600;
+	padding: 4px 0 0 5px;
+	border:	solid;
+	border-width:0 1px 0 0;		
+	border-color:#999;
+}
+
+#zeitraumEndeEingabe{
+	float:left;
+	width:90px;
+	height:23px;
+	font-size:13px;
+	font-weight:600;
+	border:	solid;
+	border-width:0 1px 0 0;		
+	border-color:#999;
 }
 
 .endeTextfield{
-	width:60px;
+	height:23px;
+	width:71px;
 	border:none;
-	font-size:80%;
-	color:#999999;
 }
 
+#scrollButtons{
+	width:51px;
+	float:left;
+}
 
 #zeitraumScrollMinus{
 	float:left;
+	padding: 3px 0 0 5px;
+	width:20px;
+	height:20px;
+	border:	solid;
+	border-width:0 1px 0 0;		
+	border-color:#999;
 }
+
 
 #zeitraumScrollPlus{
 	float:left;
-}
-
-.borderRight {
-	border-right:1px solid #d3d3d3;
-}
-
-.timePic {
-	padding-top:1px;
+	padding: 3px 0 0 5px;
+	width:20px;
+	height:20px;
 }
