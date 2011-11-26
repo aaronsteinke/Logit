@@ -57,7 +57,7 @@ TIMELINE NAVIGATION
 ===================================*/
 
 #navi{
-	width:502px; /
+	width:502px;
 	height: 42px;
 	padding:9px 0px 8px 11px;
 	font-weight:bold;
@@ -73,7 +73,6 @@ TIMELINE NAVIGATION
 	height: 16px;
 	float:left;
 	padding:5px;
-		
 }
 
 #zeitraumPlus{
@@ -97,7 +96,6 @@ TIMELINE NAVIGATION
 #zeitraumStartEingabe{
 	float:left;
 	padding:0 5px 0px 5px;
-	
 }
 
 

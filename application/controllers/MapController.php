@@ -34,4 +34,9 @@ class MapController extends Zend_Controller_Action
 		*/
 	}
 	
+	public function getImagesForTimelineAction(){
+		$this->_helper->layout()->disableLayout();		
+		$this->view->anzahlBilder = $this->getRequest()->getParam("number-of-images");
+	}
+
 }
