@@ -9,10 +9,12 @@
 }
 
 #content1{
+	background-color:#FFF;
 	width: auto;
 	height:60px;
 	border:1px solid #999;
-	margin: 12px 12px 0 12px;	
+	margin: 12px 0px 0 12px;
+	white-space:nowrap;
 }
 
 #profilImage{
@@ -21,17 +23,27 @@
 }
 
 #profilInfo{
-	background-color:#FFF;
+	border-right:1px solid #d3d3d3;
+	padding:7px 5px 0px 10px;
 	width: 128px;
-	height: 60px;
+	height: 53px;
 	float: left;	
 }
 
+.profilName {
+	color:#183152;
+	font-weight:bold;
+}
+
+.profilLogs {
+	color:#999999;
+}
+
+
 #images{
 	height: 60px;
-	overflow:hidden;
 	margin-left:183px;
-	padding:0px 11px 0px 11px;
+	padding:5px 11px 0px 20px;
 }
 
 #timeLineImage{
@@ -45,7 +57,7 @@ TIMELINE NAVIGATION
 ===================================*/
 
 #navi{
-	width:700px; /*491 px originale Breite */
+	width:502px; /
 	height: 42px;
 	padding:9px 0px 8px 11px;
 	font-weight:bold;
@@ -54,13 +66,14 @@ TIMELINE NAVIGATION
 #zeitraum {
 	border:1px solid #999;
 	background-color:#FFF;
-	height:25px;
+	height:23px;
 }
 
 #zeitraumEinstellen{
 	height: 16px;
 	float:left;
-	padding:5px;	
+	padding:5px;
+		
 }
 
 #zeitraumPlus{
@@ -76,32 +89,36 @@ TIMELINE NAVIGATION
 	padding:5px;
 }
 
-#zeitraumStartEingabe{
-	float:left;
-	padding:0 5px 0px 5px;
-	margin-bottom:2px;
-}
-
-
 #zeitraumEnde{
 	float:left;
 	padding:5px;
 }
 
-#zeitraumEndeEingabe{
+#zeitraumStartEingabe{
 	float:left;
-	padding:0 5px 5px 5px;
+	padding:0 5px 0px 5px;
+	
 }
 
 
+#zeitraumEndeEingabe{
+	float:left;
+	padding:0 5px 0px 5px;
+	
+}
+
 .startTextfield{
-	width:71px;
+	width:60px;
 	border:none;
+	font-size:80%;
+	color:#999999;
 }
 
 .endeTextfield{
-	width:71px;
+	width:60px;
 	border:none;
+	font-size:80%;
+	color:#999999;
 }
 
 
@@ -115,4 +132,8 @@ TIMELINE NAVIGATION
 
 .borderRight {
 	border-right:1px solid #d3d3d3;
+}
+
+.timePic {
+	padding-top:1px;
 }
