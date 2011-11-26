@@ -1,13 +1,3 @@
-*{
-	padding:0;
-	margin:0;	
-}
-
-body{
-	background:#e1e6fa;
-	text-align:left;
-	font-family:Helvetica, Arial, sans-serif;
-	}
 
 #timeline{
 	background:url(../images/timelineBg.gif) repeat-x #CCC; 
@@ -18,32 +8,13 @@ body{
 	bottom:180px;
 }
 
-#navi{
-	background-color: #CCC;
-	height: 42px;
-	width: auto;
-	border:solid;
-	border-color: #999;
-	border-width: 1px;
-}
-
 #content1{
-<<<<<<< HEAD
-	background-color:#CCC;
-	width: auto;
-	height:60px;
-	border:solid;
-	border-color: #999;
-	border-width: 1px;
-	margin: 12px 12px 0 12px;	
-=======
 	background-color:#FFF;
 	width: auto;
 	height:60px;
 	border:1px solid #999;
 	margin: 12px 0px 0 12px;
 	white-space:nowrap;
->>>>>>> master
 }
 
 #profilImage{
@@ -70,39 +41,16 @@ body{
 
 
 #images{
-	width: auto;
 	height: 60px;
-<<<<<<< HEAD
-	border: solid;
-	border-color:#999;
-	border-width:0 0 1px 1px;
-	background-color:#FFF;
-	margin-left:183px;
-	padding-left:11px;
-	padding-right:11px;
-	overflow:hidden;
-=======
 	margin-left:183px;
 	padding:5px 11px 0px 20px;
->>>>>>> master
 }
 
 #timeLineImage{
-	padding: 5px 3px 0 0;	
+	padding: 5px 3px 0px 0px;	
 	float: left;
-	
 }
 
-<<<<<<< HEAD
-#timeSettings{
-	margin: 9px 0 0 160px;
-	background-color:#FFF;
-	height:23px;
-	width:500px;
-	border:	solid;
-	border-width: 1px;
-	border-color:#999;	
-=======
 
 /*===================================
 TIMELINE NAVIGATION
@@ -119,112 +67,40 @@ TIMELINE NAVIGATION
 	border:1px solid #999;
 	background-color:#FFF;
 	height:23px;
->>>>>>> master
 }
 
 #zeitraumEinstellen{
-	width: 119px;
 	height: 16px;
-	font-size:13px;
-	font-weight:600;
-	padding: 4px;
 	float:left;
-<<<<<<< HEAD
-	border:	solid;
-	border-width:0 1px 0 0;		
-	border-color:#999;		
-=======
 	padding:5px;
->>>>>>> master
 }
 
 #zeitraumPlus{
-	float:left;
-	width:20px;
-	height:20px;
-	padding: 3px 0 0 5px;
-	border:	solid;
-	border-width:0 1px 0 0;		
-	border-color:#999;		
+	float:left;		
 }
 
 #zeitraumMinus{
 	float:left;
-	width:20px;
-	height:20px;
-	padding: 3px 0 0 5px;
-	border:	solid;
-	border-width:0 1px 0 0;		
-	border-color:#999;
 }
 
 #zeitraumStart{
 	float:left;
-	width:36px;
-	height:20px;
-	font-size:13px;
-	font-weight:600;
-	padding: 4px 0 0 5px;
-	border:	solid;
-	border-width:0 1px 0 0;		
-	border-color:#999;	
+	padding:5px;
 }
 
 #zeitraumEnde{
 	float:left;
-<<<<<<< HEAD
-	width:90px;
-	height:23px;
-	font-size:13px;
-	font-weight:600;
-	border:	solid;
-	border-width:0 1px 0 0;		
-	border-color:#999;
-}
-
-.startTextfield{
-	height:23px;
-	width:71px;
-	border:none;
-}
-
-#zeitraumEnde{
-	float:left;
-	width:36px;
-	height:20px;
-	font-size:13px;
-	font-weight:600;
-	padding: 4px 0 0 5px;
-	border:	solid;
-	border-width:0 1px 0 0;		
-	border-color:#999;
-=======
 	padding:5px;
 }
 
 #zeitraumStartEingabe{
 	float:left;
 	padding:0 5px 0px 5px;
->>>>>>> master
 }
 
 
 #zeitraumEndeEingabe{
 	float:left;
-<<<<<<< HEAD
-	width:90px;
-	height:23px;
-	font-size:13px;
-	font-weight:600;
-	border:	solid;
-	border-width:0 1px 0 0;		
-	border-color:#999;
-}
-
-.endeTextfield{
-	height:23px;
-	width:71px;
-=======
 	padding:0 5px 0px 5px;
 	
 }
@@ -238,33 +114,22 @@ TIMELINE NAVIGATION
 
 .endeTextfield{
 	width:60px;
->>>>>>> master
 	border:none;
 	font-size:80%;
 	color:#999999;
 }
 
-#scrollButtons{
-	width:51px;
-	float:left;
-}
 
 #zeitraumScrollMinus{
 	float:left;
-	padding: 3px 0 0 5px;
-	width:20px;
-	height:20px;
-	border:	solid;
-	border-width:0 1px 0 0;		
-	border-color:#999;
 }
-
 
 #zeitraumScrollPlus{
 	float:left;
-	padding: 3px 0 0 5px;
-	width:20px;
-	height:20px;
+}
+
+.borderRight {
+	border-right:1px solid #d3d3d3;
 }
 
 .timePic {
