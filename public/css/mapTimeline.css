@@ -28,6 +28,7 @@ body{
 }
 
 #content1{
+<<<<<<< HEAD
 	background-color:#CCC;
 	width: auto;
 	height:60px;
@@ -35,6 +36,14 @@ body{
 	border-color: #999;
 	border-width: 1px;
 	margin: 12px 12px 0 12px;	
+=======
+	background-color:#FFF;
+	width: auto;
+	height:60px;
+	border:1px solid #999;
+	margin: 12px 0px 0 12px;
+	white-space:nowrap;
+>>>>>>> master
 }
 
 #profilImage{
@@ -43,15 +52,27 @@ body{
 }
 
 #profilInfo{
-	background-color:#FFF;
+	border-right:1px solid #d3d3d3;
+	padding:7px 5px 0px 10px;
 	width: 128px;
-	height: 60px;
+	height: 53px;
 	float: left;	
 }
+
+.profilName {
+	color:#183152;
+	font-weight:bold;
+}
+
+.profilLogs {
+	color:#999999;
+}
+
 
 #images{
 	width: auto;
 	height: 60px;
+<<<<<<< HEAD
 	border: solid;
 	border-color:#999;
 	border-width:0 0 1px 1px;
@@ -60,6 +81,10 @@ body{
 	padding-left:11px;
 	padding-right:11px;
 	overflow:hidden;
+=======
+	margin-left:183px;
+	padding:5px 11px 0px 20px;
+>>>>>>> master
 }
 
 #timeLineImage{
@@ -68,6 +93,7 @@ body{
 	
 }
 
+<<<<<<< HEAD
 #timeSettings{
 	margin: 9px 0 0 160px;
 	background-color:#FFF;
@@ -76,6 +102,24 @@ body{
 	border:	solid;
 	border-width: 1px;
 	border-color:#999;	
+=======
+
+/*===================================
+TIMELINE NAVIGATION
+===================================*/
+
+#navi{
+	width:502px;
+	height: 42px;
+	padding:9px 0px 8px 11px;
+	font-weight:bold;
+}
+
+#zeitraum {
+	border:1px solid #999;
+	background-color:#FFF;
+	height:23px;
+>>>>>>> master
 }
 
 #zeitraumEinstellen{
@@ -85,9 +129,13 @@ body{
 	font-weight:600;
 	padding: 4px;
 	float:left;
+<<<<<<< HEAD
 	border:	solid;
 	border-width:0 1px 0 0;		
 	border-color:#999;		
+=======
+	padding:5px;
+>>>>>>> master
 }
 
 #zeitraumPlus{
@@ -122,8 +170,9 @@ body{
 	border-color:#999;	
 }
 
-#zeitraumStartEingabe{
+#zeitraumEnde{
 	float:left;
+<<<<<<< HEAD
 	width:90px;
 	height:23px;
 	font-size:13px;
@@ -149,10 +198,20 @@ body{
 	border:	solid;
 	border-width:0 1px 0 0;		
 	border-color:#999;
+=======
+	padding:5px;
 }
+
+#zeitraumStartEingabe{
+	float:left;
+	padding:0 5px 0px 5px;
+>>>>>>> master
+}
+
 
 #zeitraumEndeEingabe{
 	float:left;
+<<<<<<< HEAD
 	width:90px;
 	height:23px;
 	font-size:13px;
@@ -165,7 +224,24 @@ body{
 .endeTextfield{
 	height:23px;
 	width:71px;
+=======
+	padding:0 5px 0px 5px;
+	
+}
+
+.startTextfield{
+	width:60px;
 	border:none;
+	font-size:80%;
+	color:#999999;
+}
+
+.endeTextfield{
+	width:60px;
+>>>>>>> master
+	border:none;
+	font-size:80%;
+	color:#999999;
 }
 
 #scrollButtons{
@@ -189,4 +265,8 @@ body{
 	padding: 3px 0 0 5px;
 	width:20px;
 	height:20px;
+}
+
+.timePic {
+	padding-top:1px;
 }
