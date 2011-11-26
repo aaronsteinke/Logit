@@ -70,8 +70,6 @@ class Application_Model_User {
 		return $this->_birthday;
 	}
 
-<<<<<<< HEAD
-=======
 	public function getLogs(){
 		// hier und im mapper fehlen noch Parameter zur eingrenzung
 		$logs = new Application_Model_PictureMapper();
@@ -89,7 +87,6 @@ class Application_Model_User {
 	public function getNumberOfLogs(){
 		
 	}
->>>>>>> master
 	/*
 	 public function getDateCreated()
 	 {
