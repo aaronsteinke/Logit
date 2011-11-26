@@ -1,0 +1,21 @@
+<script type="text/javascript">
+
+var data = {
+
+ "ID": [
+<?php 
+foreach ($this->arrLogs as $key=>$log) {
+	?> 
+	{	"latitude": <?php echo $log->getLat(); ?>, 
+			"longitude": <?php echo $log->getLong(); ?>, 
+			"image": "daten/pics/orig/<?php echo $log->getPicIdent(); ?>.jpg" <?php 
+			if ($key != count($this->arrLogs)-1) {
+				echo '},';
+			}else{
+				echo '}';
+			};
+	}
+?>
+]};
+
+</script>
