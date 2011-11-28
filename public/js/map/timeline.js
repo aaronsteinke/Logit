@@ -14,6 +14,7 @@ var buttonPlusActiv = 1;
 var buttonMinusActiv = 1;
 
 $(window).resize(function() {
+	sendImageRequest();
 });
 
 $(document).ready(function() {	
@@ -85,7 +86,8 @@ $(document).ready(function() {
 
 function howMuchImages(){
 	windowWidth =$(document).width(); 
-	imageWidthAll = windowWidth - 24 - $("#profilImage").width() - $("#profilInfo").width() - 11  
+	imageWidthAll = (windowWidth - 24 - $("#profilImage").width() - $("#profilInfo").width() - 11); 
+	console.log(windowWidth); 
 	numberOfImages = Math.round(imageWidthAll / (48 + 3));
 }
 
