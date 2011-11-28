@@ -46,17 +46,37 @@ class Application_Model_PictureMapper
     	return true;
     }
     
-	public function getLogsForUser($idUser){
+	public function getLogsForUser($idUser, $dateBegin = NULL, $dateEnd = NULL, $limit = NULL){
     	$db = $this->getDbTable()->getAdapter();
     	$sql = ('	SELECT 	*
 					FROM 	pic 
-					WHERE 	user_id = :idUser	');
+					WHERE 	user_id = :idUser 
+					');
+    	if (isset($dateBegin) && isset($dateEnd)){
+    		$sql .= ' 	AND date_shot < :dateEnd 
+    					AND date_shot > :dateBegin	';
+    	}
     	
+    	$sql .= ' 	ORDER BY date_shot DESC ';
+    	
+    	// binding nachlesen und einsetzen
+    	if (isset($limit)){
+    		$sql .= '	LIMIT ' . $limit . ' ';
+    	}
     	
     	$stmt = new Zend_Db_Statement_Pdo($db, $sql);
     	$stmt->bindParam(':idUser', $idUser);
-    	$stmt->execute();
+		
+    	if (isset($dateBegin) && isset($dateEnd)){
+			$stmt->bindParam(':dateEnd', $dateEnd);
+			$stmt->bindParam(':dateBegin', $dateBegin);
+    	}
     	
+    	/*if (isset($limit)){
+    		$stmt->bindParam(':limit', $limit);
+    	}*/
+    	
+    	$stmt->execute();
     	$resultSet = $stmt->fetchAll();
     	return $this->createObjektArr($resultSet);
 
