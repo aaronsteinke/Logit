@@ -9,9 +9,11 @@ var secondDateString = secondDate.toString('d.M.yyyy');
 var minimalDate = Date.parse("01.01.1900");
 var maximalDate = (Date.today().add((Date.today() - minimalDate) / (1000*60*60*24)).days());
 var dateDifference = (secondDate - firstDate) / (1000*60*60*24);
+var hourDifference = (secondDate - firstDate) / (1000*60*60);
 
 var buttonPlusActiv = 1;
 var buttonMinusActiv = 1;
+var hourDate = 0;
 
 $(window).resize(function() {
 	sendImageRequest();
@@ -87,7 +89,6 @@ $(document).ready(function() {
 function howMuchImages(){
 	windowWidth =$(document).width(); 
 	imageWidthAll = (windowWidth - 24 - $("#profilImage").width() - $("#profilInfo").width() - 11); 
-	console.log(windowWidth); 
 	numberOfImages = Math.round(imageWidthAll / (48 + 3));
 }
 
@@ -115,10 +116,12 @@ function checkDateArea(){
 }
 
 function setDatePicker(){
-	$("#zeitraumStartEingabefeldId").datepicker('setDate', firstDate);
-	$("#zeitraumEndeEingabefeldId").datepicker('setDate', secondDate);
-	$("#zeitraumEndeEingabefeldId").datepicker("option", "minDate", firstDate.toString('d.M.yyyy'));
-	$("#zeitraumStartEingabefeldId").datepicker("option", "maxDate", secondDate.toString('d.M.yyyy'));
+	if(hourDate == 0){
+		$("#zeitraumStartEingabefeldId").datepicker('setDate', firstDate);
+		$("#zeitraumEndeEingabefeldId").datepicker('setDate', secondDate);
+		$("#zeitraumEndeEingabefeldId").datepicker("option", "minDate", firstDate.toString('d.M.yyyy'));
+		$("#zeitraumStartEingabefeldId").datepicker("option", "maxDate", secondDate.toString('d.M.yyyy'));
+	}
 }
 
 function sendImageRequest(){
@@ -131,6 +134,10 @@ function sendImageRequest(){
 	
 	setDateDifference();
 	howMuchImages();
+	/*
+	hourDifference = Math.round((secondDate - firstDate) / (1000*60*60));
+	console.log(firstDate.toString('HH:mm'));
+	console.log(hourDifference)*/
 	
 	$('#images').load('map/get-images-for-timeline/number-of-images/' + numberOfImages + "/first-day/" + firstDay + "/first-month/" + firstMonth + "/first-year/" + firstYear + "/second-day/" + secondDay + "/second-month/" + secondMonth + "/second-year/" + secondYear);
 	//$('#images').load('map/get-images-for-timeline/' + 'id/' + 'minus/' + '/start/' + $(zeitraumStartEingabefeldId).val() + '/ende/' +$(zeitraumEndeEingabefeldId).val());
