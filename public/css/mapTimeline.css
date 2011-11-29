@@ -74,21 +74,28 @@ TIMELINE NAVIGATION
 }
 
 #zeitraumEinstellen{
-	height: 16px;
+	height: 14px;
 	float:left;
 	padding:5px;
 		
 }
 
 #zeitraumPlus{
-	float:left;		
+	cursor:pointer;
+	float:left;	
+	width:26px;
+	height:23px;	
 }
 
 #zeitraumMinus{
+	cursor:pointer;
 	float:left;
+	width:26px;
+	height:23px;
 }
 
 #zeitraumStart{
+	height: 14px;
 	float:left;
 	padding:5px;
 }
@@ -101,18 +108,19 @@ TIMELINE NAVIGATION
 #zeitraumStartEingabe{
 	float:left;
 	padding:0 5px 0px 5px;
+	height:23px;
 	
 }
 
 #zeitraumEndeEingabe{
 	float:left;
 	padding:0 5px 0px 5px;
+	height:23px;
 	
 }
 
 .startTextfield{
 	width:60px;
-	height:21px;
 	border:none;
 	font-size:80%;
 	color:#999999;
@@ -126,11 +134,17 @@ TIMELINE NAVIGATION
 }
 
 #zeitraumScrollMinus{
+	cursor:pointer;
 	float:left;
+	width:26px;
+	height:23px;
 }
 
 #zeitraumScrollPlus{
+	cursor:pointer;
 	float:left;
+	width:26px;
+	height:23px;
 }
 
 .borderRight {
@@ -157,10 +171,11 @@ FREUNDE HINZUFUEGEN
 
 #addFriendsButton{
 	width: 30px;
+	height:23px;
 	float:left;
 }
 
 #addFriendsTextfield input{
-	width: 235px;
+	width: 237px;
 	height: 21px;
 }
