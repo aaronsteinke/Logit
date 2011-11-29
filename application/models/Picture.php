@@ -29,7 +29,15 @@ class Application_Model_Picture {
 	public function getId() {
 		return $this -> _id;
 	}
-
+	
+	public function getOrigPicturePath(){
+		return "/daten/pics/orig/" . $this->getPicIdent();
+	}
+	
+	public function get45X45picturePath(){
+		return "/daten/pics/45/" . $this->getPicIdent();
+	}
+	
 	public function getPicIdent() {
 		return $this -> _picIdent;
 	}
