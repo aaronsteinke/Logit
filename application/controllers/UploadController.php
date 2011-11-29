@@ -10,7 +10,7 @@ class UploadController extends Zend_Controller_Action
 	 
 	public function indexAction()
 	{
-//		$this->_helper->layout()->disableLayout(); zum testen deaktiviert
+		$this->_helper->layout()->disableLayout(); zum testen deaktiviert
 	}
 	
 	public function processAction()
