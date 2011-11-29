@@ -1,0 +1,186 @@
+* { margin:0; padding:0; }
+
+/*Opera Fix*/
+body:before {
+	content:"";
+	height:100%;
+	float:left;
+	width:0;
+	margin-top:-32767px;/
+}	
+
+html {
+	font-size:100.01%;
+	height:100%;
+}
+
+
+body {
+	height:100%;
+	width:100%;
+	overflow-x:hidden;
+	background:#e1e6fa;
+    font-size:75%;
+	text-align:left;
+	font-family:Arial, Helvetica, sans-serif;
+}
+	
+#wrap {
+	min-height: 100%;
+	width:100%;
+	}
+	
+
+  /* (de) Vermeidung sichtbarer Outline-Rahmen in Webkit-Browsern */
+  div { outline:0 none; }
+  
+  /* (en) HTML 5 - Anpassung des visuellen Formatmodells auf Blockelemente */
+  article,aside,canvas,details,figcaption,figure,
+  footer,header,hgroup,menu,nav,section,summary { 
+  	display:block;
+  }
+  /* (de) Rahmen für <fieldset> und <img> Elemente löschen */
+  
+  fieldset, img { border:0 solid; }
+  
+
+/*===================================
+ÜBERSCHRIFTEN UND ABSÄTZE
+===================================*/
+  
+h1{
+	font-size:130%;
+	margin-bottom:5px;
+}
+
+h2{
+	font-size:120%;
+	font-weight:normal;
+}
+
+.clear {
+	clear:both;
+}
+
+
+/*===================================
+HEADER (includes Logo, Login, 
+===================================*/
+
+#header {
+   	color: #fff;
+	background:url(../images/bgheader.png);
+	height:173px;
+	width:100%;
+  }
+  
+.logo{
+	float:left;
+	padding-top:15px;
+	}
+	
+.headlogin{
+	float:right;
+	}
+	
+.forgotPass {
+	color:#acacac;
+}
+
+#naviButtons {
+	margin-top:20px;
+}
+
+.profil {
+	margin-top:20px;
+	float:right;
+}
+
+.uploadLogs {
+	float:right;
+}
+
+	
+/*===================================
+CONTENT
+===================================*/
+
+#main{
+	overflow:auto;
+	padding-bottom:45px;
+	background:#e1e6fa;
+	}
+	
+#content {
+	min-width:720px;
+	color:#183152;
+	padding:40px 0 50px 100px;
+	}
+	
+.startBild {
+	margin-left:450px;
+}
+		
+/*===================================
+REGISTRIERUNG
+===================================*/	
+
+#newUserFormHeader {
+	float:left;
+	width:440px;
+	}
+
+
+
+/*===================================
+ELEMENTE POSITIONIEREN UND ZENTRIEREN
+===================================*/
+
+ .page {
+  position:relative;
+  padding: 20px 0px 0px 100px;
+  overflow:hidden; 
+  width: 1050px; 
+  }
+
+
+
+
+/*===================================
+FOOTER
+===================================*/
+	
+
+ .pageFooter {
+  position:relative;
+  padding: 0px 0px 0px 100px;
+  overflow:hidden; 
+  width: 1050px; 
+  }
+
+#footer{
+	position:relative;
+	margin-top:-45px;
+	height:45px;
+	clear:both;
+	background:url(../images/bgfooter_small.png) repeat-x #1a1a1a;
+	width:100%;
+	color:#fff;
+	}
+	
+.footercolumn{
+	width:300px;
+	float:left;
+	margin-right:15px;
+	}
+	
+.footercolumn h1{
+	margin-top:12px;
+	padding-bottom:5px;
+	width:100%;
+	color:#abc8e2;
+	margin-bottom:5px;
+	font-size:130%;
+	}
+
+

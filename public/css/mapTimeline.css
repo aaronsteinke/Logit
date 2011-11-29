@@ -3,9 +3,8 @@
 	background:url(../images/timelineBg.gif) repeat-x #CCC; 
 	width: 100%;
 	height: 200px;	
+	bottom:45px;
 	position:absolute;
-	z-index:999;
-	bottom:180px;
 }
 
 #content1{
