@@ -9,16 +9,17 @@ var secondDateString = secondDate.toString('d.M.yyyy');
 var minimalDate = Date.parse("01.01.1900");
 var maximalDate = (Date.today().add((Date.today() - minimalDate) / (1000*60*60*24)).days());
 var dateDifference = (secondDate - firstDate) / (1000*60*60*24);
+var hourDifference = (secondDate - firstDate) / (1000*60*60);
 
 var buttonPlusActiv = 1;
 var buttonMinusActiv = 1;
+var hourDate = 0;
 
 $(window).resize(function() {
-	howMuchImages();
+	sendImageRequest();
 });
 
 $(document).ready(function() {	
-	howMuchImages();
  						
 	var dates = $( "#zeitraumStartEingabefeldId, #zeitraumEndeEingabefeldId" ).datepicker({
 		showOn: "button",	
@@ -36,7 +37,6 @@ $(document).ready(function() {
 				instance.settings);
 				dates.not( this ).datepicker( "option", option, date );
 				parseDate();	
-				setDateDifference();
 				sendImageRequest();
 			}				
 	});	
@@ -50,7 +50,6 @@ $(document).ready(function() {
 			firstDate = firstDate.addDays(dateDifference/4);
 			secondDate = secondDate.addDays(-dateDifference/4);
 			checkDateArea();
-			setDateDifference();
 			setDatePicker();
 			sendImageRequest();
 		}
@@ -62,7 +61,6 @@ $(document).ready(function() {
 			firstDate = firstDate.addDays(-dateDifference/2);
 			secondDate = secondDate.addDays(dateDifference/2);
 			checkDateArea();
-			setDateDifference();
 			setDatePicker();
 			sendImageRequest();
 		}
@@ -84,14 +82,13 @@ $(document).ready(function() {
 	
 	$("input[type='text']").change( function() {
 		parseDate();
-		setDateDifference();
 		sendImageRequest();
 	});
 });
 
 function howMuchImages(){
 	windowWidth =$(document).width(); 
-	imageWidthAll = windowWidth - 24 - $("#profilImage").width() - $("#profilInfo").width() - 11  
+	imageWidthAll = (windowWidth - 24 - $("#profilImage").width() - $("#profilInfo").width() - 11); 
 	numberOfImages = Math.round(imageWidthAll / (48 + 3));
 }
 
@@ -119,13 +116,29 @@ function checkDateArea(){
 }
 
 function setDatePicker(){
-	$("#zeitraumStartEingabefeldId").datepicker('setDate', firstDate);
-	$("#zeitraumEndeEingabefeldId").datepicker('setDate', secondDate);
-	$("#zeitraumEndeEingabefeldId").datepicker("option", "minDate", firstDate.toString('d.M.yyyy'));
-	$("#zeitraumStartEingabefeldId").datepicker("option", "maxDate", secondDate.toString('d.M.yyyy'));
+	if(hourDate == 0){
+		$("#zeitraumStartEingabefeldId").datepicker('setDate', firstDate);
+		$("#zeitraumEndeEingabefeldId").datepicker('setDate', secondDate);
+		$("#zeitraumEndeEingabefeldId").datepicker("option", "minDate", firstDate.toString('d.M.yyyy'));
+		$("#zeitraumStartEingabefeldId").datepicker("option", "maxDate", secondDate.toString('d.M.yyyy'));
+	}
 }
 
 function sendImageRequest(){
-	$('#images').load('map/get-images-for-timeline/number-of-images/' + numberOfImages);
+	var firstDay = firstDate.getDate();
+	var firstMonth = firstDate.getMonth() + 1;
+	var firstYear = firstDate.getFullYear();
+	var secondDay = secondDate.getDate();
+	var secondMonth = secondDate.getMonth() + 1;
+	var secondYear = secondDate.getFullYear();
+	
+	setDateDifference();
+	howMuchImages();
+	/*
+	hourDifference = Math.round((secondDate - firstDate) / (1000*60*60));
+	console.log(firstDate.toString('HH:mm'));
+	console.log(hourDifference)*/
+	
+	$('#images').load('map/get-images-for-timeline/number-of-images/' + numberOfImages + "/first-day/" + firstDay + "/first-month/" + firstMonth + "/first-year/" + firstYear + "/second-day/" + secondDay + "/second-month/" + secondMonth + "/second-year/" + secondYear);
 	//$('#images').load('map/get-images-for-timeline/' + 'id/' + 'minus/' + '/start/' + $(zeitraumStartEingabefeldId).val() + '/ende/' +$(zeitraumEndeEingabefeldId).val());
 }

@@ -57,9 +57,12 @@ class UploadController extends Zend_Controller_Action
 			$fileName = $fileName_a . '_' . $count . $fileName_b;
 		}*/ 
 		
-		// Create target dir
+		// Create target dirs
 		if (!file_exists($targetDir))
 		@mkdir($targetDir);
+		
+		if (!file_exists('daten/pics/45'))
+		mkdir('daten/pics/45');
 		
 		// Remove old temp files
 		/* this doesn't really work by now
@@ -134,7 +137,7 @@ class UploadController extends Zend_Controller_Action
 		$dateShot = $exifArray['DateTimeOriginal'];
 		$gpsheight = (int)$exifArray['GPSAltitude'];
 		$gpsLatNS = $exifArray['GPSLatitudeRef']; // N oder S ?
-		print_r($exifArray);
+				
 		$gpsLatKoord = Application_Model_gpsTools::toFloat($exifArray['GPSLatitude']);
 				
 		$gpsLongEW =$exifArray['GPSLongitudeRef']; // E oder W?
@@ -144,6 +147,11 @@ class UploadController extends Zend_Controller_Action
 		// eintrag in die datenbank
 		$obPictures = new Application_Model_PictureMapper();		
 		$obPictures ->create($pic_ident, $user_id, $gpsLatNS, $gpsLatKoord, $gpsLongEW, $gpsLongKoord, $gpsheight, date('Y-m-d H:i:s'), $dateShot);
+		
+		// Andere Bildgrößen/Formate erzeugen und Speichern
+		$resizeObj = new Application_Model_PictureResize($targetDir . '/' . $pic_ident);
+		$resizeObj->resizeImage(45, 45, 'crop');
+		$resizeObj->saveImage('daten/pics/45/' . $pic_ident);
 		
 		// Return JSON-RPC response
 		die('{"jsonrpc" : "2.0", "result" : null, "id" : "id"}');
