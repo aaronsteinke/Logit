@@ -10,7 +10,8 @@ class UploadController extends Zend_Controller_Action
 	 
 	public function indexAction()
 	{
-		$this->_helper->layout()->disableLayout(); zum testen deaktiviert
+		// View wird in der Lightbox geöffnet, deshalb brauchts kein Layout drumrum
+		$this->_helper->layout()->disableLayout();
 	}
 	
 	public function processAction()
