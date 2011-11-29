@@ -1,11 +1,13 @@
 <?php echo $this->doctype() ?>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
+<html lang="de" xml:lang="de"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>logit.net</title>
 <link href="/css/map.css" rel="stylesheet" type="text/css">
 <link href="/css/style.css" rel="stylesheet" type="text/css" />
 <link href="/css/form.css" rel="stylesheet" type="text/css" />
+<link href="/css/mapTimeline.css" rel="stylesheet" type="text/css" />
+<link href="/css/vader/jquery-ui-1.8.16.custom.css" rel="stylesheet" type="text/css" />
+<link href="/css/jquery.fancybox-1.3.4.css" rel="stylesheet" type="text/css" />
 <?php
 $controller = Zend_Controller_Front::getInstance()->getRequest()->getParam('controller');
 // Kontextabhängiges Einladen von JavaScript dateien...
@@ -19,14 +21,34 @@ foreach (scandir('js') as $inhalt){
 foreach (scandir('js/'. $controller) as $inhalt){
 	if(substr($inhalt, -3) == '.js'){
 ?><script type="text/javascript" src="/js/<?php echo $controller . '/' . $inhalt; ?> "></script>
+
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			
+
+
+			$("#various3").fancybox({
+				
+			 'width': 1000,
+    			'height': 700,
+				'autoScale'			: false,
+				'transitionIn'		: 'none',
+				'transitionOut'		: 'none',
+				'type'				: 'ajax'
+			});
+
+		
+		});
+	</script>
 <?php 
 	}
 } 
 ?>
-<script type="text/javascript" src="/daten/data.json"></script>
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+
 <!--
 
+>>>>>>> upstream/master
 <!--[if !IE 7]>
 	  <style type="text/css">
 	      #wrap {display:table;height:100%}
@@ -59,29 +81,20 @@ if($auth->hasIdentity()){?>
 						height="34" alt="Filter" /> <img
 						src="/images/logsAbspielenButton.gif" width="124" height="34"
 						alt="Abspielen" />
-					<div class="uploadLogs">
-						<img src="/images/uploadLogs.gif" width="113" height="33"
-							alt="Logs uploaden" />
+				<div class="uploadLogs">
+					<a  id="various3" href="/upload">	<img src="/images/uploadLogs.gif" width="113" height="33"alt="Logs uploaden" > 
+							 </a>
 					</div>
 				</div>
-
-
 			</div>
 		</div>
 		<div id="main">
-		
-		
 		<?php echo $this->layout()->content;  ?>
-		
-		
-			<!--  <div id="content"> -->
-				<?php //echo $this->layout()->content;  ?>
-			<!-- </div> -->
 		</div>
 	</div>
 	<div id="footer">
 
-		<div class="page">
+		  <div class="page">
 			<div class="footercolumn">
 				<h1>FEATURES</h1>
 				<p>Bildaufnahme mit Ihrem Smartphone</p>

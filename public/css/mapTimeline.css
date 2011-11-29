@@ -1,0 +1,164 @@
+
+#timeline{
+	background:url(../images/timelineBg.gif) repeat-x #CCC; 
+	width: 100%;
+	height: 200px;	
+	position:absolute;
+	z-index:999;
+	bottom:180px;
+}
+
+#content1{
+	background-color:#FFF;
+	width: auto;
+	height:60px;
+	border:1px solid #999;
+	margin: 12px 0px 0 12px;
+	white-space:nowrap;
+}
+
+#profilImage{
+	float:left;
+	width:55px;
+}
+
+#profilInfo{
+	border-right:1px solid #d3d3d3;
+	padding:7px 5px 0px 10px;
+	width: 128px;
+	height: 53px;
+	float: left;	
+}
+
+.profilName {
+	color:#183152;
+	font-weight:bold;
+}
+
+.profilLogs {
+	color:#999999;
+}
+
+
+#images{
+	height: 60px;
+	margin-left:183px;
+	padding:5px 11px 0px 20px;
+}
+
+.timeLineImage {
+	padding: 5px 3px 0px 0px;	
+	float: left;
+	max-width: 45px;
+	height: 45px;
+}
+
+
+/*===================================
+TIMELINE NAVIGATION
+===================================*/
+
+#navi{
+	width:790px;
+	height: 42px;
+	padding:9px 0px 8px 11px;
+	font-weight:bold;
+}
+
+#zeitraum {
+	border:1px solid #999;
+	background-color:#FFF;
+	height:23px;
+	width: 502px;
+	float:left;
+}
+
+#zeitraumEinstellen{
+	height: 16px;
+	float:left;
+	padding:5px;
+}
+
+#zeitraumPlus{
+	float:left;		
+}
+
+#zeitraumMinus{
+	float:left;
+}
+
+#zeitraumStart{
+	float:left;
+	padding:5px;
+}
+
+#zeitraumEnde{
+	float:left;
+	padding:5px;
+}
+
+#zeitraumStartEingabe{
+	float:left;
+	padding:0 5px 0px 5px;
+}
+
+#zeitraumEndeEingabe{
+	float:left;
+	padding:0 5px 0px 5px;
+	
+}
+
+.startTextfield{
+	width:60px;
+	height:21px;
+	border:none;
+	font-size:80%;
+	color:#999999;
+}
+
+.endeTextfield{
+	width:60px;
+	border:none;
+	font-size:80%;
+	color:#999999;
+}
+
+#zeitraumScrollMinus{
+	float:left;
+}
+
+#zeitraumScrollPlus{
+	float:left;
+}
+
+.borderRight {
+	border-right:1px solid #d3d3d3;
+}
+
+.timePic {
+	padding-top:1px;
+}
+
+
+/*===================================
+FREUNDE HINZUFUEGEN
+===================================*/
+
+#addFriends{
+	border:1px solid #999;
+	background-color:#FFF;
+	margin-left:13px;
+	height:23px;
+	width:270px;
+	float:left;
+}
+
+#addFriendsButton{
+	width: 30px;
+	float:left;
+}
+
+#addFriendsTextfield input{
+	width: 235px;
+	height: 21px;
+}

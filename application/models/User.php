@@ -70,21 +70,28 @@ class Application_Model_User {
 		return $this->_birthday;
 	}
 
+	public function getLogs(){
+		// hier und im mapper fehlen noch Parameter zur eingrenzung
+		$logs = new Application_Model_PictureMapper();
+		return $logs->getLogsForUser($this->_id);
+	}
+	
+	public function getFristLog(){
+		
+	}
+	
+	public function getLastLog(){
+		
+	}
+	
+	public function getNumberOfLogs(){
+		
+	}
 	/*
 	 public function getDateCreated()
 	 {
 		$dateCreated = date('d.m.Y',strtotime($this->_dateCreated));
 		return $dateCreated;
-		}
-
-		public function getMyRestaurants(){
-		$obRestaurants = new Application_Model_RestaurantMapper();
-		return $obRestaurants->getMyRestaurantsByIdUser($this->_id);
-		}
-
-		public function getInvitations($limit = false){
-		$obEvents = new Application_Model_EventMapper();
-		return $obEvents->getInvitationsForUser($this->_id, $limit);
 		}
 
 		public function getEvents($limit = false){
