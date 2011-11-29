@@ -46,9 +46,11 @@
 	padding:5px 11px 0px 20px;
 }
 
-#timeLineImage{
+.timeLineImage {
 	padding: 5px 3px 0px 0px;	
 	float: left;
+	max-width: 45px;
+	height: 45px;
 }
 
 
