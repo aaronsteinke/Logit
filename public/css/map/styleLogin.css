@@ -27,21 +27,40 @@ body {
 	
 #wrap {
 	min-height: 100%;
-	width:100%;
-	}
+	height: auto !important;
+	margin: 0 auto -45px; /* the bottom margin is the negative value of the footer's height */	
+}
 	
+	
+	
+	
+/* CLEAR FIX */
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+.clearfix {display: inline-block;}
 
-  /* (de) Vermeidung sichtbarer Outline-Rahmen in Webkit-Browsern */
-  div { outline:0 none; }
+/* Bereich nicht fÃ¼r IE-mac Anfang \*/
+* html .clearfix { height: 1%;}
+.clearfix {display: block;}
+/* Bereich nicht fÃ¼r IE-mac Ende */
+
+
+/* (de) Vermeidung sichtbarer Outline-Rahmen in Webkit-Browsern */
+div { outline:0 none; }
   
-  /* (en) HTML 5 - Anpassung des visuellen Formatmodells auf Blockelemente */
-  article,aside,canvas,details,figcaption,figure,
-  footer,header,hgroup,menu,nav,section,summary { 
-  	display:block;
-  }
-  /* (de) Rahmen für <fieldset> und <img> Elemente löschen */
+/* (en) HTML 5 - Anpassung des visuellen Formatmodells auf Blockelemente */
+article,aside,canvas,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section,summary { 
+  display:block;
+}
+/* (de) Rahmen für <fieldset> und <img> Elemente löschen */
   
-  fieldset, img { border:0 solid; }
+fieldset, img { border:0 solid; }
   
 
 /*===================================
@@ -69,9 +88,10 @@ HEADER (includes Logo, Login,
 
 #header {
    	color: #fff;
-	background:url(../images/bgheader.png);
-	height:173px;
+	background:url(../../images/bgheaderLogin.gif);
+	height:168px;
 	width:100%;
+	z-index:999;
   }
   
 .logo{
@@ -106,9 +126,9 @@ CONTENT
 ===================================*/
 
 #main{
-	overflow:auto;
-	padding-bottom:180px;
+	padding-bottom:45px;
 	background:#e1e6fa;
+	
 	}
 	
 #content {
@@ -143,41 +163,35 @@ ELEMENTE POSITIONIEREN UND ZENTRIEREN
   width: 1050px; 
   }
 
-
-
-
 /*===================================
 FOOTER
 ===================================*/
-	
+
+
 
 #footer{
 	position:relative;
-	margin-top:-180px;
-	height:180px;
-	clear:both;
-	background:url(../images/bgfooter.jpg) repeat-x #1a1a1a;
+	height:45px;
+	background:url(../../images/bgfooter_small.png) repeat-x #1a1a1a;
 	width:100%;
 	color:#fff;
+	clear:both;
 	}
 	
 .footercolumn{
 	width:300px;
 	float:left;
 	margin-right:15px;
+	margin-left:20px;
 	}
 	
 .footercolumn h1{
+	margin-top:20px;
 	padding-bottom:5px;
 	width:100%;
-	border-bottom:#30393c thin solid;
 	color:#abc8e2;
 	margin-bottom:5px;
-	font-size:130%;
-	}
-.footercolumn p{
-	line-height:25px;
-	font-size:12px;
+	font-size:100%;
 	}
 
 

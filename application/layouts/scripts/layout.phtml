@@ -83,11 +83,12 @@ if($auth->hasIdentity()){?>
 							alt="Profil" />
 							
 					</div>
+                   
 				</div>
 				<div class="clear"></div>
 				<div id="naviButtons">
 					<img src="/images/ansichtButton.gif" width="123" height="33"
-						alt="Ansicht" /> <img src="/images/filterButton.gif" width="93" height="34" alt="Filter" />
+						alt="Ansicht" /> <img src="/images/filterButton.gif" width="93" height="34" alt="Filter" /> <a href="/index/logout">logout</a>
 				<div class="uploadLogs">
 					<a  id="various3" href="/upload">	<img src="/images/uploadLogs.gif" width="113" height="33"alt="Logs uploaden" > 
 							 </a>
@@ -95,7 +96,7 @@ if($auth->hasIdentity()){?>
 				</div>
 			</div>
 		</div>
-		<div id="main">
+		<div id="main" class="clearfix">
 		<?php echo $this->layout()->content;  ?>
 		</div>
 	</div>
