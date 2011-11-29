@@ -2,9 +2,9 @@ var windowWidth;
 var imageWidthAll;
 var numberOfImages;
 
-var firstDate = Date.today();
+var firstDate = Date.today().add(-1).days();
 var firstDateString = firstDate.toString('d.M.yyyy');
-var secondDate = Date.today().add(1).days();
+var secondDate = Date.today();
 var secondDateString = secondDate.toString('d.M.yyyy');
 var minimalDate = Date.parse("01.01.1900");
 var maximalDate = (Date.today().add((Date.today() - minimalDate) / (1000*60*60*24)).days());
@@ -134,10 +134,10 @@ function sendImageRequest(){
 	
 	setDateDifference();
 	howMuchImages();
-	/*
-	hourDifference = Math.round((secondDate - firstDate) / (1000*60*60));
-	console.log(firstDate.toString('HH:mm'));
-	console.log(hourDifference)*/
+	
+	//hourDifference = Math.round((secondDate - firstDate) / (1000*60*60));
+	console.log(firstDate.toShortTimeString());
+	//console.log(hourDifference)
 	
 	$('#images').load('map/get-images-for-timeline/number-of-images/' + numberOfImages + "/first-day/" + firstDay + "/first-month/" + firstMonth + "/first-year/" + firstYear + "/second-day/" + secondDay + "/second-month/" + secondMonth + "/second-year/" + secondYear);
 	//$('#images').load('map/get-images-for-timeline/' + 'id/' + 'minus/' + '/start/' + $(zeitraumStartEingabefeldId).val() + '/ende/' +$(zeitraumEndeEingabefeldId).val());
