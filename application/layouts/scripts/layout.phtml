@@ -2,12 +2,7 @@
 <html lang="de" xml:lang="de"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>logit.net</title>
-<link href="/css/map.css" rel="stylesheet" type="text/css">
-<link href="/css/style.css" rel="stylesheet" type="text/css" />
-<link href="/css/form.css" rel="stylesheet" type="text/css" />
-<link href="/css/mapTimeline.css" rel="stylesheet" type="text/css" />
 <link href="/css/vader/jquery-ui-1.8.16.custom.css" rel="stylesheet" type="text/css" />
-<link href="/css/jquery.fancybox-1.3.4.css" rel="stylesheet" type="text/css" />
 <?php
 $controller = Zend_Controller_Front::getInstance()->getRequest()->getParam('controller');
 // Kontextabhängiges Einladen von JavaScript dateien...
@@ -21,30 +16,45 @@ foreach (scandir('js') as $inhalt){
 foreach (scandir('js/'. $controller) as $inhalt){
 	if(substr($inhalt, -3) == '.js'){
 ?><script type="text/javascript" src="/js/<?php echo $controller . '/' . $inhalt; ?> "></script>
-
-
-	<script type="text/javascript">
-		$(document).ready(function() {
-			
-
-
-			$("#various3").fancybox({
-				
-			 'width': 1000,
-    			'height': 700,
-				'autoScale'			: false,
-				'transitionIn'		: 'none',
-				'transitionOut'		: 'none',
-				'type'				: 'ajax'
-			});
-
-		
-		});
-	</script>
 <?php 
 	}
-} 
+}
+
+foreach (scandir('css') as $inhalt){
+	if(substr($inhalt, -4) == '.css'){
+?><link href="css/<?php echo $inhalt; ?>" rel="stylesheet" type="text/css" />
+<?php 
+	}
+}
+if(file_exists('css/'. $controller)){
+foreach (scandir('css/'. $controller) as $inhalt){
+	if(substr($inhalt, -4) == '.css'){
+?><link href="css/<?php echo $controller . '/' . $inhalt; ?> " rel="stylesheet" type="text/css" />
+
+<?php 
+	}
+}
+}
 ?>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		
+
+
+		$("#various3").fancybox({
+			
+		 'width': 1000,
+			'height': 700,
+			'autoScale'			: false,
+			'transitionIn'		: 'none',
+			'transitionOut'		: 'none',
+			'type'				: 'ajax'
+		});
+
+	
+	});
+</script>
 
 <!--
 
@@ -73,14 +83,12 @@ if($auth->hasIdentity()){?>
 							alt="Profil" />
 							
 					</div>
+                   
 				</div>
 				<div class="clear"></div>
 				<div id="naviButtons">
-					<img src="/images/ansichtButton.gif" width="93" height="34"
-						alt="Ansicht" /> <img src="/images/filterButton.gif" width="93"
-						height="34" alt="Filter" /> <img
-						src="/images/logsAbspielenButton.gif" width="124" height="34"
-						alt="Abspielen" />
+					<img src="/images/ansichtButton.gif" width="123" height="33"
+						alt="Ansicht" /> <img src="/images/filterButton.gif" width="93" height="34" alt="Filter" /> <a href="/index/logout">logout</a>
 				<div class="uploadLogs">
 					<a  id="various3" href="/upload">	<img src="/images/uploadLogs.gif" width="113" height="33"alt="Logs uploaden" > 
 							 </a>
@@ -88,34 +96,20 @@ if($auth->hasIdentity()){?>
 				</div>
 			</div>
 		</div>
-		<div id="main">
+		<div id="main" class="clearfix">
 		<?php echo $this->layout()->content;  ?>
 		</div>
 	</div>
 	<div id="footer">
-
-		  <div class="page">
+		  <div class="pageFooter">
 			<div class="footercolumn">
 				<h1>FEATURES</h1>
-				<p>Bildaufnahme mit Ihrem Smartphone</p>
-				<p>Intelligenter Such-Algorithmus</p>
-				<p>Gezielte Suche</p>
-				<p>weitere Features von logIt.net</p>
-
 			</div>
 			<div class="footercolumn">
 				<h1>FAQ</h1>
-				<p>Hier finden Sie Antworten auf Ihre Fragen zu der Funktionsweise
-					von LogIt.net und nützliche Tipps, die Ihnen den Einstieg
-					erleichtern.</p>
-				<p>FAQ`s aufrufen</p>
 			</div>
 			<div class="footercolumn">
-
 				<h1>ABOUT</h1>
-				<p>LogIt.net ist ein Projekt der Fachhochschule Furtwangen, das sich
-					mit dem Thema Lifelogging auseinandersetzt. Erfahren Sie mehr über
-					logIt.net</p>
 			</div>
 		</div>
 	</div>
