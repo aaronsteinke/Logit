@@ -151,12 +151,18 @@ FOOTER
 ===================================*/
 	
 
+ .pageFooter {
+  position:relative;
+  padding: 0px 0px 0px 100px;
+  overflow:hidden; 
+  width: 1050px; 
+  }
+
 #footer{
 	position:relative;
-	margin-top:-180px;
-	height:180px;
+	height:45px;
 	clear:both;
-	background:url(../images/bgfooter.jpg) repeat-x #1a1a1a;
+	background:url(images/bgfooter_small.png) repeat-x #1a1a1a;
 	width:100%;
 	color:#fff;
 	}
@@ -168,16 +174,13 @@ FOOTER
 	}
 	
 .footercolumn h1{
+	margin-top:12px;
 	padding-bottom:5px;
 	width:100%;
 	border-bottom:#30393c thin solid;
 	color:#abc8e2;
 	margin-bottom:5px;
 	font-size:130%;
-	}
-.footercolumn p{
-	line-height:25px;
-	font-size:12px;
 	}
 
 

@@ -83,14 +83,12 @@ if($auth->hasIdentity()){?>
 							alt="Profil" />
 							
 					</div>
+                   
 				</div>
 				<div class="clear"></div>
 				<div id="naviButtons">
-					<img src="/images/ansichtButton.gif" width="93" height="34"
-						alt="Ansicht" /> <img src="/images/filterButton.gif" width="93"
-						height="34" alt="Filter" /> <img
-						src="/images/logsAbspielenButton.gif" width="124" height="34"
-						alt="Abspielen" />
+					<img src="/images/ansichtButton.gif" width="123" height="33"
+						alt="Ansicht" /> <img src="/images/filterButton.gif" width="93" height="34" alt="Filter" /> <a href="/index/logout">logout</a>
 				<div class="uploadLogs">
 					<a  id="various3" href="/upload">	<img src="/images/uploadLogs.gif" width="113" height="33"alt="Logs uploaden" > 
 							 </a>
@@ -98,34 +96,20 @@ if($auth->hasIdentity()){?>
 				</div>
 			</div>
 		</div>
-		<div id="main">
+		<div id="main" class="clearfix">
 		<?php echo $this->layout()->content;  ?>
 		</div>
 	</div>
 	<div id="footer">
-
-		  <div class="page">
+		  <div class="pageFooter">
 			<div class="footercolumn">
 				<h1>FEATURES</h1>
-				<p>Bildaufnahme mit Ihrem Smartphone</p>
-				<p>Intelligenter Such-Algorithmus</p>
-				<p>Gezielte Suche</p>
-				<p>weitere Features von logIt.net</p>
-
 			</div>
 			<div class="footercolumn">
 				<h1>FAQ</h1>
-				<p>Hier finden Sie Antworten auf Ihre Fragen zu der Funktionsweise
-					von LogIt.net und nützliche Tipps, die Ihnen den Einstieg
-					erleichtern.</p>
-				<p>FAQ`s aufrufen</p>
 			</div>
 			<div class="footercolumn">
-
 				<h1>ABOUT</h1>
-				<p>LogIt.net ist ein Projekt der Fachhochschule Furtwangen, das sich
-					mit dem Thema Lifelogging auseinandersetzt. Erfahren Sie mehr über
-					logIt.net</p>
 			</div>
 		</div>
 	</div>

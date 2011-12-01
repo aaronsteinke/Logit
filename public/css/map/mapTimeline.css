@@ -1,11 +1,11 @@
 
 #timeline{
-	background:url(../images/timelineBg.gif) repeat-x #CCC; 
-	width: 100%;
-	height: 200px;	
 	position:absolute;
-	z-index:999;
-	bottom:180px;
+	background:url(../../images/timelineBg.gif) repeat-x #CCC; 
+	width: 100%;
+	height: 200px;
+	bottom:0;
+	padding-bottom:45px;
 }
 
 #content1{
@@ -59,7 +59,7 @@ TIMELINE NAVIGATION
 ===================================*/
 
 #navi{
-	width:790px;
+	width:792px;
 	height: 42px;
 	padding:9px 0px 8px 11px;
 	font-weight:bold;
@@ -74,20 +74,28 @@ TIMELINE NAVIGATION
 }
 
 #zeitraumEinstellen{
-	height: 16px;
+	height: 14px;
 	float:left;
 	padding:5px;
+		
 }
 
 #zeitraumPlus{
-	float:left;		
+	cursor:pointer;
+	float:left;	
+	width:26px;
+	height:23px;	
 }
 
 #zeitraumMinus{
+	cursor:pointer;
 	float:left;
+	width:26px;
+	height:23px;
 }
 
 #zeitraumStart{
+	height: 14px;
 	float:left;
 	padding:5px;
 }
@@ -100,17 +108,19 @@ TIMELINE NAVIGATION
 #zeitraumStartEingabe{
 	float:left;
 	padding:0 5px 0px 5px;
+	height:23px;
+	
 }
 
 #zeitraumEndeEingabe{
 	float:left;
 	padding:0 5px 0px 5px;
+	height:23px;
 	
 }
 
 .startTextfield{
 	width:60px;
-	height:21px;
 	border:none;
 	font-size:80%;
 	color:#999999;
@@ -124,11 +134,17 @@ TIMELINE NAVIGATION
 }
 
 #zeitraumScrollMinus{
+	cursor:pointer;
 	float:left;
+	width:26px;
+	height:23px;
 }
 
 #zeitraumScrollPlus{
+	cursor:pointer;
 	float:left;
+	width:26px;
+	height:23px;
 }
 
 .borderRight {
@@ -149,16 +165,17 @@ FREUNDE HINZUFUEGEN
 	background-color:#FFF;
 	margin-left:13px;
 	height:23px;
-	width:270px;
+	width:272px;
 	float:left;
 }
 
 #addFriendsButton{
 	width: 30px;
+	height:23px;
 	float:left;
 }
 
 #addFriendsTextfield input{
-	width: 235px;
+	width: 237px;
 	height: 21px;
 }
