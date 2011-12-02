@@ -17,7 +17,7 @@ $(window).resize(function() {
 	sendImageRequest();
 });
 
-$(document).ready(function() {	
+function initializeMapTimeline(){
 		
 	var dates = $( "#zeitraumStartEingabefeldId, #zeitraumEndeEingabefeldId" ).datepicker({
 		showOn: "button",	
@@ -108,7 +108,7 @@ $(document).ready(function() {
 		console.log($('#addFriendsTextfieldId').val());
 		$('#friendSearchList').load('map/get-user-for-timeline/var1/' + value1);
 	});
-});
+}
 
 function howMuchImages(){
 	windowWidth =$(document).width(); 
