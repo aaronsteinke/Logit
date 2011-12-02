@@ -8,6 +8,7 @@
 <div id="mapJson"></div>
 <script type="text/javascript">
 	$(document).ready(function() { 
+		initializeMapTimeline();
 		$('#mapJson').load("/map/get-json/", function(){
 			initialize();
 		});
