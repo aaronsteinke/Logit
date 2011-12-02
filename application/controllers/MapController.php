@@ -55,5 +55,11 @@ class MapController extends Zend_Controller_Action
 	private function getFormedDateTimeString($date, $hour, $minute, $second){
 		return $date . " " . $hour . ":" . $minute . ":" . $second;
 	}
+	
+	public function getUserForTimelineAction(){
+		$this->_helper->layout()->disableLayout();	
+		
+			
+	}
 
 }
