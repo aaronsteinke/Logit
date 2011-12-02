@@ -13,12 +13,15 @@ var maximalMinuteDifference = 100000000;
 var buttonPlusActiv = 1;
 var buttonMinusActiv = 1;
 
+var resizeIt = false;
 $(window).resize(function() {
-	sendImageRequest();
+ if(resizeIt !== false)
+    clearTimeout(resizeIt);
+ resizeIt = setTimeout(sendImageRequest, 200); 
 });
 
 function initializeMapTimeline(minimalDate, maximalDate){
-		
+			
 	var dates = $( "#zeitraumStartEingabefeldId, #zeitraumEndeEingabefeldId" ).datepicker({
 		showOn: "button",	
 		buttonImage: "images/calendar.gif",
