@@ -45,6 +45,7 @@ class MapController extends Zend_Controller_Action
 		$endDate = $this->getFormedDateTimeString(
 			$this->getRequest()->getParam('second-date'), "12", "00", "00");
 		
+			
 		$limit = $this->getRequest()->getParam('number-of-images');
 		
 		$pictures = new Application_Model_PictureMapper();
