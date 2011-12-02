@@ -11,7 +11,9 @@
 		$('#mapJson').load("/map/get-json/", function(){
 			initialize();
 		});
-		initializeMapTimeline(<?php echo '"' . $this->firstLog->getDateShot() . '", "' . $this->lastLog->getDateShot() . '"';?>);
+		<?php if (is_object($this->firstLog)): ?>
+			initializeMapTimeline(<?php echo '"' . $this->firstLog->getDateShot() . '", "' . $this->lastLog->getDateShot() . '"';?>);
+		<?php endif;?>
 	});
 </script>
 <!--  <input type="checkbox" name="PopUp" id="PopUp">PopUp -->
