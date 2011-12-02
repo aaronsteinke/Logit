@@ -2,9 +2,9 @@ var windowWidth;
 var imageWidthAll;
 var numberOfImages;
 
-var firstDate = Date.today();
+var firstDate = Date.today().add(-1).days();
 var firstDateString = firstDate.toString('d.M.yyyy');
-var secondDate = Date.today().add(1).days();
+var secondDate = Date.today();
 var secondDateString = secondDate.toString('d.M.yyyy');
 var minimalDate = Date.parse("01.01.1900");
 var maximalDate = (Date.today().add((Date.today() - minimalDate) / (1000*60*60*24)).days());
@@ -20,6 +20,8 @@ $(window).resize(function() {
 });
 
 $(document).ready(function() {	
+	
+	
  						
 	var dates = $( "#zeitraumStartEingabefeldId, #zeitraumEndeEingabefeldId" ).datepicker({
 		showOn: "button",	
@@ -84,6 +86,13 @@ $(document).ready(function() {
 		parseDate();
 		sendImageRequest();
 	});
+	
+	$('#addFriendsTextfieldId').keyup(function(element){
+		$('#friendSearchList').empty();	
+		value1 = $('#addFriendsTextfieldId').val();
+		console.log($('#addFriendsTextfieldId').val());
+		$('#friendSearchList').load('map/get-user-for-timeline/var1/' + value1);
+	});
 });
 
 function howMuchImages(){
@@ -134,11 +143,12 @@ function sendImageRequest(){
 	
 	setDateDifference();
 	howMuchImages();
-	/*
-	hourDifference = Math.round((secondDate - firstDate) / (1000*60*60));
-	console.log(firstDate.toString('HH:mm'));
-	console.log(hourDifference)*/
-	
-	$('#images').load('map/get-images-for-timeline/number-of-images/' + numberOfImages + "/first-day/" + firstDay + "/first-month/" + firstMonth + "/first-year/" + firstYear + "/second-day/" + secondDay + "/second-month/" + secondMonth + "/second-year/" + secondYear);
+	//hourDifference = Math.round((secondDate - firstDate) / (1000*60*60));
+
+	$('#images').load('map/get-images-for-timeline/number-of-images/' + numberOfImages + "/first-date/" + firstDate.toString('d-M-yyyy') + "/second-date/" + secondDate.toString('d-M-yyyy'));
 	//$('#images').load('map/get-images-for-timeline/' + 'id/' + 'minus/' + '/start/' + $(zeitraumStartEingabefeldId).val() + '/ende/' +$(zeitraumEndeEingabefeldId).val());
 }
+
+
+
+	
