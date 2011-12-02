@@ -17,7 +17,7 @@ $(window).resize(function() {
 	sendImageRequest();
 });
 
-function initializeMapTimeline(){
+function initializeMapTimeline(minimalDate, maximalDate){
 		
 	var dates = $( "#zeitraumStartEingabefeldId, #zeitraumEndeEingabefeldId" ).datepicker({
 		showOn: "button",	
