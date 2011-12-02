@@ -8,22 +8,16 @@
 <div id="mapJson"></div>
 <script type="text/javascript">
 	$(document).ready(function() { 
-		initializeMapTimeline();
 		$('#mapJson').load("/map/get-json/", function(){
 			initialize();
 		});
+		initializeMapTimeline(<?php echo '"' . $this->firstLog->getDateShot() . '", "' . $this->lastLog->getDateShot() . '"';?>);
 	});
 </script>
 <!--  <input type="checkbox" name="PopUp" id="PopUp">PopUp -->
 
-
 <div id="map"></div>
 
-
-
-<!--<div id="clusterPopUp" onmouseup=clusterDivInvisible();>
-    	Hallo
-</div>-->
 
 <div id="timeline">
 	<div id="navi">
