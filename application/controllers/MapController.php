@@ -14,6 +14,7 @@ class MapController extends Zend_Controller_Action
 		$authUser = Application_Model_AuthUser::getAuthUser();
 		$this->view->firstLog = $authUser->getFristLog();
 		$this->view->lastLog = $authUser->getLastLog();
+		$this->view->numberOfLogs = $authUser->getNumberOfLogs();
 	}
 	
 	public function getJsonAction(){
