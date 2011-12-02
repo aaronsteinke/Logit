@@ -82,6 +82,47 @@ class Application_Model_PictureMapper
 
 	}
 	
+	public function getNumberOfLogsForUser($idUser){
+		$db = $this->getDbTable()->getAdapter();
+		$sql = '	SELECT COUNT(*) as number_of_logs
+					FROM pic 
+					WHERE user_id = :idUser
+					';
+		$stmt = new Zend_Db_Statement_Pdo($db, $sql);
+    	$stmt->bindParam(':idUser', $idUser);
+    	
+    	$stmt->execute();
+    	$resultSet = $stmt->fetchAll();
+    	return $resultSet[0]['number_of_logs'];
+	}
+	
+	public function getFirstOrLastLogForUser($idUser, $first = true ){
+		$db = $this->getDbTable()->getAdapter();
+		$sql = '	SELECT *
+					FROM pic 
+					WHERE user_id = :idUser
+					';
+		if ($first){
+			$sql .= ' ORDER BY date_shot DESC LIMIT 1';
+		} else {
+			$sql .= ' ORDER BY date_shot ASC LIMIT 1';
+		}
+		
+		$stmt = new Zend_Db_Statement_Pdo($db, $sql);
+    	$stmt->bindParam(':idUser', $idUser);
+    	
+    	$stmt->execute();
+    	$resultSet = $stmt->fetchAll();
+    	$arrPics = $this->createObjektArr($resultSet);
+    	
+		if (empty($arrPics)) {
+    		return 0;
+    	} else {
+    		return $arrPics[0];
+    	}
+		
+	}
+	
    	private function createObjekt($result){
 	    	if ($result == null){
 	    		return false;

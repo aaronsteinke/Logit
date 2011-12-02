@@ -62,5 +62,9 @@ class MapController extends Zend_Controller_Action
 		
 			
 	}
+	
+	public function testAction(){
+		$this->_helper->viewRenderer->setNoRender(true);
+	}
 
 }
