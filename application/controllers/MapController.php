@@ -40,14 +40,10 @@ class MapController extends Zend_Controller_Action
 		$authUser = Application_Model_AuthUser::getAuthUser();
 		
 		$startDate = $this->getFormedDateTimeString(
-			$this->getRequest()->getParam('first-year'),
-			$this->getRequest()->getParam('first-month'),
-			$this->getRequest()->getParam('first-day'), "12", "00", "00");
+			$this->getRequest()->getParam('first-date'), "12", "00", "00");
 		
 		$endDate = $this->getFormedDateTimeString(
-			$this->getRequest()->getParam('second-year'),
-			$this->getRequest()->getParam('second-month'),
-			$this->getRequest()->getParam('second-day'), "12", "00", "00");
+			$this->getRequest()->getParam('second-date'), "12", "00", "00");
 		
 		$limit = $this->getRequest()->getParam('number-of-images');
 		
@@ -56,8 +52,8 @@ class MapController extends Zend_Controller_Action
 		
 	}
 	
-	private function getFormedDateTimeString($year, $month, $day, $hour, $minute, $second){
-		return $year . "-" . $month . "-" . $day . " " . $hour . ":" . $minute . ":" . $second;
+	private function getFormedDateTimeString($date, $hour, $minute, $second){
+		return $date . " " . $hour . ":" . $minute . ":" . $second;
 	}
 
 }
