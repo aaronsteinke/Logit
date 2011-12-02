@@ -59,8 +59,7 @@ TIMELINE NAVIGATION
 ===================================*/
 
 #navi{
-	width:1000px;
-	/*width:792px;*/
+	width:855px;
 	height: 42px;
 	padding:9px 0px 8px 11px;
 	font-weight:bold;
@@ -182,7 +181,7 @@ FREUNDE HINZUFUEGEN
 	background-color:#FFF;
 	margin-left:13px;
 	height:23px;
-	width:272px;
+	width:268px;
 	float:left;
 }
 
@@ -200,5 +199,19 @@ FREUNDE HINZUFUEGEN
 }
 
 #friendSearchList{
-	float:left;
+}
+
+#friendSearchList ul{
+	margin:0px 0 0 0;
+	border-top:1px solid #999;
+}
+
+#friendSearchList li{
+	background-color:#FFF;
+	position:relative;
+	list-style: none;
+	border:1px solid #999;
+	border-top:none;
+	z-index: 999;
+	padding: 5px 0 5px 32px;
 }
