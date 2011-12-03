@@ -14,6 +14,7 @@ class MapController extends Zend_Controller_Action
 		$authUser = Application_Model_AuthUser::getAuthUser();
 		$this->view->firstLog = $authUser->getFristLog();
 		$this->view->lastLog = $authUser->getLastLog();
+		$this->view->numberOfLogs = $authUser->getNumberOfLogs();
 	}
 	
 	public function getJsonAction(){
@@ -41,12 +42,11 @@ class MapController extends Zend_Controller_Action
 		
 		$authUser = Application_Model_AuthUser::getAuthUser();
 		
-		$startDate = $this->getFormedDateTimeString(
-			$this->getRequest()->getParam('first-date'), "12", "00", "00");
+		$startDate = 	$this->getRequest()->getParam('first-date') . ' ' .  
+						$this->getRequest()->getParam('first-time');
 		
-		$endDate = $this->getFormedDateTimeString(
-			$this->getRequest()->getParam('second-date'), "12", "00", "00");
-		
+		$endDate = 	$this->getRequest()->getParam('second-date') . ' ' . 
+					$this->getRequest()->getParam('second-time');
 			
 		$limit = $this->getRequest()->getParam('number-of-images');
 		
@@ -61,12 +61,12 @@ class MapController extends Zend_Controller_Action
 	
 	public function getUserForTimelineAction(){
 		$this->_helper->layout()->disableLayout();	
-		
-			
 	}
 	
 	public function testAction(){
 		$this->_helper->viewRenderer->setNoRender(true);
+		$authUser = Application_Model_AuthUser::getAuthUser();
+		
 	}
 
 }
