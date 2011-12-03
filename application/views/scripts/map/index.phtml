@@ -40,12 +40,6 @@
 			<div id="addFriendsButton" class="borderRight"><img src="images/buttonSearch.png" width="30" height="22" class="timePic" /></div>
 			<div id="addFriendsTextfield"><input onfocus="this.value='';" type="text" value="Freunde hinzufügen" id="addFriendsTextfieldId" name="addFriendsTextfield" /></div>
 			<div id ="friendSearchList">
-				<ul>
-					<li>Stephan Leenders</li>
-				    <li>Stephan Nägele</li>
-				    <li>Aaron Steinke</li>
-				    <li>Timo Gemmrich</li>
-	    		</ul>
 			</div>	
     	</div>
 	</div>  
@@ -59,7 +53,7 @@
             </div>
             <div class="profilLogs">
             	Logs heute: 200<br />
-                Logs gesamt: 7980
+                Logs gesamt: <?php echo $this->numberOfLogs; ?>
             </div>    
         </div>
 		<div id="images">

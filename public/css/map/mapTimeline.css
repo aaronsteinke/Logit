@@ -59,7 +59,8 @@ TIMELINE NAVIGATION
 ===================================*/
 
 #navi{
-	width:855px;
+	width:900px;
+	/*width:855px;*/
 	height: 42px;
 	padding:9px 0px 8px 11px;
 	font-weight:bold;
@@ -69,7 +70,7 @@ TIMELINE NAVIGATION
 	border:1px solid #999;
 	background-color:#FFF;
 	height:23px;
-	width: 566px;
+	/*width: 566px;*/
 	float:left;
 }
 

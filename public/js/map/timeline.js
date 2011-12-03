@@ -13,12 +13,15 @@ var maximalMinuteDifference = 100000000;
 var buttonPlusActiv = 1;
 var buttonMinusActiv = 1;
 
+var resizeIt = false;
 $(window).resize(function() {
-	sendImageRequest();
+ if(resizeIt !== false)
+    clearTimeout(resizeIt);
+ resizeIt = setTimeout(sendImageRequest, 200); 
 });
 
-function initializeMapTimeline(){
-		
+function initializeMapTimeline(minimalDate, maximalDate){
+			
 	var dates = $( "#zeitraumStartEingabefeldId, #zeitraumEndeEingabefeldId" ).datepicker({
 		showOn: "button",	
 		buttonImage: "images/calendar.gif",
@@ -44,8 +47,9 @@ function initializeMapTimeline(){
 		if(buttonPlusActiv == 1){
 			buttonMinusActiv = 1;
 			if(minuteDifference > 24*60){
-				firstDate = firstDate.addMinutes(Math.round(minuteDifference/4));
-				secondDate = secondDate.addMinutes((-minuteDifference/4));
+				console.log("bin hier");
+				firstDate = firstDate.addMinutes(minuteDifference/4);
+				secondDate = secondDate.addMinutes(-minuteDifference/4);
 			} else if(minuteDifference > 120){
 				firstDate = firstDate.addMinutes(60);
 				secondDate = secondDate.addMinutes(-60);	
@@ -68,8 +72,8 @@ function initializeMapTimeline(){
 				firstDate = firstDate.addMinutes(-1051200);
 				secondDate = secondDate.addMinutes(1051200);
 			}else if(minuteDifference >= 24*60){
-				firstDate = firstDate.addMinutes(-minuteDifference/2);
-				secondDate = secondDate.addMinutes(minuteDifference/2);
+				firstDate = firstDate.addMinutes(-minuteDifference);
+				secondDate = secondDate.addMinutes(minuteDifference);
 			} else if (minuteDifference >= 120){
 				firstDate = firstDate.addMinutes(-60);
 				secondDate = secondDate.addMinutes(60);
@@ -124,6 +128,7 @@ function parseDate(){
 
 function setDateDifference(){
 	minuteDifference = Math.round(secondDate - firstDate) / (1000*60);
+	console.log(minuteDifference);
 		 	if (minuteDifference <= 0){
 			buttonPlusActiv = 0;
 	} 		
@@ -144,6 +149,7 @@ function setDatePicker(){
 		$("#zeitraumStartEingabefeldUhrzeitId").val(firstDate.toString('HH:mm'));
 		$("#zeitraumEndeEingabefeldUhrzeitId").val(secondDate.toString('HH:mm'));
 }
+
 
 function sendImageRequest(){
 	setDateDifference();
