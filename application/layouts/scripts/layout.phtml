@@ -13,12 +13,14 @@ foreach (scandir('js') as $inhalt){
 	}
 }
 
-foreach (scandir('js/'. $controller) as $inhalt){
-	if(substr($inhalt, -3) == '.js'){
-?><script type="text/javascript" src="/js/<?php echo $controller . '/' . $inhalt; ?> "></script>
-<?php 
+if(file_exists('js/'. $controller)):
+	foreach (scandir('js/'. $controller) as $inhalt){
+		if(substr($inhalt, -3) == '.js'){
+	?><script type="text/javascript" src="/js/<?php echo $controller . '/' . $inhalt; ?> "></script>
+	<?php 
+		}
 	}
-}
+endif;
 
 foreach (scandir('css') as $inhalt){
 	if(substr($inhalt, -4) == '.css'){
@@ -26,15 +28,14 @@ foreach (scandir('css') as $inhalt){
 <?php 
 	}
 }
-if(file_exists('css/'. $controller)){
-foreach (scandir('css/'. $controller) as $inhalt){
-	if(substr($inhalt, -4) == '.css'){
-?><link href="css/<?php echo $controller . '/' . $inhalt; ?> " rel="stylesheet" type="text/css" />
-
-<?php 
+if(file_exists('css/'. $controller)):
+	foreach (scandir('css/'. $controller) as $inhalt){
+		if(substr($inhalt, -4) == '.css'){
+	?><link href="css/<?php echo $controller . '/' . $inhalt; ?> " rel="stylesheet" type="text/css" />
+	<?php 
+		}
 	}
-}
-}
+endif;
 ?>
 
 <script type="text/javascript">

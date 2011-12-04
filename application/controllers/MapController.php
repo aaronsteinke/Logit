@@ -11,7 +11,10 @@ class MapController extends Zend_Controller_Action
    
 	public function indexAction()
 	{
-		
+		$authUser = Application_Model_AuthUser::getAuthUser();
+		$this->view->firstLog = $authUser->getFristLog();
+		$this->view->lastLog = $authUser->getLastLog();
+		$this->view->numberOfLogs = $authUser->getNumberOfLogs();
 	}
 	
 	public function getJsonAction(){
@@ -39,16 +42,12 @@ class MapController extends Zend_Controller_Action
 		
 		$authUser = Application_Model_AuthUser::getAuthUser();
 		
-		$startDate = $this->getFormedDateTimeString(
-			$this->getRequest()->getParam('first-year'),
-			$this->getRequest()->getParam('first-month'),
-			$this->getRequest()->getParam('first-day'), "12", "00", "00");
+		$startDate = 	$this->getRequest()->getParam('first-date') . ' ' .  
+						$this->getRequest()->getParam('first-time');
 		
-		$endDate = $this->getFormedDateTimeString(
-			$this->getRequest()->getParam('second-year'),
-			$this->getRequest()->getParam('second-month'),
-			$this->getRequest()->getParam('second-day'), "12", "00", "00");
-		
+		$endDate = 	$this->getRequest()->getParam('second-date') . ' ' . 
+					$this->getRequest()->getParam('second-time');
+			
 		$limit = $this->getRequest()->getParam('number-of-images');
 		
 		$pictures = new Application_Model_PictureMapper();
@@ -56,8 +55,18 @@ class MapController extends Zend_Controller_Action
 		
 	}
 	
-	private function getFormedDateTimeString($year, $month, $day, $hour, $minute, $second){
-		return $year . "-" . $month . "-" . $day . " " . $hour . ":" . $minute . ":" . $second;
+	private function getFormedDateTimeString($date, $hour, $minute, $second){
+		return $date . " " . $hour . ":" . $minute . ":" . $second;
+	}
+	
+	public function getUserForTimelineAction(){
+		$this->_helper->layout()->disableLayout();	
+	}
+	
+	public function testAction(){
+		$this->_helper->viewRenderer->setNoRender(true);
+		$authUser = Application_Model_AuthUser::getAuthUser();
+		
 	}
 
 }

@@ -60,6 +60,59 @@ class Application_Model_UserMapper
 		//return $this->getOneByUserName($userName);
     }
     
+    
+    
+    public function createFriend($idUser, $idFriend, $follow = true) {
+    	$db = $this->getDbTable()->getAdapter();
+		$sql = 'INSERT INTO user_friends (	id_user,
+											id_friend,
+											follow) 
+									VALUES (:idUser,
+											:idFriend,
+											:follow )';
+
+		$stmt = new Zend_Db_Statement_Pdo($db, $sql);
+		$stmt->bindParam(':idFriend', $idFriend);
+		$stmt->bindParam(':idUser', $idUser);
+		$stmt->bindParam(':follow', $follow);
+		
+		$stmt->execute();
+		echo mysql_error();
+    }
+    
+    public function deleteFriend($idUser, $idFriend){
+    	$db = $this->getDbTable()->getAdapter();
+		$sql = 'DELETE
+				From user_friends
+				WHERE id_user = :idUser
+				AND id_friend = :idFriend ';
+
+		$stmt = new Zend_Db_Statement_Pdo($db, $sql);
+		$stmt->bindParam(':idFriend', $idFriend);
+		$stmt->bindParam(':idUser', $idUser);
+		
+		$stmt->execute();
+    }
+    
+    
+    // wenn funktion nicht mehr benötigt wird bitte löschen
+    public function getAllUsers(){
+    	$db = $this->getDbTable()->getAdapter();
+    	
+    	$sql = ('	SELECT 	*
+					FROM 	user 	');
+    	
+    	
+    	$stmt = new Zend_Db_Statement_Pdo($db, $sql);
+    	$stmt->execute();
+    	
+    	$resultSet = $stmt->fetchAll();
+    	return $this->createObjektArr($resultSet);
+
+    }
+    
+    
+    
     public function getOneByUsername($username){
     	$db = $this->getDbTable()->getAdapter();
     	
@@ -126,6 +179,25 @@ class Application_Model_UserMapper
     	} else {
     		return $arrUsers[0];
     	}
+    }
+    
+    public function getFriendsForUser($idUser){
+    	$db = $this->getDbTable()->getAdapter();
+		 
+		$sql = ('	SELECT 	f.*
+					FROM 	user f, 
+							user_friends u 
+					WHERE 	u.id_user = :idUser
+					AND 	f.id = u.id_friend	');
+		 
+		 
+		$stmt = new Zend_Db_Statement_Pdo($db, $sql);
+		$stmt->bindParam(':idUser', $idUser);
+		$stmt->execute();
+		 
+		$resultSet = $stmt->fetchAll();
+		$arrRestaurants = $this->createObjektArr($resultSet);
+		return $arrRestaurants;
     }
     
    	private function createObjekt($result){

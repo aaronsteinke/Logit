@@ -4,4 +4,6 @@
 /.metadata
 /application/configs/
 /public/daten/pics/
+application/configs/application.ini
+public/daten/pics
 
