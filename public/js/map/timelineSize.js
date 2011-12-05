@@ -1,8 +1,8 @@
 var howManyUsers = 1;
 var footerActiv = 0;
 var footerHeightMin = "45px";
-var footerHeightMax = "125px";
-var footerDifference = "80px";
+var footerHeightMax = "175px";
+var footerDifference = "130px";
 
 function initializeTimeline(){
 	setTimelineAndMapBottom();
@@ -19,14 +19,14 @@ function setTimelineAndMapBottom(){
 function setFooterHeight() {
 	$("#footer").click(function(){
 	if(footerActiv == 0){
-		$("#footer").animate({height:footerHeightMax}, 1500 );
-		$("#timeline").animate({bottom:"+=" + footerDifference}, 1500 );
-		$("#map").animate({bottom:"+=" + footerDifference}, 1500 );
+		$("#footer").animate({height:footerHeightMax}, 1000 );
+		$("#timeline").animate({bottom:"+=" + footerDifference}, 1000 );
+		$("#map").animate({bottom:"+=" + footerDifference}, 1000 );
 		footerActiv = 1;
 	} else if(footerActiv ==1){
-		$("#footer").animate({height:footerHeightMin}, 1500 );
-		$("#timeline").animate({bottom:"-=" + footerDifference}, 1500 );
-		$("#map").animate({bottom:"-=" + footerDifference}, 1500 );	
+		$("#footer").animate({height:footerHeightMin}, 1000 );
+		$("#timeline").animate({bottom:"-=" + footerDifference}, 1000 );
+		$("#map").animate({bottom:"-=" + footerDifference}, 1000 );	
 		footerActiv = 0;
 	}	
 });

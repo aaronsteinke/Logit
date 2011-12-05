@@ -170,7 +170,8 @@ FOOTER
 
 
 #footer{
-	position:relative;
+	position:absolute;
+	bottom:0px;
 	height:45px;
 	background:url(../../images/bgfooter_small.png) repeat-x #1a1a1a;
 	width:100%;
