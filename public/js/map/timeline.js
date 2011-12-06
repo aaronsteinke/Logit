@@ -18,6 +18,7 @@ $(window).resize(function() {
  if(resizeIt !== false)
     clearTimeout(resizeIt);
  resizeIt = setTimeout(sendImageRequest, 200); 
+  
 });
 
 function initializeMapTimeline(minimalDate, maximalDate){
