@@ -62,10 +62,10 @@ endif;
 $('#ajax').load('/alpha');
     $('#1').ansichtSwitch("on", 
      function() {
-       $('#ajax').load('on.html');
+       $('#main').load('/map');
       },
       function() {
-       $('#ajax').load('off.html');
+       $('#main').load('/timeline');
       },
       {
         switch_on_container_path: 'images/ansicht_switch_container_off.png'
