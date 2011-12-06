@@ -4,6 +4,7 @@ class Application_Model_UserMapper
 {
 	protected $_dbTable;
 
+
     public function setDbTable($dbTable)
     {
     	if (is_string($dbTable)) {
@@ -16,6 +17,7 @@ class Application_Model_UserMapper
         $this->_dbTable = $dbTable;
         return $this;
     }
+
 	
     public function getDbTable()
     {
@@ -25,6 +27,7 @@ class Application_Model_UserMapper
         
         return $this->_dbTable;
     }
+
   
     public function create($userName, $eMail, $password, $birthday){
     	/*
@@ -61,7 +64,6 @@ class Application_Model_UserMapper
     }
     
     
-    
     public function createFriend($idUser, $idFriend, $follow = true) {
     	$db = $this->getDbTable()->getAdapter();
 		$sql = 'INSERT INTO user_friends (	id_user,
@@ -80,6 +82,7 @@ class Application_Model_UserMapper
 		echo mysql_error();
     }
     
+	
     public function deleteFriend($idUser, $idFriend){
     	$db = $this->getDbTable()->getAdapter();
 		$sql = 'DELETE
@@ -112,7 +115,6 @@ class Application_Model_UserMapper
     }
     
     
-    
     public function getOneByUsername($username){
     	$db = $this->getDbTable()->getAdapter();
     	
@@ -135,6 +137,7 @@ class Application_Model_UserMapper
     	}
     	
     }
+	
 	
 	public function getOneById($id){
     	$db = $this->getDbTable()->getAdapter();
@@ -159,6 +162,7 @@ class Application_Model_UserMapper
     	
     }
     
+	
 	public function getOneByEMail($EMail){
     	$db = $this->getDbTable()->getAdapter();
     	
@@ -181,6 +185,7 @@ class Application_Model_UserMapper
     	}
     }
     
+	
     public function getFriendsForUser($idUser){
     	$db = $this->getDbTable()->getAdapter();
 		 
@@ -200,6 +205,27 @@ class Application_Model_UserMapper
 		return $arrRestaurants;
     }
     
+	
+	
+	// noch nicht fertig
+	private function searchUserByName( $name ){
+    	$db = $this->getDbTable()->getAdapter();
+		 
+		$sql = ('	SELECT 	*
+					FROM 	user 
+					WHERE 	u.id_user LIKE % :name %	');
+		 
+		 
+		$stmt = new Zend_Db_Statement_Pdo($db, $sql);
+		$stmt->bindParam(':name', $name);
+		$stmt->execute();
+		 
+		$resultSet = $stmt->fetchAll();
+		$arrRestaurants = $this->createObjektArr($resultSet);
+		return $arrRestaurants;
+	}
+	
+	
    	private function createObjekt($result){
 	    	if ($result == null){
 	    		return false;
@@ -236,6 +262,8 @@ class Application_Model_UserMapper
 			return $obUser;
 	    }
 	    
+		
+		
 	    private function createObjektArr($resultSet){
 	    	$arrUsers = array();
 			foreach ($resultSet as $row) {
