@@ -202,6 +202,7 @@ class Application_Model_UserMapper
 	
 	public function addFacebookData ($user_id, $data)
 	{
+		$db = $this->getDbTable()->getAdapter();
 		$db->update('user', $data, "id = $user_id");
 	}
     
