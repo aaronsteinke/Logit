@@ -40,12 +40,9 @@ endif;
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		
-
 
 		$("#various3").fancybox({
-			
-		 'width': 1000,
+			'width': 1000,
 			'height': 700,
 			'autoScale'			: false,
 			'transitionIn'		: 'none',
@@ -53,34 +50,32 @@ endif;
 			'type'				: 'ajax'
 		});
 
-	
 	});
 </script>
 
   <script type="text/javascript">
-  	$(document).ready(function(){
-$('#ajax').load('/alpha');
-    $('#1').ansichtSwitch("on", 
-     function() {
-       $('#main').load('/map');
-      },
-      function() {
-       $('#main').load('/timeline');
-      },
-      {
-        switch_on_container_path: 'images/ansicht_switch_container_off.png'
-      });
-	 }); 
+$(document).ready(function(){
+	$('#1').ansichtSwitch("<?php if ($controller == 'map') {echo 'off';} else {echo 'on';}?>", 
+		function() {
+			$(location).attr('href','map');
+		},
+		function() {
+			$(location).attr('href','timeline');
+		},
+		{
+		switch_on_container_path: 'images/ansicht_switch_container_off.png'
+	});
+}); 
   </script>
 
 <!--
 
 >>>>>>> upstream/master
 <!--[if !IE 7]>
-	  <style type="text/css">
-	      #wrap {display:table;height:100%}
-	  </style>
-	<![endif]-->
+  <style type="text/css">
+      #wrap {display:table;height:100%}
+  </style>
+<![endif]-->
 </head>
 
 <body>

@@ -37,21 +37,23 @@ jQuery.fn.ansichtSwitch = function(start_state, switched_on_callback, switched_o
 		});
 		// click handling
 		jQuery(this).click(function() {
-			if(state == 'on') {
-				jQuery(this).find('.ansicht_switch').animate({backgroundPosition: -89}, "slow", function() {
-					jQuery(this).attr('src', settings.switch_off_container_path);
-					switched_off_callback();
-				});
-				state = 'off';
+			if(state == 'on'){
+				switched_off_callback();
+			} else {
+				switched_on_callback();
 			}
-			else {
-				jQuery(this).find('.ansicht_switch').animate({backgroundPosition: 0}, "slow", function() {
-					switched_on_callback();
-				});
-				jQuery(this).find('.ansicht_switch').attr('src', settings.switch_on_container_path);
-				state = 'on';
-			}
-		});		
+		});	
+		
+		if(state == 'on') {
+			jQuery(this).find('.ansicht_switch').animate({backgroundPosition: -89}, "slow", function() {
+			});
+			state = 'off';
+		}
+		else {
+			jQuery(this).find('.ansicht_switch').animate({backgroundPosition: 0}, "slow", function() {
+			});
+			state = 'on';
+		}	
 
 	});
 };
