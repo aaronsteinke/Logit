@@ -56,13 +56,13 @@ body {
   footer,header,hgroup,menu,nav,section,summary { 
   	display:block;
   }
-  /* (de) Rahmen für <fieldset> und <img> Elemente löschen */
+  /* (de) Rahmen fï¿½r <fieldset> und <img> Elemente lï¿½schen */
   
   fieldset, img { border:0 solid; }
   
 
 /*===================================
-ÜBERSCHRIFTEN UND ABSÄTZE
+ï¿½BERSCHRIFTEN UND ABSï¿½TZE
 ===================================*/
   
 h1{
