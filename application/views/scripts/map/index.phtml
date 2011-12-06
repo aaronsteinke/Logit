@@ -11,18 +11,16 @@
 		$('#mapJson').load("/map/get-json/", function(){
 			initialize();
 		});
+		<?php if (is_object($this->firstLog)): ?>
+			initializeMapTimeline(<?php echo '"' . $this->firstLog->getDateShot() . '", "' . $this->lastLog->getDateShot() . '"';?>);
+		<?php endif;?>
+		initializeTimeline();
 	});
 </script>
 <!--  <input type="checkbox" name="PopUp" id="PopUp">PopUp -->
 
-
-
 <div id="map"></div>
 
-
-<!--<div id="clusterPopUp" onmouseup=clusterDivInvisible();>
-    	Hallo
-</div>-->
 
 <div id="timeline">
 	<div id="navi">
@@ -31,15 +29,19 @@
 	  		<div id="zeitraumMinus" class="borderRight"><img src="images/minus.png" width="26" height="23" class="timePic" /></div>
             <div id="zeitraumPlus" class="borderRight"><img src="images/plus.png" width="26" height="23" class="timePic" /></div>
             <div id="zeitraumStart" class="borderRight">Start</div>
-            <div id="zeitraumStartEingabe" class="borderRight"><input type="text" class="startTextfield" value="" id="zeitraumStartEingabefeldId" name="zeitraumStartEingabefeldId" /></div>
+            <div id="zeitraumStartEingabe"><input type="text" class="dateTextfield" value="" id="zeitraumStartEingabefeldId" name="zeitraumStartEingabefeldId" /></div>
+            <div id="zeitraumStartEingabeUhrzeit" class="borderRight"><input type="text" class="timeTextfield" value="12:20" id="zeitraumStartEingabefeldUhrzeitId" name="zeitraumStartEingabefeldUhrzeitId" /></div>
             <div id="zeitraumEnde" class="borderRight">Ende</div>
-            <div id="zeitraumEndeEingabe" class="borderRight"><input type="text" class="endeTextfield" value="" id="zeitraumEndeEingabefeldId" name="zeitraumEndeEingabefeldId" /></div>
+            <div id="zeitraumEndeEingabe"><input type="text" class="dateTextfield" value="" id="zeitraumEndeEingabefeldId" name="zeitraumEndeEingabefeldId" /></div>
+	        <div id="zeitraumEndeEingabeUhrzeit" class="borderRight"><input type="text" class="timeTextfield" value="12:30" id="zeitraumEndeEingabefeldUhrzeitId" name="zeitraumEndeEingabefeldUhrzeitId" /></div>
 			<div id="zeitraumScrollMinus" class="borderRight"><img src="images/left-arrow.png" width="26" height="23" class="timePic" /></div>
 			<div id="zeitraumScrollPlus"><img src="images/right-arrow.png" width="26" height="23" class="timePic" /></div>
        	</div>
 		<div id="addFriends">
 			<div id="addFriendsButton" class="borderRight"><img src="images/buttonSearch.png" width="30" height="22" class="timePic" /></div>
-			<div id="addFriendsTextfield"><input type="text" value="Freunde hinzufügen" id="addFriendsTextfieldId" name="addFriendsTextfield" /></div>
+			<div id="addFriendsTextfield"><input onfocus="this.value='';" type="text" value="Freunde hinzufügen" id="addFriendsTextfieldId" name="addFriendsTextfield" /></div>
+			<div id ="friendSearchList">
+			</div>	
     	</div>
 	</div>  
   	<div id="content1">
@@ -52,7 +54,7 @@
             </div>
             <div class="profilLogs">
             	Logs heute: 200<br />
-                Logs gesamt: 7980
+                Logs gesamt: <?php echo $this->numberOfLogs; ?>
             </div>    
         </div>
 		<div id="images">

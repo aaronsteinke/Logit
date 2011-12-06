@@ -3,9 +3,8 @@
 	position:absolute;
 	background:url(../../images/timelineBg.gif) repeat-x #CCC; 
 	width: 100%;
-	height: 200px;
-	bottom:0;
-	padding-bottom:45px;
+	height: auto;
+	bottom:48px;
 }
 
 #content1{
@@ -13,7 +12,7 @@
 	width: auto;
 	height:60px;
 	border:1px solid #999;
-	margin: 12px 0px 0 12px;
+	margin: 5px 0px 20px 12px;
 	white-space:nowrap;
 }
 
@@ -59,9 +58,10 @@ TIMELINE NAVIGATION
 ===================================*/
 
 #navi{
-	width:792px;
+	width:900px;
+	/*width:855px;*/
 	height: 42px;
-	padding:9px 0px 8px 11px;
+	padding:9px 0px 0px 11px;
 	font-weight:bold;
 }
 
@@ -69,7 +69,7 @@ TIMELINE NAVIGATION
 	border:1px solid #999;
 	background-color:#FFF;
 	height:23px;
-	width: 502px;
+	/*width: 566px;*/
 	float:left;
 }
 
@@ -95,42 +95,58 @@ TIMELINE NAVIGATION
 }
 
 #zeitraumStart{
-	height: 14px;
 	float:left;
 	padding:5px;
 }
 
 #zeitraumEnde{
 	float:left;
-	padding:5px;
+	padding:5px 5px 5px 5px;
 }
 
 #zeitraumStartEingabe{
 	float:left;
-	padding:0 5px 0px 5px;
 	height:23px;
-	
 }
 
 #zeitraumEndeEingabe{
 	float:left;
-	padding:0 5px 0px 5px;
 	height:23px;
-	
+}
+.ui-datepicker-trigger{
+	float:left;
+	padding: 4px 4px 0 4px;
 }
 
-.startTextfield{
-	width:60px;
+.dateTextfield{
+	width:65px;
+	height:23px;
 	border:none;
-	font-size:80%;
+	font-size:11px;
 	color:#999999;
 }
 
-.endeTextfield{
-	width:60px;
+.hasDatepicker{
+	padding-right:1px;
+}
+
+#zeitraumStartEingabeUhrzeit{
+	width:39px;
+	float:left;
+}
+
+#zeitraumEndeEingabeUhrzeit{
+	width:39px;
+	float:left;
+}
+
+.timeTextfield{
+	margin-left:2px;
+	width:37px;
+	height:23px;
 	border:none;
-	font-size:80%;
-	color:#999999;
+	font-size:11px;
+	color:#999999;	
 }
 
 #zeitraumScrollMinus{
@@ -139,13 +155,13 @@ TIMELINE NAVIGATION
 	width:26px;
 	height:23px;
 }
-
 #zeitraumScrollPlus{
 	cursor:pointer;
 	float:left;
 	width:26px;
 	height:23px;
 }
+
 
 .borderRight {
 	border-right:1px solid #d3d3d3;
@@ -165,7 +181,7 @@ FREUNDE HINZUFUEGEN
 	background-color:#FFF;
 	margin-left:13px;
 	height:23px;
-	width:272px;
+	width:268px;
 	float:left;
 }
 
@@ -177,5 +193,25 @@ FREUNDE HINZUFUEGEN
 
 #addFriendsTextfield input{
 	width: 237px;
-	height: 21px;
+	height: 23px;
+	border:none;
+
+}
+
+#friendSearchList{
+}
+
+#friendSearchList ul{
+	margin:0px 0 0 0;
+	border-top:1px solid #999;
+}
+
+#friendSearchList li{
+	background-color:#FFF;
+	position:relative;
+	list-style: none;
+	border:1px solid #999;
+	border-top:none;
+	z-index: 999;
+	padding: 5px 0 5px 32px;
 }

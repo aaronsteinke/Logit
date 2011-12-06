@@ -1,0 +1,23 @@
+<?php  
+		$suchbegriff = $this->getRequest()->getParam('var');
+		
+		//$suchbegriff = strip_tags(htmlspecialchars($_POST['var1'])); //Musst du umbauen
+		//datenbankverbindung einbinden
+		$pagehtml = "";
+		$found = false;		
+		if($suchbegriff != "")
+		{
+			$result = mysql_query("SELECT id, username, firstname, lastname FROM  `users` WHERE  `username` LIKE  '%$suchbegriff%' OR `firstname` LIKE  '%$suchbegriff%' OR `lastname` LIKE  '%$suchbegriff%' LIMIT 0, 4");
+			while($data = mysql_fetch_assoc($result))
+			{
+				$pagehtml .= mob_shortinfo($data);
+				$found = true;
+			}
+		}
+		if(!$found)
+		{ //keinEintrag
+			$pagehtml = '';
+		}
+		echo $pagehtml;
+
+	?> 

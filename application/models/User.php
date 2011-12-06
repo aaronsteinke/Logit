@@ -77,15 +77,33 @@ class Application_Model_User {
 	}
 	
 	public function getFristLog(){
-		
+		$Pictures = new Application_Model_PictureMapper();
+		$Pictures->getFirstOrLastLogForUser($this->_id, 0);
 	}
 	
 	public function getLastLog(){
-		
+		$Pictures = new Application_Model_PictureMapper();
+		return $Pictures->getFirstOrLastLogForUser($this->_id, 1);
 	}
 	
 	public function getNumberOfLogs(){
-		
+		$Pictures = new Application_Model_PictureMapper();
+		return $Pictures->getNumberOfLogsForUser($this->_id);
+	}
+	
+	public function follow($idUser){
+		$users = new Application_Model_UserMapper();
+		$users->createFriend($this->_id, $idUser, 1);
+	}
+	
+	public function unfollow($idUser){
+		$users = new Application_Model_UserMapper();
+		$users->deleteFriend($this->_id, $idUser);
+	}
+	
+	public function getFriends(){
+		$users = new Application_Model_UserMapper();
+		return $users->getFriendsForUser($this->_id);
 	}
 	/*
 	 public function getDateCreated()
