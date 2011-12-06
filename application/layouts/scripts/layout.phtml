@@ -57,6 +57,22 @@ endif;
 	});
 </script>
 
+  <script type="text/javascript">
+  	$(document).ready(function(){
+$('#ajax').load('/alpha');
+    $('#1').ansichtSwitch("on", 
+     function() {
+       $('#main').load('/map');
+      },
+      function() {
+       $('#main').load('/timeline');
+      },
+      {
+        switch_on_container_path: 'images/ansicht_switch_container_off.png'
+      });
+	 }); 
+  </script>
+
 <!--
 
 >>>>>>> upstream/master
@@ -88,8 +104,7 @@ if($auth->hasIdentity()){?>
 				</div>
 				<div class="clear"></div>
 				<div id="naviButtons">
-					<img src="/images/ansichtButton.gif" width="123" height="33"
-						alt="Ansicht" /> <img src="/images/filterButton.gif" width="93" height="34" alt="Filter" /> <a href="/index/logout">logout</a>
+					 <div class="ansicht_bt" id="1"></div> <img src="/images/filterButton.gif" width="93" height="34" alt="Filter" /> <a href="/index/logout">logout</a>
 				<div class="uploadLogs">
 					<a  id="various3" href="/upload">	<img src="/images/uploadLogs.gif" width="113" height="33"alt="Logs uploaden" > 
 							 </a>
