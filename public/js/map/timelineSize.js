@@ -19,7 +19,7 @@ function setTimelineAndMapBottom(){
 function setFooterHeight() {
 	$("#footer").click(function(){
 	if(footerActiv == 0){
-		$("#footer").animate({height:footerHeightMax}, 1000 );
+		$("#footer").animate({height:footerHeightMax}, 1000);
 		$("#timeline").animate({bottom:"+=" + footerDifference}, 1000 );
 		$("#map").animate({bottom:"+=" + footerDifference}, 1000 );
 		footerActiv = 1;
