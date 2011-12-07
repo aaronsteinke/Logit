@@ -16,7 +16,7 @@ class Application_Model_User {
 
 
 	public function __construct( 	$id, $userName, $lastName, $firstName, $sex,
-	$profilePic, $eMail, $regTime, $lastLogin, $hits, $birthday ) {
+									$profilePic, $eMail, $regTime, $lastLogin, $hits, $birthday ) {
 		$this->_id = $id;
 		$this->_userName = $userName;
 		$this->_lastName = $lastName;

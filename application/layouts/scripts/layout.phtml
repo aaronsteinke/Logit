@@ -40,12 +40,9 @@ endif;
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		
-
 
 		$("#various3").fancybox({
-			
-		 'width': 1000,
+			'width': 1000,
 			'height': 700,
 			'autoScale'			: false,
 			'transitionIn'		: 'none',
@@ -53,18 +50,32 @@ endif;
 			'type'				: 'ajax'
 		});
 
-	
 	});
 </script>
+
+  <script type="text/javascript">
+$(document).ready(function(){
+	$('#1').ansichtSwitch("<?php if ($controller == 'map') {echo 'off';} else {echo 'on';}?>", 
+		function() {
+			$(location).attr('href','map');
+		},
+		function() {
+			$(location).attr('href','timeline');
+		},
+		{
+		switch_on_container_path: 'images/ansicht_switch_container_off.png'
+	});
+}); 
+  </script>
 
 <!--
 
 >>>>>>> upstream/master
 <!--[if !IE 7]>
-	  <style type="text/css">
-	      #wrap {display:table;height:100%}
-	  </style>
-	<![endif]-->
+  <style type="text/css">
+      #wrap {display:table;height:100%}
+  </style>
+<![endif]-->
 </head>
 
 <body>
@@ -88,8 +99,7 @@ if($auth->hasIdentity()){?>
 				</div>
 				<div class="clear"></div>
 				<div id="naviButtons">
-					<img src="/images/ansichtButton.gif" width="123" height="33"
-						alt="Ansicht" /> <img src="/images/filterButton.gif" width="93" height="34" alt="Filter" /> <a href="/index/logout">logout</a>
+					 <div class="ansicht_bt" id="1"></div> <img src="/images/filterButton.gif" width="93" height="34" alt="Filter" /> <a href="/index/logout">logout</a>
 				<div class="uploadLogs">
 					<a  id="various3" href="/upload">	<img src="/images/uploadLogs.gif" width="113" height="33"alt="Logs uploaden" > 
 							 </a>

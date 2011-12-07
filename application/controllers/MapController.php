@@ -14,6 +14,7 @@ class MapController extends Zend_Controller_Action
 		$authUser = Application_Model_AuthUser::getAuthUser();
 		$this->view->obAuthUser = $authUser;
 	}
+
 	
 	public function getJsonAction(){
 		$this->_helper->layout()->disableLayout();
@@ -34,6 +35,7 @@ class MapController extends Zend_Controller_Action
 		echo $jsonData;
 		*/
 	}
+	
 	
 	public function getImagesForTimelineAction(){
 		$this->_helper->layout()->disableLayout();		
