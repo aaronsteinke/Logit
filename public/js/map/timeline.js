@@ -157,7 +157,3 @@ function sendImageRequest(){
 	howMuchImages();
 	$('#images').load('map/get-images-for-timeline/number-of-images/' + numberOfImages + "/first-date/" + firstDate.toString('yyyy-M-d') + "/first-time/"+ firstDate.toString('HH:mm') + "/second-date/" + secondDate.toString('yyyy-M-d') + "/second-time/"+ secondDate.toString('HH:mm'));
 }
-
-
-
-	

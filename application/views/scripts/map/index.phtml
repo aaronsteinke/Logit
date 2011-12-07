@@ -11,8 +11,8 @@
 		$('#mapJson').load("/map/get-json/", function(){
 			initialize();
 		});
-		<?php if (is_object($this->firstLog)): ?>
-			initializeMapTimeline(<?php echo '"' . $this->firstLog->getDateShot() . '", "' . $this->lastLog->getDateShot() . '"';?>);
+		<?php if (is_object($this->obAuthUser->getFristLog())): ?>
+			initializeMapTimeline(<?php echo '"' . $this->obAuthUser->getFristLog()->getDateShot() . '", "' . $this->obAuthUser->getFristLog()->getDateShot() . '"';?>);
 		<?php endif;?>
 		initializeTimeline();
 	});
@@ -23,6 +23,7 @@
 
 
 <div id="timeline">
+	<div id="handler"></div>
 	<div id="navi">
 		<div id="zeitraum">
 	  		<div id="zeitraumEinstellen" class="borderRight">Zeitraum einstellen</div>
@@ -50,11 +51,11 @@
 		</div>
 		<div id="profilInfo">
         	<div class="profilName">
-        		Max Mustermann
+        		<?php echo $this->obAuthUser->getFirstName();?> <?php echo $this->obAuthUser->getLastName(); ?>
             </div>
             <div class="profilLogs">
             	Logs heute: 200<br />
-                Logs gesamt: <?php echo $this->numberOfLogs; ?>
+                Logs gesamt: <?php echo $this->obAuthUser->getNumberOfLogs();?>
             </div>    
         </div>
 		<div id="images">

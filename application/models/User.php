@@ -78,7 +78,7 @@ class Application_Model_User {
 	
 	public function getFristLog(){
 		$Pictures = new Application_Model_PictureMapper();
-		$Pictures->getFirstOrLastLogForUser($this->_id, 0);
+		return $Pictures->getFirstOrLastLogForUser($this->_id, 0);
 	}
 	
 	public function getLastLog(){
