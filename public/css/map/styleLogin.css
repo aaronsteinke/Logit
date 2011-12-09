@@ -30,7 +30,16 @@ body {
 	height: auto !important;
 	margin: 0 auto -45px; /* the bottom margin is the negative value of the footer's height */	
 }
-	
+
+
+/*Unselectable für Drag n' Drop */
+.unselectable {
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    /*user-select: none;*/
+}
 	
 	
 	
