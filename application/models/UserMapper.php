@@ -204,6 +204,12 @@ class Application_Model_UserMapper
 		$arrRestaurants = $this->createObjektArr($resultSet);
 		return $arrRestaurants;
     }
+	
+	public function addFacebookData ($user_id, $data)
+	{
+		$db = $this->getDbTable()->getAdapter();
+		$db->update('user', $data, "id = $user_id");
+	}
     
 	
 	

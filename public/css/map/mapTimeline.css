@@ -1,10 +1,11 @@
 
 #timeline{
 	position:absolute;
-	background:url(../../images/timelineBg.gif) repeat-x #CCC; 
+	background:url(../../images/timelineBg.gif) repeat-x  #CCC; 
 	width: 100%;
 	height: auto;
 	bottom:48px;
+	overflow:hidden;
 }
 
 #content1{
@@ -51,7 +52,6 @@
 	max-width: 45px;
 	height: 45px;
 }
-
 
 /*===================================
 TIMELINE NAVIGATION

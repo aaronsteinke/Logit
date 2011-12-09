@@ -1,3 +1,4 @@
+
 ////////Others //////////
 	function clusterDivVisible (){
 		document.getElementById('clusterPopUp').style.visibility = 'visible';
@@ -7,6 +8,8 @@
 	}
 	
 ////// MAP /////////////
+var LatLngMyBounds
+
 function initialize() {
    	var latlng = new google.maps.LatLng(48.049915, 8.205328);
    	var myOptions = {
@@ -38,21 +41,29 @@ function initialize() {
     	getMyBounds();
 	});
 	zoomChangeListener = google.maps.event.addListener(map,'zoom_changed',function (event) {
-		setTimeout(getMyBounds, 500);    	
+		setTimeout(getMyBounds, 500); 
   	});
   	centerChangeListener = google.maps.event.addListener(map,'center_changed', getCenterBounds);
   	function getCenterBounds (event) {
   		google.maps.event.removeListener(centerChangeListener);
-		setTimeout(getMyBoundsCenter, 500);    	
+		setTimeout(getMyBoundsCenter, 500); 
   	}
-		
+  	
 	function getMyBounds(){
-		console.log(map.getBounds());
+		getNewJson();
 	}
 	function getMyBoundsCenter(){
-		console.log(map.getBounds());
+		getNewJson();
 		centerChangeListener = google.maps.event.addListener(map,'center_changed', getCenterBounds);
 	}
+	
+  	function getNewJson(){
+  		LatLngMyBounds = map.getBounds();
+  		LatLngMyBounds1 = LatLngMyBounds.getNorthEast();
+  		LatLngMyBounds2 = LatLngMyBounds.getSouthWest();
+		$('#mapJson').load('map/get-json/lat1/' + LatLngMyBounds1.lat() + '/lng1/' + LatLngMyBounds1.lng() + '/lat2/' + LatLngMyBounds2.lat() + '/lng2/' + LatLngMyBounds2.lng());
+  	}
+		
 	
 	//zoom_changed und center_changed	
 	var markerCluster = new MarkerClusterer(map, markers, markerOptions);

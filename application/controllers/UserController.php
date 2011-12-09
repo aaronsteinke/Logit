@@ -32,8 +32,10 @@ class UserController extends Zend_Controller_Action {
 				} else {
 					echo $obUser->getUserName() . '<a href="/user/follow/id-user/'. $obUser->getId() .'"> follow</a></br>';
 				}
-			}
+			}			
 		}
+		
+		echo '<a href="/connect/facebookAuth/">connect with Facebook</a><br/>';
 		
 		
 		
