@@ -40,25 +40,53 @@ endif;
 
 <script type="text/javascript">
 	$(document).ready(function() {
+<<<<<<< HEAD
 		$(".various3").fancybox({
 		 'width': 1000,
+=======
+
+		$("#various3").fancybox({
+			'width': 1000,
+>>>>>>> upstream/master
 			'height': 700,
 			'autoScale'			: false,
 			'transitionIn'		: 'none',
 			'transitionOut'		: 'none',
 			'type'				: 'ajax'
 		});
+<<<<<<< HEAD
 	});
 </script>
 
+=======
+
+	});
+</script>
+
+  <script type="text/javascript">
+$(document).ready(function(){
+	$('#1').ansichtSwitch("<?php if ($controller == 'map') {echo 'off';} else {echo 'on';}?>", 
+		function() {
+			$(location).attr('href','map');
+		},
+		function() {
+			$(location).attr('href','timeline');
+		},
+		{
+		switch_on_container_path: 'images/ansicht_switch_container_off.png'
+	});
+}); 
+  </script>
+
+>>>>>>> upstream/master
 <!--
 
 >>>>>>> upstream/master
 <!--[if !IE 7]>
-	  <style type="text/css">
-	      #wrap {display:table;height:100%}
-	  </style>
-	<![endif]-->
+  <style type="text/css">
+      #wrap {display:table;height:100%}
+  </style>
+<![endif]-->
 </head>
 
 <body>
