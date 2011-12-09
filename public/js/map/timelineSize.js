@@ -29,6 +29,10 @@ function setTimelineAndMapBottom(){
 	setFooterBottom();
 }
 
+//////////////////////////////
+//Footer Animations /////////
+/////////////////////////////
+
 function setFooterHeight() {
 	$("#footer").dblclick(function(){
 	if(footerActiv == 0){
@@ -53,6 +57,11 @@ function footerAcitv(){
 	}
 }
 
+
+////////////////////////////////////////////////
+//Funktionen zum Ausrichten der Elemente //////
+//////////////////////////////////////////////
+
 function setFooterBottom(){
 	$("#footer").css("bottom", function(bottomPx) {
   		return bottomPx = 0;
@@ -71,10 +80,14 @@ function setMapBottom(){
 		});	
 }
 
+//////////////////////////////
+//Timeline Drag n' Drop //////
+/////////////////////////////
+
 function timelineDragMove(){
-	$('#timeline').mousedown(function(){
-  		dragActiv = 1;
+	$('#timeline').mousedown(function(event){
   		startPosition = event.pageY-this.offsetTop;
+  		dragActiv = 1;
   	});
   	$(document).mouseup(function(){
   		dragActiv = 0;
@@ -82,7 +95,7 @@ function timelineDragMove(){
   	$(document).mouseleave(function(){
   		dragActiv = 0;
   	});
-  	$(document).mousemove(function(){
+  	$(document).mousemove(function(event){
   		if(dragActiv == 1){
   			timelineStatus = 5;
   			$("#timeline").css("height", function(newHeight) {
@@ -126,7 +139,7 @@ function timelineAnimation(){
 			animateMapToTimeline = parseInt($("#footer").css("height")) + timelineDragNormal;
 			$("#timeline").animate({height: timelineDragNormal}, timelineSpeed, setTimelineStatus);
 			$("#map").animate({bottom: animateMapToTimeline}, timelineSpeed);
-		}else if(timelineStatus = 5 && parseInt($("#timeline").css("height")) > timelineDragNormal) {
+		}else if(timelineStatus = 5 && parseInt($("#timeline").css("height")) >= timelineDragNormal) {
 			timelineStatus = 104;
 			animateMapToTimeline = parseInt($("#footer").css("height")) + timelineDragNormal;
 			$("#timeline").animate({height: timelineDragNormal}, timelineSpeed, setTimelineStatus);
@@ -147,3 +160,4 @@ function setTimelineStatus(){
 	}
 	
 }
+//
