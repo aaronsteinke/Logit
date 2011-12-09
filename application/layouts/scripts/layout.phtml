@@ -67,36 +67,6 @@ endif;
 
 
 ?>
-
-<script type="text/javascript">
-	$(document).ready(function() {
-		$(".various3").fancybox({
-		 	'width': 1000,
-			'height': 700,
-			'autoScale'			: false,
-			'transitionIn'		: 'none',
-			'transitionOut'		: 'none',
-			'type'				: 'ajax'
-		});
-
-	});
-</script>
-
-  <script type="text/javascript">
-$(document).ready(function(){
-	$('#1').ansichtSwitch("<?php if ($controller == 'map') {echo 'off';} else {echo 'on';}?>", 
-		function() {
-			$(location).attr('href','map');
-		},
-		function() {
-			$(location).attr('href','timeline');
-		},
-		{
-		switch_on_container_path: 'images/ansicht_switch_container_off.png'
-	});
-}); 
-  </script>
-
 <!--
 
 >>>>>>> upstream/master
