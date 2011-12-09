@@ -117,7 +117,7 @@ function timelineDragMove(){
 }
 
 function timelineAnimation(){
-	$('#timeline').dblclick(function(){
+	$('#timeline').not('.noMouseEvent').dblclick(function(){
 		if(timelineStatus == 1){
 			timelineStatus = 101;
 			$("#timeline").animate({height: timelineDragMin}, timelineSpeed, setTimelineStatus);	

@@ -63,10 +63,23 @@ if(file_exists('css/'. $controller)):
 		}
 	}
 endif;
-
-
-
 ?>
+
+
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#1').ansichtSwitch("<?php if ($controller == 'map') {echo 'off';} else {echo 'on';}?>", 
+ 		function() {
+  			$(location).attr('href','map');
+ 		},
+ 		function() {
+  			$(location).attr('href','timeline');
+ 		},{
+ 		switch_on_container_path: 'images/ansicht_switch_container_off.png'
+	});
+}); 
+</script>
 <!--
 
 >>>>>>> upstream/master
