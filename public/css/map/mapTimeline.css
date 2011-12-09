@@ -68,6 +68,7 @@ TIMELINE NAVIGATION
 #resizeTimeline {
 	float:left;
 	margin-right:12px;
+	cursor:pointer;
 }
 
 #zeitraum {
