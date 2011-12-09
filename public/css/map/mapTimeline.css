@@ -15,6 +15,7 @@
 	border:1px solid #999;
 	margin: 5px 0px 20px 12px;
 	white-space:nowrap;
+	overflow:hidden;
 }
 
 #profilImage{
@@ -69,6 +70,9 @@ TIMELINE NAVIGATION
 	float:left;
 	margin-right:12px;
 	cursor:pointer;
+	width:27px;
+	height:25px;
+	background:url(../../images/resize-window.gif) repeat-x  #CCC; 
 }
 
 #zeitraum {
