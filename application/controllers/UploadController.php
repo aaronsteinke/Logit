@@ -90,7 +90,7 @@ class UploadController extends Zend_Controller_Action
 		$contentType = $_SERVER["CONTENT_TYPE"];
 		
 		// Handle non multipart uploads older WebKit versions didn't support multipart in HTML5
-		$pic_ident = $fileName_a . '_' . md5_file($_FILES['file']['tmp_name']) . $fileName_b;
+		$pic_ident = $fileName_a . '_' . md5_file($_FILES['file']['tmp_name']) . strtolower($fileName_b);
 		if (strpos($contentType, "multipart") !== false) {
 			if (isset($_FILES['file']['tmp_name']) && is_uploaded_file($_FILES['file']['tmp_name'])) {
 				// Open temp file
