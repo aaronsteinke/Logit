@@ -1,0 +1,143 @@
+<?php echo $this->doctype() ?>
+<html lang="de" xml:lang="de"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>logit.net</title>
+<link href="/css/vader/jquery-ui-1.8.16.custom.css" rel="stylesheet" type="text/css" />
+<?php
+$controller = Zend_Controller_Front::getInstance()->getRequest()->getParam('controller');
+// Kontextabhängiges Einladen von JavaScript dateien...
+foreach (scandir('js') as $inhalt){
+	if(substr($inhalt, -3) == '.js'){
+?><script type="text/javascript" src="/js/<?php echo $inhalt; ?> "></script>
+<?php 
+	}
+}
+
+if(file_exists('js/'. $controller)):
+	foreach (scandir('js/'. $controller) as $inhalt){
+		if(substr($inhalt, -3) == '.js'){
+	?><script type="text/javascript" src="/js/<?php echo $controller . '/' . $inhalt; ?> "></script>
+	<?php 
+		}
+	}
+endif;
+
+foreach (scandir('css') as $inhalt){
+	if(substr($inhalt, -4) == '.css'){
+?><link href="css/<?php echo $inhalt; ?>" rel="stylesheet" type="text/css" />
+<?php 
+	}
+}
+if(file_exists('css/'. $controller)):
+	foreach (scandir('css/'. $controller) as $inhalt){
+		if(substr($inhalt, -4) == '.css'){
+	?><link href="css/<?php echo $controller . '/' . $inhalt; ?> " rel="stylesheet" type="text/css" />
+	<?php 
+		}
+	}
+endif;
+?>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".various3").fancybox({
+		 	'width': 1000,
+			'height': 700,
+			'autoScale'			: false,
+			'transitionIn'		: 'none',
+			'transitionOut'		: 'none',
+			'type'				: 'ajax'
+		});
+
+	});
+</script>
+
+  <script type="text/javascript">
+$(document).ready(function(){
+	$('#1').ansichtSwitch("<?php if ($controller == 'map') {echo 'off';} else {echo 'on';}?>", 
+		function() {
+			$(location).attr('href','map');
+		},
+		function() {
+			$(location).attr('href','timeline');
+		},
+		{
+		switch_on_container_path: 'images/ansicht_switch_container_off.png'
+	});
+}); 
+  </script>
+
+<!--
+
+>>>>>>> upstream/master
+<!--[if !IE 7]>
+  <style type="text/css">
+      #wrap {display:table;height:100%}
+  </style>
+<![endif]-->
+</head>
+
+<body>
+<?php
+$auth = Zend_Auth::getInstance();
+
+if($auth->hasIdentity()){?>
+	<div id="wrap"  unselectable="on" class="unselectable">
+		<div id="header">
+			<div class="page">
+				<div class="logo">
+					<img src="images/logitLogo.png" width="216" height="60" alt="logo" />
+				</div>
+				<div class="headlogin">
+					<div class="profil">
+						  <div id="dropdown_bt">
+							<ul>
+								<li class="bgbutton"><a href="#" class="dropdown">Max Mustermann</a></li>
+								<li class="sublinks">
+									<a class="screw" href="#">Profileinstellungen</a>
+									<a class="chart-up" href="#">Logs verbessern</a>
+									<a class="chart-pi" href="#">Logstatistiken</a>
+									<a class="calender" href="#">Events anlegen</a>
+									<a class="arrow various3" href="/upload">Logs uploaden</a>
+									<a class="door" href="/index/logout">Abmelden</a>
+								</li>
+							</ul>
+						</div><!--dropdownbutton-->
+					</div>
+                   
+				</div>
+				<div class="clear"></div>
+				<div id="naviButtons">
+					 <div class="ansicht_bt" id="1"></div> <img src="/images/filterButton.gif" width="93" height="34" alt="Filter" />
+				<div class="uploadLogs">
+					<a  class="various3" href="/upload">	<img id="upload_bt" src="/images/uploadLogs.gif" width="113" height="33"alt="Logs uploaden" > 
+							 </a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="main" class="clearfix">
+		<?php echo $this->layout()->content;  ?>
+		</div>
+	</div>
+	<div id="footer"  unselectable="on" class="unselectable">
+		  <div class="pageFooter">
+			<div class="footercolumn">
+				<h1>FEATURES</h1>
+			</div>
+			<div class="footercolumn">
+				<h1>FAQ</h1>
+			</div>
+			<div class="footercolumn">
+				<h1>ABOUT</h1>
+			</div>
+		</div>
+	</div>
+	<?php
+}else{
+	echo $this->layout()->content;
+}
+
+?>
+</body>
+</html>

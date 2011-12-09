@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+
+#map{
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	top: 168px;
+	}
+
+#clusterPopUp {
+	width: 50%;
+	height: 70%;
+	left:25%;
+	top:15%;
+	background-color:#999;
+	position:absolute;
+	z-index:2;
+	visibility:hidden;
+	}
