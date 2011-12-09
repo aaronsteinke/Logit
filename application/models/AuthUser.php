@@ -7,5 +7,5 @@ class Application_Model_AuthUser {
 		$users = new Application_Model_UserMapper();
 		return $users->getOneByUsername($auth->getIdentity());
 	}
-
+	
 }
