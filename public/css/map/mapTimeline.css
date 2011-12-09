@@ -15,6 +15,7 @@
 	border:1px solid #999;
 	margin: 5px 0px 20px 12px;
 	white-space:nowrap;
+	overflow:hidden;
 }
 
 #profilImage{
