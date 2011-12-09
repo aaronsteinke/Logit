@@ -40,9 +40,8 @@ endif;
 
 <script type="text/javascript">
 	$(document).ready(function() {
-
-		$("#various3").fancybox({
-			'width': 1000,
+		$(".various3").fancybox({
+		 	'width': 1000,
 			'height': 700,
 			'autoScale'			: false,
 			'transitionIn'		: 'none',
@@ -91,17 +90,27 @@ if($auth->hasIdentity()){?>
 				</div>
 				<div class="headlogin">
 					<div class="profil">
-						<img src="/images/profilButton.gif" width="159" height="42"
-							alt="Profil" />
-							
+						  <div id="dropdown_bt">
+							<ul>
+								<li class="bgbutton"><a href="#" class="dropdown">Max Mustermann</a></li>
+								<li class="sublinks">
+									<a class="screw" href="#">Profileinstellungen</a>
+									<a class="chart-up" href="#">Logs verbessern</a>
+									<a class="chart-pi" href="#">Logstatistiken</a>
+									<a class="calender" href="#">Events anlegen</a>
+									<a class="arrow various3" href="/upload">Logs uploaden</a>
+									<a class="door" href="/index/logout">Abmelden</a>
+								</li>
+							</ul>
+						</div><!--dropdownbutton-->
 					</div>
                    
 				</div>
 				<div class="clear"></div>
 				<div id="naviButtons">
-					 <div class="ansicht_bt" id="1"></div> <img src="/images/filterButton.gif" width="93" height="34" alt="Filter" /> <a href="/index/logout">logout</a>
+					 <div class="ansicht_bt" id="1"></div> <img src="/images/filterButton.gif" width="93" height="34" alt="Filter" />
 				<div class="uploadLogs">
-					<a  id="various3" href="/upload">	<img src="/images/uploadLogs.gif" width="113" height="33"alt="Logs uploaden" > 
+					<a  class="various3" href="/upload">	<img id="upload_bt" src="/images/uploadLogs.gif" width="113" height="33"alt="Logs uploaden" > 
 							 </a>
 					</div>
 				</div>

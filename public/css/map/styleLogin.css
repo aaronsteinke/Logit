@@ -101,6 +101,7 @@ HEADER (includes Logo, Login,
 	height:168px;
 	width:100%;
 	z-index:999;
+	position:relative;
   }
   
 .logo{
@@ -168,7 +169,6 @@ ELEMENTE POSITIONIEREN UND ZENTRIEREN
  .page {
   position:relative;
   padding: 20px 0px 0px 100px;
-  overflow:hidden; 
   width: 1050px; 
   }
 
@@ -207,9 +207,8 @@ FOOTER
 
 
 /*===================================
-BUTTONS (Switch Button Timeline/Karte
+BUTTONS (Switch Button Timeline/Karte)
 ===================================*/
-
 .ansicht_bt {
 float:left;
 width:123px;
@@ -221,3 +220,29 @@ background:url(../../images/ansicht.png) no-repeat;
 .ansicht_switch_container{
 	padding-left:5px;
 	}
+/*===================================
+BUTTONS (Hauptmenü Dropdown)
+===================================*/
+dropdown_bt{position:relative; z-index:10000;}
+.bgbutton{height:42px; width:159px;	margin:auto; background:url(../../images/bgbutton.png) no-repeat;}
+#dropdown_bt ul{list-style:none; padding:0px; margin:0px;}
+#dropdown_bt ul li{display:inline;float:left;}
+#dropdown_bt ul li a{color:#ffffff; font-size:12px; text-decoration:none; display:block; width:115px; height:30px; line-height:25px; text-align:right; padding-right:35px;}
+#dropdown_bt ul li a:hover{color:#fff; display:block; width:105px; padding-right:45px;}
+#dropdown_bt .dropdown{background:url(../../images/button.png) no-repeat; width:105px; height:30px; margin:6px 5px 0 5px; padding-right:45px;}
+
+/* sublinks */
+#dropdown_bt li.sublinks{background:#242424; width:145px; margin-top:0px; border:solid 1px #111;}
+#dropdown_bt ul li.sublinks a{color:#c4c4c4; font-weight:normal; display:block; width:105px; font-size:10px; padding-right:35px;}
+#dropdown_bt ul li.sublinks a:hover{color:#494949;}
+#dropdown_bt ul li.sublinks{display:none;}
+.screw{background:url(../../images/screw.png) no-repeat right #242424; border-bottom: 1px solid #111;}
+.chart-up{background:url(../../images/chart-up.png) no-repeat right #242424; border-top: 1px solid #444;border-bottom: 1px solid #111;}
+.chart-pi{background:url(../../images/chart-pi.png) no-repeat right #242424; border-top: 1px solid #444;border-bottom: 1px solid #111;}
+.calender{background:url(../../images/calender.png) no-repeat right #242424; border-top: 1px solid #444;border-bottom: 1px solid #111;}
+.arrow{background:url(../../images/arrow.png) no-repeat right #242424; border-top: 1px solid #444;border-bottom: 1px solid #111;}
+.door{background:url(../../images/door.png) no-repeat right #242424; border-top: 1px solid #444;}
+
+/*uploadButton*/
+img#upload_bt:hover{
+	filter: alpha(opacity=90); opacity: 0.9;}
