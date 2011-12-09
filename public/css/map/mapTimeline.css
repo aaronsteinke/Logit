@@ -65,6 +65,12 @@ TIMELINE NAVIGATION
 	font-weight:bold;
 }
 
+#resizeTimeline {
+	float:left;
+	margin-right:12px;
+	cursor:pointer;
+}
+
 #zeitraum {
 	border:1px solid #999;
 	background-color:#FFF;
