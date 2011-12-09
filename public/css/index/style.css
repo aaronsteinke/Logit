@@ -1,4 +1,4 @@
-* { margin:0; padding:0; }
+﻿* { margin:0; padding:0; }
 
 /*Opera Fix*/
 body:before {
@@ -19,6 +19,7 @@ body {
 	height:100%;
 	width:100%;
 	overflow-x:hidden;
+	overflow:hidden;
 	background:#e1e6fa;
     font-size:75%;
 	text-align:left;
@@ -130,7 +131,7 @@ CONTENT
 #content {
 	min-width:720px;
 	color:#183152;
-	padding:40px 0 50px 100px;
+	padding:20px 0 70px 100px;
 	}
 	
 .startBild {
