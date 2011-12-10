@@ -185,7 +185,8 @@ class Application_Model_UserMapper
     	}
     }
 	
-		public function getOneByAccess_token($access_token){
+	
+	public function getOneByAccess_token($access_token){
     	$db = $this->getDbTable()->getAdapter();
     	
     	$sql = ('	SELECT 	*
@@ -232,10 +233,7 @@ class Application_Model_UserMapper
 		$db = $this->getDbTable()->getAdapter();
 		$db->update('user', $data, "id = $user_id");
 	}
-    
 	
-	
-	// noch nicht fertig
 	public function searchUserByName( $name ){
     	$db = $this->getDbTable()->getAdapter();
 		 
@@ -253,6 +251,28 @@ class Application_Model_UserMapper
 		$arrRestaurants = $this->createObjektArr($resultSet);
 		return $arrRestaurants;
 	}
+	
+	public function searchFriendsByName($idUser, $username){
+    	$db = $this->getDbTable()->getAdapter();
+		 
+		$sql = ('	SELECT 	f.*
+					FROM 	user f, 
+							user_friends u 
+					WHERE 	u.id_user = :idUser
+					AND 	f.id = u.id_friend	
+					AND		f.username LIKE :name ');
+		 
+		$username = '%'. $username .'%';
+		
+		$stmt = new Zend_Db_Statement_Pdo($db, $sql);
+		$stmt->bindParam(':idUser', $idUser);
+		$stmt->bindParam(':name', $username);
+		$stmt->execute();
+		 
+		$resultSet = $stmt->fetchAll();
+		$arrRestaurants = $this->createObjektArr($resultSet);
+		return $arrRestaurants;
+    }
 	
 	
    	private function createObjekt($result){
