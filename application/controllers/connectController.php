@@ -80,6 +80,7 @@ class ConnectController extends Zend_Controller_Action
 								break;  
 						}				
 					}
+
 					if (false) {
 						// TODO Profilinformation wird in die Anmeldefelder eingetragen, access_token in die DB geschrieben.
 					}
