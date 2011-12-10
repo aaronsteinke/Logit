@@ -92,7 +92,7 @@ if($auth->hasIdentity()){?>
 					<div class="profil">
 						  <div id="dropdown_bt">
 							<ul>
-								<li class="bgbutton"><a href="#" class="dropdown">Max Mustermann</a></li>
+								<li class="bgbutton"><a href="#" class="dropdown"><?php echo $this->obAuthUser->getFirstName();?> <?php echo $this->obAuthUser->getLastName(); ?></a></li>
 								<li class="sublinks">
 									<a class="screw" href="#">Profileinstellungen</a>
 									<a class="chart-up" href="#">Logs verbessern</a>
