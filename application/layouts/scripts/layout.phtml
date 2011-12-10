@@ -67,36 +67,6 @@ endif;
 
 
 ?>
-
-<script type="text/javascript">
-	$(document).ready(function() {
-		$(".various3").fancybox({
-		 	'width': 1000,
-			'height': 700,
-			'autoScale'			: false,
-			'transitionIn'		: 'none',
-			'transitionOut'		: 'none',
-			'type'				: 'ajax'
-		});
-
-	});
-</script>
-
-  <script type="text/javascript">
-$(document).ready(function(){
-	$('#1').ansichtSwitch("<?php if ($controller == 'map') {echo 'off';} else {echo 'on';}?>", 
-		function() {
-			$(location).attr('href','map');
-		},
-		function() {
-			$(location).attr('href','timeline');
-		},
-		{
-		switch_on_container_path: 'images/ansicht_switch_container_off.png'
-	});
-}); 
-  </script>
-
 <!--
 
 >>>>>>> upstream/master
@@ -122,7 +92,7 @@ if($auth->hasIdentity()){?>
 					<div class="profil">
 						  <div id="dropdown_bt">
 							<ul>
-								<li class="bgbutton"><a href="#" class="dropdown">Max Mustermann</a></li>
+								<li class="bgbutton"><a href="#" class="dropdown"><?php echo $this->obAuthUser->getFirstName();?> <?php echo $this->obAuthUser->getLastName(); ?></a></li>
 								<li class="sublinks">
 									<a class="screw" href="#">Profileinstellungen</a>
 									<a class="chart-up" href="#">Logs verbessern</a>

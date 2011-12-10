@@ -48,7 +48,6 @@ function initializeMapTimeline(minimalDate, maximalDate){
 		if(buttonPlusActiv == 1){
 			buttonMinusActiv = 1;
 			if(minuteDifference > 24*60){
-				console.log("bin hier");
 				firstDate = firstDate.addMinutes(minuteDifference/4);
 				secondDate = secondDate.addMinutes(-minuteDifference/4);
 			} else if(minuteDifference > 120){
@@ -110,7 +109,6 @@ function initializeMapTimeline(minimalDate, maximalDate){
 	$('#addFriendsTextfieldId').keyup(function(element){
 		$('#friendSearchList').empty();	
 		value1 = $('#addFriendsTextfieldId').val();
-		console.log($('#addFriendsTextfieldId').val());
 		$('#friendSearchList').load('map/get-user-for-timeline/var1/' + value1);
 	});
 }
@@ -124,12 +122,10 @@ function howMuchImages(){
 function parseDate(){
 	firstDate =	Date.parse($(zeitraumStartEingabefeldId).val() + "," + $(zeitraumStartEingabefeldUhrzeitId).val());
 	secondDate = Date.parse($(zeitraumEndeEingabefeldId).val() + "," + $(zeitraumEndeEingabefeldUhrzeitId).val());
-	console.log(firstDate);	
 }
 
 function setDateDifference(){
 	minuteDifference = Math.round(secondDate - firstDate) / (1000*60);
-	console.log(minuteDifference);
 		 	if (minuteDifference <= 0){
 			buttonPlusActiv = 0;
 	} 		
