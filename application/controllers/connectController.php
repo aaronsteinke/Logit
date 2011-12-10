@@ -10,26 +10,18 @@ class ConnectController extends Zend_Controller_Action
 	public function facebookauthAction()
 	{
 		$this->_helper->viewRenderer->setNoRender(true);
-		$user = Application_Model_AuthUser::getAuthUser();
-				$user_id = $user->getId();
-		
-		if ($user_id)
-		{
-			// Hole Facebook Erlaubnis für user_checkins, user_events, user_location, user_photos, email
-			$url = 'https://graph.facebook.com/oauth/authorize?client_id=' . 
-			Zend_Registry::get('facebook_client_id') . 
-			'&redirect_uri=' .
-			Zend_Registry::get('facebook_redirect_uri') .
-			'&scope=user_checkins,user_events,user_location,user_photos,email';
 			
-			// Später evtl. auf JS Umbauen
-			// Gebe URL für die JS Weiterleitung zurück
-			//die ("1|$url");
-			$this->_redirect($url);
-		} else{
-			// Kein User eingeloggt
-			//die ("0|Bitte zuerst einloggen");
-		}
+		// Hole Facebook Erlaubnis für user_checkins, user_events, user_location, user_photos, email, offline_access
+		$url = 'https://graph.facebook.com/oauth/authorize?client_id=' . 
+		Zend_Registry::get('facebook_client_id') . 
+		'&redirect_uri=' .
+		Zend_Registry::get('facebook_redirect_uri') .
+		'&scope=user_checkins,user_events,user_location,user_photos,email, offline_access';
+		
+		// Später evtl. auf JS Umbauen
+		// Gebe URL für die JS Weiterleitung zurück
+		//die ("1|$url");
+		$this->_redirect($url);
 	}
 	
 	public function facebookcbAction()
@@ -54,11 +46,45 @@ class ConnectController extends Zend_Controller_Action
 			
 			$result = $this->requestFacebookAPI_GET($url, $arpost);
 			
+			$userdb = new Application_Model_UserMapper();
+			
+			
+			
 			if ($result === FALSE)
 			{
-				/// Error Page Redirect 
+				/// TODO Error Page Redirect 
 			} else {
 				parse_str($result, $arresult);
+				$auth = Zend_Auth::getInstance();
+				$usermapper = new Application_Model_UserMapper();
+				
+				// Prüfe ob User eingeloggt ist.  
+				if (!$auth->hasIdentity()) {	// Nicht eingeloggt
+					$auth = Zend_Auth::getInstance();
+					// Noch kein Handling von mehreren Accounts mit dem gleichen Token
+					$user = $usermapper->getOneByAccess_token($arresult['access_token']); 
+					if ($user){						
+						$adapter = new Application_Model_Adapter_AuthFb();
+						$adapter->setIdentity($user->getUserName());
+						$adapter->setCredential($arresult['access_token']);
+						$adapter->authenticate();
+						$result = $auth->authenticate($adapter);
+				
+						switch ($result->getCode()){
+							case Zend_Auth_Result::FAILURE_IDENTITY_NOT_FOUND:
+								$this->_redirect(index);
+								break;
+									
+							case Zend_Auth_Result::SUCCESS:
+								$this->_redirect(map);
+								break;  
+						}				
+					}
+					if (true) {
+						// TODO Profilinformation wird in die Anmeldefelder eingetragen, access_token in die DB geschrieben.
+					}
+					
+				}
 				
 				// Mit Access Token das UserProfil auslesen
 				$url = 'https://graph.facebook.com/me';
@@ -69,7 +95,7 @@ class ConnectController extends Zend_Controller_Action
 				if ($result === FALSE)
 				{
 					// Error Handling
-				} else {
+				} elseif (false){
 					$user = Application_Model_AuthUser::getAuthUser();
 					$user_id = $user->getId();
 					
@@ -83,10 +109,9 @@ class ConnectController extends Zend_Controller_Action
 					'facebook_id'			=> $arprofile['id']
 					);
 					
-					$userdb = new Application_Model_UserMapper();
 					$userdb->addFacebookData($user_id, $data);
 					$this->_redirect("/map");
-				}
+				} 
 			}
 		}
 	}		
