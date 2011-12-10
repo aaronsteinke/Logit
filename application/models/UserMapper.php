@@ -184,6 +184,28 @@ class Application_Model_UserMapper
     		return $arrUsers[0];
     	}
     }
+	
+		public function getOneByAccess_token($access_token){
+    	$db = $this->getDbTable()->getAdapter();
+    	
+    	$sql = ('	SELECT 	*
+					FROM 	user 
+					WHERE 	facebook_access_token = :access_token	');
+    	
+    	
+    	$stmt = new Zend_Db_Statement_Pdo($db, $sql);
+    	$stmt->bindParam(':access_token', $access_token);
+    	$stmt->execute();
+    	
+    	$resultSet = $stmt->fetchAll();
+    	$arrUsers = $this->createObjektArr($resultSet);
+    	
+		if (empty($arrUsers)) {
+    		return 0;
+    	} else {
+    		return $arrUsers[0];
+    	}
+    }
     
 	
     public function getFriendsForUser($idUser){
