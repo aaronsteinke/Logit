@@ -214,15 +214,16 @@ class Application_Model_UserMapper
 	
 	
 	// noch nicht fertig
-	private function searchUserByName( $name ){
+	public function searchUserByName( $name ){
     	$db = $this->getDbTable()->getAdapter();
 		 
 		$sql = ('	SELECT 	*
 					FROM 	user 
-					WHERE 	u.id_user LIKE % :name %	');
+					WHERE 	username LIKE :name	');
 		 
 		 
 		$stmt = new Zend_Db_Statement_Pdo($db, $sql);
+		$name = '%' . $name . '%';
 		$stmt->bindParam(':name', $name);
 		$stmt->execute();
 		 

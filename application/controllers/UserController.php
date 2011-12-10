@@ -65,8 +65,25 @@ class UserController extends Zend_Controller_Action {
 		$this -> _redirect(user);
 	}
 	
-	public function showFriendsForMapTimelineAction() {
-		
+	public function showFriendsForTimelineAction() {
+		$this->getResponse()->
+		$userMapper = new Application_Model_UserMapper();
+		$antwort = $userMapper->searchUserByName($this->getRequest()->getParam('name'));
+		print_r($antwort);
+		if ($this->_request->isXmlHttpRequest()) {
+			$content = array(
+				'author' => 'Steve',
+				'categories' => array(
+					'PHP', 'Zend', 'JavaScript'
+				)
+			);
+			$jsonData = Zend_Json::encode($content);
+			$this->getResponse()
+			->setHeader('Content-Type', 'text/html')
+			->setBody($jsonData)
+			->sendResponse();
+			exit;
+		}
 	}
 	
 	
