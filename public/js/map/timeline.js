@@ -29,6 +29,7 @@ function initializeMapTimeline(minimalDate, maximalDate){
 		buttonImageOnly: true,
 		showButtonPanel: true,
 		defaultDate: "+1w",
+		dateFormat: 'dd.mm.yy',
 					
 		onSelect: function( selectedDate ) {
 			var option = this.id == "zeitraumStartEingabefeldId" ? "minDate" : "maxDate",
