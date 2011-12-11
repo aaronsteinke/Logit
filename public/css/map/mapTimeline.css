@@ -63,7 +63,7 @@ TIMELINE NAVIGATION
 
 #navi{
 	width:100%;
-	/*width:855px;*/
+	min-width:855px;
 	height: 42px;
 	padding:9px 0px 0px 11px;
 	font-weight:bold;
