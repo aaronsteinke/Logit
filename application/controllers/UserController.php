@@ -11,8 +11,6 @@ class UserController extends Zend_Controller_Action {
 
 	public function indexAction() {
 		echo '<h3>Hier kann man einstellen wem man folgt und wem nicht!</h3>';
-		$this->_helper->layout()->disableLayout();
-		$this->_helper->viewRenderer->setNoRender(true);
 		$users = new Application_Model_UserMapper();
 		$arrAllUsers = $users->getAllUsers();
 		
@@ -36,8 +34,6 @@ class UserController extends Zend_Controller_Action {
 		}
 		
 		echo '<a href="/connect/facebookAuth/">connect with Facebook</a><br/>';
-		
-		
 		
 	}
 	
@@ -65,10 +61,39 @@ class UserController extends Zend_Controller_Action {
 		$this -> _redirect(user);
 	}
 	
-	public function showFriendsForMapTimelineAction() {
+	public function autocompleteFriendsAction()
+	{
+		$this->_helper->layout()->disableLayout();
+		$this->_helper->viewRenderer->setNoRender(true);
+		
+		$authUser = Application_Model_AuthUser::getAuthUser();
+		$query = $this->getRequest()->getParam('term');
+		$userMapper = new Application_Model_UserMapper();
+		
+		$arrUsers = $userMapper->searchFriendsByName($authUser->getId(), $query);
+		$arrNames = array();
+		foreach ($arrUsers as $obUser) {
+			array_push($arrNames, $obUser->getUserName());
+		}
+		$arrNames = Zend_Json::encode($arrNames);
+		print_r($arrNames);
 		
 	}
 	
-	
+	public function autocompleteUserAction()
+	{
+		$this->_helper->layout()->disableLayout();
+		$this->_helper->viewRenderer->setNoRender(true);
+		
+		$query = $this->getRequest()->getParam('term');
+		$userMapper = new Application_Model_UserMapper();
+		$arrUsers = $userMapper->searchUserByName($query);
+		$arrNames = array();
+		foreach ($arrUsers as $obUser) {
+			array_push($arrNames, $obUser->getUserName());
+		}
+		$arrNames = Zend_Json::encode($arrNames);
+		print_r($arrNames);
+	}
 
 }

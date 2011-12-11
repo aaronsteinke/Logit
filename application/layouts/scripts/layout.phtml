@@ -6,9 +6,9 @@
 <?php
 $controller = Zend_Controller_Front::getInstance()->getRequest()->getParam('controller');
 $auth = Zend_Auth::getInstance();
-// Kontextabhängiges Einladen von JavaScript dateien...
 
 
+// Kontextabhängiges Einladen von JavaScript und CSS dateien...
 
 foreach (scandir('js') as $inhalt){
 	if(substr($inhalt, -3) == '.js'){
@@ -69,7 +69,6 @@ endif;
 
 <!--
 
->>>>>>> upstream/master
 <!--[if !IE 7]>
   <style type="text/css">
       #wrap {display:table;height:100%}
@@ -108,7 +107,7 @@ if($auth->hasIdentity()){?>
 					<div class="profil">
 						  <div id="dropdown_bt">
 							<ul>
-								<li class="bgbutton"><a href="#" class="dropdown">Max Mustermann</a></li>
+								<li class="bgbutton"><a href="#" class="dropdown"><?php echo $auth->getIdentity(); ?></a></li> <!-- im User ein diferenziertes anzeigen des names ermöglichek -->
 								<li class="sublinks">
 									<a class="screw" href="#">Profileinstellungen</a>
 									<a class="chart-up" href="#">Logs verbessern</a>
