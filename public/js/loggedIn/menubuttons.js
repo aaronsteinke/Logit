@@ -1,6 +1,8 @@
 // Buttons
 
 //Ansicht Switch (Map/ Kalender)
+
+
   	$(document).ready(function(){
 $('#ajax').load('/alpha');
     $('#1').ansichtSwitch("on", 
