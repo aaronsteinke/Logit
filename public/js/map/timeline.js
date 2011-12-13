@@ -19,18 +19,26 @@ var numberOfContent = 1;
 
 var resizeIt = false;
 $(window).resize(function() {
- setContentWidth();
+
  if(resizeIt !== false)
     clearTimeout(resizeIt);
  resizeIt = setTimeout(sendImageRequest, 200); 
 });
 
 function initializeMapTimeline(minimalDate, maximalDate){
+	initializeMapTimelineFirstContent();
+}
+
+function initializeMapTimelineFirstContent(){
+	$('#content'+numberOfContent).load('map/get-timeline/username/timo', startgetDateImages());
+}
+
+function startgetDateImages(){	
 	initializeDatepicker();
 	initializeEvents();
 	initializeAddFriends();
 }
-			
+
 function initializeDatepicker(){
 	var dates = $( "#zeitraumStartEingabefeldId, #zeitraumEndeEingabefeldId" ).datepicker({
 		showOn: "button",	
@@ -165,8 +173,12 @@ function howMuchImages(){
 function sendImageRequest(){
 	setDateDifference();
 	howMuchImages();
-	$('#content2 .images').load('map/get-images-for-timeline/number-of-images/' + numberOfImages + "/first-date/" + firstDate.toString('yyyy-M-d') + "/first-time/"+ firstDate.toString('HH:mm') + "/second-date/" + secondDate.toString('yyyy-M-d') + "/second-time/"+ secondDate.toString('HH:mm'));
+	$('#content1 .images').load('map/get-images-for-timeline/number-of-images/' + numberOfImages + "/first-date/" + firstDate.toString('yyyy-M-d') + "/first-time/"+ firstDate.toString('HH:mm') + "/second-date/" + secondDate.toString('yyyy-M-d') + "/second-time/"+ secondDate.toString('HH:mm'));
 }
+
+
+
+
 
 
 
@@ -243,7 +255,8 @@ function areFriends (){
 						"white-space" : "nowrap",
 						"overflow" : "hidden"});
 						
-	 //$("#content2").clone.appendTo("#contents");
+	$('#content'+numberOfContent).load('map/get-timeline/name/timo' );
+
 	 
 
 	 
