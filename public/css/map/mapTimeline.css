@@ -4,58 +4,11 @@
 	background:url(../../images/timelineBg.gif) repeat-x  #CCC; 
 	width: 100%;
 	height: auto;
+	max-height:300px;
 	bottom:48px;
 	overflow:hidden;
 }
 
-#content1{
-	background-color:#FFF;
-	width: auto;
-	height:60px;
-	border:1px solid #999;
-	margin: 5px 0px 20px 12px;
-	white-space:nowrap;
-	overflow:hidden;
-}
-
-#profilImage{
-	float:left;
-	width:55px;
-}
-
-#profilInfo{
-	border-right:1px solid #d3d3d3;
-	padding:7px 5px 0px 10px;
-	width: 128px;
-	height: 53px;
-	float: left;	
-}
-
-.profilName {
-	color:#183152;
-	font-weight:bold;
-}
-
-.profilLogs {
-	color:#999999;
-}
-
-
-#images{
-	height: 60px;
-	margin-left:183px;
-	padding:5px 11px 0px 20px;
-}
-
-.timeLineImage {
-	padding: 5px 3px 0px 0px;	
-	float: left;
-	max-width: 45px;
-	height: 45px;
-}
-
-.noMouseEvent {
-}
 
 /*===================================
 TIMELINE NAVIGATION
@@ -208,23 +161,68 @@ FREUNDE HINZUFUEGEN
 	width: 237px;
 	height: 23px;
 	border:none;
+	
 
 }
 
 #friendSearchList{
 }
 
-#friendSearchList ul{
-	margin:0px 0 0 0;
-	border-top:1px solid #999;
+/*=========================================
+CONTENT 1
+=========================================*/
+
+#contents{
+	padding: 0 10px 0 0;
+	width:auto;
 }
 
-#friendSearchList li{
+#content1{
 	background-color:#FFF;
-	position:relative;
-	list-style: none;
+	width: auto;
+	height:60px;
 	border:1px solid #999;
-	border-top:none;
-	z-index: 999;
-	padding: 5px 0 5px 32px;
+	margin: 5px 0px 20px 12px;
+	white-space:nowrap;
+	overflow:hidden;
 }
+
+.profilImage{
+	float:left;
+	width:55px;
+}
+
+.profilInfo{
+	border-right:1px solid #d3d3d3;
+	padding:7px 5px 0px 10px;
+	width: 128px;
+	height: 53px;
+	float: left;	
+}
+
+.profilName {
+	color:#183152;
+	font-weight:bold;
+}
+
+.profilLogs {
+	color:#999999;
+}
+
+
+.images{
+	height: 60px;
+	margin-left:183px;
+	padding:5px 11px 0px 20px;
+}
+
+.timeLineImage {
+	padding: 5px 3px 0px 0px;	
+	float: left;
+	max-width: 45px;
+	height: 45px;
+}
+
+/*===========================================
+Content 2
+============================================*/
