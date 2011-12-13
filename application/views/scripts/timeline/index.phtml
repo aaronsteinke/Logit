@@ -6,7 +6,11 @@
 ?>
 
 <script type="text/javascript">
+	$(document).ready(function(){
+		initializeMapTimeline();
+		initializeTimeline();
 
+	});
 </script>
 
 
@@ -32,22 +36,28 @@
 			</div>	
     	</div>
 	</div>  
+	
   	<div id="content1">
-    	<div id="profilImage">
-    		<img src="images/profilimage.jpg" width="55" height="60" />
-		</div>
-		<div id="profilInfo">
-        	<div class="profilName">
-        		
-            </div>
-            <div class="profilLogs">
-            	Logs heute: 200<br />
-                Logs gesamt: 
-            </div>    
-        </div>
+		<div id="userprofil"> 		
+	    	<div id="profilImage">
+	    		<img src="images/profilimage.jpg" width="55" height="60" />
+			</div>
+			
+			<div id="profilInfo">
+	        	<div class="profilName">Max Muster</div>
+	            <div class="profilLogs">
+	            	Logs heute: 200<br />
+	                Logs gesamt: 222
+	            </div>    
+	        </div>
+   		</div><!--profil-->
+        
 		<div id="images">
-        </div>
-    </div>
+			<div id="imagewindow">
+				
+			</div>
+		</div>
+	</div><!--content--> 
 </div>
 
 
