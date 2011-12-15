@@ -15,6 +15,8 @@ var buttonMinusActiv = 1;
 
 var numberOfContent = 1;
 
+var myFriends = new Array();
+
 
 
 var resizeIt = false;
@@ -30,6 +32,7 @@ function initializeMapTimeline(minimalDate, maximalDate){
 }
 
 function initializeMapTimelineFirstContent(){
+
 	$('#content'+numberOfContent).load('map/get-timeline/username/timo', startgetDateImages());
 }
 
@@ -238,17 +241,10 @@ function loadFriendToTimeline(){
 }
 
 function checkFriendStatus(){
-	//noFriends();
-	areFriends();
-}
-
-
-function areFriends (){
 	numberOfContent ++;
 	console.log(numberOfContent);
-	$("#contents").add('#content'+numberOfContent);
-	//$("#content1").clone().appendTo('#contents').attr('id', 'content'+numberOfContent);
-	$("#content"+numberOfContent).css({"background-color" : "#FFF", 
+	$("#content"+numberOfContent).css({
+						"background-color" : "#FFF", 
 						"width" : "auto", 
 						"height" : "60px", 
 						"border" : "1px solid #999",
@@ -256,8 +252,19 @@ function areFriends (){
 						"white-space" : "nowrap",
 						"overflow" : "hidden"});
 						
-	$('#content'+numberOfContent).load('map/get-timeline/name/timo' );
+						
+	$("#contents").append($('<div id="content'+ numberOfContent +'"/>'));	
+	console.log($("#addFriendsTextfieldId").val());
+	$('#content'+numberOfContent).load('map/get-timeline/username/' + $("#addFriendsTextfieldId").val(), areFriends);
+}
 
+
+function areFriends (){
+	
+	
+	
+
+	var neuerFreund = myFriends.push($("#addFriendsTextfieldId").val());
 	 
 
 	 
