@@ -246,7 +246,8 @@ function checkFriendStatus(){
 function areFriends (){
 	numberOfContent ++;
 	console.log(numberOfContent);
-	$("#content1").clone().appendTo('#contents').attr('id', 'content'+numberOfContent);
+	$("#contents").add('#content'+numberOfContent);
+	//$("#content1").clone().appendTo('#contents').attr('id', 'content'+numberOfContent);
 	$("#content"+numberOfContent).css({"background-color" : "#FFF", 
 						"width" : "auto", 
 						"height" : "60px", 
