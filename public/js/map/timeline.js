@@ -34,6 +34,7 @@ function initializeMapTimeline(minimalDate, maximalDate){
 function initializeMapTimelineFirstContent(){
 
 	$('#content'+numberOfContent).load('map/get-timeline/username/timo', startgetDateImages());
+	numberOfContent ++;
 }
 
 function startgetDateImages(){	
@@ -176,7 +177,9 @@ function howMuchImages(){
 function sendImageRequest(){
 	setDateDifference();
 	howMuchImages();
-	$('#content1 .images').load('map/get-images-for-timeline/number-of-images/' + numberOfImages + "/first-date/" + firstDate.toString('yyyy-M-d') + "/first-time/"+ firstDate.toString('HH:mm') + "/second-date/" + secondDate.toString('yyyy-M-d') + "/second-time/"+ secondDate.toString('HH:mm'));
+	//for(var i = 0; i >= myFriends.length; i++){
+		$('#content' + numberOfContent +' .images').load('map/get-images-for-timeline/number-of-images/' + numberOfImages + "/first-date/" + firstDate.toString('yyyy-M-d') + "/first-time/"+ firstDate.toString('HH:mm') + "/second-date/" + secondDate.toString('yyyy-M-d') + "/second-time/"+ secondDate.toString('HH:mm'));
+	//}
 }
 
 
@@ -240,9 +243,8 @@ function loadFriendToTimeline(){
 	checkFriendStatus();
 }
 
-function checkFriendStatus(){
-	numberOfContent ++;
-	console.log(numberOfContent);
+function checkFriendStatus(){					
+	$("#contents").append($('<div id="content'+ numberOfContent +'"/>'));	
 	$("#content"+numberOfContent).css({
 						"background-color" : "#FFF", 
 						"width" : "auto", 
@@ -251,24 +253,15 @@ function checkFriendStatus(){
 						"margin" : "5px 0px 20px 12px",
 						"white-space" : "nowrap",
 						"overflow" : "hidden"});
-						
-						
-	$("#contents").append($('<div id="content'+ numberOfContent +'"/>'));	
-	console.log($("#addFriendsTextfieldId").val());
-	$('#content'+numberOfContent).load('map/get-timeline/username/' + $("#addFriendsTextfieldId").val(), areFriends);
+						console.log($('#content'+ numberOfContent).load('map/get-timeline/username/' + $("#addFriendsTextfieldId").val(), areFriends));
+	$('#content'+ numberOfContent).load('map/get-timeline/username/' + $("#addFriendsTextfieldId").val(), areFriends);
 }
 
 
 function areFriends (){
-	
-	
-	
-
-	var neuerFreund = myFriends.push($("#addFriendsTextfieldId").val());
-	 
-
-	 
-	 
+	numberOfContent ++;
+	var neuerFreund = myFriends.push($("#addFriendsTextfieldId").val());	 
+	console.log(myFriends.length);
 }
 
 function noFriends(){
