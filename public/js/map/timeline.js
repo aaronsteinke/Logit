@@ -165,7 +165,7 @@ function howMuchImages(){
 function sendImageRequest(){
 	setDateDifference();
 	howMuchImages();
-	$('#content2 .images').load('map/get-images-for-timeline/number-of-images/' + numberOfImages + "/first-date/" + firstDate.toString('yyyy-M-d') + "/first-time/"+ firstDate.toString('HH:mm') + "/second-date/" + secondDate.toString('yyyy-M-d') + "/second-time/"+ secondDate.toString('HH:mm'));
+	$('#content1 .images').load('map/get-images-for-timeline/number-of-images/' + numberOfImages + "/first-date/" + firstDate.toString('yyyy-M-d') + "/first-time/"+ firstDate.toString('HH:mm') + "/second-date/" + secondDate.toString('yyyy-M-d') + "/second-time/"+ secondDate.toString('HH:mm'));
 }
 
 
@@ -232,22 +232,18 @@ function checkFriendStatus(){
 
 
 function areFriends (){
-	numberOfContent ++;
-	console.log(numberOfContent);
-	$("#content1").clone().appendTo('#contents').attr('id', 'content'+numberOfContent);
-	$("#content"+numberOfContent).css({"background-color" : "#FFF", 
-						"width" : "auto", 
-						"height" : "60px", 
-						"border" : "1px solid #999",
-						"margin" : "5px 0px 20px 12px",
-						"white-space" : "nowrap",
-						"overflow" : "hidden"});
-						
-	 //$("#content2").clone.appendTo("#contents");
-	 
-
-	 
-	 
+	if($("#addFriendsTextfieldId").val() !=  "" && $("#addFriendsTextfieldId").val() !=  "Freunde hinzufügen"  ){
+		numberOfContent ++;
+		$("#content1").clone().appendTo('#contents').attr('id', 'content'+numberOfContent);
+		$("#content"+numberOfContent).css({"background-color" : "#FFF", 
+							"width" : "auto", 
+							"height" : "60px", 
+							"border" : "1px solid #999",
+							"margin" : "5px 0px 20px 12px",
+							"white-space" : "nowrap",
+							"overflow" : "hidden"});
+		
+	}	
 }
 
 function noFriends(){
