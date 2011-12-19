@@ -240,21 +240,22 @@ function initializeAddFriends(){
 }
 
 function loadFriendToTimeline(){
-	checkFriendStatus();
+	if( $("#addFriendsTextfieldId").val() != "" && $("#addFriendsTextfieldId").val() != "Freunde hinzufügen"){					
+		$("#contents").append($('<div id="content'+ numberOfContent +'"/>'));	
+		$("#content"+numberOfContent).css({
+							"background-color" : "#FFF", 
+							"width" : "auto", 
+							"height" : "60px", 
+							"border" : "1px solid #999",
+							"margin" : "5px 0px 20px 12px",
+							"white-space" : "nowrap",
+							"overflow" : "hidden"});
+		$('#content'+ numberOfContent).load('map/get-timeline/username/' + $("#addFriendsTextfieldId").val(), areFriends);
+	}
 }
 
-function checkFriendStatus(){					
-	$("#contents").append($('<div id="content'+ numberOfContent +'"/>'));	
-	$("#content"+numberOfContent).css({
-						"background-color" : "#FFF", 
-						"width" : "auto", 
-						"height" : "60px", 
-						"border" : "1px solid #999",
-						"margin" : "5px 0px 20px 12px",
-						"white-space" : "nowrap",
-						"overflow" : "hidden"});
-						console.log($('#content'+ numberOfContent).load('map/get-timeline/username/' + $("#addFriendsTextfieldId").val(), areFriends));
-	$('#content'+ numberOfContent).load('map/get-timeline/username/' + $("#addFriendsTextfieldId").val(), areFriends);
+function checkFriendStatus(){
+		console.log($("#content1"));
 }
 
 
