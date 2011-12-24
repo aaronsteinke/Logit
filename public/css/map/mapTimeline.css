@@ -172,12 +172,12 @@ FREUNDE HINZUFUEGEN
 CONTENT 1
 =========================================*/
 
-#contents{
+#bilderInhalte{
 	padding: 0 10px 0 0;
 	width:auto;
 }
 
-#content1{
+#bilderInhalt1{
 	background-color:#FFF;
 	width: auto;
 	height:60px;
