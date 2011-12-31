@@ -188,9 +188,7 @@ function sendImageRequest(){
 
 
 function initializeAddFriends(){
-	
-	//$('#scrollbar2').tinyscrollbar({ axis: 'y'});
-	
+		
 	$("#addFriendsButton").click( function() {
 		checkIfInTimeline();
 	});
