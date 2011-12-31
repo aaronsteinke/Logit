@@ -111,7 +111,7 @@ function timelineDragMove(){
 				}else{
   					return newHeight = parseInt($("#timeline").css("height")) +(startPosition - (event.pageY - this.offsetTop));
   					
-  				}		
+  				}
   			});
   			setMapBottom();
   		}

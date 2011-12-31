@@ -168,6 +168,9 @@ FREUNDE HINZUFUEGEN
 #friendSearchList{
 }
 
+
+
+
 /*=========================================
 CONTENT 1
 =========================================*/
@@ -175,7 +178,21 @@ CONTENT 1
 #bilderInhalte{
 	padding: 0 10px 0 0;
 	width:auto;
+	height:100%;
 }
+
+.scroll-pane{
+	width: 100px;
+	height: 200px;
+	overflow: auto;
+}
+
+.horizontal-only{
+	height:auto;
+	max-height: 252px;
+	overflow: auto;
+}
+
 
 #bilderInhalt1{
 	background-color:#FFF;
@@ -223,6 +240,4 @@ CONTENT 1
 	height: 45px;
 }
 
-/*===========================================
-Content 2
-============================================*/
+
