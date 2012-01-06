@@ -13,22 +13,41 @@ var maximalMinuteDifference = 100000000;
 var buttonPlusActiv = 1;
 var buttonMinusActiv = 1;
 
+var numberOfBilder = 1;
+
+var myFriends = new Array();
+
 var resizeIt = false;
 $(window).resize(function() {
+
  if(resizeIt !== false)
     clearTimeout(resizeIt);
  resizeIt = setTimeout(sendImageRequest, 200); 
-  
 });
 
 function initializeMapTimeline(minimalDate, maximalDate){
-			
+	initializeMapTimelineFirstContent();
+}
+
+function initializeMapTimelineFirstContent(){
+	$('#bilderInhalt' + numberOfBilder).load('map/get-timeline/username/timo', startgetDateImages());
+	numberOfBilder ++;
+}
+
+function startgetDateImages(){	
+	initializeDatepicker();
+	initializeEvents();
+	initializeAddFriends();
+}
+
+function initializeDatepicker(){
 	var dates = $( "#zeitraumStartEingabefeldId, #zeitraumEndeEingabefeldId" ).datepicker({
 		showOn: "button",	
 		buttonImage: "images/calendar.gif",
 		buttonImageOnly: true,
 		showButtonPanel: true,
 		defaultDate: "+1w",
+		dateFormat: 'dd.mm.yy',
 					
 		onSelect: function( selectedDate ) {
 			var option = this.id == "zeitraumStartEingabefeldId" ? "minDate" : "maxDate",
@@ -43,7 +62,9 @@ function initializeMapTimeline(minimalDate, maximalDate){
 	});	
 	setDatePicker();
 	sendImageRequest();
+}
 
+function initializeEvents(){
 	$('#zeitraumPlus').click(function zoomIn() {
 		if(buttonPlusActiv == 1){
 			buttonMinusActiv = 1;
@@ -101,23 +122,13 @@ function initializeMapTimeline(minimalDate, maximalDate){
 		sendImageRequest();
 	});	
 	
-	$("input[type='text']").change( function() {
+	$("zeitraum").change( function() {
 		parseDate();
 		sendImageRequest();
 	});
-	
-	$('#addFriendsTextfieldId').keyup(function(element){
-		$('#friendSearchList').empty();	
-		value1 = $('#addFriendsTextfieldId').val();
-		$('#friendSearchList').load('map/get-user-for-timeline/var1/' + value1);
-	});
 }
 
-function howMuchImages(){
-	windowWidth =$(document).width(); 
-	imageWidthAll = (windowWidth - 24 - $("#profilImage").width() - $("#profilInfo").width() - 11); 
-	numberOfImages = Math.round(imageWidthAll / (48 + 3));
-}
+
 
 function parseDate(){
 	firstDate =	Date.parse($(zeitraumStartEingabefeldId).val() + "," + $(zeitraumStartEingabefeldUhrzeitId).val());
@@ -148,8 +159,116 @@ function setDatePicker(){
 }
 
 
+//////////////////////////////////////////
+/////Image Request bilderInhalt1////////////////
+////////////////////////////////////////
+
+
+function howMuchImages(){
+	windowWidth =$(document).width(); 
+	imageWidthAll = (windowWidth - 24 - $("#profilImage").width() - $("#profilInfo").width() - 11); 
+	numberOfImages = Math.round(imageWidthAll / (48 + 3));
+}
+
+
 function sendImageRequest(){
 	setDateDifference();
 	howMuchImages();
-	$('#images').load('map/get-images-for-timeline/number-of-images/' + numberOfImages + "/first-date/" + firstDate.toString('yyyy-M-d') + "/first-time/"+ firstDate.toString('HH:mm') + "/second-date/" + secondDate.toString('yyyy-M-d') + "/second-time/"+ secondDate.toString('HH:mm'));
+	for(var i = 0; i <= myFriends.length; i++){
+		var bildZahl = i+1;
+		$('#bilderInhalt' + bildZahl +' .images').load('map/get-images-for-timeline/number-of-images/' + numberOfImages + "/first-date/" + firstDate.toString('yyyy-M-d') + "/first-time/"+ firstDate.toString('HH:mm') + "/second-date/" + secondDate.toString('yyyy-M-d') + "/second-time/"+ secondDate.toString('HH:mm') + "/username/" + "timo");
+	}
+}
+
+
+//////////////////////////////////////////
+/////Freunde zur Timeline////////////////
+////////////////////////////////////////
+
+
+
+function initializeAddFriends(){
+		
+	$("#addFriendsButton").click( function() {
+		checkIfInTimeline();
+	});
+	
+	$("#addFriendsTextfield").keypress(function(event) {
+  		if ( event.which == 13 ) {
+  			checkIfInTimeline();
+  		}
+ 	});
+ 	
+ 	$("#addFriendsTextfield").focusin(function(event) {
+ 		if($("#addFriendsTextfieldId").val() == "Freunde hinzufügen"){
+  			$("#addFriendsTextfieldId").css("background-color", "#FFF");
+  			$("#addFriendsTextfieldId").val("");
+  		}
+ 	});
+
+	$(function () {
+		var cache = {},
+			lastXhr;
+		$( "#addFriendsTextfieldId" ).autocomplete({
+			minLength: 2,
+			select: function(event, ui) { 
+				loadFriendToTimeline();
+			},
+			
+			source: function( request, response ) {
+				
+				var term = request.term;
+				if ( term in cache ) {
+					response( cache[ term ] );
+					return;
+				}
+
+				lastXhr = $.getJSON( "/User/autocomplete-friends", request, function( data, status, xhr ) {
+					cache[ term ] = data;
+					if ( xhr === lastXhr ) {
+						response( data );
+					}
+				});
+			}
+		});
+	});	
+}
+
+function checkIfInTimeline(){
+	if( $("#addFriendsTextfieldId").val() != "" && $("#addFriendsTextfieldId").val() != "Freunde hinzufügen"){
+		for(var i = 0; i <= myFriends.length; i++){
+			if($("#addFriendsTextfieldId").val() == myFriends[i]){
+				return;
+			}
+			else{
+				loadFriendToTimeline();
+			}
+		}	
+		
+}
+
+function loadFriendToTimeline(){						
+		$("#bilderInhalte").append($('<div id="bilderInhalt'+ numberOfBilder +'"/>'));	
+		$("#bilderInhalt"+numberOfBilder).css({
+							"background-color" : "#FFF", 
+							"width" : "auto", 
+							"height" : "60px", 
+							"border" : "1px solid #999",
+							"margin" : "5px 0px 20px 12px",
+							"white-space" : "nowrap",
+							"overflow" : "hidden"});
+		$('#bilderInhalt'+ numberOfBilder).load('map/get-timeline/username/' + $("#addFriendsTextfieldId").val(), areFriends);
+	}
+}
+
+
+
+function areFriends (){
+	numberOfBilder ++;
+	var neuerFreund = myFriends.push($("#addFriendsTextfieldId").val());	 
+}
+
+function noFriends(){
+	$("#addFriendsTextfieldId").css("background-color", "#F00")
+	$("#addFriendsTextfieldId").val("Sie können nur Freunde hinzufügen");
 }
