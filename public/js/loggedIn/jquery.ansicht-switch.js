@@ -4,6 +4,7 @@
 *  Author: Daniel LaBare                        *
 *  Date:   2/4/2008                             *
 ************************************************/
+
 jQuery.fn.ansichtSwitch = function(start_state, switched_on_callback, switched_off_callback, options) {
 	var state = start_state == 'on' ? start_state : 'off';
 	// define default settings

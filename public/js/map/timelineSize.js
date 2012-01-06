@@ -6,6 +6,7 @@ var footerDifference = "130px";
 var footerSpeed = 500;
 
 var dragActiv = 0;
+var startPosition;
 var timelineDragMax = 300;
 var timelineDragNormal = 138
 var timelineDragMin = 44;
@@ -28,6 +29,10 @@ function setTimelineAndMapBottom(){
 	setMapBottom();
 	setFooterBottom();
 }
+
+//////////////////////////////
+//Footer Animations /////////
+/////////////////////////////
 
 function setFooterHeight() {
 	$("#footer").dblclick(function(){
@@ -53,6 +58,11 @@ function footerAcitv(){
 	}
 }
 
+
+////////////////////////////////////////////////
+//Funktionen zum Ausrichten der Elemente //////
+//////////////////////////////////////////////
+
 function setFooterBottom(){
 	$("#footer").css("bottom", function(bottomPx) {
   		return bottomPx = 0;
@@ -71,10 +81,16 @@ function setMapBottom(){
 		});	
 }
 
+//////////////////////////////
+//Timeline Drag n' Drop //////
+/////////////////////////////
+
 function timelineDragMove(){
-	$('#timeline').mousedown(function(){
-  		dragActiv = 1;
-  		startPosition = event.pageY-this.offsetTop;
+	$('#timeline').mousedown(function(event){
+		if(event.target.id == "navi" || event.target.id == "resizeTimeline"){
+			startPosition = event.pageY-this.offsetTop;
+  			dragActiv = 1; 
+  		}
   	});
   	$(document).mouseup(function(){
   		dragActiv = 0;
@@ -82,7 +98,7 @@ function timelineDragMove(){
   	$(document).mouseleave(function(){
   		dragActiv = 0;
   	});
-  	$(document).mousemove(function(){
+  	$(document).mousemove(function(event){
   		if(dragActiv == 1){
   			timelineStatus = 5;
   			$("#timeline").css("height", function(newHeight) {
@@ -93,7 +109,7 @@ function timelineDragMove(){
 					dragActiv = 0;
 					return timelineDragMin;
 				}else{
-  					return newHeight = parseInt($("#timeline").css("height")) + (startPosition - (event.pageY - this.offsetTop));
+  					return newHeight = parseInt($("#timeline").css("height")) +(startPosition - (event.pageY - this.offsetTop));
   					
   				}		
   			});
@@ -104,33 +120,35 @@ function timelineDragMove(){
 }
 
 function timelineAnimation(){
-	$('#timeline').dblclick(function(){
-		if(timelineStatus == 1){
-			timelineStatus = 101;
-			$("#timeline").animate({height: timelineDragMin}, timelineSpeed, setTimelineStatus);	
-			$("#map").animate({bottom:"+=" + timelineDragMapMin}, timelineSpeed );	
-		}else if(timelineStatus == 2){
-			timelineStatus = 102;
-			$("#timeline").animate({height: timelineDragNormal}, timelineSpeed, setTimelineStatus);
-			$("#map").animate({bottom:"-=" + timelineDragMapMin}, timelineSpeed );
-		}else if(timelineStatus == 3){
-			timelineStatus = 103;
-			$("#timeline").animate({height: timelineDragMax}, timelineSpeed, setTimelineStatus );
-			$("#map").animate({bottom:"+=" + timelineDragMapMax}, timelineSpeed );
-		}else if(timelineStatus == 4){
-			timelineStatus = 104;
-			$("#timeline").animate({height: timelineDragNormal}, timelineSpeed, setTimelineStatus );
-			$("#map").animate({bottom:"-=" + timelineDragMapMax}, timelineSpeed);
-		}else if(timelineStatus = 5 && parseInt($("#timeline").css("height")) < timelineDragNormal) {
-			timelineStatus = 102;
-			animateMapToTimeline = parseInt($("#footer").css("height")) + timelineDragNormal;
-			$("#timeline").animate({height: timelineDragNormal}, timelineSpeed, setTimelineStatus);
-			$("#map").animate({bottom: animateMapToTimeline}, timelineSpeed);
-		}else if(timelineStatus = 5 && parseInt($("#timeline").css("height")) > timelineDragNormal) {
-			timelineStatus = 104;
-			animateMapToTimeline = parseInt($("#footer").css("height")) + timelineDragNormal;
-			$("#timeline").animate({height: timelineDragNormal}, timelineSpeed, setTimelineStatus);
-			$("#map").animate({bottom: animateMapToTimeline}, timelineSpeed);
+	$('#timeline').dblclick(function(event){
+		if(event.target.id == "navi" || event.target.id == "timeline"){
+			if(timelineStatus == 1){
+				timelineStatus = 101;
+				$("#timeline").animate({height: timelineDragMin}, timelineSpeed, setTimelineStatus);	
+				$("#map").animate({bottom:"+=" + timelineDragMapMin}, timelineSpeed );	
+			}else if(timelineStatus == 2){
+				timelineStatus = 102;
+				$("#timeline").animate({height: timelineDragNormal}, timelineSpeed, setTimelineStatus);
+				$("#map").animate({bottom:"-=" + timelineDragMapMin}, timelineSpeed );
+			}else if(timelineStatus == 3){
+				timelineStatus = 103;
+				$("#timeline").animate({height: timelineDragMax}, timelineSpeed, setTimelineStatus );
+				$("#map").animate({bottom:"+=" + timelineDragMapMax}, timelineSpeed );
+			}else if(timelineStatus == 4){
+				timelineStatus = 104;
+				$("#timeline").animate({height: timelineDragNormal}, timelineSpeed, setTimelineStatus );
+				$("#map").animate({bottom:"-=" + timelineDragMapMax}, timelineSpeed);
+			}else if(timelineStatus = 5 && parseInt($("#timeline").css("height")) < timelineDragNormal) {
+				timelineStatus = 102;
+				animateMapToTimeline = parseInt($("#footer").css("height")) + timelineDragNormal;
+				$("#timeline").animate({height: timelineDragNormal}, timelineSpeed, setTimelineStatus);
+				$("#map").animate({bottom: animateMapToTimeline}, timelineSpeed);
+			}else if(timelineStatus = 5 && parseInt($("#timeline").css("height")) >= timelineDragNormal) {
+				timelineStatus = 104;
+				animateMapToTimeline = parseInt($("#footer").css("height")) + timelineDragNormal;
+				$("#timeline").animate({height: timelineDragNormal}, timelineSpeed, setTimelineStatus);
+				$("#map").animate({bottom: animateMapToTimeline}, timelineSpeed);
+			}
 		}
 	});
 }
@@ -147,3 +165,4 @@ function setTimelineStatus(){
 	}
 	
 }
+//

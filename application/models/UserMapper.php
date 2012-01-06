@@ -184,6 +184,29 @@ class Application_Model_UserMapper
     		return $arrUsers[0];
     	}
     }
+	
+	
+	public function getOneByAccess_token($access_token){
+    	$db = $this->getDbTable()->getAdapter();
+    	
+    	$sql = ('	SELECT 	*
+					FROM 	user 
+					WHERE 	facebook_access_token = :access_token	');
+    	
+    	
+    	$stmt = new Zend_Db_Statement_Pdo($db, $sql);
+    	$stmt->bindParam(':access_token', $access_token);
+    	$stmt->execute();
+    	
+    	$resultSet = $stmt->fetchAll();
+    	$arrUsers = $this->createObjektArr($resultSet);
+    	
+		if (empty($arrUsers)) {
+    		return 0;
+    	} else {
+    		return $arrUsers[0];
+    	}
+    }
     
 	
     public function getFriendsForUser($idUser){
@@ -210,19 +233,17 @@ class Application_Model_UserMapper
 		$db = $this->getDbTable()->getAdapter();
 		$db->update('user', $data, "id = $user_id");
 	}
-    
 	
-	
-	// noch nicht fertig
-	private function searchUserByName( $name ){
+	public function searchUserByName( $name ){
     	$db = $this->getDbTable()->getAdapter();
 		 
 		$sql = ('	SELECT 	*
 					FROM 	user 
-					WHERE 	u.id_user LIKE % :name %	');
+					WHERE 	username LIKE :name	');
 		 
 		 
 		$stmt = new Zend_Db_Statement_Pdo($db, $sql);
+		$name = '%' . $name . '%';
 		$stmt->bindParam(':name', $name);
 		$stmt->execute();
 		 
@@ -230,6 +251,28 @@ class Application_Model_UserMapper
 		$arrRestaurants = $this->createObjektArr($resultSet);
 		return $arrRestaurants;
 	}
+	
+	public function searchFriendsByName($idUser, $username){
+    	$db = $this->getDbTable()->getAdapter();
+		 
+		$sql = ('	SELECT 	f.*
+					FROM 	user f, 
+							user_friends u 
+					WHERE 	u.id_user = :idUser
+					AND 	f.id = u.id_friend	
+					AND		f.username LIKE :name ');
+		 
+		$username = '%'. $username .'%';
+		
+		$stmt = new Zend_Db_Statement_Pdo($db, $sql);
+		$stmt->bindParam(':idUser', $idUser);
+		$stmt->bindParam(':name', $username);
+		$stmt->execute();
+		 
+		$resultSet = $stmt->fetchAll();
+		$arrRestaurants = $this->createObjektArr($resultSet);
+		return $arrRestaurants;
+    }
 	
 	
    	private function createObjekt($result){

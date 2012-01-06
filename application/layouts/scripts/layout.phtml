@@ -5,7 +5,11 @@
 <link href="/css/vader/jquery-ui-1.8.16.custom.css" rel="stylesheet" type="text/css" />
 <?php
 $controller = Zend_Controller_Front::getInstance()->getRequest()->getParam('controller');
-// Kontextabhängiges Einladen von JavaScript dateien...
+$auth = Zend_Auth::getInstance();
+
+
+// Kontextabhängiges Einladen von JavaScript und CSS dateien...
+
 foreach (scandir('js') as $inhalt){
 	if(substr($inhalt, -3) == '.js'){
 ?><script type="text/javascript" src="/js/<?php echo $inhalt; ?> "></script>
@@ -13,14 +17,37 @@ foreach (scandir('js') as $inhalt){
 	}
 }
 
+if($auth->hasIdentity()){
+	
+	if(file_exists('js/loggedIn')){
+		foreach (scandir('js/loggedIn') as $inhalt){
+			if(substr($inhalt, -3) == '.js'){
+?><script type="text/javascript" src="/js/loggedIn/<?php echo $inhalt; ?> "></script>
+<?php 
+			}
+		}
+	}
+}
+
 if(file_exists('js/'. $controller)):
 	foreach (scandir('js/'. $controller) as $inhalt){
 		if(substr($inhalt, -3) == '.js'){
-	?><script type="text/javascript" src="/js/<?php echo $controller . '/' . $inhalt; ?> "></script>
-	<?php 
+?><script type="text/javascript" src="/js/<?php echo $controller . '/' . $inhalt; ?> "></script>
+<?php 
 		}
 	}
 endif;
+
+if($auth->hasIdentity()){
+	if(file_exists('css/loggedIn')){
+		foreach (scandir('css/loggedIn') as $inhalt){
+			if(substr($inhalt, -4) == '.css'){
+?><link href="/css/loggedIn/<?php echo $inhalt; ?>" rel="stylesheet" type="text/css" />
+<?php 
+			}
+		}
+	}
+}
 
 foreach (scandir('css') as $inhalt){
 	if(substr($inhalt, -4) == '.css'){
@@ -31,43 +58,13 @@ foreach (scandir('css') as $inhalt){
 if(file_exists('css/'. $controller)):
 	foreach (scandir('css/'. $controller) as $inhalt){
 		if(substr($inhalt, -4) == '.css'){
-	?><link href="css/<?php echo $controller . '/' . $inhalt; ?> " rel="stylesheet" type="text/css" />
-	<?php 
+?><link href="/css/<?php echo $controller . '/' . $inhalt; ?> " rel="stylesheet" type="text/css" />
+<?php 
 		}
 	}
 endif;
 ?>
 
-<script type="text/javascript">
-	$(document).ready(function() {
-		$(".various3").fancybox({
-		 'width': 1000,
-			'height': 700,
-			'autoScale'			: false,
-			'transitionIn'		: 'none',
-			'transitionOut'		: 'none',
-			'type'				: 'ajax'
-		});
-	});
-</script>
-
-  <script type="text/javascript">
-$(document).ready(function(){
-	$('#1').ansichtSwitch("<?php if ($controller == 'map') {echo 'off';} else {echo 'on';}?>", 
-		function() {
-			$(location).attr('href','map');
-		},
-		function() {
-			$(location).attr('href','timeline');
-		},
-		{
-		switch_on_container_path: 'images/ansicht_switch_container_off.png'
-	});
-}); 
-  </script>
-<!--
-
->>>>>>> upstream/master
 <!--[if !IE 7]>
   <style type="text/css">
       #wrap {display:table;height:100%}
@@ -80,6 +77,22 @@ $(document).ready(function(){
 $auth = Zend_Auth::getInstance();
 
 if($auth->hasIdentity()){?>
+	
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#1').ansichtSwitch("<?php if ($controller == 'map') {echo 'off';} else {echo 'on';}?>", 
+ 		function() {
+  			$(location).attr('href','map');
+ 		},
+ 		function() {
+  			$(location).attr('href','timeline');
+ 		},{
+ 		switch_on_container_path: 'images/ansicht_switch_container_off.png'
+	});
+}); 
+</script>
+
+
 	<div id="wrap"  unselectable="on" class="unselectable">
 		<div id="header">
 			<div class="page">
@@ -90,7 +103,7 @@ if($auth->hasIdentity()){?>
 					<div class="profil">
 						  <div id="dropdown_bt">
 							<ul>
-								<li class="bgbutton"><a href="#" class="dropdown">Max Mustermann</a></li>
+								<li class="bgbutton"><a href="#" class="dropdown"><?php echo $auth->getIdentity(); ?></a></li> <!-- im User ein diferenziertes anzeigen des names ermöglichek -->
 								<li class="sublinks">
 									<a class="screw" href="#">Profileinstellungen</a>
 									<a class="chart-up" href="#">Logs verbessern</a>
