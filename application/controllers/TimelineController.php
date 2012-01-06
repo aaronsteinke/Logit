@@ -10,6 +10,4 @@ class TimelineController extends Zend_Controller_Action {
     	
     }
 
-   
-	
 }

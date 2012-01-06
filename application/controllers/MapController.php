@@ -36,7 +36,6 @@ class MapController extends Zend_Controller_Action
 		*/
 	}
 	
-	
 	public function getImagesForTimelineAction(){
 		$this->_helper->layout()->disableLayout();		
 		
@@ -60,13 +59,12 @@ class MapController extends Zend_Controller_Action
 	}
 	
 	public function getUserForTimelineAction(){
-		$this->_helper->layout()->disableLayout();	
+		$this->_helper->layout()->disableLayout();
 	}
 	
 	public function testAction(){
 		$this->_helper->viewRenderer->setNoRender(true);
 		$authUser = Application_Model_AuthUser::getAuthUser();
-		
 	}
 	
 	public function getTimelineAction(){
