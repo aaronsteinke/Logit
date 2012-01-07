@@ -131,6 +131,19 @@ HEADER (includes Logo, Login,
 	float:right;
 }
 
+
+#suchFeld{
+	border:1px solid #999;
+	background-color:#FFF;
+	margin-left:13px;
+	height:23px;
+	width:268px;
+	float:left;
+	margin-top:30px;
+	margin-left:120px;
+}
+
+.ui-autocomplete-loading { background: white url('images/ui-anim_basic_16x16.gif') right center no-repeat; }
 	
 /*===================================
 CONTENT
