@@ -189,7 +189,7 @@ function sendImageRequest(){
 }
 
 function imagesLoaded(){
-	$("#toolTipImage").css({ visibility:visible});
+	
 }
 
 
