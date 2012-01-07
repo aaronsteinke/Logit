@@ -9,8 +9,12 @@ class gcalController extends Zend_Controller_Action {
 		$gcal_api_key = Zend_Registry::get('gcal_api_key');
 		$gcal_max_results = Zend_Registry::get('gcal_max_results');
 		
-		//Google Kalendar id		
-		$gcal_calendar_id = "steinke.aaron@googlemail.com";
+		//Google Kalendar id
+		$user = Application_Model_AuthUser::getAuthUser();
+		print_r($user);	
+		$gcal_calendar_id = $user->getUserCalendar();
+		
+		print_r($gcal_calendar_id);
 		
 		$url = "https://www.googleapis.com/calendar/v3/calendars/" . $gcal_calendar_id . "/events?&maxResults=" . $gcal_max_results . "&pp=1&key=" . $gcal_api_key;
 		$arresult = json_decode($this->gcal_api_get($url, $gcal_api_key),true);
@@ -20,7 +24,6 @@ class gcalController extends Zend_Controller_Action {
 			$event_title = 	$value['summary'];
 			$event_start = 	(isset($value['start']['dateTime']))? $value['start']['dateTime']:$value['start']['date'];
 			$event_end = 	(isset($value['end']['dateTime']))? $value['end']['dateTime']:$value['start']['date'] . 'T23:59:59+2:00';
-			$user = Application_Model_AuthUser::getAuthUser();
 			$user_id = $user->getId();
 			$eventsdb = new Application_Model_EventsMapper();
 				
@@ -28,9 +31,8 @@ class gcalController extends Zend_Controller_Action {
 				$eventsdb->create($gcal_id,$event_title,$event_start,$event_end,$user_id);
 			}
 		}
-
+		$this->_redirect("/user");
 	}
-
 
 	
 	private function gcal_api_get($url) {

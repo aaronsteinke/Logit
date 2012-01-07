@@ -110,7 +110,7 @@ class ConnectController extends Zend_Controller_Action
 					'facebook_id'			=> $arprofile['id']
 					);
 					
-					$userdb->addFacebookData($user_id, $data);
+					$userdb->addData($user_id, $data);
 					$this->_redirect("/map");
 				} 
 			}

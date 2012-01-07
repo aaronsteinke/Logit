@@ -40,6 +40,7 @@ class Application_Model_UserMapper
     	$hits = 0;
     	$lastName = 'test';
     	$firstName = 'test';
+		$gcal_calendar_id = "kein Kalender";
     	
     	
     	$data = array(
@@ -53,7 +54,8 @@ class Application_Model_UserMapper
     		'reg_time' => date('Y-m-d H:i:s'),
     		'last_login' => date('Y-m-d H:i:s'),
     		'hits' => $hits,
-    		'birthday' => $birthday
+    		'birthday' => $birthday,
+    		'gcal_calendar_id' => $gcal_calendar_id
     	);
     	
     	$strWhereClause = $this->getDbTable()
@@ -228,11 +230,11 @@ class Application_Model_UserMapper
 		return $arrRestaurants;
     }
 	
-	public function addFacebookData ($user_id, $data)
+	public function addData($user_id, $data)
 	{
 		$db = $this->getDbTable()->getAdapter();
 		$db->update('user', $data, "id = $user_id");
-	}
+	}	
 	
 	public function searchUserByName( $name ){
     	$db = $this->getDbTable()->getAdapter();
@@ -291,7 +293,8 @@ class Application_Model_UserMapper
 		            $result->reg_time,
 		            $result->last_login,
 		            $result->hits,
-		            $result->birthday
+		            $result->birthday,
+		            $result->gcal_calendar_id
 				);
 	    	} else {
 	    		$obUser = new Application_Model_User(
@@ -305,7 +308,8 @@ class Application_Model_UserMapper
 		            $result['reg_time'],
 		            $result['last_login'],
 		            $result['hits'],
-		            $result['birthday']
+		            $result['birthday'],
+		            $result['gcal_calendar_id']
 				);
 	    	}
 			return $obUser;
