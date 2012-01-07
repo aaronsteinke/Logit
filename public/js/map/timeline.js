@@ -33,6 +33,7 @@ function initializeMapTimeline(minimalDate, maximalDate, userNick){
 
 function initializeMapTimelineFirstContent(){
 	console.log(userNickname);
+	console.log(TOMATE);
 	$('#bilderInhalt' + numberOfBilder).load('map/get-timeline/username/' + userNickname, startgetDateImages());
 	numberOfBilder ++;
 }
