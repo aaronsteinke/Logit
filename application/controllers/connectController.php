@@ -95,7 +95,7 @@ class ConnectController extends Zend_Controller_Action
 				
 				if ($result === FALSE)
 				{
-					// Error Handling hinzufügen
+					// TODO Error Handling hinzufügen
 				} elseif ($auth->hasIdentity()){
 					$user = Application_Model_AuthUser::getAuthUser();
 					$user_id = $user->getId();
