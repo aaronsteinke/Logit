@@ -101,8 +101,19 @@ if($auth->hasIdentity()){?>
 		<div id="header">
 			<div class="page">
 				<div class="logo">
-					<img src="images/logitLogo.png" width="216" height="60" alt="logo" />
+					<a href="/index"><img src="images/logitLogo.png" width="216" height="60" alt="Logit.net - Die Lifelogging Community" /></a>
 				</div>
+                
+				<div id="suchFeld">
+                <div id="ui-widget">
+                    <div id="addFriendsButton" class="borderRight"><img src="images/buttonSearch.png" width="30" height="22" class="timePic" /></div>
+                    <div id="addFriendsTextfield" title="Finde Freunde und füge Sie zu Deiner Timeline hinzu">
+                    <input type="text" value="" id="user" name="user" />
+                    </div>
+                    <div id="friendSearchList"></div>	
+    			</div>
+                </div>
+                
 				<div class="headlogin">
 					<div class="profil">
 						  <div id="dropdown_bt">
@@ -139,12 +150,18 @@ if($auth->hasIdentity()){?>
 		  <div class="pageFooter">
 			<div class="footercolumn">
 				<h1>FEATURES</h1>
+                    <p>Bildaufnahme mit Ihrem Smartphone</p>
+                    <p>Intelligenter Such-Algorithmus</p>
+                    <p>Gezielte Suche</p>
+                    <p>weitere Features von logIt.net</p>
 			</div>
 			<div class="footercolumn">
 				<h1>FAQ</h1>
+                    <p>Hier finden Sie Antworten auf Ihre Fragen  zu der Funktionsweise von LogIt.net und nützliche Tipps, die Ihnen den Einstieg erleichtern.</p>
 			</div>
 			<div class="footercolumn">
 				<h1>ABOUT</h1>
+                <p>LogIt.net ist ein Projekt der Fachhochschule Furtwangen, das sich mit dem Thema Lifelogging auseinandersetzt. Erfahren Sie mehr über logIt.net</p>
 			</div>
 		</div>
 	</div>
