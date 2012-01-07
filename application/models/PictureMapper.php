@@ -82,6 +82,44 @@ class Application_Model_PictureMapper
 
 	}
 	
+	public function getLogsByUsername($username, $dateBegin = NULL, $dateEnd = NULL, $limit = NULL){
+    	$db = $this->getDbTable()->getAdapter();
+    	$sql = ('	SELECT 	p.*
+					FROM 	pic p,
+							user u
+					WHERE 	u.username = :username
+					AND 	u.id = p.id_user
+					');
+    	if (isset($dateBegin) && isset($dateEnd)){
+    		$sql .= ' 	AND date_shot < :dateEnd 
+    					AND date_shot > :dateBegin	';
+    	}
+    	
+    	$sql .= ' 	ORDER BY date_shot DESC ';
+    	
+    	// binding nachlesen und einsetzen
+    	if (isset($limit)){
+    		$sql .= '	LIMIT ' . $limit . ' ';
+    	}
+    	
+    	$stmt = new Zend_Db_Statement_Pdo($db, $sql);
+    	$stmt->bindParam(':username', $username);
+		
+    	if (isset($dateBegin) && isset($dateEnd)){
+			$stmt->bindParam(':dateEnd', $dateEnd);
+			$stmt->bindParam(':dateBegin', $dateBegin);
+    	}
+    	
+    	/*if (isset($limit)){
+    		$stmt->bindParam(':limit', $limit);
+    	}*/
+    	
+    	$stmt->execute();
+    	$resultSet = $stmt->fetchAll();
+    	return $this->createObjektArr($resultSet);
+
+	}
+	
 	public function getNumberOfLogsForUser($idUser){
 		$db = $this->getDbTable()->getAdapter();
 		$sql = '	SELECT COUNT(*) as number_of_logs
