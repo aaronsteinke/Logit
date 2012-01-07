@@ -81,7 +81,7 @@ endif;
 $auth = Zend_Auth::getInstance();
 
 if($auth->hasIdentity()){?>
-<!--	
+	
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('#1').ansichtSwitch("<?php if ($controller == 'map') {echo 'off';} else {echo 'on';}?>", 
@@ -94,7 +94,7 @@ if($auth->hasIdentity()){?>
  		switch_on_container_path: 'images/ansicht_switch_container_off.png'
 	});
 }); 
-</script>-->
+</script>
 
 
 	<div id="wrap"  unselectable="on" class="unselectable">

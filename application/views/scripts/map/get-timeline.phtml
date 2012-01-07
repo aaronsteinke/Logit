@@ -1,14 +1,23 @@
-<div class="profilImage">
-	<img src="images/profilimage.jpg" width="55" height="60" />
-</div>
-<div class="profilInfo">
-	<div class="profilName">
-		<?php echo $this->obUser->getFirstName();?> <?php echo $this->obUser->getLastName(); ?>
-    </div>
-    <div class="profilLogs">
-    	Logs heute: 200<br />
-       Logs gesamt: <?php echo $this->obUser->getNumberOfLogs();?>
-    </div>    
-</div>
-<div class="images">
-</div>
+<?php if(is_object($this->obUser)): ?>
+	<div class="profilImage">
+		<img src="images/profilimage.jpg" width="55" height="60" />
+	</div>
+	<div class="profilInfo">
+		<div class="profilName">
+			<?php echo $this->obUser->getFirstName();?> <?php echo $this->obUser->getLastName(); ?>
+	    </div>
+	    <div class="profilLogs">
+	    	Logs heute: 200<br />
+	       Logs gesamt: <?php echo $this->obUser->getNumberOfLogs();?>
+	    </div>    
+	</div>
+	<div class="images">
+	</div>
+	<script type="text/javascript" charset="utf-8">
+		isFriend = 1;
+	</script>
+<?php else: ?>
+	<script>
+		isFriend = 0;
+	</script>
+<?php endif; ?>
