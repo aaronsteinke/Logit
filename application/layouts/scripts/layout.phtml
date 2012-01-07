@@ -81,7 +81,7 @@ endif;
 $auth = Zend_Auth::getInstance();
 
 if($auth->hasIdentity()){?>
-	
+<!--	
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('#1').ansichtSwitch("<?php if ($controller == 'map') {echo 'off';} else {echo 'on';}?>", 
@@ -94,7 +94,7 @@ if($auth->hasIdentity()){?>
  		switch_on_container_path: 'images/ansicht_switch_container_off.png'
 	});
 }); 
-</script>
+</script>-->
 
 
 	<div id="wrap"  unselectable="on" class="unselectable">
@@ -104,7 +104,7 @@ if($auth->hasIdentity()){?>
 					<a href="/index"><img src="images/logitLogo.png" width="216" height="60" alt="Logit.net - Die Lifelogging Community" /></a>
 				</div>
                 
-				<div id="suchFeld">
+			<!--	<div id="suchFeld">
                 <div id="ui-widget">
                     <div id="addFriendsButton" class="borderRight"><img src="images/buttonSearch.png" width="30" height="22" class="timePic" /></div>
                     <div id="addFriendsTextfield" title="Finde Freunde und füge Sie zu Deiner Timeline hinzu">
@@ -112,7 +112,7 @@ if($auth->hasIdentity()){?>
                     </div>
                     <div id="friendSearchList"></div>	
     			</div>
-                </div>
+           </div>-->
                 
 				<div class="headlogin">
 					<div class="profil">

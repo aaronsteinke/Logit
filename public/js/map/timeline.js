@@ -12,6 +12,7 @@ var maximalMinuteDifference = 100000000;
 
 var buttonPlusActiv = 1;
 var buttonMinusActiv = 1;
+var userNickname;
 
 var numberOfBilder = 1;
 
@@ -25,12 +26,14 @@ $(window).resize(function() {
  resizeIt = setTimeout(sendImageRequest, 200); 
 });
 
-function initializeMapTimeline(minimalDate, maximalDate){
+function initializeMapTimeline(minimalDate, maximalDate, userNick){
+	userNickname = userNick
 	initializeMapTimelineFirstContent();
 }
 
 function initializeMapTimelineFirstContent(){
-	$('#bilderInhalt' + numberOfBilder).load('map/get-timeline/username/timo', startgetDateImages());
+	console.log(userNickname);
+	$('#bilderInhalt' + numberOfBilder).load('map/get-timeline/username/' + userNickname, startgetDateImages());
 	numberOfBilder ++;
 }
 
