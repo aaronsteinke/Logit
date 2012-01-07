@@ -72,7 +72,12 @@ class MapController extends Zend_Controller_Action
 	public function getTimelineAction(){
 		$this->_helper->layout()->disableLayout();
 		$userMapper = new Application_Model_UserMapper();
-		$this->view->obUser = $userMapper->getOneByUsername($this->getRequest()->getParam('username'));
+		$authUser = Application_Model_AuthUser::getAuthUser();
+		if($this->getRequest()->getParam('username') == $authUser->getUsername()){
+			$this->view->obUser = $authUser;
+		} else {
+			$this->view->obUser = $userMapper->getFriendByUsername($authUser->getId(), $this->getRequest()->getParam('username'));
+		}
 	}
 
 }

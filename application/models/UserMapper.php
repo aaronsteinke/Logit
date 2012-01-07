@@ -222,11 +222,37 @@ class Application_Model_UserMapper
 		$stmt = new Zend_Db_Statement_Pdo($db, $sql);
 		$stmt->bindParam(':idUser', $idUser);
 		$stmt->execute();
+		
+		$resultSet = $stmt->fetchAll();
+		$arrUsers = $this->createObjektArr($resultSet);
+		return $arrUsers;
+    }
+	
+	public function getFriendByUsername($idUser, $friendUsername){
+		$db = $this->getDbTable()->getAdapter();
+		 
+		$sql = ('	SELECT 	f.*
+					FROM 	user f, 
+							user_friends u 
+					WHERE 	u.id_user = :idUser
+					AND 	f.id = u.id_friend
+					AND 	f.username = :friend_username	');
+		 
+		 
+		$stmt = new Zend_Db_Statement_Pdo($db, $sql);
+		$stmt->bindParam(':idUser', $idUser);
+		$stmt->bindParam(':friend_username', $friendUsername);
+		$stmt->execute();
 		 
 		$resultSet = $stmt->fetchAll();
-		$arrRestaurants = $this->createObjektArr($resultSet);
-		return $arrRestaurants;
-    }
+		$arrUsers = $this->createObjektArr($resultSet);
+		
+		if (empty($arrUsers)) {
+    		return 0;
+    	} else {
+    		return $arrUsers[0];
+    	}
+	}
 	
 	public function addFacebookData ($user_id, $data)
 	{
