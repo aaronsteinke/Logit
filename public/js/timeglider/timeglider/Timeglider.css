@@ -79,7 +79,7 @@
 .tg-timeline-envelope .titleBar {
 	background-color:#444;
 	color:#FFF;
-	height:16px;
+	height:40px;
 	width:auto;
 	padding:4px;
 	position:absolute;
@@ -327,8 +327,8 @@
 
 .timeglider-event-image-bar {
   /* placed in a div in the timeline bar */
-  width:22px;
-  height:22px;
+  width:40px;
+  height:40px;
   overflow:hidden;
   position:absolute;
   border:1px solid #333;
@@ -336,7 +336,7 @@
   z-index:1;
 }
 .timeglider-event-image-bar img {
-  height:24px;
+  height:40px;
   width:auto;
 }
 
@@ -367,7 +367,7 @@
   color:#FFF;
   cursor:pointer;
 	font-size:10px;
-	margin-top:4px;
+	margin-top:25px;
 	background-color:#555;
 	font-weight:normal;
 	padding:2px 0 2px 6px;
