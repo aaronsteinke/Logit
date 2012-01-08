@@ -55,7 +55,7 @@
 		urlRoot : '/event',
 	
 		defaults: {
-			"title":  "Untitled"
+			"title":  ""
 		},
 	
 	

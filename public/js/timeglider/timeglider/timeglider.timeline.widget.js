@@ -184,7 +184,6 @@
 			}
 			// non-valid zoom levels
 			if (n > 99 || n < -99) { return false; }
-			
 			MED.zoom(n);
 		},
 		

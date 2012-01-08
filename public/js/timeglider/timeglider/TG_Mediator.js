@@ -10,9 +10,9 @@
 
 /*******************************
 	TIMELINE MEDIATOR
-	¥ handles timeline behavior, 
-	¥ reflects state back to view
-	¥ owns the timeline and event data models
+	ï¿½ handles timeline behavior, 
+	ï¿½ reflects state back to view
+	ï¿½ owns the timeline and event data models
 
 ********************************/
 (function(tg){
@@ -107,8 +107,10 @@
     
     
     zoom : function (n) {
+    	
       var new_zoom = this.getZoomLevel() + parseInt(n);
       this.setZoomLevel(new_zoom);
+      
     },
     
     
@@ -251,7 +253,7 @@
 			ondeck = data[i];
 			ondeck.mediator = M;
 			ti = new tg.TG_Timeline(ondeck).toJSON(); // the timeline
-					
+			
 			if (ti.id.length > 0) {
 				ct++;
 				M.swallowTimeline(ti);
