@@ -1,1 +1,815 @@
-test
+<script type="text/javascript">
+		$(document).ready(function(){
+				$('#coda-slider-1').codaSlider();
+			$(".logs_verb_vorschlag .togglebox1").hide(); 
+			$(".logs_verb_vorschlag h2").click(function(){
+				$(this).next(".logs_verb_vorschlag .togglebox1").slideToggle("slow");
+			$('.scrollbar1, .block .scrollbar1').tinyscrollbar();	
+			})			
+			
+		
+			
+			});
+
+		 </script> 
+		
+    <!-- End JavaScript --> 	 
+
+  <div class="coda-slider-no-js">
+  
+  
+    <div class="coda-slider-wrapper">	
+      <div class="coda-slider preload" id="coda-slider-1">
+        <div class="panel">			
+          <div class="panel-wrapper">				
+            <h2 class="title">Events anlegen</h2>	
+			<form>
+            <div class="c2">	
+              <div class="c4">		
+                <div class="r1">Event</div>		
+                <div class="r2">  			
+                  <div class="for" >
+				   		<label for="name"></label>
+						<input class="input" type="text" value="Event" size="40"/>
+                  </div>       	
+                </div>	
+              </div>
+              <div class="c4">		
+                <div class="r1">Location</div>		
+                <div class="r2">			
+                  <div class="for" >
+				   		<label for="name"></label>
+						<input class="input" type="text" value="Location" size="40"/>
+                  </div>		
+                </div>	
+              </div>	 
+              <div class="c4">	
+                <div class="r1">Von</div>		
+                <div class="r2">			
+                  <div class="for" >
+						<select class="startDay">
+						  <option value="01">01</option>
+						  <option value="02">02</option>
+						  <option value="03">03</option>
+						  <option value="04">04</option>
+						  <option value="05">05</option>
+						  <option value="06">06</option>
+						  <option value="07">07</option>
+						  <option value="08">08</option>
+						  <option value="09">09</option>
+						  <option value="10">10</option>
+						  <option value="11">11</option>
+						  <option value="12">12</option>
+						  <option value="13">13</option>
+						  <option value="14">14</option>
+						  <option value="15">15</option>
+						  <option value="16">16</option>
+						  <option value="17">17</option>
+						  <option value="18">18</option>
+						  <option value="19">19</option>
+						  <option value="20">20</option>
+						  <option value="21">21</option>
+						  <option value="22">22</option>
+						  <option value="23">23</option>
+						  <option value="24">24</option>
+						  <option value="25">25</option>
+						  <option value="26">26</option>
+						  <option value="27">27</option>
+						  <option value="28">28</option>
+						  <option value="29">29</option>
+						  <option value="30">30</option>
+						  <option value="31">31</option>
+						</select>
+						<select class="startMonth">
+						  <option value="01">Jan.</option>
+						  <option value="02">Feb.</option>
+						  <option value="03">Mrz.</option>
+						  <option value="04">Apr.</option>
+						  <option value="05">Mai</option>
+						  <option value="06">Jun.</option>
+						  <option value="07">Jul.</option>
+						  <option value="08">Aug.</option>
+						  <option value="09">Sept.</option>
+						  <option value="10">Okt.</option>
+						  <option value="11">Nov.</option>
+						  <option value="12">Dez.</option>
+						</select>
+				<select class="startYear">
+						  <option value="2012">2012</option>
+						  <option value="2013">2013</option>
+						  <option value="2014">2014</option>
+						  <option value="2015">2015</option>
+						  <option value="2016">2016</option>
+						  <option value="2017">2017</option>
+						  <option value="2018">2018</option>
+						  <option value="2018">2019</option>
+						  <option value="2018">2020</option>
+						</select>   
+						<b>/</b>   
+        <div id="startTime" style="display:inline;">
+          <select class="startHour">
+            <option value="00">00</option>
+            <option value="01">01</option>
+            <option value="02">02</option>
+            <option value="03">03</option>
+            <option value="04">04</option>
+            <option value="05">05</option>
+            <option value="06">06</option>
+            <option value="07">07</option>
+            <option value="08">08</option>
+            <option value="09">09</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+          </select>
+          <b>:</b>
+          <select class="startMinute">
+            <option value="00">00</option>
+            <option value="15">05</option>
+            <option value="30">10</option>
+            <option value="45">15</option>
+            <option value="00">20</option>
+            <option value="15">25</option>
+            <option value="30">30</option>
+            <option value="45">35</option>
+            <option value="45">40</option>
+            <option value="00">45</option>
+            <option value="15">50</option>
+            <option value="30">55</option>
+            <option value="45">60</option>
+          </select>
+			<b>h</b>   
+        </div>
+		 </div>		
+                </div>	
+              </div>
+              <div class="c4">	
+                <div class="r1">Bis</div>	
+                <div class="r2">
+                  <div class="for" >
+						<select class="endDay">
+						  <option value="01">01</option>
+						  <option value="02">02</option>
+						  <option value="03">03</option>
+						  <option value="04">04</option>
+						  <option value="05">05</option>
+						  <option value="06">06</option>
+						  <option value="07">07</option>
+						  <option value="08">08</option>
+						  <option value="09">09</option>
+						  <option value="10">10</option>
+						  <option value="11">11</option>
+						  <option value="12">12</option>
+						  <option value="13">13</option>
+						  <option value="14">14</option>
+						  <option value="15">15</option>
+						  <option value="16">16</option>
+						  <option value="17">17</option>
+						  <option value="18">18</option>
+						  <option value="19">19</option>
+						  <option value="20">20</option>
+						  <option value="21">21</option>
+						  <option value="22">22</option>
+						  <option value="23">23</option>
+						  <option value="24">24</option>
+						  <option value="25">25</option>
+						  <option value="26">26</option>
+						  <option value="27">27</option>
+						  <option value="28">28</option>
+						  <option value="29">29</option>
+						  <option value="30">30</option>
+						  <option value="31">31</option>
+						</select>
+						<select class="endMonth">
+						  <option value="01">Jan.</option>
+						  <option value="02">Feb.</option>
+						  <option value="03">Mrz.</option>
+						  <option value="04">Apr.</option>
+						  <option value="05">Mai</option>
+						  <option value="06">Jun.</option>
+						  <option value="07">Jul.</option>
+						  <option value="08">Aug.</option>
+						  <option value="09">Sept.</option>
+						  <option value="10">Okt.</option>
+						  <option value="11">Nov.</option>
+						  <option value="12">Dez.</option>
+						</select>
+				<select class="endYear">
+						  <option value="2012">2012</option>
+						  <option value="2013">2013</option>
+						  <option value="2014">2014</option>
+						  <option value="2015">2015</option>
+						  <option value="2016">2016</option>
+						  <option value="2017">2017</option>
+						  <option value="2018">2018</option>
+						  <option value="2018">2019</option>
+						  <option value="2018">2020</option>
+						</select>
+						<b>/</b>   
+        <div id="startTime" style="display:inline;">
+          <select class="endHour">
+            <option value="00">00</option>
+            <option value="01">01</option>
+            <option value="02">02</option>
+            <option value="03">03</option>
+            <option value="04">04</option>
+            <option value="05">05</option>
+            <option value="06">06</option>
+            <option value="07">07</option>
+            <option value="08">08</option>
+            <option value="09">09</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+          </select>
+          <b>:</b>
+          <select class="endMinute">
+            <option value="00">00</option>
+            <option value="15">05</option>
+            <option value="30">10</option>
+            <option value="45">15</option>
+            <option value="00">20</option>
+            <option value="15">25</option>
+            <option value="30">30</option>
+            <option value="45">35</option>
+            <option value="45">40</option>
+            <option value="00">45</option>
+            <option value="15">50</option>
+            <option value="30">55</option>
+            <option value="45">60</option>
+          </select>
+		<b>h</b>   
+        </div>
+                  </div>
+                </div>
+              </div>
+              <div class="beschreibungc4">	
+                <div class="r1">Beschreibung</div>	
+                <div class="r2">
+                  <div class="for" >
+					<textarea value="Beschreibung" rows="4" cols="32"></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="friendsc4">	
+					<div class="r1">Freunde</div>	
+						<div class="friends">
+							<div class="scrollbar1">
+								<div class="friends_thumbs">
+									<div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+									<div class="viewport">
+										 <div class="overview">
+											<div class="friend_profil">
+												<div class="friend_profil_thumb">
+													<img src="images/friend_thumbs/aaron.jpg" width="45" height="45" />
+												</div>
+												<div class="friend_profil_info">Aaron Steinke</div>
+											</div>
+											<div class="friend_profil">
+												<div class="friend_profil_thumb">
+													<img src="images/friend_thumbs/jasmin.jpg" width="45" height="45" />									
+												</div>
+												<div class="friend_profil_info">Jasmin Waida</div>
+											</div>
+											<div class="friend_profil">
+												<div class="friend_profil_thumb">
+													<img src="images/friend_thumbs/joshua.jpg" width="45" height="45" />
+												</div>
+												<div class="friend_profil_info">Joshua Dietl</div>
+											</div>
+											<div class="friend_profil">
+												<div class="friend_profil_thumb">
+													<img src="images/friend_thumbs/stefan.jpg" width="45" height="45" />
+												</div>
+												<div class="friend_profil_info">Stefan Nägele</div>
+											</div>
+										</div>
+									</div>
+								</div><!--friendthumbs-->
+							</div>	
+							<div class="addfriends">
+								<a href="#"><img src="images/plusfriend_logs_verbessern.png" width="19" height="10" />hinzufügen</a>
+							</div>
+						</div><!--friends-->
+				  	</div><!--r1-->
+              </div><!--friendsc4-->
+			  	<input class="submit" type="submit" value=" Speichern"> 	
+				</form>
+             </div><!--panelwrapper-->	
+          </div><!--panel1-->		
+		
+        <div class="panel">			
+			<div class="panel-wrapper logs_verb ">				
+				<h2 class="title">Logs verbessern</h2>
+				<div class="c2">	
+				  <div class="c4">		
+					<div class="r1">Event</div>		
+					<div class="r2">  			
+					  <div class="for" >
+						<form>
+							<label for="name"></label>
+							<input class="input" type="text" value="Event" size="40"/>
+						</form>
+					  </div>       	
+					</div>	
+				  </div>
+				  <div class="c4">		
+					<div class="r1">Location</div>		
+					<div class="r2">			
+					  <div class="for" >
+						<form>
+							<label for="name"></label>
+							<input class="input" type="text" value="Location" size="40"/>
+						</form>
+					  </div>		
+					</div>	
+				  </div>
+				  <form>
+					  <div class="c4">
+						<div class="r1">Von</div>		
+						<div class="r2">			
+						  <div class="for" >
+								<select class="startDay">
+								  <option value="01">01</option>
+								  <option value="02">02</option>
+								  <option value="03">03</option>
+								  <option value="04">04</option>
+								  <option value="05">05</option>
+								  <option value="06">06</option>
+								  <option value="07">07</option>
+								  <option value="08">08</option>
+								  <option value="09">09</option>
+								  <option value="10">10</option>
+								  <option value="11">11</option>
+								  <option value="12">12</option>
+								  <option value="13">13</option>
+								  <option value="14">14</option>
+								  <option value="15">15</option>
+								  <option value="16">16</option>
+								  <option value="17">17</option>
+								  <option value="18">18</option>
+								  <option value="19">19</option>
+								  <option value="20">20</option>
+								  <option value="21">21</option>
+								  <option value="22">22</option>
+								  <option value="23">23</option>
+								  <option value="24">24</option>
+								  <option value="25">25</option>
+								  <option value="26">26</option>
+								  <option value="27">27</option>
+								  <option value="28">28</option>
+								  <option value="29">29</option>
+								  <option value="30">30</option>
+								  <option value="31">31</option>
+								</select>
+								<select class="startMonth">
+								  <option value="01">Jan.</option>
+								  <option value="02">Feb.</option>
+								  <option value="03">Mrz.</option>
+								  <option value="04">Apr.</option>
+								  <option value="05">Mai</option>
+								  <option value="06">Jun.</option>
+								  <option value="07">Jul.</option>
+								  <option value="08">Aug.</option>
+								  <option value="09">Sept.</option>
+								  <option value="10">Okt.</option>
+								  <option value="11">Nov.</option>
+								  <option value="12">Dez.</option>
+								</select>
+						<select class="startYear">
+								  <option value="2012">2012</option>
+								  <option value="2013">2013</option>
+								  <option value="2014">2014</option>
+								  <option value="2015">2015</option>
+								  <option value="2016">2016</option>
+								  <option value="2017">2017</option>
+								  <option value="2018">2018</option>
+								  <option value="2018">2019</option>
+								  <option value="2018">2020</option>
+								</select>  
+								<b>/</b>   
+				<div id="startTime" style="display:inline;">
+				  <select class="startHour">
+					<option value="00">00</option>
+					<option value="01">01</option>
+					<option value="02">02</option>
+					<option value="03">03</option>
+					<option value="04">04</option>
+					<option value="05">05</option>
+					<option value="06">06</option>
+					<option value="07">07</option>
+					<option value="08">08</option>
+					<option value="09">09</option>
+					<option value="10">10</option>
+					<option value="11">11</option>
+					<option value="12">12</option>
+					<option value="13">13</option>
+					<option value="14">14</option>
+					<option value="15">15</option>
+					<option value="16">16</option>
+					<option value="17">17</option>
+					<option value="18">18</option>
+					<option value="19">19</option>
+					<option value="20">20</option>
+					<option value="21">21</option>
+					<option value="22">22</option>
+					<option value="23">23</option>
+				  </select>
+				  <b>:</b>
+				  <select class="startMinute">
+					<option value="00">00</option>
+					<option value="15">05</option>
+					<option value="30">10</option>
+					<option value="45">15</option>
+					<option value="00">20</option>
+					<option value="15">25</option>
+					<option value="30">30</option>
+					<option value="45">35</option>
+					<option value="45">40</option>
+					<option value="00">45</option>
+					<option value="15">50</option>
+					<option value="30">55</option>
+					<option value="45">60</option>
+				  </select>
+				</div>
+						</div>		
+						</div>	
+					  </div>
+					  <div class="c4">	
+						<div class="r1">Bis</div>	
+						<div class="r2">
+						  <div class="for" >
+								<select class="endDay">
+								  <option value="01">01</option>
+								  <option value="02">02</option>
+								  <option value="03">03</option>
+								  <option value="04">04</option>
+								  <option value="05">05</option>
+								  <option value="06">06</option>
+								  <option value="07">07</option>
+								  <option value="08">08</option>
+								  <option value="09">09</option>
+								  <option value="10">10</option>
+								  <option value="11">11</option>
+								  <option value="12">12</option>
+								  <option value="13">13</option>
+								  <option value="14">14</option>
+								  <option value="15">15</option>
+								  <option value="16">16</option>
+								  <option value="17">17</option>
+								  <option value="18">18</option>
+								  <option value="19">19</option>
+								  <option value="20">20</option>
+								  <option value="21">21</option>
+								  <option value="22">22</option>
+								  <option value="23">23</option>
+								  <option value="24">24</option>
+								  <option value="25">25</option>
+								  <option value="26">26</option>
+								  <option value="27">27</option>
+								  <option value="28">28</option>
+								  <option value="29">29</option>
+								  <option value="30">30</option>
+								  <option value="31">31</option>
+								</select>
+								<select class="endMonth">
+								  <option value="01">Jan.</option>
+								  <option value="02">Feb.</option>
+								  <option value="03">Mrz.</option>
+								  <option value="04">Apr.</option>
+								  <option value="05">Mai</option>
+								  <option value="06">Jun.</option>
+								  <option value="07">Jul.</option>
+								  <option value="08">Aug.</option>
+								  <option value="09">Sept.</option>
+								  <option value="10">Okt.</option>
+								  <option value="11">Nov.</option>
+								  <option value="12">Dez.</option>
+								</select>
+						<select class="endYear">
+								  <option value="2012">2012</option>
+								  <option value="2013">2013</option>
+								  <option value="2014">2014</option>
+								  <option value="2015">2015</option>
+								  <option value="2016">2016</option>
+								  <option value="2017">2017</option>
+								  <option value="2018">2018</option>
+								  <option value="2018">2019</option>
+								  <option value="2018">2020</option>
+								</select>
+								<b>/</b>   
+							<div id="startTime" style="display:inline;">
+							  <select class="endHour">
+								<option value="00">00</option>
+								<option value="01">01</option>
+								<option value="02">02</option>
+								<option value="03">03</option>
+								<option value="04">04</option>
+								<option value="05">05</option>
+								<option value="06">06</option>
+								<option value="07">07</option>
+								<option value="08">08</option>
+								<option value="09">09</option>
+								<option value="10">10</option>
+								<option value="11">11</option>
+								<option value="12">12</option>
+								<option value="13">13</option>
+								<option value="14">14</option>
+								<option value="15">15</option>
+								<option value="16">16</option>
+								<option value="17">17</option>
+								<option value="18">18</option>
+								<option value="19">19</option>
+								<option value="20">20</option>
+								<option value="21">21</option>
+								<option value="22">22</option>
+								<option value="23">23</option>
+							  </select>
+							  <b>:</b>
+							  <select class="endMinute">
+								<option value="00">00</option>
+								<option value="15">05</option>
+								<option value="30">10</option>
+								<option value="45">15</option>
+								<option value="00">20</option>
+								<option value="15">25</option>
+								<option value="30">30</option>
+								<option value="45">35</option>
+								<option value="45">40</option>
+								<option value="00">45</option>
+								<option value="15">50</option>
+								<option value="30">55</option>
+								<option value="45">60</option>
+							  </select>
+							</div>
+						  </div>
+						</div>
+					   </div>	
+				  </form>	
+				  <div class="c4 border-top">		
+					<div class="r1">Ergebnisse</div>		
+					<div class="r2">
+					<form>
+					  <div class="logs_verb_vorschlag" >
+							<h2>Vorschlag1 in Furtwangen</h2>
+							<div class="togglebox1">
+								<div class="block">
+									<div class="c4">	
+											<div class="r1">Event</div>		
+											<div class="r2">			
+											  <div class="for" >
+													<label for="name"></label>
+													<input class="input" type="text" value="" size="24"/>
+											  </div>		
+											</div>	
+										</div>
+									<div class="c4">	
+											<div class="r1">Location</div>		
+											<div class="r2">			
+											  <div class="for" >
+													<label for="name"></label>
+													<input class="input" type="text" value="" size="24"/>
+											  </div>		
+											</div>
+										</div>
+									<div class="c4">	
+										<div class="r1">Von</div>		
+										<div class="r2">			
+										  <div class="for" >
+												<label for="name"></label>
+												<input class="input" type="text" value="" size="24"/>
+										  </div>		
+										</div>
+									</div>
+									<div class="c4">	
+											<div class="r1">Bis</div>		
+											<div class="r2">			
+											  <div class="for" >
+													<label for="name"></label>
+													<input class="input" type="text" value="" size="24"/>
+											  </div>		
+											</div>
+									</div>	
+									<div class="c4">	
+											<div class="r1">Beschreibung</div>	
+											<div class="r2">
+											  <div class="for" >
+												<textarea value="Beschreibung" rows="4" cols="18"></textarea>
+											  </div>
+											</div>
+									</div>
+									<div class="c4">	
+										<div class="r1">Tags</div>		
+										<div class="r2">			
+										  <div class="for" >
+												<label for="name"></label>
+												<input class="input" type="text" value="" size="24"/>
+										  </div>		
+										</div>
+									</div>
+								 <div class="friendsc4">	
+									<div class="friends">
+										<div class="scrollbar1">
+											<div class="friends_thumbs">
+												<div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+												<div class="viewport">
+													 <div class="overview">
+														<div class="friend_profil">
+															<div class="friend_profil_thumb">
+																<img src="images/friend_thumbs/aaron.jpg" width="45" height="45" />
+															</div>
+															<div class="friend_profil_info">Aaron Steinke</div>
+														</div>
+														<div class="friend_profil">
+															<div class="friend_profil_thumb">
+																<img src="images/friend_thumbs/jasmin.jpg" width="45" height="45" />									
+															</div>
+															<div class="friend_profil_info">Jasmin Waida</div>
+														</div>
+														<div class="friend_profil">
+															<div class="friend_profil_thumb">
+																<img src="images/friend_thumbs/joshua.jpg" width="45" height="45" />
+															</div>
+															<div class="friend_profil_info">Joshua Dietl</div>
+														</div>
+														<div class="friend_profil">
+															<div class="friend_profil_thumb">
+																<img src="images/friend_thumbs/stefan.jpg" width="45" height="45" />
+															</div>
+															<div class="friend_profil_info">Stefan Nägele</div>
+														</div>
+													</div>
+												</div>
+											</div><!--friendthumbs-->
+										</div>	
+										<div class="addfriends">
+											<a href="#"><img src="images/plusfriend_logs_verbessern.png" width="19" height="10" />hinzufügen</a>
+										</div>
+									</div><!--friends-->
+						  </div><!--friendsc4-->
+									<input class="submit" type="submit" value=" Speichern"> 						
+							</div>
+							</div>
+					  </div>	 
+					</form>
+				  </div>
+				 </div>	
+			</div>	
+		</div><!--panel2-->
+		
+		<div class="panel">			
+			<div class="panel-wrapper">				
+				<h2 class="title">Logstatistiken</h2>	
+				<div class="c2">
+					<div class="c4">
+						<div class="r1">Deine Logs</div>
+						<div class="r2">4.566.555</div>
+						<div class="r3"><a href="#">anzeigen</a></div>
+					</div>
+
+				<div class="c4">
+					<div class="r1">Deine Events</div>
+					<div class="r2">456</div>
+					<div class="r3"><a href="#">anzeigen</a></div>
+				</div>
+
+				<div class="c4">
+					<div class="r1">Deine Locations</div>
+					<div class="r2">45</div>
+					<div class="r3"><a href="#">anzeigen</a></div>
+				</div>
+
+				<div class="c4">
+					<div class="r1">Deine Freunde</div>
+					<div class="r2">67</div>
+					<div class="r3"><a href="#">anzeigen</a></div>
+				</div>
+
+				<div class="c4">
+					<div class="r1">Logs/Tag</div>
+					<div class="r2">67</div>
+					<div class="r3"><a href="#">anzeigen</a></div>
+				</div>
+
+				<div class="c4">
+					<div class="r1">Distanz</div>
+					<div class="r2">3234 km</div>
+					<div class="r3"><a href="#">anzeigen</a></div>
+				</div>
+
+				<div class="c4">
+					<div class="r1">Angemeldet seit</div>
+					<div class="r2">28.12.2011</div>
+				</div>
+				</div>		
+			</div>		
+		</div><!--panel2-->
+		
+		<div class="panel">			
+          <div class="panel-wrapper">				
+            <h2 class="title">Profileinstellungen</h2>
+			<form>            
+			<div class="c2">
+			 	<div style="float:left;">
+              <div class="p4">		
+                <div class="r1">Name</div>		
+                <div class="r2">  			
+                  <div class="for" >
+				   		<label for="name"></label>
+						<input class="input" type="text" value="Name" />
+                  </div>       	
+                </div>	
+              </div>
+              <div class="p4">		
+                <div class="r1">Username</div>		
+                <div class="r2">			
+                  <div class="for" >
+				   		<label for="name"></label>
+						<input class="input" type="text" value="Username" />
+                  </div>		
+                </div>	
+              </div>	
+              <div class="p4">	
+                <div class="r1">E-Mail</div>		
+                <div class="r2">			
+                  <div class="for" >
+				   		<label for="name"></label>
+						<input class="input" type="email" value="info@logit.net"/>
+                  </div>		
+                </div>	
+              </div>
+              <div class="p4">	
+                <div class="r1">Passwort</div>	
+                <div class="r2">
+                  <div class="for" >
+				   		<label for="name"></label>
+						<input class="input" id="password" name="password" value="Passwort" type="password"/>
+                  </div>
+                </div>
+              </div>
+              <div class="p4">	
+                <div class="r1">Passwort bestätigen</div>	
+                <div class="r2">
+                  <div class="for" >
+				   		<label for="name"></label>
+						<input class="input" id="password" name="password" value="Passwort" type="password"/>
+                  </div>
+                </div>
+              </div>
+              <div class="p4">	
+                <div class="r1">Netzwerke</div>	
+                <div class="r2">		
+                  <div class="for" >
+				   		<label for="name"></label>
+						<input class="input" type="text" value="Netzwerke" />
+                  </div>		
+                </div>
+              </div>
+              <div class="p4">	
+                <div class="r1">Smartphone</div>	
+                <div class="r2">		
+                  <div class="for" >
+				   		<label for="name"></label>
+						<input class="input" type="text" value="Modell" />
+                  </div>
+                </div>
+              </div>
+            </div><!--left-->
+				<div id="profilimage">
+					<div id="profilfoto">
+						<img src="images/profilbilddummy.jpg" width="150" height="200" alt="dummy" />
+					</div>
+					<div id="add_profilimage">
+							<a href="#"><img src="images/plusfriend_logs_verbessern.png" width="19" height="10" />Profilbild bearbeiten</a>
+					</div>
+				</div>
+			</div>
+			  	<input class="submit" type="submit" value=" Speichern "> 
+		  		</form>
+          </div>	
+        </div>
+      </div><!-- .coda-slider -->
+    </div><!-- .coda-slider-wrapper -->
+  </div>
