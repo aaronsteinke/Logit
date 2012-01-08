@@ -3,7 +3,8 @@
 class Application_Model_PictureMapper {
 	protected $_dbTable;
 
-	public function setDbTable($dbTable) {
+	public function setDbTable($dbTable)
+	{
 		if (is_string($dbTable)) {
 			$dbTable = new $dbTable();
 		}
@@ -15,7 +16,8 @@ class Application_Model_PictureMapper {
 		return $this;
 	}
 
-	public function getDbTable() {
+	public function getDbTable()
+	{
 		if (null === $this -> _dbTable) {
 			$this -> setDbTable('Application_Model_DbTable_Picture');
 		}
@@ -23,16 +25,28 @@ class Application_Model_PictureMapper {
 		return $this -> _dbTable;
 	}
 
-	public function create($pic_ident, $user_id, $lat_ns, $lat, $long_ns, $long, $height, $date_uploaded, $date_shot) {
+	public function create($pic_ident, $user_id, $lat_ns, $lat, $long_ns, $long, $height, $date_uploaded, $date_shot)
+	{
 
-		$data = array('pic_ident' => $pic_ident, 'user_id' => $user_id, 'lat_ns' => $lat_ns, 'lat' => $lat, 'long_ns' => $long_ns, 'long' => $long, 'height' => $height, 'date_uploaded' => $date_uploaded, 'date_shot' => $date_shot, );
+		$data = array(
+				'pic_ident' => $pic_ident,
+				'user_id' => $user_id,
+				'lat_ns' => $lat_ns,
+				'lat' => $lat,
+				'long_ns' => $long_ns,
+				'long' => $long,
+				'height' => $height,
+				'date_uploaded' => $date_uploaded,
+				'date_shot' => $date_shot,
+		);
 
 		$strWhereClause = $this -> getDbTable() -> insert($data);
 
 		return true;
 	}
 
-	public function getLogsForUser($idUser, $dateBegin = NULL, $dateEnd = NULL, $limit = NULL) {
+	public function getLogsForUser($idUser, $dateBegin = NULL, $dateEnd = NULL, $limit = NULL)
+	{
 		$db = $this -> getDbTable() -> getAdapter();
 		$sql = ('	SELECT 	*
 					FROM 	pic 
@@ -68,7 +82,8 @@ class Application_Model_PictureMapper {
 
 	}
 
-	public function getNumberOfLogsForUser($idUser) {
+	public function getNumberOfLogsForUser($idUser)
+	{
 		$db = $this -> getDbTable() -> getAdapter();
 		$sql = '	SELECT COUNT(*) as number_of_logs
 					FROM pic 
@@ -82,7 +97,8 @@ class Application_Model_PictureMapper {
 		return $resultSet[0]['number_of_logs'];
 	}
 
-	public function getFirstOrLastLogForUser($idUser, $first = true) {
+	public function getFirstOrLastLogForUser($idUser, $first = true)
+	{
 		$db = $this -> getDbTable() -> getAdapter();
 		$sql = '	SELECT *
 					FROM pic 
@@ -109,7 +125,8 @@ class Application_Model_PictureMapper {
 
 	}
 
-	private function createObjekt($result) {
+	private function createObjekt($result)
+	{
 		if ($result == null) {
 			return false;
 		}
@@ -121,7 +138,8 @@ class Application_Model_PictureMapper {
 		return $obPicture;
 	}
 
-	private function createObjektArr($resultSet) {
+	private function createObjektArr($resultSet)
+	{
 		$arrPictures = array();
 		foreach ($resultSet as $row) {
 			$arrPictures[] = $this -> createObjekt($row);

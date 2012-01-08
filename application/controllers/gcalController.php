@@ -1,6 +1,7 @@
 <?php
 class gcalController extends Zend_Controller_Action {
-	public function indexAction() {
+	public function indexAction()
+	{
 		$this -> _helper -> viewRenderer -> setNoRender(true);
 		$this -> _helper -> layout() -> disableLayout();
 
@@ -21,20 +22,27 @@ class gcalController extends Zend_Controller_Action {
 			$event_start = (isset($value['start']['dateTime'])) ? $value['start']['dateTime'] : $value['start']['date'];
 			$event_end = (isset($value['end']['dateTime'])) ? $value['end']['dateTime'] : $value['start']['date'] . 'T23:59:59+2:00';
 			$user_id = $user -> getId();
-			$eventsdb = new Application_Model_EventsMapper();
-
-			if (!$eventsdb -> getOneByGcal_id($gcal_id)) {
+			
+			$eventsdb = new Application_Model_EventsMapper();	
+			$singleEventInDb = $eventsdb -> getOneByGcal_id($gcal_id);		
+			if (!$singleEventInDb) {
 				$eventsdb -> create($gcal_id, $event_title, $event_start, $event_end, $user_id);
 			}
+			$singleEventInDb = $eventsdb -> getOneByGcal_id($gcal_id);
+			if ($singleEventInDb) {
+				$eventsdb -> connect_Pics($user_id, $singleEventInDb->get_id(), $event_start, $event_end);
+			}
+			
 		}
-		// Testteil
-		
-		$events = new Application_Model_EventsMapper();
-		$events->connect_Pics($user_id, $event_start, $event_end);
-		//$this -> _redirect("/user");
+		/* Testteil
+		$event_id = '362';
+		$eventsmapper = new Application_Model_EventsMapper();
+		$eventsmapper -> connect_Pics($user_id, $event_id, $event_start, $event_end);
+		//$this -> _redirect("/user");*/
 	}
 
-	private function gcal_api_get($url) {
+	private function gcal_api_get($url)
+	{
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $url);
 		curl_setopt($ch, CURLOPT_POST, false);
