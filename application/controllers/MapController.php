@@ -40,8 +40,6 @@ class MapController extends Zend_Controller_Action
 	public function getImagesForTimelineAction(){
 		$this->_helper->layout()->disableLayout();		
 		
-		$authUser = Application_Model_AuthUser::getAuthUser();
-		
 		$startDate = 	$this->getRequest()->getParam('first-date') . ' ' .  
 						$this->getRequest()->getParam('first-time');
 		
@@ -51,7 +49,7 @@ class MapController extends Zend_Controller_Action
 		$limit = $this->getRequest()->getParam('number-of-images');
 		
 		$pictures = new Application_Model_PictureMapper();
-		$this->view->arrLogs = $pictures->getLogsForUser($authUser->getId(), $startDate, $endDate, $limit);
+		$this->view->arrLogs = $pictures->getLogsByUsername($this->getRequest()->getParam('username'), $startDate, $endDate, $limit);
 		
 	}
 	
@@ -72,7 +70,12 @@ class MapController extends Zend_Controller_Action
 	public function getTimelineAction(){
 		$this->_helper->layout()->disableLayout();
 		$userMapper = new Application_Model_UserMapper();
-		$this->view->obUser = $userMapper->getOneByUsername($this->getRequest()->getParam('username'));
+		$authUser = Application_Model_AuthUser::getAuthUser();
+		if($this->getRequest()->getParam('username') == $authUser->getUsername()){
+			$this->view->obUser = $authUser;
+		} else {
+			$this->view->obUser = $userMapper->getFriendByUsername($authUser->getId(), $this->getRequest()->getParam('username'));
+		}
 	}
 
 }

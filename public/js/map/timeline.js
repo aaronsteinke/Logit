@@ -12,8 +12,12 @@ var maximalMinuteDifference = 100000000;
 
 var buttonPlusActiv = 1;
 var buttonMinusActiv = 1;
+var userNickname;
 
-var numberOfBilder = 1;
+
+var numberOfFreunde =0;
+
+var isFriend;
 
 var myFriends = new Array();
 
@@ -25,13 +29,17 @@ $(window).resize(function() {
  resizeIt = setTimeout(sendImageRequest, 200); 
 });
 
-function initializeMapTimeline(minimalDate, maximalDate){
+function initializeMapTimeline(minimalDate, maximalDate, userNick){
+	userNickname = userNick
 	initializeMapTimelineFirstContent();
 }
 
 function initializeMapTimelineFirstContent(){
-	$('#bilderInhalt' + numberOfBilder).load('map/get-timeline/username/timo', startgetDateImages());
-	numberOfBilder ++;
+	$('#bilderInhalt' + numberOfFreunde).load('map/get-timeline/username/' + userNickname, startgetDateImages());
+	myFriends.push(userNickname);
+			console.log(myFriends.length);
+	
+	numberOfFreunde ++;
 }
 
 function startgetDateImages(){	
@@ -174,9 +182,10 @@ function howMuchImages(){
 function sendImageRequest(){
 	setDateDifference();
 	howMuchImages();
-	for(var i = 0; i <= myFriends.length; i++){
-		var bildZahl = i+1;
-		$('#bilderInhalt' + bildZahl +' .images').load('map/get-images-for-timeline/number-of-images/' + numberOfImages + "/first-date/" + firstDate.toString('yyyy-M-d') + "/first-time/"+ firstDate.toString('HH:mm') + "/second-date/" + secondDate.toString('yyyy-M-d') + "/second-time/"+ secondDate.toString('HH:mm') + "/username/" + "timo");
+	for(var i = 0; i < myFriends.length; i++){
+		var bildZahl = i;
+		console.log(myFriends[i]);
+		$('#bilderInhalt' + bildZahl +' .images').load('map/get-images-for-timeline/number-of-images/' + numberOfImages + "/first-date/" + firstDate.toString('yyyy-M-d') + "/first-time/"+ firstDate.toString('HH:mm') + "/second-date/" + secondDate.toString('yyyy-M-d') + "/second-time/"+ secondDate.toString('HH:mm') + "/username/" + myFriends[i]);
 	}
 }
 
@@ -193,7 +202,7 @@ function initializeAddFriends(){
 		checkIfInTimeline();
 	});
 	
-	$("#addFriendsTextfield").keypress(function(event) {
+	$("#addFriendsTextfield").keydown(function(event) {
   		if ( event.which == 13 ) {
   			checkIfInTimeline();
   		}
@@ -201,11 +210,17 @@ function initializeAddFriends(){
  	
  	$("#addFriendsTextfield").focusin(function(event) {
  		if($("#addFriendsTextfieldId").val() == "Freunde hinzufügen"){
-  			$("#addFriendsTextfieldId").css("background-color", "#FFF");
-  			$("#addFriendsTextfieldId").val("");
-  		}
+ 			resetFriendTxtField();
+ 		}
+ 	});
+ 	
+ 	$("#addFriendsTextfield").click(function(event) {
+ 		if($("#addFriendsTextfieldId").val() == "Freunde hinzufügen"){
+ 			resetFriendTxtField();
+ 		}
  	});
 
+  
 	$(function () {
 		var cache = {},
 			lastXhr;
@@ -234,41 +249,60 @@ function initializeAddFriends(){
 	});	
 }
 
-function checkIfInTimeline(){
-	if( $("#addFriendsTextfieldId").val() != "" && $("#addFriendsTextfieldId").val() != "Freunde hinzufügen"){
-		for(var i = 0; i <= myFriends.length; i++){
-			if($("#addFriendsTextfieldId").val() == myFriends[i]){
-				return;
-			}
-			else{
-				loadFriendToTimeline();
-			}
-		}	
-		
+function resetFriendTxtField(){
+		$("#addFriendsTextfieldId").css("background-color", "#FFF");
+		$("#addFriendsTextfieldId").val("");
+}
+function resetFriendTxtFieldToStart(){
+		$("#addFriendsTextfieldId").css("background-color", "#FFF");
+		$("#addFriendsTextfieldId").val("Freunde hinzufügen");
 }
 
-function loadFriendToTimeline(){						
-		$("#bilderInhalte").append($('<div id="bilderInhalt'+ numberOfBilder +'"/>'));	
-		$("#bilderInhalt"+numberOfBilder).css({
-							"background-color" : "#FFF", 
-							"width" : "auto", 
-							"height" : "60px", 
-							"border" : "1px solid #999",
-							"margin" : "5px 0px 20px 12px",
-							"white-space" : "nowrap",
-							"overflow" : "hidden"});
-		$('#bilderInhalt'+ numberOfBilder).load('map/get-timeline/username/' + $("#addFriendsTextfieldId").val(), areFriends);
+function checkIfInTimeline(){
+	if( $("#addFriendsTextfieldId").val() != "" && $("#addFriendsTextfieldId").val() != "Freunde hinzufügen"){
+		console.log(myFriends);
+		var tauchtAuf = 0;
+		for(var k = 0; k <= myFriends.length; k++){
+			if($("#addFriendsTextfieldId").val() == myFriends[k]){
+				tauchtAuf = 1;
+				return;
+			}
+		}
+		if(tauchtAuf == 0){
+			loadFriendToTimeline();
+		}
+	}	
+}
+
+function loadFriendToTimeline(){	
+	$("#bilderInhalte").append($('<div id="bilderInhalt'+ numberOfFreunde +'"/>'));	
+	$('#bilderInhalt'+ numberOfFreunde).load('map/get-timeline/username/' + $("#addFriendsTextfieldId").val(), checkFriendStatus);
+}
+
+function checkFriendStatus(){
+	if(isFriend == 1){
+		areFriends();
+	}else if(isFriend == 0){
+		noFriends();
 	}
 }
 
-
-
 function areFriends (){
-	numberOfBilder ++;
-	var neuerFreund = myFriends.push($("#addFriendsTextfieldId").val());	 
+	$("#bilderInhalt"+numberOfFreunde).css({
+						"background-color" : "#FFF", 
+						"width" : "auto", 
+						"height" : "60px", 
+						"border" : "1px solid #999",
+						"margin" : "5px 0px 20px 12px",
+						"white-space" : "nowrap",
+						"overflow" : "hidden"});
+	numberOfFreunde ++;
+	myFriends.push($("#addFriendsTextfieldId").val());	 
 }
 
 function noFriends(){
+	$("#bilderInhalt" + numberOfFreunde).remove();
 	$("#addFriendsTextfieldId").css("background-color", "#F00")
 	$("#addFriendsTextfieldId").val("Sie können nur Freunde hinzufügen");
+	setTimeout("resetFriendTxtFieldToStart()", 4000);
 }

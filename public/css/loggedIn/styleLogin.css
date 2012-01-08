@@ -131,6 +131,19 @@ HEADER (includes Logo, Login,
 	float:right;
 }
 
+
+#suchFeld{
+	border:1px solid #999;
+	background-color:#FFF;
+	margin-left:13px;
+	height:23px;
+	width:268px;
+	float:left;
+	margin-top:30px;
+	margin-left:120px;
+}
+
+.ui-autocomplete-loading { background: white url('images/ui-anim_basic_16x16.gif') right center no-repeat; }
 	
 /*===================================
 CONTENT
@@ -241,10 +254,10 @@ dropdown_bt{position:relative; z-index:10000;}
 #dropdown_bt ul li.sublinks a{color:#fff; font-weight:normal; display:block; width:105px; font-size:10px; padding-right:35px;}
 #dropdown_bt ul li.sublinks a:hover{color:#999;}
 #dropdown_bt ul li.sublinks{display:none;}
-.screw{background:url(../../images/screw.png) no-repeat right #242424; border-bottom: 1px solid #111;}
+.calender{background:url(../../images/calender.png) no-repeat right #242424; border-bottom: 1px solid #111;}
+.screw{background:url(../../images/screw.png) no-repeat right #242424;  border-top: 1px solid #444;border-bottom: 1px solid #111;}
 .chart-up{background:url(../../images/chart-up.png) no-repeat right #242424; border-top: 1px solid #444;border-bottom: 1px solid #111;}
 .chart-pi{background:url(../../images/chart-pi.png) no-repeat right #242424; border-top: 1px solid #444;border-bottom: 1px solid #111;}
-.calender{background:url(../../images/calender.png) no-repeat right #242424; border-top: 1px solid #444;border-bottom: 1px solid #111;}
 .arrow{background:url(../../images/arrow.png) no-repeat right #242424; border-top: 1px solid #444;border-bottom: 1px solid #111;}
 .door{background:url(../../images/door.png) no-repeat right #242424; border-top: 1px solid #444;}
 
