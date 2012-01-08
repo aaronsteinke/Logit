@@ -88,7 +88,7 @@ class Application_Model_PictureMapper
 					FROM 	pic p,
 							user u
 					WHERE 	u.username = :username
-					AND 	u.id = p.id_user
+					AND 	u.id = p.user_id
 					');
     	if (isset($dateBegin) && isset($dateEnd)){
     		$sql .= ' 	AND date_shot < :dateEnd 
