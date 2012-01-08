@@ -13,10 +13,11 @@ class Application_Model_User {
 	protected $_lastLogin;
 	protected $_hits;
 	protected $_birthday;
+	protected $_gcal_calendar_id;
 
 
 	public function __construct( 	$id, $userName, $lastName, $firstName, $sex,
-									$profilePic, $eMail, $regTime, $lastLogin, $hits, $birthday ) {
+									$profilePic, $eMail, $regTime, $lastLogin, $hits, $birthday, $gcal_calendar_id) {
 		$this->_id = $id;
 		$this->_userName = $userName;
 		$this->_lastName = $lastName;
@@ -28,6 +29,7 @@ class Application_Model_User {
 		$this->_lastLogin = $lastLogin;
 		$this->_hits = $hits;
 		$this->_birthday = $birthday;
+		$this->_gcal_calendar_id = $gcal_calendar_id;
 	}
 
 	public function getId() {
@@ -36,6 +38,10 @@ class Application_Model_User {
 
 	public function getUserName() {
 		return $this->_userName;
+	}
+	
+	public function getUserCalendar() {
+		return $this->_gcal_calendar_id;
 	}
 
 	public function getFirstName(){
@@ -101,7 +107,17 @@ class Application_Model_User {
 		$users->deleteFriend($this->_id, $idUser);
 	}
 	
+	public function addData($user_id, $data){
+		$users = new Application_Model_UserMapper();
+		$users->addData($user_id, $data);
+	}
+	
 	public function getFriends(){
+		$users = new Application_Model_UserMapper();
+		return $users->getFriendsForUser($this->_id);
+	}
+	
+	public function getGcal_Calendar(){
 		$users = new Application_Model_UserMapper();
 		return $users->getFriendsForUser($this->_id);
 	}

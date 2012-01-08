@@ -35,6 +35,15 @@ class UserController extends Zend_Controller_Action {
 		
 		echo '<a href="/connect/facebookAuth/">connect with Facebook</a><br/>';
 		
+		echo '<form action="/user/add-google-calendar">';
+		echo '<label for="google_calendar_id">Google Calendar Id</label>';
+		echo '<input id="google_calendar_id" name="google_calendar_id"/>';
+		echo '<input type="submit" value="hau rein!"> ';
+		echo '</form>';
+		echo '<br/>';
+		
+		echo '<a href="/gcal">Google Kalender scannen</a>';
+		
 	}
 	
 	public function followAction(){
@@ -94,6 +103,28 @@ class UserController extends Zend_Controller_Action {
 		}
 		$arrNames = Zend_Json::encode($arrNames);
 		print_r($arrNames);
+	}
+	
+	public function addGoogleCalendarAction()
+	{
+		//$this->_helper->layout()->disableLayout();
+		$this->_helper->viewRenderer->setNoRender(true);
+		
+		$data = array(
+			'gcal_calendar_id'		=>	$this->getRequest()->getParam('google_calendar_id')
+		);
+		
+		$authUser = Application_Model_AuthUser::getAuthUser();
+		print_r($authUser);
+		print_r($data);
+		echo '<br/>';
+		$user_id = $authUser->getID();
+		$authUser->addData($user_id,$data);
+		
+		//$authUser = Application_Model_AuthUser::getAuthUser();
+		//$authUser->unfollow($idUser);
+		
+		$this -> _redirect(user);
 	}
 
 }
