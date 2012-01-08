@@ -16,6 +16,8 @@ var timelineStatus = 1;
 var timelineSpeed = 500;
 var animateMapToTimeline;
 
+
+
 function initializeTimeline(){
 	setTimelineAndMapBottom();
 	setFooterHeight();
@@ -28,6 +30,7 @@ function setTimelineAndMapBottom(){
 	setTimelineBottom();
 	setMapBottom();
 	setFooterBottom();
+	initializeTimelineHeight();
 }
 
 //////////////////////////////
@@ -74,6 +77,18 @@ function setTimelineBottom(){
   		return bottomPx = $("#footer").css("height");
 	});
 }
+
+function initializeTimelineHeight(){
+	console.log(numberOfFriends);
+	$("#timeline").css("height", function(heightPx) {
+		if(numberOfFriends == 1){
+			return heightPx = 40 + (numberOfFriends)* 96 ;
+		}else{
+  			return heightPx = 40 + (numberOfFriends)* 90 ;
+  		}
+	});
+}
+
 
 function setMapBottom(){
 	$("#map").css("bottom", function(bottomPx) {

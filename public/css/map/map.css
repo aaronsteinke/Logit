@@ -1,4 +1,4 @@
-@charset "UTF-8";
+a@charset "UTF-8";
 
 
 #map{
@@ -7,6 +7,7 @@
 	right: 0px;
 	bottom: 0px;
 	top: 168px;
+	min-width:1200px;
 	}
 
 #clusterPopUp {

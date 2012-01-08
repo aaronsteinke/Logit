@@ -5,8 +5,9 @@
 	width: 100%;
 	height: auto;
 	max-height:300px;
+	min-width:1200px;
 	bottom:48px;
-	overflow:hidden;
+	
 }
 
 
@@ -15,10 +16,10 @@ TIMELINE NAVIGATION
 ===================================*/
 
 #navi{
-	width:100%;
+	width:auto;
 	min-width:855px;
 	height: 42px;
-	padding:9px 0px 0px 11px;
+	margin:9px 0px 0px 11px;
 	font-weight:bold;
 }
 
@@ -176,30 +177,25 @@ CONTENT 1
 =========================================*/
 
 #bilderInhalte{
+	position:absolute;
+	top:50px;
+	bottom:0px;
+	right:0px;
+	left:0px;
 	padding: 0 10px 0 0;
 	width:auto;
-	height:100%;
 }
 
-.scroll-pane{
-	width: 100px;
-	height: 200px;
-	overflow: auto;
+.scrollBalken{
+	overflow:auto;
 }
-
-.horizontal-only{
-	height:auto;
-	max-height: 252px;
-	overflow: auto;
-}
-
 
 #bilderInhalt0{
 	background-color:#FFF;
 	width: auto;
 	height:60px;
 	border:1px solid #999;
-	margin: 5px 0px 20px 12px;
+	margin: 5px 0px 19px 12px;
 	white-space:nowrap;
 	overflow:hidden;
 }
