@@ -170,8 +170,8 @@
   
 .timeglider-ticks {
 	top:0px;
-	position:relative;
-	height:900px;
+	position:absolute;
+	height:100%;
  }
   
 .timeglider-tick {
@@ -752,8 +752,6 @@ ul.timeglider-ev-modal-links li a {
 /* END timeglider-ev-modal */
 
 .timeglider-settings-modal {
-  	top:45px;
-  	left:45px;
   	width:350px;
 }
 
@@ -1258,3 +1256,24 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   border: 0;
 }
 
+#placement {
+	position:absolute;
+	bottom: 50px;
+	left: 0px;
+	right: 0px;
+	top: 168px;
+	margin:0px;
+	height:auto;
+}
+
+.scrolls {
+	margin-top:14px;
+	text-align:center;
+}
+
+.scrolls a {
+	font-size:14px;
+	font-weight:bold;
+	color:blue;
+	cursor:pointer;
+}

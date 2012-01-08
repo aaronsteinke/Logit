@@ -442,7 +442,7 @@
 		    	Cx = info.event.pageX - (info.dimensions.container.offset.left),
 		    	offMid = Cx - Cw/2,
 			    secPerPx = me.getZoomInfo().spp,
-				// Cy = event.pageY - $(PLACEMENT).offset().top,
+				//Cy = event.pageY - $(PLACEMENT).offset().top,
 			    fdSec = me.getFocusDate().sec,
 				dcSec = Math.floor(fdSec + (offMid * secPerPx)),
 				clickDate = new TG_Date(dcSec);

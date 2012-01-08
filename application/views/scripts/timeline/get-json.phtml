@@ -1,7 +1,6 @@
 [{
 	"id": "idahoTimeline",
-    "title": "Stephan Leenders",
-    "focus_date": "<?php echo $this->obUser->getFirstLog(); ?>",
+    "focus_date": "<?php echo $this->obUser->getLastLog()->getDateShot(); ?>",
     "initial_zoom": "47",
 	"color": "#82530d",
 	"size_importance": "false",
@@ -11,16 +10,16 @@
 foreach ($this->arrLogs as $key=>$log) {
 	?> 
 	{		"id": "<?php echo $log->getId();?>",
+			"title": " ",
 			"startdate": "<?php echo $log->getDateShot();?>",
 			"date_limit": "ye",
 			"description": "hier kann auch HTML stehen vllt das bild in groß?",
-	        "event_type": "event",
-	        "low_threshold": "1",
+	        "low_threshold": "0",
 	        "high_threshold": "60",
-	        "importance": "30",
+	        "importance": "<?php echo $key ?>",
 			"image": "daten/pics/45/<?php echo $log->getPicIdent(); ?>",
-			"image_class": "bar",
-			"ypix": "0",
+			"image_class": "layout",
+			"ypix": "500",
 			"slug": "" <?php 
 			if ($key != count($this->arrLogs)-1) {
 				echo '},';

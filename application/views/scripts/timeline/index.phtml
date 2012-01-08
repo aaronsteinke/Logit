@@ -1,6 +1,14 @@
 
-
-<div id="main">
+	
+	<div id="main">
+		<div id="addFriends" style="z-index: 1000; position: absolute; margin: 20px;">
+		<div id="addFriendsButton" class="borderRight"><img src="images/buttonSearch.png" width="30" height="22" class="timePic" /></div>
+		<div id="addFriendsTextfield" title="Finde Freunde und füge Sie zu Deiner Timeline hinzu">
+			<input type="text" value="Freunde hinzufügen" id="addFriendsTextfieldId" name="addFriendsTextfield" />
+		</div>
+		<div id ="friendSearchList">
+		</div>	
+	</div>
 	<div id='placement'></div>
 	
 	
@@ -32,33 +40,6 @@
 	<script src="/js/timeglider/timeglider/timeglider.timeline.widget.js" type="text/javascript" charset="utf-8"></script>
 	
 	
-
-  <script type='text/javascript'>
-
-	$(function () { 
-		
-		var tg1 = $("#placement").timeline({
-			"min_zoom":1, 
-			"max_zoom":60, 
-			"show_centerline":true,
-			"data_source":"timeline/get-json",
-			"show_footer":false,
-			"display_zoom_level":true,
-			"event_overflow":"scroll"
-		});
-		
-		
-		$("#scrolldown").bind("click", function() {
-			$(".timeglider-timeline-event").animate({top:"+=100"})
-		})
-		
-		$("#scrollup").bind("click", function() {
-			$(".timeglider-timeline-event").animate({top:"-=100"})
-		})
-		
-    }); // end document-ready
-	
-</script>
 
 </div>
 
