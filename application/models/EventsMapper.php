@@ -65,6 +65,54 @@ class Application_Model_EventsMapper {
 		}
 	}
 
+	public function getOneByEventId($eventId)
+	{
+		$db = $this -> getDbTable() -> getAdapter();
+
+		$sql = ('	SELECT 	*
+					FROM 	events 
+					WHERE 	id = :eventId
+					LIMIT 1
+					');
+
+		$stmt = new Zend_Db_Statement_Pdo($db, $sql);
+		$stmt -> bindParam(':eventId', $eventId);
+		$stmt -> execute();
+
+		$resultSet = $stmt -> fetchAll();
+		$arrEvents = $this -> createObjektArr($resultSet);
+		//print_r($arrEvents[0]);
+		if (empty($arrEvents)) {
+			return 0;
+		} else {
+			return $arrEvents[0];
+		}
+	}
+
+	public function getEvents($picId)
+	{
+		/*
+		 * Der Kram geht mit Sicherheit noch effektiver mit SQL JOINS.
+		 * Im nächsten Leben dann.
+		 */
+		$db = $this -> getDbTable() -> getAdapter();
+		$sql = '	SELECT 	event_id
+					FROM 	pic2event
+					WHERE pic_id = :picId
+					';
+		$stmt = new Zend_Db_Statement_Pdo($db, $sql);
+		$stmt -> bindParam(':picId', $picId);
+		$stmt -> execute();
+		$resultSet = $stmt -> fetchAll();
+		$events = null;
+		if ($resultSet) {
+			foreach ($resultSet as $value) {
+				$events[] = $this -> getOneByEventId($value['event_id']);
+			}
+		}
+		return $events;
+	}
+
 	private function createObjekt($result)
 	{
 		if ($result == null) {
@@ -89,15 +137,10 @@ class Application_Model_EventsMapper {
 
 	public function connect_Pics($user_id, $event_id, $event_start, $event_end)
 	{
-		// TODO Ersetzen durch event zeiten
-		$event_start = "2011-09-19T12:55:28";
-		$event_end = "2011-12-10T11:25:05";
-		
 		$user = Application_Model_AuthUser::getAuthUser();
 		$user_id = $user -> getId();
 		$pictureMapper = new Application_Model_PictureMapper();
 		$pictures = $pictureMapper -> getLogsForUser($user_id, $event_start, $event_end);
-		$event_id = 362;
 		foreach ($pictures as $value) {
 			$pic2event = new Application_Model_Pic2EventMapper();
 			if (!$pic2event -> checkExistance($event_id, $value -> getId())) {

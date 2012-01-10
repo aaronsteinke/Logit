@@ -97,46 +97,45 @@ class Application_Model_PictureMapper {
 		$resultSet = $stmt -> fetchAll();
 		return $resultSet[0]['number_of_logs'];
 	}
-	public function getLogsByUsername($username, $dateBegin = NULL, $dateEnd = NULL, $limit = NULL){
-    	$db = $this->getDbTable()->getAdapter();
-    	$sql = ('	SELECT 	p.*
+
+	public function getLogsByUsername($username, $dateBegin = NULL, $dateEnd = NULL, $limit = NULL)
+	{
+		$db = $this -> getDbTable() -> getAdapter();
+		$sql = ('	SELECT 	p.*
 					FROM 	pic p,
 							user u
 					WHERE 	u.username = :username
 					AND 	u.id = p.user_id
 					');
-    	if (isset($dateBegin) && isset($dateEnd)){
-    		$sql .= ' 	AND date_shot < :dateEnd 
+		if (isset($dateBegin) && isset($dateEnd)) {
+			$sql .= ' 	AND date_shot < :dateEnd 
     					AND date_shot > :dateBegin	';
-    	}
-    	
-    	$sql .= ' 	ORDER BY date_shot DESC ';
-    	
-    	// binding nachlesen und einsetzen
-    	if (isset($limit)){
-    		$sql .= '	LIMIT ' . $limit . ' ';
-    	}
-    	
-    	$stmt = new Zend_Db_Statement_Pdo($db, $sql);
-    	$stmt->bindParam(':username', $username);
-		
-    	if (isset($dateBegin) && isset($dateEnd)){
-			$stmt->bindParam(':dateEnd', $dateEnd);
-			$stmt->bindParam(':dateBegin', $dateBegin);
-    	}
-    	
-    	/*if (isset($limit)){
-    		$stmt->bindParam(':limit', $limit);
-    	}*/
-    	
-    	$stmt->execute();
-    	$resultSet = $stmt->fetchAll();
-    	return $this->createObjektArr($resultSet);
+		}
+
+		$sql .= ' 	ORDER BY date_shot DESC ';
+
+		// binding nachlesen und einsetzen
+		if (isset($limit)) {
+			$sql .= '	LIMIT ' . $limit . ' ';
+		}
+
+		$stmt = new Zend_Db_Statement_Pdo($db, $sql);
+		$stmt -> bindParam(':username', $username);
+
+		if (isset($dateBegin) && isset($dateEnd)) {
+			$stmt -> bindParam(':dateEnd', $dateEnd);
+			$stmt -> bindParam(':dateBegin', $dateBegin);
+		}
+
+		/*if (isset($limit)){
+		 $stmt->bindParam(':limit', $limit);
+		 }*/
+
+		$stmt -> execute();
+		$resultSet = $stmt -> fetchAll();
+		return $this -> createObjektArr($resultSet);
 
 	}
-	
-	public function getNumberOfLogsForUser($idUser){
-		$db = $this->getDbTable()->getAdapter();
 
 	public function getFirstOrLastLogForUser($idUser, $first = true)
 	{
@@ -164,6 +163,30 @@ class Application_Model_PictureMapper {
 			return $arrPics[0];
 		}
 
+	}
+
+	public function getOneById($picId)
+	{
+		$db = $this -> getDbTable() -> getAdapter();
+
+		$sql = ('	SELECT 	*
+					FROM 	pic 
+					WHERE 	id = :picId
+					LIMIT 1
+					');
+
+		$stmt = new Zend_Db_Statement_Pdo($db, $sql);
+		$stmt -> bindParam(':picId', $picId);
+		$stmt -> execute();
+
+		$resultSet = $stmt -> fetchAll();
+		$arrPics = $this -> createObjektArr($resultSet);
+		//print_r($arrEvents[0]);
+		if (empty($arrPics)) {
+			return 0;
+		} else {
+			return $arrPics[0];
+		}
 	}
 
 	private function createObjekt($result)

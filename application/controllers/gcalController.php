@@ -22,22 +22,30 @@ class gcalController extends Zend_Controller_Action {
 			$event_start = (isset($value['start']['dateTime'])) ? $value['start']['dateTime'] : $value['start']['date'];
 			$event_end = (isset($value['end']['dateTime'])) ? $value['end']['dateTime'] : $value['start']['date'] . 'T23:59:59+2:00';
 			$user_id = $user -> getId();
-			
-			$eventsdb = new Application_Model_EventsMapper();	
-			$singleEventInDb = $eventsdb -> getOneByGcal_id($gcal_id);		
+
+			$eventsdb = new Application_Model_EventsMapper();
+			$singleEventInDb = $eventsdb -> getOneByGcal_id($gcal_id);
 			if (!$singleEventInDb) {
 				$eventsdb -> create($gcal_id, $event_title, $event_start, $event_end, $user_id);
 			}
+
 			$singleEventInDb = $eventsdb -> getOneByGcal_id($gcal_id);
 			if ($singleEventInDb) {
-				$eventsdb -> connect_Pics($user_id, $singleEventInDb->get_id(), $event_start, $event_end);
+				$eventsdb -> connect_Pics($user_id, $singleEventInDb -> get_id(), $event_start, $event_end);
 			}
-			
+
 		}
-		/* Testteil
-		$event_id = '362';
-		$eventsmapper = new Application_Model_EventsMapper();
-		$eventsmapper -> connect_Pics($user_id, $event_id, $event_start, $event_end);
+		// Testteil
+		$eventsmapper = new Application_Model_EventsMapper;
+		$events = $eventsmapper -> getEvents("124");
+		echo "<pre>";
+		var_dump($events);
+		echo "</pre>";
+
+		// echo "<pre>";
+		// var_dump($events);
+		// echo "</pre>";
+
 		//$this -> _redirect("/user");*/
 	}
 
