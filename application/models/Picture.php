@@ -87,5 +87,11 @@ class Application_Model_Picture {
 	{
 		return $this -> _dateShot;
 	}
-
+	
+	public function getEvents()
+	{
+		$eventsMapper = new Application_Model_EventsMapper();
+		$eventsMapper -> getEvents($this->_id);
+		
+	}
 }

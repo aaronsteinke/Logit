@@ -3,7 +3,8 @@
 class Application_Model_UserMapper {
 	protected $_dbTable;
 
-	public function setDbTable($dbTable) {
+	public function setDbTable($dbTable)
+	{
 		if (is_string($dbTable)) {
 			$dbTable = new $dbTable();
 		}
@@ -15,7 +16,8 @@ class Application_Model_UserMapper {
 		return $this;
 	}
 
-	public function getDbTable() {
+	public function getDbTable()
+	{
 		if (null === $this -> _dbTable) {
 			$this -> setDbTable('Application_Model_DbTable_User');
 		}
@@ -23,7 +25,8 @@ class Application_Model_UserMapper {
 		return $this -> _dbTable;
 	}
 
-	public function create($userName, $eMail, $password, $birthday) {
+	public function create($userName, $eMail, $password, $birthday)
+	{
 		/*
 		 if ( $this->getOneByUserName($userName) != false){
 		 return false;
@@ -36,7 +39,20 @@ class Application_Model_UserMapper {
 		$firstName = 'test';
 		$gcal_calendar_id = "kein Kalender";
 
-		$data = array('username' => $userName, 'lastname' => $lastName, 'firstname' => $firstName, 'sex' => 1, 'profilepic' => $pathToPic, 'password' => $password, 'email' => $eMail, 'reg_time' => date('Y-m-d H:i:s'), 'last_login' => date('Y-m-d H:i:s'), 'hits' => $hits, 'birthday' => $birthday, 'gcal_calendar_id' => $gcal_calendar_id);
+		$data = array(
+				'username' => $userName,
+				'lastname' => $lastName,
+				'firstname' => $firstName,
+				'sex' => 1,
+				'profilepic' => $pathToPic,
+				'password' => $password,
+				'email' => $eMail,
+				'reg_time' => date('Y-m-d H:i:s'),
+				'last_login' => date('Y-m-d H:i:s'),
+				'hits' => $hits,
+				'birthday' => $birthday,
+				'gcal_calendar_id' => $gcal_calendar_id
+		);
 
 		$strWhereClause = $this -> getDbTable() -> insert($data);
 
@@ -44,7 +60,8 @@ class Application_Model_UserMapper {
 		//return $this->getOneByUserName($userName);
 	}
 
-	public function createFriend($idUser, $idFriend, $follow = true) {
+	public function createFriend($idUser, $idFriend, $follow = true)
+	{
 		$db = $this -> getDbTable() -> getAdapter();
 		$sql = 'INSERT INTO user_friends (	id_user,
 											id_friend,
@@ -62,7 +79,8 @@ class Application_Model_UserMapper {
 		echo mysql_error();
 	}
 
-	public function deleteFriend($idUser, $idFriend) {
+	public function deleteFriend($idUser, $idFriend)
+	{
 		$db = $this -> getDbTable() -> getAdapter();
 		$sql = 'DELETE
 				From user_friends
@@ -77,7 +95,8 @@ class Application_Model_UserMapper {
 	}
 
 	// wenn funktion nicht mehr benötigt wird bitte löschen
-	public function getAllUsers() {
+	public function getAllUsers()
+	{
 		$db = $this -> getDbTable() -> getAdapter();
 
 		$sql = ('	SELECT 	*
@@ -91,7 +110,8 @@ class Application_Model_UserMapper {
 
 	}
 
-	public function getOneByUsername($username) {
+	public function getOneByUsername($username)
+	{
 		$db = $this -> getDbTable() -> getAdapter();
 
 		$sql = ('	SELECT 	*
@@ -113,7 +133,8 @@ class Application_Model_UserMapper {
 
 	}
 
-	public function getOneById($id) {
+	public function getOneById($id)
+	{
 		$db = $this -> getDbTable() -> getAdapter();
 
 		$sql = ('	SELECT 	*
@@ -135,7 +156,8 @@ class Application_Model_UserMapper {
 
 	}
 
-	public function getOneByEMail($EMail) {
+	public function getOneByEMail($EMail)
+	{
 		$db = $this -> getDbTable() -> getAdapter();
 
 		$sql = ('	SELECT 	*
@@ -156,7 +178,8 @@ class Application_Model_UserMapper {
 		}
 	}
 
-	public function getOneByAccess_token($access_token) {
+	public function getOneByAccess_token($access_token)
+	{
 		$db = $this -> getDbTable() -> getAdapter();
 
 		$sql = ('	SELECT 	*
@@ -177,7 +200,8 @@ class Application_Model_UserMapper {
 		}
 	}
 
-	public function getFriendsForUser($idUser) {
+	public function getFriendsForUser($idUser)
+	{
 		$db = $this -> getDbTable() -> getAdapter();
 
 		$sql = ('	SELECT 	f.*
@@ -191,16 +215,50 @@ class Application_Model_UserMapper {
 		$stmt -> execute();
 
 		$resultSet = $stmt -> fetchAll();
-		$arrRestaurants = $this -> createObjektArr($resultSet);
-		return $arrRestaurants;
+		$arrUsers = $this -> createObjektArr($resultSet);
+		return $arrUsers;
 	}
 
-	public function addData($user_id, $data) {
+	public function getFriendByUsername($idUser, $friendUsername)
+	{
+		$db = $this -> getDbTable() -> getAdapter();
+
+		$sql = ('	SELECT 	f.*
+					FROM 	user f, 
+							user_friends u 
+					WHERE 	u.id_user = :idUser
+					AND 	f.id = u.id_friend
+					AND 	f.username = :friend_username	');
+
+		$stmt = new Zend_Db_Statement_Pdo($db, $sql);
+		$stmt -> bindParam(':idUser', $idUser);
+		$stmt -> bindParam(':friend_username', $friendUsername);
+		$stmt -> execute();
+
+		$resultSet = $stmt -> fetchAll();
+		$arrUsers = $this -> createObjektArr($resultSet);
+
+		if (empty($arrUsers)) {
+			return 0;
+		} else {
+			return $arrUsers[0];
+		}
+	}
+
+	public function addFacebookData($user_id, $data)
+	{
 		$db = $this -> getDbTable() -> getAdapter();
 		$db -> update('user', $data, "id = $user_id");
 	}
 
-	public function searchUserByName($name) {
+	public function addData($user_id, $data)
+	{
+		$db = $this -> getDbTable() -> getAdapter();
+		$db -> update('user', $data, "id = $user_id");
+	}
+
+	public function searchUserByName($name)
+	{
 		$db = $this -> getDbTable() -> getAdapter();
 
 		$sql = ('	SELECT 	*
@@ -217,7 +275,8 @@ class Application_Model_UserMapper {
 		return $arrRestaurants;
 	}
 
-	public function searchFriendsByName($idUser, $username) {
+	public function searchFriendsByName($idUser, $username)
+	{
 		$db = $this -> getDbTable() -> getAdapter();
 
 		$sql = ('	SELECT 	f.*
@@ -239,7 +298,8 @@ class Application_Model_UserMapper {
 		return $arrRestaurants;
 	}
 
-	private function createObjekt($result) {
+	private function createObjekt($result)
+	{
 		if ($result == null) {
 			return false;
 		}
@@ -251,7 +311,8 @@ class Application_Model_UserMapper {
 		return $obUser;
 	}
 
-	private function createObjektArr($resultSet) {
+	private function createObjektArr($resultSet)
+	{
 		$arrUsers = array();
 		foreach ($resultSet as $row) {
 			$arrUsers[] = $this -> createObjekt($row);
