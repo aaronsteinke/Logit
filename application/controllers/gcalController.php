@@ -36,17 +36,13 @@ class gcalController extends Zend_Controller_Action {
 
 		}
 		// Testteil
-		$eventsmapper = new Application_Model_EventsMapper;
-		$events = $eventsmapper -> getEvents("124");
-		echo "<pre>";
-		var_dump($events);
-		echo "</pre>";
-
-		// echo "<pre>";
-		// var_dump($events);
-		// echo "</pre>";
-
+		//$eventsmapper = new Application_Model_EventsMapper;
+		//$events = $eventsmapper -> getEvents("124");
 		//$this -> _redirect("/user");*/
+		
+		echo Application_Model_gpsTools::getHeight('50.1125', '8.6415');
+		
+		
 	}
 
 	private function gcal_api_get($url)
