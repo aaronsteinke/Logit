@@ -10,7 +10,7 @@
 ////// MAP /////////////
 var LatLngMyBounds
 
-function initialize() {
+function initializeMap() {
    	var latlng = new google.maps.LatLng(48.049915, 8.205328);
    	var myOptions = {
     	zoom: 5,
