@@ -14,8 +14,7 @@ var buttonPlusActiv = 1;
 var buttonMinusActiv = 1;
 var userNickname;
 
-
-var numberOfFreunde =0;
+var numberOfFriends = 0;
 
 var isFriend;
 
@@ -35,11 +34,10 @@ function initializeMapTimeline(minimalDate, maximalDate, userNick){
 }
 
 function initializeMapTimelineFirstContent(){
-	$('#bilderInhalt' + numberOfFreunde).load('map/get-timeline/username/' + userNickname, startgetDateImages());
+	$('#bilderInhalt' + numberOfFriends).load('map/get-timeline/username/' + userNickname, startgetDateImages());
 	myFriends.push(userNickname);
-			console.log(myFriends.length);
-	
-	numberOfFreunde ++;
+	console.log(myFriends.length);
+	numberOfFriends ++;
 }
 
 function startgetDateImages(){	
@@ -145,8 +143,8 @@ function parseDate(){
 
 function setDateDifference(){
 	minuteDifference = Math.round(secondDate - firstDate) / (1000*60);
-		 	if (minuteDifference <= 0){
-			buttonPlusActiv = 0;
+	if (minuteDifference <= 0){
+		buttonPlusActiv = 0;
 	} 		
 } 
 
@@ -275,8 +273,8 @@ function checkIfInTimeline(){
 }
 
 function loadFriendToTimeline(){	
-	$("#bilderInhalte").append($('<div id="bilderInhalt'+ numberOfFreunde +'"/>'));	
-	$('#bilderInhalt'+ numberOfFreunde).load('map/get-timeline/username/' + $("#addFriendsTextfieldId").val(), checkFriendStatus);
+	$("#bilderInhalte").append($('<div id="bilderInhalt'+ numberOfFriends +'"/>'));	
+	$('#bilderInhalt'+ numberOfFriends).load('map/get-timeline/username/' + $("#addFriendsTextfieldId").val(), checkFriendStatus);
 }
 
 function checkFriendStatus(){
@@ -288,20 +286,21 @@ function checkFriendStatus(){
 }
 
 function areFriends (){
-	$("#bilderInhalt"+numberOfFreunde).css({
+	$("#bilderInhalt"+numberOfFriends).css({
 						"background-color" : "#FFF", 
 						"width" : "auto", 
 						"height" : "60px", 
 						"border" : "1px solid #999",
-						"margin" : "5px 0px 20px 12px",
+						"margin" : "5px 0px 19px 12px",
 						"white-space" : "nowrap",
 						"overflow" : "hidden"});
-	numberOfFreunde ++;
+	numberOfFriends ++;
+	initializeTimelineHeight();
 	myFriends.push($("#addFriendsTextfieldId").val());	 
 }
 
 function noFriends(){
-	$("#bilderInhalt" + numberOfFreunde).remove();
+	$("#bilderInhalt" + numberOfFriends).remove();
 	$("#addFriendsTextfieldId").css("background-color", "#F00")
 	$("#addFriendsTextfieldId").val("Sie können nur Freunde hinzufügen");
 	setTimeout("resetFriendTxtFieldToStart()", 4000);

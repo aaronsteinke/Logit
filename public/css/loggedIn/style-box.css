@@ -1,0 +1,179 @@
+
+
+
+/*BASIS ANORDNUNG PROFILEINSTELLUNGEN ETC.*/
+.c2 {
+	padding-top: 25px;
+	}
+	
+.c3 {
+	padding-top: 5px;
+	height: 40px; 
+	}
+	.c4 {
+		border-bottom:#CCC solid 1px;
+		font-size: 12px;
+		font-weight: bold;
+		width:450px;	
+		padding:10px 0;	
+		}
+		
+	.r1 {
+		width:150px;
+		float:left;
+		}
+		.r2 {
+		width:300px;
+		color:#494a43;
+		margin-left:150px;
+		}
+		
+		.r3 {
+		margin-left:150px;
+		color:#183152;
+		}
+.p4{
+		height: 30px;
+		border-bottom:#CCC solid 1px;
+		font-size: 12px;
+		font-weight: bold;
+		padding-top: 10px;	
+		width:300px;		
+	}
+a { text-decoration:none;
+	border: hidden;; }
+.for {width:300px;}
+.submit{
+	clear:both;
+	float:left;
+	background:#6E9C2C;
+	color:#FFF;
+	border:solid 2px #eee; 
+	-moz-border-radius:5px; 
+	border-radius:5px; 
+	-webkit-border-radius:10px;
+	width:100px;
+	padding:5px;
+	cursor:pointer;
+	-moz-box-shadow: inset 0 0 5px #888;
+	-webkit-box-shadow: inset 0 0 5px#888;
+	box-shadow: inner 0 0 5px #888;	
+	margin-top:20px;
+	}
+.submit:hover{
+	opacity:0.9;
+	}
+.input{color:#666;}
+.date{float:right; margin-left:75px;}
+#profilimage{ width:150px; height:200px; margin-left:310px;background:#eee;padding:10px 23px 0 23px; border:#ABC8E2 thin solid;}
+#add_profilimage{margin:10px 0 10px 0;}
+
+.beschreibungc4 {
+	height: 100px;
+	border-bottom:#CCC solid 1px;
+	font-size: 12px;
+	font-weight: bold;
+	padding-top: 10px;	
+	width:450px;		
+	}
+
+/* Events anlegen => FREUNDE*/
+.friendsc4{
+		font-size: 12px;
+		font-weight: bold;
+		padding-top: 10px;
+		width:450px;
+		}
+.friends{
+	width:300px;
+	color:#494a43;
+	margin-left:150px;
+	}
+.friends_thumbs{
+	position:relative;
+	height:100px;
+	width:265px;
+	padding:10px;
+	background:#FFF;
+	border:solid #CCC thin;
+	margin-bottom:15px;
+	overflow:hidden;
+	}
+.friend_profil{
+	width:175px;
+	height:60px;
+	display:block;
+	}
+.friend_profil_thumb{
+	padding:5px;
+	float:left;
+	width:50px;
+	height:50px
+	}
+.friend_profil_info{
+	margin-left:60px;
+	width:125px;
+	padding:5px;
+	}
+.addfriends{
+	margin:0 0 10px 0;
+	}
+/*Logs verbessern*/
+/*.logs_verb{ min-height:400px; }*/
+.logs_verb h2{cursor:pointer;}
+.border-top{border-top:medium #999 solid; padding-bottom:10px;}
+.logs_verb_vorschlag{padding-bottom:12px;width:300px;}
+.togglebox1 {
+	background-color:#eee;
+	border: 1px solid #CCC;
+	width: 300px;
+	clear: both;
+	margin:10px 0;
+}
+.togglebox1 .block {
+	padding: 0;
+}
+.block .c4{width:290px; border:none; padding:5px; font-size:10px;}
+.block .r1{width:100px; }
+.block .r2{width:175px; margin-left:100px;}
+.block .for{width:175px;}
+.block .friendsc4{width:265px;}
+
+.block .friends{margin:0;}
+/*scrollbar*/
+.scrollbar1 { width: 265px; margin: 0; }
+.scrollbar1 .viewport { width: 265px; height: 100px; overflow: hidden; }
+.scrollbar1 .overview { list-style: none; position: absolute; left: 0; top: 0; padding: 10px 0 10px 10px; margin: 0; }
+.scrollbar1 .scrollbar{ background: transparent url(images/bg-scrollbar-track-y.png) no-repeat 0 0; position: relative; background-position: 0 0; float: right; width: 15px; }
+.scrollbar1 .track { background: transparent url(images/bg-scrollbar-trackend-y.png) no-repeat 0 100%; height: 100%; width:13px; position: relative; padding: 0 1px; }
+.scrollbar1 .thumb { background: transparent url(images/bg-scrollbar-thumb-y.png) no-repeat 50% 100%; height: 20px; width: 25px; cursor: pointer; overflow: hidden; position: absolute; top: 0; left: -5px; }
+.scrollbar1 .thumb .end { background: transparent url(images/bg-scrollbar-thumb-y.png) no-repeat 50% 0; overflow: hidden; height: 5px; width: 25px; }
+.scrollbar1 .disable { display: none; }
+	
+/*	jQuery Coda-Slider v2.0 - http://www.ndoherty.biz/coda-slider
+	Copyright (c) 2009 Niall Doherty
+	This plugin available for use in all personal or commercial projects under both MIT and GPL licenses.
+*/
+	.panel h2.title { margin-bottom: 10px }
+	noscript div { background: #ccc; border: 1px solid #900; margin: 20px 0; padding: 15px }
+	.coda-slider-wrapper { padding: 20px 0 }
+	.coda-slider { background: #ebebeb; height:auto!important; }
+	.coda-slider-no-js .coda-slider { height: 200px; overflow: auto !important; padding-right: 20px }
+	.coda-slider, .coda-slider .panel { width: 600px } 
+	.coda-slider-wrapper.arrows .coda-slider, .coda-slider-wrapper.arrows .coda-slider .panel { width: 600px }
+	.coda-slider-wrapper.arrows .coda-slider { margin: 0 10px }
+	.coda-nav-left a, .coda-nav-right a { display:block; text-align:center; text-decoration:none; background: #000; color: #fff; padding: 5px; width: 100px }
+	.coda-nav ul li a.current { background: #ABC8E2 }
+	.coda-slider .panel-wrapper { padding: 20px;float:left; }
+	.coda-slider p.loading { padding: 20px; text-align: center }
+	.coda-nav ul { width:600px!important;clear: both; display: block; margin: 0; overflow: hidden }
+	.coda-nav ul li { display: inline }
+	.coda-nav ul li a { background: #000; color: #fff; display: block; float: left; margin-right: 1px; padding: 3px 7px; text-decoration: none }
+	.coda-slider-wrapper { clear: both; overflow: auto }
+	.coda-slider { float: left; overflow: hidden; position: relative }
+	.coda-slider .panel { display: block; float: left }
+	.coda-slider .panel-container { position: relative }
+	.coda-nav-left, .coda-nav-right { float: left }
+	.coda-nav-left a, .coda-nav-right a { display: block; text-align: center; text-decoration: none }
+	.coda-slider-1{height:auto!important;}
+	
