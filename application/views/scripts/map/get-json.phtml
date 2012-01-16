@@ -7,8 +7,9 @@ var data = {
 foreach ($this->arrLogs as $key=>$log) {
 	?> 
 	{	"latitude": <?php echo $log->getLat(); ?>, 
-			"longitude": <?php echo $log->getLong(); ?>, 
-			"image": "daten/pics/orig/<?php echo $log->getPicIdent(); ?>.jpg" <?php 
+		"longitude": <?php echo $log->getLong(); ?>, 
+		"bigPicture": <?php echo $log->getPicturePath(); ?>, 
+		"image": "<?php echo $log->get45X45PicturePath(); ?>" <?php 
 			if ($key != count($this->arrLogs)-1) {
 				echo '},';
 			}else{
