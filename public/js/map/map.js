@@ -30,10 +30,9 @@ function initializeMap() {
 		var dataID = data.ID[i];		
 		var kord = new google.maps.LatLng(dataID.latitude, dataID.longitude);
 		var marker = new google.maps.Marker({
-			position: kord,
-			icon: dataID.image
+			position: kord
+			/*icon: dataID.image*/
 		});	
-		console.log(dataID.image);
 		markers.push(marker);
 	}	
 		
