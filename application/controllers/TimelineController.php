@@ -15,16 +15,24 @@ class TimelineController extends Zend_Controller_Action {
 		
 		$alleLogs = array();
 		$userMapper = new Application_Model_UserMapper();
-		$usernames = explode(',', $this->getRequest()->getParam('names'));
-		
-		foreach ($usernames as $name) {
-			$obUser = $userMapper->getOneByUsername($name);
-			array_push($alleLogs, $obUser->getLogs());
+		$arrUsernames = explode(',', $this->getRequest()->getParam('names'));
+		if ($arrUsernames[0] != ""){
+			foreach ($arrUsernames as $name) {
+				$obUser = $userMapper->getOneByUsername($name);
+				$arrUserLogs = $obUser->getLogs();
+				foreach($arrUserLogs as $log){
+					array_push($alleLogs, $log);
+				}
+			}
 		}
+		
 		$obAuthUser = Application_Model_AuthUser::getAuthUser();
-		array_push($alleLogs, $obAuthUser->getLogs());
+		foreach ($obAuthUser->getLogs() as $log) {
+			array_push($alleLogs, $log);
+		}
 		$this->view->obUser = $obAuthUser;
 		$this->view->arrLogs = $alleLogs;
+		
 	}
 
 }
