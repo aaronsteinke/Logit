@@ -6,6 +6,12 @@
 	top: 168px;
 	min-width:1200px;
 	}
+	
+#mapInfoWindowContainer{
+	padding:5px;
+	height:auto;
+	width:auto;	
+	}
 
 #clusterPopUp {
 	width: 50%;
