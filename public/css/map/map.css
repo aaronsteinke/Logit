@@ -9,8 +9,9 @@
 	
 #mapInfoWindowContainer{
 	padding:5px;
-	height:auto;
-	width:auto;	
+	min-width:500px;
+	height:95%;
+	width:95%;	
 	}
 
 #clusterPopUp {
