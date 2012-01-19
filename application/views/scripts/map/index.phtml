@@ -12,10 +12,8 @@
 			initializeMap();
 		});
 		<?php if (is_object($this->obAuthUser->getFirstLog())): ?>
-			console.log("tomate");
 			initializeMapTimeline(<?php echo '"' . $this->obAuthUser->getFirstLog()->getDateShot() . '", "' . $this->obAuthUser->getFirstLog()->getDateShot() . '","' .  $this->obAuthUser->getUsername() .'"';?> );
 		<?php else : ?>
-			console.log("TTT");
 			initializeMapTimeline(<?php echo '"2010-11-11 11:11:11", "2011-11-11 11:11:11", "' .  $this->obAuthUser->getUsername() .'"';?> );
 		<?php endif;?>
 		initializeTimeline();
