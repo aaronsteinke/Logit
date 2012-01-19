@@ -23,35 +23,36 @@ function initializeMap() {
 		gridSize: 50,
 		maxZoom:20,
 	};
-
     var map = new google.maps.Map(document.getElementById("map"), myOptions);	
 	var markers = new Array();
 	var markersWindow = new Array();
-		
-	for (var i = 0; i < data.ID.length; i++) {	
-		var dataID = data.ID[i];		
-		var bigImage = dataID.bigPicture;
-		var kord = new google.maps.LatLng(dataID.latitude, dataID.longitude);
-		var marker = new google.maps.Marker({
-			position: kord,
-			icon: dataID.image,
-			id : i
-		});	
-		markers.push(marker);
-		
-		var infoWindow = new google.maps.InfoWindow({
-  			content:"<div id=mapInfoWindowContainer>" +"<img style='height:95%;' src='" + bigImage + "'> </img>" + "</div>",
-  			position: kord
-		});
-		
-		markersWindow.push(infoWindow);
-		
-		
-		google.maps.event.addListener(markers[i], 'click', function() {
-			console.log(this);
-			markersWindow[this.id].open(map, this);
-		});
-    	
+	
+	setNewMarkers();
+	
+	function setNewMarkers(){	
+		for (var i = 0; i < data.ID.length; i++) {	
+			var dataID = data.ID[i];		
+			var bigImage = dataID.bigPicture;
+			var kord = new google.maps.LatLng(dataID.latitude, dataID.longitude);
+			var marker = new google.maps.Marker({
+				position: kord,
+				icon: dataID.image
+			});	
+			markers.push(marker);
+			
+			var infoWindow = new google.maps.InfoWindow({
+	  			content:"<div id=mapInfoWindowContainer>" +"<img style='height:95%;' src='" + bigImage + "'> </img>" + "</div>",
+	  			position: kord
+			});
+			
+			markersWindow.push(infoWindow);
+			
+			
+			google.maps.event.addListener(markers[i], 'click', function() {
+				console.log(this);
+				markersWindow[this.id].open(map, this);
+			});
+	    }
 	}	
 		
 	//Get Bounds first time	
