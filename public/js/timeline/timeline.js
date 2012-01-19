@@ -17,7 +17,6 @@ $(document).ready(function() {
 			"event_overflow":"scroll"
 		});
 		
-		
 		$("#scrolldown").bind("click", function() {
 			$(".timeglider-timeline-event").animate({top:"+=100"})
 		})
@@ -84,7 +83,6 @@ function buildFriendArray(){
 }
 
 function loadFriendToTimeline(){
-	console.log(myFriends);					
 	tg_actor.load("timeline/get-json/names/" + myFriends);
 }
 

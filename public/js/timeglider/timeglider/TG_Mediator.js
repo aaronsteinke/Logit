@@ -123,7 +123,6 @@
 	loadTimelineData : function (src) {
 	var M = this; // model ref
 	// Allow to pass in either the url for the data or the data itself.
-	
 		if (src) {
 		  
 		    if (typeof src === "object") {
@@ -241,7 +240,7 @@
 	* derived from data in loadTimelineData
 	*/
 	parseData : function (data) {
-	
+
 		var M = this,
 			ct = 0,
 			dl = data.length, 
@@ -281,7 +280,6 @@
 	*/
 	tryLoading : function () {
 	
-		
 		var a = (this.imagesSized == this.imagesToSize),
 	    	b = (this.timelineDataLoaded == true);
 	
@@ -296,7 +294,7 @@
     /* Makes an indexed array of timelines */
     swallowTimeline : function (obj) {
       this.sole_timeline_id = obj.id;
-   
+   	  this.timelineCollection.remove(this.timelineCollection.get(this.sole_timeline_id));
       this.timelineCollection.add(obj);
       
       // MAY NOT NEED THIS WITH Backbone Collection change-binding
@@ -309,11 +307,10 @@
     i.e. could be more than one 
     */
     setInitialTimelines : function () {
-        	
+        
 		var me = this;
       
 		var tid = this.initial_timeline_id || this.sole_timeline_id;
-      
       	// !AUTH
       	if (timeglider.mode == "authoring") {
       		this.setZoomLevel(40);
@@ -579,7 +576,7 @@
 	
 		// patch until we have better multi-timeline support
 		// this.activeTimelines = [];
-
+		
 		var tl = this.timelineCollection.get(id).attributes;
 		
 		var active = $.inArray(id, this.activeTimelines);
