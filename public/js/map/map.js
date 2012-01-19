@@ -1,13 +1,14 @@
 var map;
 var maplatlng;
-var markers = new Array();
-var markersWindow = new Array();
 var markerOptions = {gridSize: 50,maxZoom:20,};
 var LatLngMyBounds;
 var dataID;		
 var bigImage;
 var kord;
 var aktualisiereMarker;
+var markerCluster;
+var markers = new Array();
+var markersWindow = new Array();
 
 
 function initializeMap() {
@@ -28,7 +29,19 @@ function placeMap(){
 	
 }
 
+function placeNewMarkers(){
+	$('#mapJson').load('map/get-json/lat1/' + LatLngMyBounds1.lat() + '/lng1/' + LatLngMyBounds1.lng() + "/usernames/" + myFriends.join(","), function(){
+		placeMarker();
+	});
+}
+
 function placeMarker(){	
+	
+	markers = new Array();
+	markersWindow = new Array();
+	if(markerCluster){
+		markerCluster.clearMarkers();
+	}
 	for (var i = 0; i < data.ID.length; i++) {	
 		dataID = data.ID[i];		
 		bigImage = dataID.bigPicture;
@@ -50,8 +63,10 @@ function placeMarker(){
 			markersWindow[this.idOfMarker].open(map, this);
 		});
 	}		
-	var markerCluster = new MarkerClusterer(map, markers, markerOptions);
+	markerCluster = new MarkerClusterer(map, markers, markerOptions);
+	console.log(markerCluster);
 }	
+
 	
 function getImageOnTimeline(){
 		var l=0;
@@ -69,15 +84,19 @@ function initMapChanges(){
 	google.maps.event.addListenerOnce(map, 'bounds_changed', function(){
     	getMyBounds();
 	});
-	zoomChangeListener = google.maps.event.addListener(map,'zoom_changed',function (event) {
-		setTimeout(getMyBounds, 500); 
-  	});
+	getMyBoundsZoom();
   	centerChangeListener = google.maps.event.addListener(map,'center_changed', getCenterBounds);
 }
   	
 function getCenterBounds (event) {
 	google.maps.event.removeListener(centerChangeListener);
 	setTimeout(getMyBoundsCenter, 500); 
+}
+function getMyBoundsZoom(){
+	zoomChangeListener = google.maps.event.addListener(map,'zoom_changed',function (event) {
+		google.maps.event.removeListener(zoomChangeListener);
+		setTimeout(getMyBoundsZoom, 500); 
+  	});
 }
 
 function getMyBounds(){
@@ -92,5 +111,5 @@ function getNewJson(){
 	LatLngMyBounds = map.getBounds();
 	LatLngMyBounds1 = LatLngMyBounds.getNorthEast();
 	LatLngMyBounds2 = LatLngMyBounds.getSouthWest();
-	$('#mapJson').load('map/get-json/lat1/' + LatLngMyBounds1.lat() + '/lng1/' + LatLngMyBounds1.lng() + '/lat2/' + LatLngMyBounds2.lat() + '/lng2/' + LatLngMyBounds2.lng());
+	placeNewMarkers();
 }

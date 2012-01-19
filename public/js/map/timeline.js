@@ -297,6 +297,7 @@ function areFriends (){
 	numberOfFriends ++;
 	initializeTimelineHeight();
 	myFriends.push($("#addFriendsTextfieldId").val());	 
+	placeNewMarkers();
 }
 
 function noFriends(){
