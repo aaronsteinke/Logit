@@ -21,6 +21,8 @@ var isFriend;
 var myFriends = new Array();
 
 var resizeIt = false;
+
+var idOFImageShowInMap;
 $(window).resize(function() {
 
  if(resizeIt !== false)
@@ -36,7 +38,6 @@ function initializeMapTimeline(minimalDate, maximalDate, userNick){
 function initializeMapTimelineFirstContent(){
 	$('#bilderInhalt' + numberOfFriends).load('map/get-timeline/username/' + userNickname, startgetDateImages());
 	myFriends.push(userNickname);
-	console.log(myFriends.length);
 	numberOfFriends ++;
 }
 
@@ -44,6 +45,7 @@ function startgetDateImages(){
 	initializeDatepicker();
 	initializeEvents();
 	initializeAddFriends();
+	initializeFindFriends();
 }
 
 function initializeDatepicker(){
@@ -130,7 +132,7 @@ function initializeEvents(){
 	
 	$("zeitraum").change( function() {
 		parseDate();
-		sendImageRequest();
+		//sendImageRequest();
 	});
 }
 
@@ -182,8 +184,7 @@ function sendImageRequest(){
 	howMuchImages();
 	for(var i = 0; i < myFriends.length; i++){
 		var bildZahl = i;
-		console.log(myFriends[i]);
-		$('#bilderInhalt' + bildZahl +' .images').load('map/get-images-for-timeline/number-of-images/' + numberOfImages + "/first-date/" + firstDate.toString('yyyy-M-d') + "/first-time/"+ firstDate.toString('HH:mm') + "/second-date/" + secondDate.toString('yyyy-M-d') + "/second-time/"+ secondDate.toString('HH:mm') + "/username/" + myFriends[i]);
+		$('#bilderInhalt' + bildZahl +' .images').load('map/get-images-for-timeline/number-of-images/' + numberOfImages + "/first-date/" + firstDate.toString('yyyy-M-d') + "/first-time/"+ firstDate.toString('HH:mm') + "/second-date/" + secondDate.toString('yyyy-M-d') + "/second-time/"+ secondDate.toString('HH:mm') + "/username/" + myFriends[i], initializeFindFriends);
 	}
 }
 
@@ -258,7 +259,6 @@ function resetFriendTxtFieldToStart(){
 
 function checkIfInTimeline(){
 	if( $("#addFriendsTextfieldId").val() != "" && $("#addFriendsTextfieldId").val() != "Freunde hinzufügen"){
-		console.log(myFriends);
 		var tauchtAuf = 0;
 		for(var k = 0; k <= myFriends.length; k++){
 			if($("#addFriendsTextfieldId").val() == myFriends[k]){
@@ -297,6 +297,7 @@ function areFriends (){
 	numberOfFriends ++;
 	initializeTimelineHeight();
 	myFriends.push($("#addFriendsTextfieldId").val());	 
+	placeNewMarkers();
 }
 
 function noFriends(){
@@ -305,3 +306,16 @@ function noFriends(){
 	$("#addFriendsTextfieldId").val("Sie können nur Freunde hinzufügen");
 	setTimeout("resetFriendTxtFieldToStart()", 4000);
 }
+
+
+///////////////////////////////////////////////
+///Freunde auf der Map zeigen /////////////////
+///////////////////////////////////////////////
+
+function initializeFindFriends(){
+	$(".timeLineImage").click( function() {
+		idOFImageShowInMap = this.id;
+		getImageOnTimeline();
+	});
+}
+

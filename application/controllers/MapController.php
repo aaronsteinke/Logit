@@ -18,8 +18,29 @@ class MapController extends Zend_Controller_Action
 	
 	public function getJsonAction(){
 		$this->_helper->layout()->disableLayout();
-		$user = Application_Model_AuthUser::getAuthUser();
-		$this->view->arrLogs = $user->getLogs();
+		$userMapper = new Application_Model_UserMapper();
+		$obAuthUser = Application_Model_AuthUser::getAuthUser();
+		
+		$alleLogs = array();
+
+
+		$arrUsernames = explode(',', $this->getRequest()->getParam('usernames'));
+		if ($arrUsernames[0] != ""){
+			foreach ($arrUsernames as $name) {
+				$obUser = $userMapper->getOneByUsername($name);
+				$arrUserLogs = $obUser->getLogs();
+				foreach($arrUserLogs as $log){
+					array_push($alleLogs, $log);
+				}
+			}
+		}
+		
+		foreach ($obAuthUser->getLogs() as $log) {
+			array_push($alleLogs, $log);
+		}
+		
+		$this->view->arrLogs = $alleLogs;
+		
 		/*
 		$arrLogs = $user->getLogs();
 		$arrJsonObjs = array();
@@ -35,7 +56,6 @@ class MapController extends Zend_Controller_Action
 		echo $jsonData;
 		*/
 	}
-	
 	
 	public function getImagesForTimelineAction(){
 		$this->_helper->layout()->disableLayout();		
@@ -58,13 +78,12 @@ class MapController extends Zend_Controller_Action
 	}
 	
 	public function getUserForTimelineAction(){
-		$this->_helper->layout()->disableLayout();	
+		$this->_helper->layout()->disableLayout();
 	}
 	
 	public function testAction(){
 		$this->_helper->viewRenderer->setNoRender(true);
 		$authUser = Application_Model_AuthUser::getAuthUser();
-		
 	}
 	
 	public function getTimelineAction(){
