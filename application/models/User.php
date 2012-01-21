@@ -96,6 +96,11 @@ class Application_Model_User {
 		$Pictures = new Application_Model_PictureMapper();
 		return $Pictures->getNumberOfLogsForUser($this->_id);
 	}
+
+	public function getNumberOfEvents(){
+		$Events = new Application_Model_EventsMapper();
+		return $Events->getNumberOfEventsForUser($this->_id);
+	}	
 	
 	public function follow($idUser){
 		$users = new Application_Model_UserMapper();
@@ -117,9 +122,8 @@ class Application_Model_User {
 		return $users->getFriendsForUser($this->_id);
 	}
 	
-	public function getGcal_Calendar(){
-		$users = new Application_Model_UserMapper();
-		return $users->getFriendsForUser($this->_id);
+	public function getGcalId(){		
+		return $this->_gcal_calendar_id;
 	}
 	/*
 	 public function getDateCreated()

@@ -193,9 +193,9 @@ class Application_Model_PictureMapper {
 			return false;
 		}
 		if (is_object($result)) {
-			$obPicture = new Application_Model_Picture($result -> id, $result -> pic_ident, $result -> user_id, $result -> lat_ns, $result -> lat, $result -> long_ns, $result -> long, $result -> height, $result -> date_uploaded, $result -> date_shot);
+			$obPicture = new Application_Model_Picture($result -> id, $result -> pic_ident, $result -> user_id, $result -> lat_ns, $result -> lat, $result -> long_ns, $result -> long, $result -> height, $result -> date_uploaded, $result -> date_shot, $result -> score);
 		} else {
-			$obPicture = new Application_Model_Picture($result['id'], $result['pic_ident'], $result['user_id'], $result['lat_ns'], $result['lat'], $result['long_ns'], $result['long'], $result['height'], $result['date_uploaded'], $result['date_shot']);
+			$obPicture = new Application_Model_Picture($result['id'], $result['pic_ident'], $result['user_id'], $result['lat_ns'], $result['lat'], $result['long_ns'], $result['long'], $result['height'], $result['date_uploaded'], $result['date_shot'], $result['score']);
 		}
 		return $obPicture;
 	}
