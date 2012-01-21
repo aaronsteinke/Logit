@@ -1,0 +1,46 @@
+.timeline-log-border {
+	width: 45px;
+	height: 45px;
+	border-style:solid;
+	border-width: 1px:
+}
+
+.timeline-log-border-0{
+	border-color:#0091C2; 
+}
+
+.timeline-log-border-1{
+	border-color:#C23000; 
+}
+
+.timeline-log-border-2{
+	border-color:#00C291; 
+}
+
+.timeline-log-border-3{
+	border-color:#C20030; 
+}
+
+.timeline-log-border-4{
+	border-color:#FF4000; 
+}
+
+.timeline-log-border-5{
+	border-color:#00BFFF; 
+}
+
+.timeline-log-border-6{
+	border-color:#FF6E3D; 
+}
+
+.timeline-log-border-7{
+	border-color:#0030C2; 
+}
+
+.timeline-log-border-8{
+	border-color:#C20091; 
+}
+
+.timeline-log-border-9{
+	border-color:#91C200; 
+}

@@ -1840,7 +1840,7 @@ tg.TG_PlayerView.prototype = {
       			}
       			
       		  img_ht = 0;
-      		  if (ev.image && ev.image.display_class === "layout") {
+      		  if (ev.image) {
       		    img_ht = ev.image.height + 2;
       		    ev.width = (ev.image.width > ev.width) ? ev.image.width : ev.width;
       	    }
@@ -2216,8 +2216,8 @@ tg.TG_TimelineView = Backbone.View.extend({
 	getTemplate: function() {
 		var me = this;
 		
-		var tmpl = "<div class='titleBar'>"
-				+ "<div class='timeline-title'>"
+		var tmpl = "<div class='titleBar'><div>";
+			/*	+ "<div class='timeline-title'>"
       			+ "<span class='timeline-title-span'>${title}</span>"
       			+ "<div class='tg-timeline-env-buttons'>";
       	
@@ -2232,7 +2232,7 @@ tg.TG_TimelineView = Backbone.View.extend({
       	
       	tmpl += "<span class='expand-collapse' data-timeline_id='${id}'>exp/col</span>"; 
 		
-		tmpl += "</div></div></div>";
+		tmpl += "</div></div></div>";*/
  	
 		return tmpl;	
 	},

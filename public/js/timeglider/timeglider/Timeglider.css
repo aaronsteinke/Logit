@@ -77,7 +77,7 @@
 }
 
 .tg-timeline-envelope .titleBar {
-	background-color:#444;
+	/*background-color:#444;
 	color:#FFF;
 	height:40px;
 	width:auto;
@@ -86,11 +86,11 @@
 	left:0;
 	-moz-border-radius:4px;
 	border-radius:4px;
-	-webkit-border-radius:4px;
+	-webkit-border-radius:4px;*/
 }
 
 .tg-timeline-envelope .titleBar .timeline-title {
-	color:#FFF;
+	/*color:#FFF;
 	font-size:14px;
 	width:auto;
 	position:absolute;
@@ -98,7 +98,7 @@
 	margin-top:0px;
 	font-weight:bold;
 	text-shadow:1px 1px #000;
-	z-index:10;
+	z-index:10;*/
 }
 
 /* Correction of aristo ui css */
