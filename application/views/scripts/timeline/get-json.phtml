@@ -1,0 +1,72 @@
+<?php 
+$colors = array("#0091C2", "#C23000", "#00C291", "#C20030", "#FF4000", 
+				"#00BFFF", "#FF6E3D", "#0030C2", "#C20091", "#91C200");
+
+$arrUserIds = array();
+?>
+
+[{
+	"id": "test",
+    "focus_date": "<?php echo $this->obUser->getLastLog()->getDateShot(); ?>",
+    "initial_zoom": "20",
+	"color": "#000000",
+	"size_importance": "false",
+    "events":
+    [ <?php 
+foreach($this->arrUser as $key=>$obUser):?>
+{
+	"id": "<?php echo $obUser->getId();?>",
+	"title": "<?php echo $obUser->getUsername()?>",
+	"startdate": "<?php echo $obUser->getFirstLog()->getDateShot(); ?>",
+	"enddate": "<?php echo $obUser->getLastLog()->getDateShot() ?>",
+	"date_limit": "ye",
+	"description": "what?",
+    "low_threshold": "0",
+    "high_threshold": "60",
+    "span_color":"<?php 
+    $colorKey = 0;
+    foreach ($arrUserIds as $key => $id) {
+		if($id == $obUser->getId()){
+			$colorKey = $key;
+		}
+    } 
+    if ($colorKey == 0){
+    	$colorKey = count($arrUserIds);
+		array_push($arrUserIds, $obUser->getId());
+    }
+	echo $colors[$colorKey];
+    ?>",
+    "importance": "<?php echo $key;?>",
+    "icon": "none"
+}, <?php 
+endforeach;
+	
+foreach ($this->arrLogs as $key=>$log) {
+	?> 
+	{		"id": "<?php echo $log->getId();?>",
+			"title": " ",
+			"startdate": "<?php echo $log->getDateShot();?>",
+			"date_limit": "ye",
+			"description": "hier kann auch HTML stehen vllt das bild in groß?",
+	        "low_threshold": "0",
+	        "high_threshold": "60",
+	        "importance": "<?php echo $key + count($this->arrUser)?>",
+			"image": "daten/pics/45/<?php echo $log->getPicIdent(); ?>",
+			"image_class": "layout timeline-log-border <?php 
+			foreach ($arrUserIds as $key2 => $value) {
+				if ($log->getUser()->getId() == $value) {
+					echo 'timeline-log-border-' . $key2;
+				}
+			}
+			?>",
+			"ypix": "500",
+			"slug": "" <?php 
+			if ($key != count($this->arrLogs)-1) {
+				echo '},';
+			}else{
+				echo '}';
+			};
+	}
+?>
+]
+}]
