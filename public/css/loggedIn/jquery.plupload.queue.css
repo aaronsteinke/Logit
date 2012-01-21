@@ -135,7 +135,7 @@ li.plupload_failed a {
 }
 
 li.plupload_done a {
-	background: url('/img/uploader/done.gif');
+	background: url('/imgages/uploader/done.gif');
 	cursor: default;
 }
 

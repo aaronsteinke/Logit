@@ -12,8 +12,9 @@ class Application_Model_Picture {
 	protected $_height;
 	protected $_dateUploaded;
 	protected $_dateShot;
+	protected $_score;
 
-	public function __construct($id, $picIdent, $userId, $latNs, $lat, $longNs, $long, $height, $dateUploaded, $dateShot)
+	public function __construct($id, $picIdent, $userId, $latNs, $lat, $longNs, $long, $height, $dateUploaded, $dateShot, $score)
 	{
 		$this -> _id = $id;
 		$this -> _picIdent = $picIdent;
@@ -25,6 +26,7 @@ class Application_Model_Picture {
 		$this -> _height = $height;
 		$this -> _dateUploaded = $dateUploaded;
 		$this -> _dateShot = $dateShot;
+		$this -> _score = $score;
 	}
 
 	public function getId()
@@ -86,6 +88,10 @@ class Application_Model_Picture {
 	public function getDateShot()
 	{
 		return $this -> _dateShot;
+	}
+	
+	public function getScore() {
+		return $this->_score;
 	}
 	
 	public function getEvents()

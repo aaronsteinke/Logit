@@ -113,6 +113,20 @@ class Application_Model_EventsMapper {
 		return $events;
 	}
 
+	public function getNumberOfEventsForUser($idUser){
+		$db = $this->getDbTable()->getAdapter();
+		$sql = '	SELECT COUNT(*) as number_of_events
+					FROM events 
+					WHERE user_id = :idUser
+					';
+		$stmt = new Zend_Db_Statement_Pdo($db, $sql);
+		$stmt -> bindParam(':idUser', $idUser);
+
+		$stmt -> execute();
+		$resultSet = $stmt -> fetchAll();
+		return $resultSet[0]['number_of_events'];
+	}
+
 	private function createObjekt($result)
 	{
 		if ($result == null) {

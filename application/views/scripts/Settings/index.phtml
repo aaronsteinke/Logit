@@ -685,43 +685,43 @@
 				<div class="c2">
 					<div class="c4">
 						<div class="r1">Deine Logs</div>
-						<div class="r2">4.566.555</div>
+						<div class="r2"><?php echo $this->user->getNumberOfLogs(); ?></div>
 						<div class="r3"><a href="#">anzeigen</a></div>
 					</div>
 
 				<div class="c4">
 					<div class="r1">Deine Events</div>
-					<div class="r2">456</div>
+					<div class="r2"><?php echo $this->user->getNumberOfEvents(); ?></div>
 					<div class="r3"><a href="#">anzeigen</a></div>
 				</div>
 
 				<div class="c4">
 					<div class="r1">Deine Locations</div>
-					<div class="r2">45</div>
+					<div class="r2">XX</div>
 					<div class="r3"><a href="#">anzeigen</a></div>
 				</div>
 
 				<div class="c4">
 					<div class="r1">Deine Freunde</div>
-					<div class="r2">67</div>
+					<div class="r2">X</div>
 					<div class="r3"><a href="#">anzeigen</a></div>
 				</div>
 
 				<div class="c4">
 					<div class="r1">Logs/Tag</div>
-					<div class="r2">67</div>
+					<div class="r2"><?php echo  round($this->user->getNumberOfLogs() / bcdiv((strtotime(date('Y-m-d H:i:s')) - strtotime($this->user->getRegTime())), 86400, 0),2); ?></div>
 					<div class="r3"><a href="#">anzeigen</a></div>
 				</div>
 
 				<div class="c4">
 					<div class="r1">Distanz</div>
-					<div class="r2">3234 km</div>
+					<div class="r2">XXXX km</div>
 					<div class="r3"><a href="#">anzeigen</a></div>
 				</div>
 
 				<div class="c4">
 					<div class="r1">Angemeldet seit</div>
-					<div class="r2">28.12.2011</div>
+					<div class="r2"><?php echo $this->user->getRegTime(); ?></div>
 				</div>
 				</div>		
 			</div>		
@@ -738,7 +738,7 @@
                 <div class="r2">  			
                   <div class="for" >
 				   		<label for="name"></label>
-						<input class="input" type="text" value="Name" />
+						<input class="input" type="text" id="name" value="<?php echo $this->user->getFirstName() . ' ' . $this->user->getLastName(); ?>"/>
                   </div>       	
                 </div>	
               </div>
@@ -747,7 +747,7 @@
                 <div class="r2">			
                   <div class="for" >
 				   		<label for="name"></label>
-						<input class="input" type="text" value="Username" />
+						<input class="input" type="text" id="username" value="<?php echo $this->user->getUserName();?>" />
                   </div>		
                 </div>	
               </div>	
@@ -756,7 +756,7 @@
                 <div class="r2">			
                   <div class="for" >
 				   		<label for="name"></label>
-						<input class="input" type="email" value="info@logit.net"/>
+						<input class="input" type="email" id ="email" value="<?php echo $this->user->getEmail();?>"/>
                   </div>		
                 </div>	
               </div>
@@ -779,11 +779,11 @@
                 </div>
               </div>
               <div class="p4">	
-                <div class="r1">Netzwerke</div>	
+                <div class="r1">Google Kalender ID</div>	
                 <div class="r2">		
                   <div class="for" >
 				   		<label for="name"></label>
-						<input class="input" type="text" value="Netzwerke" />
+						<input class="input" type="text" id="gcal_id" value="<?php echo $this->user->getGcalId() ?>" />
                   </div>		
                 </div>
               </div>

@@ -19,34 +19,35 @@ class gcalController extends Zend_Controller_Action {
 		foreach ($arresult['items'] as $value) {
 			$gcal_id = $value['id'];
 			$event_title = $value['summary'];
-			$event_start = (isset($value['start']['dateTime'])) ? $value['start']['dateTime'] : $value['start']['date'];
-			$event_end = (isset($value['end']['dateTime'])) ? $value['end']['dateTime'] : $value['start']['date'] . 'T23:59:59+2:00';
+			$event_start = (isset($value['start']['dateTime'])) ? $value['start']['dateTime'] : $value['start']['date']; // Fängt ganztägige Events ab
+			$event_end = (isset($value['end']['dateTime'])) ? $value['end']['dateTime'] : $value['start']['date'] . 'T23:59:59+2:00'; // Fängt ganztägige Events ab
 			$user_id = $user -> getId();
 
 			$eventsdb = new Application_Model_EventsMapper();
-			$singleEventInDb = $eventsdb -> getOneByGcal_id($gcal_id);
-			if (!$singleEventInDb) {
+			$singleEventInDb = $eventsdb -> getOneByGcal_id($gcal_id); // Überprüfe ob schon vorhanden
+			if (!$singleEventInDb && isset($gcal_id, $event_title, $event_start, $event_end, $user_id)) {
 				$eventsdb -> create($gcal_id, $event_title, $event_start, $event_end, $user_id);
 			}
-
-			$singleEventInDb = $eventsdb -> getOneByGcal_id($gcal_id);
-			if ($singleEventInDb) {
+			
+			
+			$singleEventInDb = $eventsdb -> getOneByGcal_id($gcal_id); // Holt das soeben eingetragene Event als Objekt aus der DB.
+			
+			if ($singleEventInDb) { // Verbinde Zugehörige Logs mit den entsprechendents. 
 				$eventsdb -> connect_Pics($user_id, $singleEventInDb -> get_id(), $event_start, $event_end);
 			}
 
 		}
 		// Testteil
-		$eventsmapper = new Application_Model_EventsMapper;
-		$events = $eventsmapper -> getEvents("124");
-		echo "<pre>";
-		var_dump($events);
-		echo "</pre>";
-
-		// echo "<pre>";
-		// var_dump($events);
-		// echo "</pre>";
-
+		//$eventsmapper = new Application_Model_EventsMapper;
+		//$events = $eventsmapper -> getEvents("124");
 		//$this -> _redirect("/user");*/
+		echo "<pre>";
+		var_dump(Application_Model_gpsTools::geocode('48.059038', '8.203211'));
+		echo "</pre>";
+		
+		//echo Application_Model_gpsTools::getHeight('50.1125', '8.6415');
+		
+		
 	}
 
 	private function gcal_api_get($url)
