@@ -25,7 +25,7 @@ class gcalController extends Zend_Controller_Action {
 
 			$eventsdb = new Application_Model_EventsMapper();
 			$singleEventInDb = $eventsdb -> getOneByGcal_id($gcal_id);
-			if (!$singleEventInDb) {
+			if (!$singleEventInDb && isset($gcal_id, $event_title, $event_start, $event_end, $user_id)) {
 				$eventsdb -> create($gcal_id, $event_title, $event_start, $event_end, $user_id);
 			}
 
@@ -39,8 +39,11 @@ class gcalController extends Zend_Controller_Action {
 		//$eventsmapper = new Application_Model_EventsMapper;
 		//$events = $eventsmapper -> getEvents("124");
 		//$this -> _redirect("/user");*/
+		echo "<pre>";
+		var_dump(Application_Model_gpsTools::geocode('50.1125', '8.6415'));
+		echo "</pre>";
 		
-		echo Application_Model_gpsTools::getHeight('50.1125', '8.6415');
+		//echo Application_Model_gpsTools::getHeight('50.1125', '8.6415');
 		
 		
 	}

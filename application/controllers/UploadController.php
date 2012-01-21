@@ -136,14 +136,14 @@ class UploadController extends Zend_Controller_Action
 		// Exif Daten Sammeln
 		$exifArray = exif_read_data($targetDir . '/' . $pic_ident);
 		$dateShot = $exifArray['DateTimeOriginal'];
-		$gpsheight = isset($exifArray['GPSAltitude'])? (int)$exifArray['GPSAltitude'] : "0";
+		
 		$gpsLatNS = $exifArray['GPSLatitudeRef']; // N oder S ?
 				
 		$gpsLatKoord = Application_Model_gpsTools::toFloat($exifArray['GPSLatitude']);
 				
 		$gpsLongEW =$exifArray['GPSLongitudeRef']; // E oder W?
 		$gpsLongKoord = Application_Model_gpsTools::toFloat($exifArray['GPSLongitude']);	
-
+		$gpsheight = isset($exifArray['GPSAltitude'])? (int)$exifArray['GPSAltitude'] : Application_Model_gpsTools::getHeight($gpsLatKoord,$gpsLongKoord);
 		
 		// eintrag in die datenbank
 		$obPictures = new Application_Model_PictureMapper();		

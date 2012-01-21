@@ -25,7 +25,7 @@ class Application_Model_gpsTools {
 		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
 
-		$result = json_decode(curl_exec($ch),true);
+		$result = json_decode(curl_exec($ch), true);
 		if ($result['status'] = 'OK') {
 			$height = $result['results']['0']['elevation'];
 		}
@@ -33,6 +33,28 @@ class Application_Model_gpsTools {
 
 		return $height;
 
+	}
+
+	public static function geocode($gpsLat, $gpsLong)
+	{
+		$urlBase = 'http://maps.google.com/maps/api/geocode/json?language=de&latlng=';
+		$url = $urlBase . $gpsLat . ',' . $gpsLong . '&sensor=false';
+
+		$ch = curl_init();
+
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_POST, false);
+		curl_setopt($ch, CURLOPT_HEADER, 0);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+		
+		$result = json_decode(curl_exec($ch), true);
+		
+		curl_close($ch);
+
+		return $result;
+		
 	}
 
 }
