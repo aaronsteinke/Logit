@@ -219,6 +219,12 @@ class Application_Model_UserMapper {
 		return $arrUsers;
 	}
 
+	public function getNumberOfFriends($idUser)
+	{
+		$friendsNum = count($this -> getFriendsForUser($idUser));
+		return $friendsNum;
+	}
+
 	public function getFriendByUsername($idUser, $friendUsername)
 	{
 		$db = $this -> getDbTable() -> getAdapter();
@@ -318,6 +324,26 @@ class Application_Model_UserMapper {
 			$arrUsers[] = $this -> createObjekt($row);
 		}
 		return $arrUsers;
+	}
+
+	public function updateUser($id, $userName, $lastName, $firstName, $sex, $profilePic, $eMail, $regTime, $lastLogin, $hits, $birthday, $gcal_calendar_id)
+	{
+		$table = $this -> getDbTable();
+		$data = array(
+				'username' => $userName,
+				'lastname' => $lastName,
+				'firstname' => $firstName,
+				'sex' => $sex,
+				'profilePic' => $profilePic,
+				'eMail' => $eMail,
+				'reg_time' => $regTime,
+				'last_login' => $lastLogin,
+				'birthday' => $birthday,
+				'gcal_calendar_id' => $gcal_calendar_id
+		);
+		$where = $table -> getAdapter() -> quoteInto('id = ?', $id);
+
+		$table -> update($data, $where);
 	}
 
 }
