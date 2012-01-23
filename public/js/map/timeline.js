@@ -30,14 +30,23 @@ $(window).resize(function() {
  resizeIt = setTimeout(sendImageRequest, 200); 
 });
 
-function initializeMapTimeline(minimalDate, maximalDate, userNick){
-	
-	userNickname = userNick
+function initializeMapTimeline(minimalDate1, maximalDate1, userNick){
+	secondDate = Date.parse(maximalDate1);
+	firstDate = Date.parse(minimalDate1);
+	userNickname = userNick;
 	initializeMapTimelineFirstContent();
 }
 
 function initializeMapTimelineFirstContent(){
-	$('#bilderInhalt' + numberOfFriends).load('map/get-timeline/username/' + userNickname, startgetDateImages());
+	$('#bilderInhalt' + numberOfFriends).load('map/get-timeline/username/' + userNickname, function(){
+		startgetDateImages();
+		setDateDifference();
+		howMuchImages();
+		$('#bilderInhalt0 .images').load('map/get-images-for-timeline/number-of-images/' + numberOfImages + "/first-date/" + firstDate.toString('yyyy-M-d') + "/first-time/"+ firstDate.toString('HH:mm') + "/second-date/" + secondDate.toString('yyyy-M-d') + "/second-time/"+ secondDate.toString('HH:mm') + "/username/" + userNickname, function(){
+			initializeFindFriends();
+		});	
+		getNewJson();
+	});
 	myFriends.push(userNickname);
 	numberOfFriends ++;
 }
@@ -47,6 +56,7 @@ function startgetDateImages(){
 	initializeEvents();
 	initializeAddFriends();
 	initializeFindFriends();
+	
 }
 
 function initializeDatepicker(){
@@ -57,10 +67,11 @@ function initializeDatepicker(){
 		showButtonPanel: true,
 		defaultDate: "+1w",
 		dateFormat: 'dd.mm.yy',
+		
 					
 		onSelect: function( selectedDate ) {
 			var option = this.id == "zeitraumStartEingabefeldId" ? "minDate" : "maxDate",
-				instance = $( this ).data( "datepicker" ), 
+				instance = $( this ).data( "datepicker"), 
 				date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, 
 				selectedDate, 
 				instance.settings);
@@ -77,16 +88,24 @@ function initializeEvents(){
 	$('#zeitraumPlus').click(function zoomIn() {
 		if(buttonPlusActiv == 1){
 			buttonMinusActiv = 1;
-			if(minuteDifference > 24*60){
+			console.log(minuteDifference);
+			if(minuteDifference > 1951200){
+				firstDate = firstDate.addMinutes(1051200);
+				secondDate = secondDate.addMinutes(-1051200);
+			}else if(minuteDifference > 24*60){
 				firstDate = firstDate.addMinutes(minuteDifference/4);
 				secondDate = secondDate.addMinutes(-minuteDifference/4);
 			} else if(minuteDifference > 120){
 				firstDate = firstDate.addMinutes(60);
 				secondDate = secondDate.addMinutes(-60);	
-			} else if(minuteDifference > 0){
+			} else if(minuteDifference > 19){
 				firstDate = firstDate.addMinutes(10);
 				secondDate = secondDate.addMinutes(- 10);
-			} 
+			} else if (minuteDifference > 5){
+				firstDate = firstDate.addMinutes(2);
+				secondDate = secondDate.addMinutes(-2);	
+				buttonPlusActiv = 0;
+			}
 			checkDateArea();
 			setDatePicker();
 			sendImageRequest();
@@ -110,7 +129,7 @@ function initializeEvents(){
 			} else if (minuteDifference >= 0){
 				firstDate = firstDate.addMinutes(-10);
 				secondDate = secondDate.addMinutes(10);	
-			}
+			} 
 			checkDateArea();
 			setDatePicker();
 			sendImageRequest();
@@ -132,9 +151,9 @@ function initializeEvents(){
 		sendImageRequest();
 	});	
 	
-	$("zeitraum").change( function() {
+	$("#zeitraum").change( function() {
 		parseDate();
-		//sendImageRequest();
+		sendImageRequest();
 	});
 }
 
@@ -146,10 +165,7 @@ function parseDate(){
 }
 
 function setDateDifference(){
-	minuteDifference = Math.round(secondDate - firstDate) / (1000*60);
-	if (minuteDifference <= 0){
-		buttonPlusActiv = 0;
-	} 		
+	minuteDifference = Math.round(secondDate - firstDate) / (1000*60); 		
 } 
 
 function checkDateArea(){	
@@ -186,10 +202,11 @@ function sendImageRequest(){
 	howMuchImages();
 	for(var i = 0; i < myFriends.length; i++){
 		var bildZahl = i;
-		$('#bilderInhalt' + bildZahl +' .images').load('map/get-images-for-timeline/number-of-images/' + numberOfImages + "/first-date/" + firstDate.toString('yyyy-M-d') + "/first-time/"+ firstDate.toString('HH:mm') + "/second-date/" + secondDate.toString('yyyy-M-d') + "/second-time/"+ secondDate.toString('HH:mm') + "/username/" + myFriends[i], initializeFindFriends);
+		$('#bilderInhalt' + bildZahl +' .images').load('map/get-images-for-timeline/number-of-images/' + numberOfImages + "/first-date/" + firstDate.toString('yyyy-M-d') + "/first-time/"+ firstDate.toString('HH:mm') + "/second-date/" + secondDate.toString('yyyy-M-d') + "/second-time/"+ secondDate.toString('HH:mm') + "/username/" + myFriends[i], function(){
+			initializeFindFriends();
+		});
 	}
 	getNewJson();
-	
 }
 
 
@@ -208,6 +225,7 @@ function initializeAddFriends(){
 	$("#addFriendsTextfield").keydown(function(event) {
   		if ( event.which == 13 ) {
   			checkIfInTimeline();
+  			$(".ui-autocomplete").hide();
   		}
  	});
  	

@@ -68,17 +68,15 @@ function placeMarker(){
 }	
 
 	
-function getImageOnTimeline(){
-		var l=0;
-	for(var k = markers[0].imageId; k >= 0; k--){
-		l++;
-		if(k == idOFImageShowInMap){
-			aktualisiereMarker = markers[l];
+function getImageOnTimeline(){	
+	for(var k = 0; k <= markers.length; k++){
+		if(markers[k].imageId == idOFImageShowInMap){
+			aktualisiereMarker = markers[k];
 			map.panTo(aktualisiereMarker.position);
-			return;	
+			return;		
 		}
 	}
-}	
+}
 
 function initMapChanges(){
 	google.maps.event.addListenerOnce(map, 'bounds_changed', function(){
