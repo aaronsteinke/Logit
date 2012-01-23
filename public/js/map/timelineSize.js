@@ -79,7 +79,6 @@ function setTimelineBottom(){
 }
 
 function initializeTimelineHeight(){
-	console.log(numberOfFriends);
 	$("#timeline").css("height", function(heightPx) {
 		if(numberOfFriends == 1){
 			return heightPx = 40 + (numberOfFriends)* 96 ;
