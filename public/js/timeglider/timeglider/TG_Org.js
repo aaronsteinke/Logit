@@ -352,7 +352,7 @@
             bricks_high = Math.ceil(block.height / lev_ht);
             
             for (var k=1; k<=bricks_high; k++) {
-              if(level_num < 100){
+              if(level_num < 10){
               	tree[level_num + k].push(block);
               }	
             }

@@ -47,7 +47,7 @@ foreach ($this->arrLogs as $key=>$log) {
 			"title": " ",
 			"startdate": "<?php echo $log->getDateShot();?>",
 			"date_limit": "ye",
-			"description": "hier kann auch HTML stehen vllt das bild in groß?",
+			"description": "<img src='daten/pics/orig/<?php echo $log->getPicIdent(); ?>' />",
 	        "low_threshold": "0",
 	        "high_threshold": "60",
 	        "importance": "<?php echo $key + count($this->arrUser)?>",

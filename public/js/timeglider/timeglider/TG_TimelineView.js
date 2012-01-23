@@ -117,7 +117,7 @@ tg.TG_PlayerView = function (widget, mediator) {
       	   + "<div class='close-button-remove'></div>" 
       	   + "<div class='dateline'>{{html dateline}}</div>"
       	   + "<h4 id='title'>${title}</h4>"
-      	   + "<p>{{html image}}{{html description}}</p>"
+      	   + "<p>{{html description}}</p>"
       	   + "<ul class='timeglider-ev-modal-links'>{{html links}}</ul>"
       	   + "</div>",
 	
