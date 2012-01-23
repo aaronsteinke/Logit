@@ -352,7 +352,9 @@
             bricks_high = Math.ceil(block.height / lev_ht);
             
             for (var k=1; k<=bricks_high; k++) {
-              tree[level_num + k].push(block);
+              if(level_num < 100){
+              	tree[level_num + k].push(block);
+              }	
             }
    
           } // end if collision if false

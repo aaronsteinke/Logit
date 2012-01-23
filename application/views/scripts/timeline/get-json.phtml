@@ -19,7 +19,7 @@ foreach($this->arrUser as $key=>$obUser):?>
 	"title": "<?php echo $obUser->getUsername()?>",
 	"startdate": "<?php echo $obUser->getFirstLog()->getDateShot(); ?>",
 	"enddate": "<?php echo $obUser->getLastLog()->getDateShot() ?>",
-	"date_limit": "ye",
+	"date_limit": "ye",	
 	"description": "what?",
     "low_threshold": "0",
     "high_threshold": "60",

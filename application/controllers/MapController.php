@@ -69,7 +69,7 @@ class MapController extends Zend_Controller_Action
 		$arrLogsSmal = array();
 		for ($i=0; $i < $limit; $i++) {
 			if ($faktor != 0){ 
-				array_push($arrLogsSmal, $arrLogs[floor($faktor)]);
+				array_push($arrLogsSmal, $arrLogs[floor($faktor) * $i]);
 			}
 		}
 		$this->view->arrLogs = $arrLogs;
