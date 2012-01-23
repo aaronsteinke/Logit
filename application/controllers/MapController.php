@@ -22,39 +22,30 @@ class MapController extends Zend_Controller_Action
 		$obAuthUser = Application_Model_AuthUser::getAuthUser();
 		
 		$alleLogs = array();
-
+		
+		$startDate = 	$this->getRequest()->getParam('first-date') . ' ' .  
+						$this->getRequest()->getParam('first-time');
+		
+		$endDate = 	$this->getRequest()->getParam('second-date') . ' ' . 
+					$this->getRequest()->getParam('second-time');
 
 		$arrUsernames = explode(',', $this->getRequest()->getParam('usernames'));
 		if ($arrUsernames[0] != ""){
 			foreach ($arrUsernames as $name) {
 				$obUser = $userMapper->getOneByUsername($name);
-				$arrUserLogs = $obUser->getLogs();
+				$arrUserLogs = $obUser->getLogs($startDate, $endDate);
 				foreach($arrUserLogs as $log){
 					array_push($alleLogs, $log);
 				}
 			}
 		}
 		
-		foreach ($obAuthUser->getLogs() as $log) {
+		foreach ($obAuthUser->getLogs($startDate, $startDate) as $log) {
 			array_push($alleLogs, $log);
 		}
 		
 		$this->view->arrLogs = $alleLogs;
 		
-		/*
-		$arrLogs = $user->getLogs();
-		$arrJsonObjs = array();
-		foreach ($arrLogs as $objLog){
-			array_push($arrJsonObjs, 
-				array( 	'latitude' => $objLog->getLat(),
-						'longitude' => $objLog->getLong(),
-						'image' => 'daten/pics/orig/' . $objLog->getPicIdent() . '.jpg'
-				)
-			);
-		}
-		$jsonData = Zend_Json::encode($arrJsonObjs);
-		echo $jsonData;
-		*/
 	}
 	
 	public function getImagesForTimelineAction(){

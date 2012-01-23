@@ -131,11 +131,17 @@ class Application_Model_User {
 		$this -> _gcal_calendar_id = $gcalId;
 	}
 
-	public function getLogs()
+	public function getLogs($startDate = null, $endDate = null)
 	{
+		$arrLogs = array();
+		$logMapper = new Application_Model_PictureMapper();
+		if($startDate == null && $endDate == null){
+			$arrLogs = $logMapper -> getLogsForUser($this -> _id);
+		} else {
+			$arrLogs = $logMapper->getLogsForUser($this->_id, $startDate, $endDate);
+		}
 		// hier und im mapper fehlen noch Parameter zur eingrenzung
-		$logs = new Application_Model_PictureMapper();
-		return $logs -> getLogsForUser($this -> _id);
+		return $arrLogs;
 	}
 
 	public function getFirstLog()
