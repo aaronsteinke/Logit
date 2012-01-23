@@ -72,7 +72,7 @@ class MapController extends Zend_Controller_Action
 				array_push($arrLogsSmal, $arrLogs[floor($faktor) * $i]);
 			}
 		}
-		$this->view->arrLogs = $arrLogs;
+		$this->view->arrLogs = $arrLogsSmal;
 		
 	}
 	
