@@ -31,6 +31,7 @@ $(window).resize(function() {
 });
 
 function initializeMapTimeline(minimalDate, maximalDate, userNick){
+	
 	userNickname = userNick
 	initializeMapTimelineFirstContent();
 }
@@ -69,7 +70,7 @@ function initializeDatepicker(){
 			}				
 	});	
 	setDatePicker();
-	sendImageRequest();
+	
 }
 
 function initializeEvents(){
@@ -121,6 +122,7 @@ function initializeEvents(){
 		secondDate = secondDate.addMinutes(-minuteDifference);
 		setDatePicker();
 		sendImageRequest();
+		
 	});
 	
 	$('#zeitraumScrollPlus').click(function ScrollRight () {
@@ -186,6 +188,8 @@ function sendImageRequest(){
 		var bildZahl = i;
 		$('#bilderInhalt' + bildZahl +' .images').load('map/get-images-for-timeline/number-of-images/' + numberOfImages + "/first-date/" + firstDate.toString('yyyy-M-d') + "/first-time/"+ firstDate.toString('HH:mm') + "/second-date/" + secondDate.toString('yyyy-M-d') + "/second-time/"+ secondDate.toString('HH:mm') + "/username/" + myFriends[i], initializeFindFriends);
 	}
+	getNewJson();
+	
 }
 
 
@@ -297,7 +301,7 @@ function areFriends (){
 	numberOfFriends ++;
 	initializeTimelineHeight();
 	myFriends.push($("#addFriendsTextfieldId").val());	 
-	placeNewMarkers();
+	getNewJson();
 }
 
 function noFriends(){
