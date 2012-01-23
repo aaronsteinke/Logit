@@ -1,0 +1,233 @@
+body{background:#F9F9F9;}
+#timeline{
+	position:absolute;
+	background:url(../../images/timelineBg.gif) repeat-x #F9F9F9; 
+	width: 100%;
+	height: auto;
+	bottom:58px;
+	overflow:hidden;
+	top:168px;
+	}
+
+#content1{
+	width: auto;
+	margin: 5px 0px 20px 12px;
+	white-space:nowrap;
+	margin:10px 10px 0 10px;
+	overflow:hidden;
+}
+#userprofil{
+	border-left:1px solid #999;
+	border-bottom:1px solid #999;
+	border-top:1px solid #999;
+	width:179px;
+	height:70px;
+	padding:10px;
+	float:left;
+	background-color:#FFF;
+	}
+#profilImage{
+	padding:5px;
+	width:50px;
+	float:left;
+	}
+
+#profilInfo{
+	padding:5px;
+	margin-left:70px;
+	height:50px;
+	}
+
+.profilName {
+	color:#183152;
+	font-weight:bold;
+}
+
+.profilLogs {
+	color:#999999;
+}
+
+
+#images{
+	height:100%;
+	bottom:48px;
+	margin-left:200px;
+	padding-right:10px;
+	border:1px solid #999;
+	}
+#imagewindow{
+	margin-left:auto;
+	margin-right:auto;
+	height:100.5%;
+	position:relative;
+	width:150%;
+	padding-bottom:0.5%
+	}
+.timeLineImage {
+	padding: 0.5% 0.5% 0 0;	
+	float: left;
+	height:47.5%;
+	}
+
+/*===================================
+TIMELINE NAVIGATION
+===================================*/
+
+#navi{
+	width:900px;
+	/*width:855px;*/
+	height: 30px;
+	padding:10px 0px 0px 10px;
+	font-weight:bold;
+}
+
+#zeitraum {
+	border:1px solid #999;
+	background-color:#FFF;
+	height:23px;
+	/*width: 566px;*/
+	float:left;
+}
+
+#zeitraumEinstellen{
+	height: 14px;
+	float:left;
+	padding:5px;
+		
+}
+
+#zeitraumPlus{
+	cursor:pointer;
+	float:left;	
+	width:26px;
+	height:23px;	
+}
+
+#zeitraumMinus{
+	cursor:pointer;
+	float:left;
+	width:26px;
+	height:23px;
+}
+
+#zeitraumStart{
+	float:left;
+	padding:5px;
+}
+
+#zeitraumEnde{
+	float:left;
+	padding:5px 5px 5px 5px;
+}
+
+#zeitraumStartEingabe{
+	float:left;
+	height:23px;
+}
+
+#zeitraumEndeEingabe{
+	float:left;
+	height:23px;
+}
+.ui-datepicker-trigger{
+	float:left;
+	padding: 4px 4px 0 4px;
+}
+
+.dateTextfield{
+	width:65px;
+	height:23px;
+	border:none;
+	font-size:11px;
+	color:#999999;
+}
+
+.hasDatepicker{
+	padding-right:1px;
+}
+
+#zeitraumStartEingabeUhrzeit{
+	width:39px;
+	float:left;
+}
+
+#zeitraumEndeEingabeUhrzeit{
+	width:39px;
+	float:left;
+}
+
+.timeTextfield{
+	margin-left:2px;
+	width:37px;
+	height:23px;
+	border:none;
+	font-size:11px;
+	color:#999999;	
+}
+
+#zeitraumScrollMinus{
+	cursor:pointer;
+	float:left;
+	width:26px;
+	height:23px;
+}
+#zeitraumScrollPlus{
+	cursor:pointer;
+	float:left;
+	width:26px;
+	height:23px;
+}
+
+
+.borderRight {
+	border-right:1px solid #d3d3d3;
+}
+
+.timePic {
+	padding-top:1px;
+}
+
+
+/*===================================
+FREUNDE HINZUFUEGEN
+===================================*/
+
+#addFriends{
+	border:1px solid #999;
+	background-color:#FFF;
+	margin-left:13px;
+	height:23px;
+	width:268px;
+	float:left;
+}
+
+#addFriendsButton{
+	width: 30px;
+	height:23px;
+	float:left;
+}
+
+#addFriendsTextfield input{
+	width: 237px;
+	height: 23px;
+	border:none;
+
+}
+
+#friendSearchList{
+}
+
+#friendSearchList ul{
+	margin:0px 0 0 0;
+	border-top:1px solid #999;
+}
+
+#friendSearchList li{
+	background-color:#FFF;
+	position:relative;
+	list-style: none;
+	border:1px solid #999;
+	border-top:none;
+	z-index: 999;
+	padding: 5px 0 5px 32px;
+}
