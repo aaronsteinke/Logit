@@ -15,7 +15,7 @@ var LatLngMyBounds2;
 
 function initializeMap() {
 	placeMap();
-	placeMarker();
+	//placeMarker();
 	initMapChanges();
 }
 
@@ -37,8 +37,7 @@ function placeNewMarkers(){
 	});
 }
 
-function placeMarker(){	
-	
+function placeMarker(){		
 	markers = new Array();
 	markersWindow = new Array();
 	if(markerCluster){
@@ -66,7 +65,6 @@ function placeMarker(){
 		});
 	}		
 	markerCluster = new MarkerClusterer(map, markers, markerOptions);
-	console.log(markerCluster);
 }	
 
 	
