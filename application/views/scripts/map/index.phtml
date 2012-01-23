@@ -9,14 +9,14 @@
 <script type="text/javascript">
 	$(document).ready(function() { 	
 		$('#mapJson').load("/map/get-json/", function(){
-			initializeMap();
-		});
+		initializeMap();
 		<?php if (is_object($this->obAuthUser->getFirstLog())): ?>
 			initializeMapTimeline(<?php echo '"' . $this->obAuthUser->getFirstLog()->getDateShot() . '", "' . $this->obAuthUser->getFirstLog()->getDateShot() . '","' .  $this->obAuthUser->getUsername() .'"';?> );
 		<?php else : ?>
 			initializeMapTimeline(<?php echo '"2010-11-11 11:11:11", "2011-11-11 11:11:11", "' .  $this->obAuthUser->getUsername() .'"';?> );
 		<?php endif;?>
 		initializeTimeline();
+		});
 	});
 </script>
 <!--  <input type="checkbox" name="PopUp" id="PopUp">PopUp -->

@@ -1,7 +1,6 @@
 var map;
 var maplatlng;
-var markerOptions = {gridSize: 50,maxZoom:20,};
-var LatLngMyBounds;
+var markerOptions = {gridSize: 50,maxZoom:20};
 var dataID;		
 var bigImage;
 var kord;
@@ -9,6 +8,9 @@ var aktualisiereMarker;
 var markerCluster;
 var markers = new Array();
 var markersWindow = new Array();
+
+var LatLngMyBounds1;
+var LatLngMyBounds2;
 
 
 function initializeMap() {
@@ -30,7 +32,7 @@ function placeMap(){
 }
 
 function placeNewMarkers(){
-	$('#mapJson').load('map/get-json/lat1/' + LatLngMyBounds1.lat() + '/lng1/' + LatLngMyBounds1.lng() + "/usernames/" + myFriends.join(","), function(){
+	$('#mapJson').load('map/get-json/lat1/' + LatLngMyBounds1.lat() + '/lng1/' + LatLngMyBounds1.lng() + "/first-date/" + firstDate.toString('yyyy-M-d') + "/first-time/"+ firstDate.toString('HH:mm') + "/second-date/" + secondDate.toString('yyyy-M-d') + "/second-time/"+ secondDate.toString('HH:mm') +"/usernames/" + myFriends.join(","), function(){
 		placeMarker();
 	});
 }
@@ -108,7 +110,7 @@ function getMyBoundsCenter(){
 }
 
 function getNewJson(){
-	LatLngMyBounds = map.getBounds();
+	var LatLngMyBounds = map.getBounds();
 	LatLngMyBounds1 = LatLngMyBounds.getNorthEast();
 	LatLngMyBounds2 = LatLngMyBounds.getSouthWest();
 	placeNewMarkers();
