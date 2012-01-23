@@ -32,6 +32,8 @@ function buildTimeline(){
 		})
 		
 		tg_actor = tg.data("timeline");
+		
+		$("#legende").load("timeline/get-json2/names/" + myFriends);
 		tg_actor.resize();
     }); // end document-ready
 }

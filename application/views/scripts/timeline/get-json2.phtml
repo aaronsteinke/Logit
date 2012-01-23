@@ -1,0 +1,24 @@
+<?php 
+$colors = array("#0091C2", "#C23000", "#00C291", "#C20030", "#FF4000", 
+				"#00BFFF", "#FF6E3D", "#0030C2", "#C20091", "#91C200");
+
+$arrUserIds = array();
+
+foreach($this->arrUser as $key=>$obUser){
+    $colorKey = 0;
+    foreach ($arrUserIds as $key2 => $id) {
+		if($id == $obUser->getId()){
+			$colorKey = $key2;
+		}
+    } 
+    if ($colorKey == 0){
+    	$colorKey = count($arrUserIds);
+		array_push($arrUserIds, $obUser->getId());
+    }
+	?>
+	<div style="background-color: <?php echo $colors[$colorKey] ?>; padding-left: 2px; padding-right: 5px;">
+		<?php echo $obUser ->getUsername() ?>
+	</div><?php
+}
+
+?>
