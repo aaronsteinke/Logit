@@ -87,7 +87,7 @@ function initMapChanges(){
     	getMyBounds();
 	});
 	getMyBoundsZoom();
-  	centerChangeListener = google.maps.event.addListener(map,'center_changed', getCenterBounds);
+  	//centerChangeListener = google.maps.event.addListener(map,'center_changed', getCenterBounds);
 }
   	
 function getCenterBounds (event) {
