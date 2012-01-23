@@ -14,7 +14,7 @@
 		border-bottom:#CCC solid 1px;
 		font-size: 12px;
 		font-weight: bold;
-		width:450px;	
+		width:550px;	
 		padding:10px 0;	
 		}
 		
@@ -23,7 +23,7 @@
 		float:left;
 		}
 		.r2 {
-		width:300px;
+		width:400px;
 		color:#494a43;
 		margin-left:150px;
 		}
@@ -42,7 +42,7 @@
 	}
 a { text-decoration:none;
 	border: hidden;; }
-.for {width:300px;}
+.for {width:400px;}
 .submit{
 	clear:both;
 	float:left;
