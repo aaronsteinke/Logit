@@ -60,7 +60,19 @@ class MapController extends Zend_Controller_Action
 		$limit = $this->getRequest()->getParam('number-of-images');
 		
 		$pictures = new Application_Model_PictureMapper();
-		$this->view->arrLogs = $pictures->getLogsByUsername($this->getRequest()->getParam('username'), $startDate, $endDate, $limit);
+		$arrLogs = $pictures->getLogsByUsername(
+						$this->getRequest()->getParam('username'), 
+						$startDate, 
+						$endDate
+					);
+		$faktor = count($arrLogs) / $limit;
+		$arrLogsSmal = array();
+		for ($i=0; $i < $limit; $i++) {
+			if ($faktor != 0){ 
+				array_push($arrLogsSmal, $arrLogs[floor($faktor)]);
+			}
+		}
+		$this->view->arrLogs = $arrLogs;
 		
 	}
 	
