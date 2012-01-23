@@ -18,8 +18,29 @@ class MapController extends Zend_Controller_Action
 	
 	public function getJsonAction(){
 		$this->_helper->layout()->disableLayout();
-		$user = Application_Model_AuthUser::getAuthUser();
-		$this->view->arrLogs = $user->getLogs();
+		$userMapper = new Application_Model_UserMapper();
+		$obAuthUser = Application_Model_AuthUser::getAuthUser();
+		
+		$alleLogs = array();
+
+
+		$arrUsernames = explode(',', $this->getRequest()->getParam('usernames'));
+		if ($arrUsernames[0] != ""){
+			foreach ($arrUsernames as $name) {
+				$obUser = $userMapper->getOneByUsername($name);
+				$arrUserLogs = $obUser->getLogs();
+				foreach($arrUserLogs as $log){
+					array_push($alleLogs, $log);
+				}
+			}
+		}
+		
+		foreach ($obAuthUser->getLogs() as $log) {
+			array_push($alleLogs, $log);
+		}
+		
+		$this->view->arrLogs = $alleLogs;
+		
 		/*
 		$arrLogs = $user->getLogs();
 		$arrJsonObjs = array();
@@ -36,11 +57,8 @@ class MapController extends Zend_Controller_Action
 		*/
 	}
 	
-	
 	public function getImagesForTimelineAction(){
 		$this->_helper->layout()->disableLayout();		
-		
-		$authUser = Application_Model_AuthUser::getAuthUser();
 		
 		$startDate = 	$this->getRequest()->getParam('first-date') . ' ' .  
 						$this->getRequest()->getParam('first-time');
@@ -51,7 +69,7 @@ class MapController extends Zend_Controller_Action
 		$limit = $this->getRequest()->getParam('number-of-images');
 		
 		$pictures = new Application_Model_PictureMapper();
-		$this->view->arrLogs = $pictures->getLogsForUser($authUser->getId(), $startDate, $endDate, $limit);
+		$this->view->arrLogs = $pictures->getLogsByUsername($this->getRequest()->getParam('username'), $startDate, $endDate, $limit);
 		
 	}
 	
@@ -60,19 +78,23 @@ class MapController extends Zend_Controller_Action
 	}
 	
 	public function getUserForTimelineAction(){
-		$this->_helper->layout()->disableLayout();	
+		$this->_helper->layout()->disableLayout();
 	}
 	
 	public function testAction(){
 		$this->_helper->viewRenderer->setNoRender(true);
 		$authUser = Application_Model_AuthUser::getAuthUser();
-		
 	}
 	
 	public function getTimelineAction(){
 		$this->_helper->layout()->disableLayout();
 		$userMapper = new Application_Model_UserMapper();
-		$this->view->obUser = $userMapper->getOneByUsername($this->getRequest()->getParam('username'));
+		$authUser = Application_Model_AuthUser::getAuthUser();
+		if($this->getRequest()->getParam('username') == $authUser->getUsername()){
+			$this->view->obUser = $authUser;
+		} else {
+			$this->view->obUser = $userMapper->getFriendByUsername($authUser->getId(), $this->getRequest()->getParam('username'));
+		}
 	}
 
 }

@@ -1,5 +1,5 @@
 <?php  
 
 foreach ($this->arrLogs as $objLog) {
-	?><img class="timeLineImage" src="<?php echo $objLog->get45X45picturePath(); ?>" /><?php
+	?><img id="<?php echo $objLog->getId(); ?>" class="timeLineImage" src="<?php echo $objLog->get45X45picturePath(); ?>" height:"45px" width:"45px" /><?php
 }

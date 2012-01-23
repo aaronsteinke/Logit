@@ -23,6 +23,8 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		Zend_Registry::set('facebook_client_id', $aConfig['facebook']['client_id']);
 		Zend_Registry::set('facebook_client_secret', $aConfig['facebook']['client_secret']);
 		Zend_Registry::set('facebook_redirect_uri', $aConfig['facebook']['redirect_uri']);
+		Zend_Registry::set('gcal_api_key', $aConfig['gcal']['api_key']);
+		Zend_Registry::set('gcal_max_results', $aConfig['gcal']['max_results']);
 	}
 }
 

@@ -9,14 +9,14 @@
 <script type="text/javascript">
 	$(document).ready(function() { 	
 		$('#mapJson').load("/map/get-json/", function(){
-			initialize();
-		});
-		<?php if (is_object($this->obAuthUser->getFristLog())): ?>
-			initializeMapTimeline(<?php echo '"' . $this->obAuthUser->getFristLog()->getDateShot() . '", "' . $this->obAuthUser->getFristLog()->getDateShot() . '"';?>);
+		initializeMap();
+		<?php if (is_object($this->obAuthUser->getFirstLog())): ?>
+			initializeMapTimeline(<?php echo '"' . $this->obAuthUser->getFirstLog()->getDateShot() . '", "' . $this->obAuthUser->getFirstLog()->getDateShot() . '","' .  $this->obAuthUser->getUsername() .'"';?> );
 		<?php else : ?>
-			initializeMapTimeline(<?php echo '"2010-11-11 11:11:11", "2011-11-11 11:11:11"';?>);
+			initializeMapTimeline(<?php echo '"2010-11-11 11:11:11", "2011-11-11 11:11:11", "' .  $this->obAuthUser->getUsername() .'"';?> );
 		<?php endif;?>
 		initializeTimeline();
+		});
 	});
 </script>
 <!--  <input type="checkbox" name="PopUp" id="PopUp">PopUp -->
@@ -26,8 +26,8 @@
 
 <div id="timeline">
 	<div id="navi">
-    <div id="resizeTimeline" title="Drag to resize"></div>
-    <div id="zeitraum">
+	    <div id="resizeTimeline" title="Drag to resize"></div>
+	    <div id="zeitraum">
 	  		<div id="zeitraumMinus"  class="borderRight"><img src="images/minus.png" width="26" height="23" class="timePic" title="Zeitraum erweitern (Zoom out)" /></div>
             <div id="zeitraumPlus" class="borderRight"><img src="images/plus.png" width="26" height="23" class="timePic" title="Zeitraum einschränken (Zoom in)" /></div>
             <div id="zeitraumStart" class="borderRight">Start</div>
@@ -46,8 +46,8 @@
 			</div>	
     	</div>
 	</div>  
-	<div id="bilderInhalte" class="horizontal-only">
-	  	<div id="bilderInhalt1">
+	<div id="bilderInhalte" class="scrollBalken">
+	  	<div id="bilderInhalt0">
 	  	</div>
 	</div>
 </div>
