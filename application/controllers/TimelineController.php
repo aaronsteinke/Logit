@@ -37,15 +37,6 @@ class TimelineController extends Zend_Controller_Action {
 		foreach ($obAuthUser->getLogs() as $log) {
 			array_push($alleLogs, $log);
 		}
-		/*
-		$faktor = count($alleLogs) / 50;
-		$arrLogsSmal = array();
-		for ($i=0; $i < 50; $i++) {
-			if ($faktor != 0){ 
-				array_push($arrLogsSmal, $alleLogs[floor($faktor) * $i]);
-			}
-		}
-		*/
 		$this->view->arrUser = $arrUser;
 		$this->view->obUser = $obAuthUser;
 		$this->view->arrLogs = $alleLogs;

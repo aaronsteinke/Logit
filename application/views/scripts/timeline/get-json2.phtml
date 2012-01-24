@@ -16,7 +16,7 @@ foreach($this->arrUser as $key=>$obUser){
 		array_push($arrUserIds, $obUser->getId());
     }
 	?>
-	<div style="background-color: <?php echo $colors[$colorKey] ?>; padding-left: 2px; padding-right: 5px;">
+	<div style="margin-top: 5px;  background-color: <?php echo $colors[$colorKey] ?>; padding-left: 2px; padding-right: 5px;">
 		<?php echo $obUser ->getUsername() ?>
 	</div><?php
 }

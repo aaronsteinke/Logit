@@ -13,17 +13,9 @@ $arrUserIds = array();
 	"size_importance": "false",
     "events":
     [ <?php 
-foreach($this->arrUser as $key=>$obUser):?>
+foreach($this->arrUser as $key=>$obUser)
 {
-	"id": "<?php echo $obUser->getId();?>",
-	"title": "<?php echo $obUser->getUsername()?>",
-	"startdate": "<?php echo $obUser->getFirstLog()->getDateShot(); ?>",
-	"enddate": "<?php echo $obUser->getLastLog()->getDateShot() ?>",
-	"date_limit": "ye",	
-	"description": "what?",
-    "low_threshold": "0",
-    "high_threshold": "60",
-    "span_color":"<?php 
+	
     $colorKey = 0;
     foreach ($arrUserIds as $key => $id) {
 		if($id == $obUser->getId()){
@@ -34,13 +26,7 @@ foreach($this->arrUser as $key=>$obUser):?>
     	$colorKey = count($arrUserIds);
 		array_push($arrUserIds, $obUser->getId());
     }
-	echo $colors[$colorKey];
-    ?>",
-    "importance": "<?php echo $key;?>",
-    "icon": "none"
-}, <?php 
-endforeach;
-	
+}	
 foreach ($this->arrLogs as $key=>$log) {
 	?> 
 	{		"id": "<?php echo $log->getId();?>",
